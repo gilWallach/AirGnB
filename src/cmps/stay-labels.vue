@@ -32,7 +32,6 @@ export default {
     try {
       const labels = await labelService.query()
       this.labels = labels
-      console.log('labels: ', labels)
     } catch (err) {
       throw new Error(err)
     }
