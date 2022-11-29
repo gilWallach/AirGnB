@@ -1,0 +1,21 @@
+.labels-container {
+  display: flex;
+  gap: 4em;
+
+  list-style: none;
+
+  .single-label-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &::before {
+    content: '⬅️';
+  }
+  img {
+    display: block;
+    width: 1em;
+    height: 1em;
+  }
+}

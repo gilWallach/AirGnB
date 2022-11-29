@@ -1,5 +1,6 @@
 <template>
   <div class="container home">
+    <stay-labels />
     <ul class="stay-list">
       <li v-for="stay in stays" :key="stay._id">
         <p>
@@ -24,6 +25,8 @@ import {
   getActionUpdateStay,
   getActionAddStayMsg,
 } from '../store/stay.store'
+
+import stayLabels from '../cmps/stay-labels.vue'
 
 export default {
   computed: {
@@ -80,6 +83,9 @@ export default {
     printStayToConsole(stay) {
       console.log('Stay msgs:', stay.msgs)
     },
+  },
+  components: {
+    stayLabels,
   },
 }
 </script>
