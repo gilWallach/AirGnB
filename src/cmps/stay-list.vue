@@ -1,24 +1,28 @@
 <template>
-    <section class='stay-list'>
-        <div class="list-header">
-            <stay-filter/>
-        </div>        
-    </section>
+  <section>
+    <ul class="stay-list">
+      <li v-for="stay in stays" :key="stay._id">
+        <stay-preview :stay="stay" />
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script>
-    import stayFilter from './stay-filter.vue'
+import stayPreview from './stay-preview.vue'
 export default {
-    name: 'stay-list',
-    props: {},
-    data() {
-        return {}
+  name: 'stay-list',
+  props: {
+    stays: {
+      type: Array,
+      required: true,
     },
     created() { },
     methods: {},
     computed: {},
     components: {
-        stayFilter,
+      stayPreview,
     }
+  },
 }
 </script>

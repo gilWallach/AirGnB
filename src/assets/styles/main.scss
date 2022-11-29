@@ -1,22 +1,18 @@
 // Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/typography';
 
 // Basics
-@import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
-@import "basics/forms";
-
-
-
+@import 'basics/helpers';
+@import 'basics/layout';
+@import 'basics/base';
+@import 'basics/forms';
 
 // Components
-@import "cmps/app-header";
-@import "cmps/user-msg";
-@import "cmps/review-list";
-@import "cmps/stay-list";
-
-
+@import 'cmps/app-header';
+@import 'cmps/user-msg';
+@import 'cmps/review-list';
+@import 'cmps/stay-list';
+@import 'cmps/stay-labels';
