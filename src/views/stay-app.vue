@@ -3,7 +3,7 @@
     <ul class="stay-list">
       <li v-for="stay in stays" :key="stay._id">
         <p>
-          {{stay.vendor}}
+          {{stay.name}}
         </p>
         <p>
           ${{stay.price?.toLocaleString()}}

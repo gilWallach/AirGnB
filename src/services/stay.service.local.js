@@ -18,6 +18,7 @@ window.cs = stayService
 
 async function query(filterBy = { name: '', price: 0 }) {
     var stays = await storageService.query(STORAGE_KEY)
+    if(!stays?.length) _createStays()
     if (filterBy.name) {
         const regex = new RegExp(filterBy.name, 'i')
         stays = stays.filter(stay => regex.test(stay.name) || regex.test(stay.description))
@@ -68,13 +69,54 @@ function getEmptyStay() {
     return {
         name: '',
         price: 0,
-        description: ''
+        summary: ''
     }
 }
 
 
+async function _createStays(){
+    await storageService.post(STORAGE_KEY, {"name": "Gil's Amazing Private Island",
+    "type": "Island",
+    "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+    "price": 555.00,
+    "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",})
+    await storageService.post(STORAGE_KEY, {"name": "Yaron Charming Villa",
+    "type": "House",
+    "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+    "price": 130.00,
+    "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",})
+    await storageService.post(STORAGE_KEY, { "name": "Muki Charming Duplex",
+    "type": "House",
+    "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+    "price": 120.00,
+    "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",})
+    await storageService.post(STORAGE_KEY, {"name": "Puki Charming Duplex",
+    "type": "House",
+    "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+    "price": 80.00,
+    "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)..."})
+}
+
 // TEST DATA
 // ;(async ()=>{
-//     await storageService.post(STORAGE_KEY, {name: 'Puki\'s house', price: 180, description: 'Best stay in town!'})
-//     await storageService.post(STORAGE_KEY, {name: 'Muki\'s house', price: 240, description: 'Best stay in town!'})
+//     await storageService.post(STORAGE_KEY, {"name": "Gil's Amazing Private Island",
+//     "type": "Island",
+//     "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+//     "price": 555.00,
+//     "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",})
+//     await storageService.post(STORAGE_KEY, {"name": "Yaron Charming Villa",
+//     "type": "House",
+//     "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+//     "price": 130.00,
+//     "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",})
+//     await storageService.post(STORAGE_KEY, { "name": "Muki Charming Duplex",
+//     "type": "House",
+//     "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+//     "price": 120.00,
+//     "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",})
+//     await storageService.post(STORAGE_KEY, {"name": "Puki Charming Duplex",
+//     "type": "House",
+//     "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+//     "price": 80.00,
+//     "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)..."})
 // })()
