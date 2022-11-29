@@ -1,6 +1,6 @@
 <template>
   <div class="container home">
-    
+    <stay-list/>
   </div>
 </template>
 
@@ -9,6 +9,8 @@ import {showErrorMsg, showSuccessMsg} from '../services/event-bus.service'
 import {stayService} from '../services/stay.service.local'
 import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
 
+
+import stayList from '../cmps/stay-list.vue'
 export default {
   computed: {
     loggedInUser() {
@@ -66,8 +68,10 @@ export default {
     printStayToConsole(stay) {
       console.log('Stay msgs:', stay.msgs)
     }
-  }
-
+  },
+components: {
+  stayList
+}
   
 }
 </script>
