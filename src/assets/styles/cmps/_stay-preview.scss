@@ -8,12 +8,12 @@
             position: relative;
             border-radius: .75em;
             overflow: hidden;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 0.94;
 
             .wishlist{
                 position: absolute;
-                top: em(14px);
-                right: em(14px, 15px);
+                top: .75em;
+                right: .75em;
             }
 
             img{
@@ -23,6 +23,12 @@
                 align-self: center;
             }
 
+            .el-carousel__button, .el-carousel__indicator--horizontal{
+                border-radius: 50%;
+                height: 5px !important;
+                width: 5px !important;
+            }
+
         }
         p{
             margin: 0 0 3px;
@@ -30,6 +36,7 @@
         }
 
         .price{
+            padding-top: em(6px);
             color: $clr2;
             
             span {
@@ -38,6 +45,7 @@
         }
         
         .title{
+            padding-top: em(12px);
             p{
                 font-family: airBnb-Med;
                 color: $clr2;

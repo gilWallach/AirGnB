@@ -4,7 +4,8 @@
       <li class="card">
         <div class="img-container">
           <div class="wishlist"><heart/></div>
-          <img :src="stay.imgUrls[0]" alt="stay imgs" class="card-image">
+          <stay-carousel :stay="stay"/>
+          <!-- <img :src="stay.imgUrls[0]" alt="stay imgs" class="card-image"> -->
         </div>
         <div class="stay-txt">
           <div class="title flex justify-space-between align-center">
@@ -26,6 +27,7 @@
 <script>
 import star from '../assets/svg/star.vue'
 import heart from '../assets/svg/heart.vue'
+import stayCarousel from './stay-carousel.vue'
 export default {
   name: 'stay-preview',
   props: {
@@ -41,7 +43,8 @@ export default {
   computed: {},
   components: {
     star,
-    heart
+    heart,
+    stayCarousel
   },
 }
 </script>
