@@ -12,7 +12,7 @@
       <button @click="isSearchOpen= !isSearchOpen">Anywhere</button>
       <button>Any Week</button>
       <button>Add guests</button>
-      <div class="search">
+      <div class="search flex align-center justify-center">
         <search />
       </div>
     </div>
