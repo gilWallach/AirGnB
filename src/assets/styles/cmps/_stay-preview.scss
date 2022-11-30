@@ -2,23 +2,48 @@
         background-color: $clr8;
         aspect-ratio: 1 /1;
         color: $clr2;
+        line-height: rem(19px);
         
-        .card-image {
-            object-fit: contain;
-            aspect-ratio: 1 / 0.7;
-            align-self: center;
+        .img-container {
+            position: relative;
+            border-radius: .75em;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+
+            .wishlist{
+                position: absolute;
+                top: em(14px);
+                right: em(14px);
+            }
+
+            img{
+                height: 100%;
+                object-fit: contain;
+                align-self: center;
+            }
+
         }
+        p{
+            margin: 0 0 3px;
+            color: $clr4;
+        }
+
+        .price{
+            color: $clr2;
+            
+            span {
+                font-family: airBnb-Med;                
+            }
+        }
+        
         .title{
             p{
                 font-family: airBnb-Med;
+                color: $clr2;
             }
-        }
-        p {
-            margin: 0;
-        }
-
-        span {
-            margin-inline-start: 3px;
+            span {
+                margin-inline-start: 3px;
+            }
         }
 
     }

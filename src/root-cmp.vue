@@ -1,9 +1,9 @@
 <template>
-  <section>
+  <div class="main-app">
     <user-msg />
     <app-header />
     <router-view />
-  </section>
+  </div>
 </template>
 
 <script>

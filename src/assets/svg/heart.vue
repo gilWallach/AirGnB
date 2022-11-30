@@ -6,7 +6,7 @@
     fill: rgba(0, 0, 0, 0.5);
     height: 24px;
     width: 24px;
-    stroke: var(--f-mkcy-f);
+    stroke: #fff;
     stroke-width: 2;
     overflow: visible;
   ">
