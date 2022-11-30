@@ -1,6 +1,10 @@
 <template>
   <div className="upload-preview">
-    <img v-if="imgUrl" :src="imgUrl" :style="{ maxWidth: '200px', float: 'right' }" />
+    <img
+      v-if="imgUrl"
+      :src="imgUrl"
+      :style="{ maxWidth: '200px', float: 'right' }"
+    />
     <label for="imgUpload">{{ uploadMsg }}</label>
     <input type="file" @change="uploadImg" accept="img/*" id="imgUpload" />
   </div>
@@ -15,7 +19,7 @@ export default {
       imgUrl: null,
       height: 500,
       width: 500,
-      isUploading: false
+      isUploading: false,
     }
   },
   methods: {
@@ -27,13 +31,13 @@ export default {
       this.height = height
       this.width = width
       this.$emit('uploaded', this.imgUrl)
-    }
+    },
   },
   computed: {
     uploadMsg() {
       if (this.imgUrl) return 'Upload Another?'
       return this.isUploading ? 'Uploading....' : 'Upload Image'
-    }
-  }
+    },
+  },
 }
 </script>

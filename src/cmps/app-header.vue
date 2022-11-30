@@ -24,6 +24,6 @@ export default {
     loggedInUser() {
       return this.$store.getters.loggedinUser
     },
-  }
+  },
 }
 </script>
