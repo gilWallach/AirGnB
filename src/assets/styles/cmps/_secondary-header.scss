@@ -1,0 +1,40 @@
+.secondary-header {
+    border: 1px solid $clr6;
+    border-radius: 2em;
+    justify-content: space-evenly;
+    height: 66px;
+  label {
+    padding: 14px 24px;
+    > p {
+      font-size: rem(14px);
+      font-family: airBnb-Med;
+      margin: 0;
+    }
+    span {
+      font-size: rem(12px);
+      color: $clr4;
+    }
+    input{
+        background-color: none;
+        border: 0;
+    }
+  }
+  .break-line{
+    height: rem(36px);
+  }
+
+  .search-container {
+    color: $clr8;
+    height: 48px;
+    width: 48px;
+    font-size: 16px;
+    border-radius: 50%;
+    background-color: $clr1;
+  }
+
+  .search{
+    svg{
+        height: 16px;
+    }
+  }
+}
