@@ -8,8 +8,17 @@
             aspect-ratio: 1 / 0.7;
             align-self: center;
         }
-        
-        .stay-txt{
-
+        .title{
+            p{
+                font-family: airBnb-Med;
+            }
         }
+        p {
+            margin: 0;
+        }
+
+        span {
+            margin-inline-start: 3px;
+        }
+
     }
