@@ -3,8 +3,16 @@
     // src: url(../../fonts/Caveat/Caveat-Regular.ttf);
 }
 @font-face {
-    font-family: montserrat;
-    src: url(~@/styles/fonts/montserrat/Montserrat-Regular.ttf);
+    font-family: montserrat-Reg;
+    src: url(../fonts/montserrat/Montserrat-Regular.ttf);
+}
+@font-face {
+    font-family: montserrat-Med;
+    src: url(../fonts/montserrat/Montserrat-Medium.ttf);
+}
+@font-face {
+    font-family: montserrat-B;
+    src: url(../fonts/montserrat/Montserrat-Bold.ttf);
 }
 
 // @font-face {
