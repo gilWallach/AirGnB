@@ -1,10 +1,14 @@
 .stay-details {
   font-family: airBnb-Med;
-  h1 {
-    font-family: airBnb-Med;
-    font-weight: 500;
-    font-size: em(26px, 18px);
-    line-height: 1.6em; //(in the context of 18px of h1, this should be 30px)
+  grid-column: 2;
+  .details-header > * {
+    font-family: airBnb-Med !important;
+    font-weight: 500 !important;
+    font-size: em(26px, 15px) !important;
+    line-height: 1.6em !important; //(in the context of 18px of h1, this should be 30px)
+
+    margin-block-start: 24px !important;
+    margin-block-end: 0;
   }
 
   .rate {
@@ -39,6 +43,7 @@
 
   .rate .star-svg {
     font-size: em(16px, 14px);
+    padding-bottom: 0.1em;
   }
 
   .stay-details-container {
@@ -55,6 +60,8 @@
     .action-btn {
       display: flex;
       align-items: center;
+      padding: 0 8px;
+      gap: 8px;
     }
     .action-btn:hover {
       cursor: pointer;
@@ -68,11 +75,13 @@
   .gallery {
     display: grid;
     grid-template-columns: minmax(326px, 560px) repeat(2, minmax(155px, 272px));
-    grid-template-rows: repeat(2, minmax(164px, 274px));
+    grid-template-rows: repeat(2, minmax(164px, 243px));
     grid-template-areas:
       'img0 img1 img2'
       'img0 img3 img4';
     gap: em(8px, 15px);
+
+    margin-top: 24px;
 
     border-radius: 0.75em;
     overflow: hidden;
@@ -80,6 +89,15 @@
 
     .img0 {
       grid-area: img0;
+      max-height: 493.4px;
+    }
+
+    .img1,
+    .img2,
+    .img3,
+    .img4,
+    .img5 {
+      max-height: 246.69px;
     }
 
     .img1 {
@@ -107,6 +125,41 @@
       height: 100%;
       object-fit: cover;
       // aspect-ratio: 1.1/1;
+    }
+  }
+
+  .summary-and-details {
+    width: 58%;
+    font-family: airBnb-Med;
+    .summary-container {
+      display: flex;
+      justify-content: space-between;
+
+      padding-top: 48px;
+      padding-bottom: 24px;
+
+      border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+
+      .stay-summary-text {
+        font-size: em(22px, 15px);
+        margin-bottom: 8px;
+      }
+      .capacity {
+        font-family: airBnb-Reg;
+        font-size: em(16px, 15px);
+        font-weight: 400;
+      }
+    }
+
+    .host-img {
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      box-shadow: 0 0 0 1px #ede8e8;
+    }
+
+    hr {
+      width: 0.2em;
     }
   }
 }
