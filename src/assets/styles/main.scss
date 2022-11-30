@@ -2,7 +2,6 @@
 @import 'setup/variables';
 @import 'setup/functions';
 @import 'setup/mixins';
-@import 'setup/typography';
 
 // Basics
 @import 'basics/helpers';
@@ -15,5 +14,6 @@
 @import 'cmps/user-msg';
 @import 'cmps/review-list';
 @import 'cmps/stay-list';
+@import 'cmps/stay-preview';
 @import 'cmps/stay-labels';
 @import 'cmps/stay-details';

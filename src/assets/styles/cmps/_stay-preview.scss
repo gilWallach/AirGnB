@@ -2,10 +2,23 @@
         background-color: $clr8;
         aspect-ratio: 1 /1;
         color: $clr2;
-    
+        
         .card-image {
             object-fit: contain;
             aspect-ratio: 1 / 0.7;
             align-self: center;
         }
+        .title{
+            p{
+                font-family: airBnb-Med;
+            }
+        }
+        p {
+            margin: 0;
+        }
+
+        span {
+            margin-inline-start: 3px;
+        }
+
     }

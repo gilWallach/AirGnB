@@ -2,7 +2,7 @@
   <div class="container home">
     <div class="list-header">
       <stay-labels />
-      <stay-filter />
+      <!-- <stay-filter /> -->
     </div>
     <stay-list :stays="stays" />
   </div>

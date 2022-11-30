@@ -3,8 +3,16 @@
     // src: url(../../fonts/Caveat/Caveat-Regular.ttf);
 }
 @font-face {
-    font-family: montserrat;
-    src: url(~@/styles/fonts/montserrat/Montserrat-Regular.ttf);
+    font-family: airBnb-Reg;
+    src: url(../fonts/AirBnb/Airbnb_Cereal-Book.ttf);
+}
+@font-face {
+    font-family: airBnb-Med;
+    src: url(../fonts/AirBnb/Airbnb_Cereal-Medium.ttf);
+}
+@font-face {
+    font-family: airBnb-B;
+    src: url(../fonts/AirBnb/Airbnb_Cereal-Bold.ttf);
 }
 
 // @font-face {

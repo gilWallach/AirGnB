@@ -6,16 +6,16 @@
           <img :src="stay.imgUrls[0]" alt="stay imgs" class="card-image">
         </div>
         <div class="stay-txt">
-          <div class="title flex justify-space-between">
+          <div class="title flex justify-space-between align-center">
             <p>{{ stay.name }}</p>
-            <div class="rating flex">
+            <div class="rating flex align-center">
               <span>New</span>
               <span><star/></span>
             </div>
           </div>
           <p>{{ stay.capacity }} guests</p>
           <p>Dec 4-9</p>
-          <p>${{ stay.price?.toLocaleString() }} night</p>
+          <p><span>${{ stay.price?.toLocaleString() }}</span> night</p>
         </div>
       </li>
     </router-link>
