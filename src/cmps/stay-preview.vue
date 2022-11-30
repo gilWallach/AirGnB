@@ -3,23 +3,27 @@
     <router-link :to="`/stay/${stay._id}`">
       <li class="card">
         <div class="img-container">
-          <img :src="stay.imgUrls[0]" alt="">
+          <img :src="stay.imgUrls[0]" alt="stay imgs" class="card-image">
         </div>
-        <p>{{ stay.name }}</p>
-        <p>Capacity: {{ stay.capacity }}</p>
-        <p>Dec 4-9</p>
-        <p>${{ stay.price?.toLocaleString() }} night</p>
-        <!-- <button @click="removeStay(stay._id)">x</button>
-        <button @click="updateStay(stay)">Update</button> -->
-        <!-- <hr />
-        <button @click="addStayMsg(stay._id)">Add stay msg</button>
-        <button @click="printStayToConsole(stay)">Print msgs to console</button> -->
+        <div class="stay-txt">
+          <div class="title flex justify-space-between">
+            <p>{{ stay.name }}</p>
+            <div class="rating flex">
+              <span>New</span>
+              <span><star/></span>
+            </div>
+          </div>
+          <p>{{ stay.capacity }} guests</p>
+          <p>Dec 4-9</p>
+          <p>${{ stay.price?.toLocaleString() }} night</p>
+        </div>
       </li>
     </router-link>
   </section>
 </template>
 
 <script>
+import star from '../assets/svg/star.vue'
 export default {
   name: 'stay-preview',
   props: {
@@ -33,6 +37,8 @@ export default {
   created() {},
   methods: {},
   computed: {},
-  components: {},
+  components: {
+    star
+  },
 }
 </script>

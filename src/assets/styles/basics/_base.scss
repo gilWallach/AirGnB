@@ -15,7 +15,7 @@ html {
 
 body {
     // font-family: Airbnb-Lt;
-    font-size: rem(18px);
+    font-size: rem(15px);
     margin: 0;
 }
 
@@ -41,9 +41,10 @@ p {
 
 a {
     text-decoration: none;
-    &:hover {
-        text-decoration: underline;
-    }
+    color: $clr2;
+    // &:hover {
+    //     text-decoration: underline;
+    // }
 }
 
 
