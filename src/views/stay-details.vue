@@ -29,7 +29,18 @@
 
     <!-- IMAGE GALLERY -->
     <div class="gallery">
-      <img v-for="(img, idx) in getStay.imgUrls" :src="img" alt="stay-image" />
+      <!-- <img
+        v-for="(img, idx) in getStay.imgUrls"
+        :src="'http://static.dezeen.com/uploads/2014/07/Airbnb-rebrand-by-DesignStudio_dezeen_468_8.jpg'"
+        alt="stay-image"
+        :class="'gallery-img img' + idx"
+      /> -->
+      <img
+        v-for="(img, idx) in getStay.imgUrls"
+        :src="img"
+        alt="stay-image"
+        :class="'gallery-img img' + idx"
+      />
     </div>
 
     <pre>{{ getStay }}</pre>
