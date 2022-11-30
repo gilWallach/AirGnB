@@ -1,9 +1,7 @@
 <template>
   <section>
     <ul class="stay-list">
-      <li v-for="stay in stays" :key="stay._id">
-        <stay-preview :stay="stay" />
-      </li>
+      <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" />
     </ul>
   </section>
 </template>
@@ -15,14 +13,15 @@ export default {
   props: {
     stays: {
       type: Array,
-      required: true,
     },
-    created() { },
-    methods: {},
-    computed: {},
-    components: {
-      stayPreview,
-    }
+  },
+  created() {
+    console.log(this.stays)
+  },
+  methods: {},
+  computed: {},
+  components: {
+    stayPreview,
   },
 }
 </script>
