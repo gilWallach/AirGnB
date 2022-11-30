@@ -9,13 +9,13 @@
     display: flex;
     align-items: center;
   }
-  .rate .star-svg {
-    font-size: em(16px, 14px);
-  }
   .details-ratings-container {
     display: flex;
     align-items: center;
     margin-top: 8px;
-    font-size: em(14px, 18px);
+    font-size: em(14px, 15px);
+  }
+  .rate .star-svg {
+    font-size: em(16px, 14px);
   }
 }

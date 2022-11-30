@@ -4,8 +4,10 @@
       <h1>{{ getStay.name }}</h1>
     </div>
     <div class="details-ratings-container">
-      <p class="rate"><star /> 4.82 ·</p>
-      <p class="reviews-amount">{{ getStay.reviews?.length }} reviews</p>
+      <p class="rate"><star /> 4.82 ·&nbsp;</p>
+      <p class="reviews-amount">
+        {{ getStay.reviews?.length }} reviews ·&nbsp;
+      </p>
       <p class="address">{{ getStay.loc.city }}, {{ getStay.loc.country }}</p>
     </div>
     <div class="gallery">
