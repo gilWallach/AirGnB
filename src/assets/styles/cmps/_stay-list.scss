@@ -1,16 +1,7 @@
 .stay-list {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    
-    pre {
-        background-color: #ddd;
-        font-size: .5em;
-        color: #333;
-        padding: .2em;
-        margin: .2em;
-    }    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-auto-flow: dense;
+    column-gap: 1.5em
 }
-
-
-
