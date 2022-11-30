@@ -1,6 +1,12 @@
 <template>
   <section v-if="stay" class="stay-details">
-    <!-- <pre>{{ getStay[0].name }}</pre> -->
+    <h1>{{ getStay.name }}</h1>
+    <p class="rate">4.82</p>
+    <p class="reviews-amount">{{ getStay.reviews?.length }} reviews</p>
+    <p class="address">{{ getStay.loc.city }}, {{ getStay.loc.country }}</p>
+    <div class="gallery">
+      <img v-for="(img, idx) in getStay.imgUrls" :src="img" alt="stay-image" />
+    </div>
     <pre>{{ getStay }}</pre>
   </section>
   <section v-else class="loading">Loading....</section>
