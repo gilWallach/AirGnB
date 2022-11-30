@@ -9,7 +9,7 @@
       </router-link>
     </div>
     <div class="mini-search flex align-center">
-      <button>Anywhere</button>
+      <button @click="isSearchOpen= !isSearchOpen">Anywhere</button>
       <button>Any Week</button>
       <button>Add guests</button>
       <div class="search">
@@ -37,6 +37,28 @@
       <img :src="loggedInUser.imgUrl" />
     </section>
   </header>
+  <transition name="fade">
+    <header v-if="isSearchOpen" class="secondary-header big-search flex align-center justify-center">
+    <label class="flex column">
+      Where
+      <input type="text" placeholder="Search destinations">
+    </label>
+    <label class="flex column">
+      Check in
+      <span>Add dates</span>
+      <input type="date">
+    </label>
+    <label class="flex column">
+      Check out
+      <span>Add dates</span>
+      <input type="date">
+    </label>
+    <label class="flex column">
+      Who
+      <span>Add guests</span>
+    </label>
+    </header>
+  </transition>
 </template>
 <script>
 import airbnb from '../assets/svg/airbnb.vue'
@@ -44,6 +66,11 @@ import search from '../assets/svg/search.vue'
 import hamburger from '../assets/svg/hamburger.vue'
 
 export default {
+  data(){
+    return {
+      isSearchOpen:false
+    }
+  },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser
