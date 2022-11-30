@@ -54,6 +54,10 @@ export const stayStore = {
             if (!stay.msgs) stay.msgs = []
             stay.msgs.push(msg)
         },
+        setFilterBy(state, { filterBy }) {
+            console.log(filterBy)
+            state.filterBy = filterBy
+          },
     },
     actions: {
         async addStay(context, { stay }) {

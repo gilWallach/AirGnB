@@ -17,15 +17,12 @@ export default {
       type: Array,
       required: true,
     },
-  },
-  data() {
-    return {}
-  },
-  created() {},
-  methods: {},
-  computed: {},
-  components: {
-    stayPreview,
+    created() { },
+    methods: {},
+    computed: {},
+    components: {
+      stayPreview,
+    }
   },
 }
 </script>
