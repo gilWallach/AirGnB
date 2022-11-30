@@ -1,7 +1,9 @@
 .stay-details {
+  font-family: airBnb-Med;
   h1 {
+    font-family: airBnb-Med;
+    font-weight: 500;
     font-size: em(26px, 18px);
-    font-weight: 600;
     line-height: 1.6em; //(in the context of 18px of h1, this should be 30px)
   }
 
@@ -9,13 +11,62 @@
     display: flex;
     align-items: center;
   }
+
   .details-ratings-container {
     display: flex;
     align-items: center;
     margin-top: 8px;
+    font-family: airBnb-Med;
     font-size: em(14px, 15px);
+
+    .address,
+    .reviews-amount {
+      text-decoration: underline;
+      .separator {
+        margin: 0 0.57em; //8px in the context of 14px
+        text-decoration: none;
+      }
+    }
+    .address:hover,
+    .reviews-amount:hover {
+      cursor: pointer;
+    }
+    .separator {
+      margin: 0 0.3em;
+      text-decoration: none;
+    }
   }
+
   .rate .star-svg {
     font-size: em(16px, 14px);
+  }
+
+  .stay-details-container {
+    display: flex;
+    justify-content: space-between;
+
+    .action-btns {
+      display: flex;
+      gap: 0.3em;
+
+      font-size: em(14px, 15px);
+      text-decoration: underline;
+    }
+    .action-btn {
+      display: flex;
+      align-items: center;
+    }
+    .action-btn:hover {
+      cursor: pointer;
+    }
+    .reviews-rates-container {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(autofill);
   }
 }
