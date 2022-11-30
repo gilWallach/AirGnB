@@ -8,11 +8,11 @@
         </span>
       </router-link>
     </div>
-    <div class="mini-search flex align-center">
-      <button @click="isSearchOpen= !isSearchOpen">Anywhere</button>
-      <button>Any Week</button>
-      <button>Add guests</button>
-      <div class="search flex align-center justify-center">
+    <div class="mini-search flex align-center" @click="isSearchOpen= !isSearchOpen">
+      <button >Anywhere</button>
+      <button >Any Week</button>
+      <button >Add guests</button>
+      <div  class="search flex align-center justify-center">
         <search />
       </div>
     </div>

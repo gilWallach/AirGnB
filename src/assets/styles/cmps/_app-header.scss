@@ -29,11 +29,13 @@ header {
         &:hover{
             box-shadow: 0 2px 4px rgba(0,0,0,0.18);
         }
-        border: 1px solid $clr6;
+        outline:1px solid $clr6;
+
         border-radius: 2em;
-        padding: rem(5px);
         box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
         button {
+            margin: 0;
+            padding: 0 16px;
             font-size: rem(14px);
             font-family: airBnb-Med;
             &:last-of-type{
