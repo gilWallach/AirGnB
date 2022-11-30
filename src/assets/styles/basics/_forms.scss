@@ -1,9 +1,16 @@
 button {
+    cursor: pointer;
     border:0;
     background-color: $clr1;
-    color:whitesmoke;
+    color: $clr3;
     padding: 5px 10px;
     margin: 5px;
+    font-size: 14px;
+    background-color: transparent;
+    &.red{
+        font-size: 16px;
+        background-color: red;
+    }
 }
 
 form > * {
