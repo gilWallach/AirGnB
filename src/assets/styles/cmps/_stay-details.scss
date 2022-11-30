@@ -1,0 +1,21 @@
+.stay-details {
+  h1 {
+    font-size: em(26px, 18px);
+    font-weight: 600;
+    line-height: 1.6em; //(in the context of 18px of h1, this should be 30px)
+  }
+
+  .rate {
+    display: flex;
+    align-items: center;
+  }
+  .rate .star-svg {
+    font-size: em(16px, 14px);
+  }
+  .details-ratings-container {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    font-size: em(14px, 18px);
+  }
+}

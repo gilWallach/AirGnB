@@ -1,9 +1,13 @@
 <template>
   <section v-if="stay" class="stay-details">
-    <h1>{{ getStay.name }}</h1>
-    <p class="rate">4.82</p>
-    <p class="reviews-amount">{{ getStay.reviews?.length }} reviews</p>
-    <p class="address">{{ getStay.loc.city }}, {{ getStay.loc.country }}</p>
+    <div class="details-header">
+      <h1>{{ getStay.name }}</h1>
+    </div>
+    <div class="details-ratings-container">
+      <p class="rate"><star /> 4.82 ·</p>
+      <p class="reviews-amount">{{ getStay.reviews?.length }} reviews</p>
+      <p class="address">{{ getStay.loc.city }}, {{ getStay.loc.country }}</p>
+    </div>
     <div class="gallery">
       <img v-for="(img, idx) in getStay.imgUrls" :src="img" alt="stay-image" />
     </div>
@@ -13,6 +17,7 @@
 </template>
 
 <script>
+import star from '../assets/svg/star.vue'
 export default {
   name: 'stay-details',
   props: {},
@@ -33,6 +38,8 @@ export default {
       return this.stay
     },
   },
-  components: {},
+  components: {
+    star,
+  },
 }
 </script>
