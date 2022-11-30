@@ -8,11 +8,13 @@
         </span>
       </router-link>
     </div>
-    <div class="mini-search flex align-center" @click="isSearchOpen= !isSearchOpen">
-      <button >Anywhere</button>
-      <button >Any Week</button>
-      <button >Add guests</button>
-      <div  class="search flex align-center justify-center">
+    <div class="mini-search flex align-center" @click="isSearchOpen = !isSearchOpen">
+      <button>Anywhere</button>
+      <div class="break-line"></div>
+      <button>Any Week</button>
+      <div class="break-line"></div>
+      <button>Add guests</button>
+      <div class="search flex align-center justify-center">
         <search />
       </div>
     </div>
@@ -23,10 +25,7 @@
     <nav class="main-nav flex align-center">
       <hamburger />
       <div class="profile-img flex align-center">
-        <img
-          src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
-          alt=""
-        />
+        <img src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3" alt="" />
       </div>
     </nav>
     <section class="loggedin-user" v-if="loggedInUser">
@@ -38,37 +37,19 @@
     </section>
   </header>
   <transition name="fade">
-    <header v-if="isSearchOpen" class="secondary-header big-search flex align-center justify-center">
-    <label class="flex column">
-      Where
-      <input type="text" placeholder="Search destinations">
-    </label>
-    <label class="flex column">
-      Check in
-      <span>Add dates</span>
-      <input type="date">
-    </label>
-    <label class="flex column">
-      Check out
-      <span>Add dates</span>
-      <input type="date">
-    </label>
-    <label class="flex column">
-      Who
-      <span>Add guests</span>
-    </label>
-    </header>
+    <secondary-header v-if="isSearchOpen"/>
   </transition>
 </template>
 <script>
 import airbnb from '../assets/svg/airbnb.vue'
 import search from '../assets/svg/search.vue'
 import hamburger from '../assets/svg/hamburger.vue'
+import secondaryHeader from './secondary-header.vue'
 
 export default {
-  data(){
+  data() {
     return {
-      isSearchOpen:false
+      isSearchOpen: false
     }
   },
   computed: {
@@ -80,6 +61,7 @@ export default {
     airbnb,
     search,
     hamburger,
+    secondaryHeader
   },
 }
 </script>

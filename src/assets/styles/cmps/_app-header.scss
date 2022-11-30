@@ -1,89 +1,93 @@
 header {
+  background-color: $clr8;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  &.main-header{
+      border-bottom: 1px solid $clr7;
+  }
+  .loggedin-user {
+    background-color: $clr1;
+    padding: 2px 8px;
+    border-radius: 1em;
+    align-self: flex-end;
+    color: whitesmoke;
+    span {
+      background-color: $clr2;
+      padding: 4px;
+      margin: 10px;
+      border-radius: 50%;
+    }
+    img {
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+    }
+  }
+
+  .mini-search {
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+    &:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    }
+    outline: 1px solid $clr6;
+    padding-inline: 8px;
+    border-radius: 2em;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+    button {
+      margin: 0;
+      padding: 0 16px;
+      font-size: rem(14px);
+      font-family: airBnb-Med;
+      &:last-of-type {
+        font-family: airBnb-Reg;
+        color: $clr4;
+      }
+    }
+    .search {
+      color: $clr8;
+      font-size: 16px;
+      border-radius: 50%;
+      background-color: $clr1;
+      padding: rem(4px);
+    }
+  }
+  nav {
+    cursor: pointer;
     background-color: $clr8;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom:1px solid $clr7;
-    .loggedin-user {
-        background-color: $clr1;
-        padding: 2px 8px;
-        border-radius: 1em;
-        align-self: flex-end;
-        color: whitesmoke;
-        span{
-            background-color: $clr2;
-            padding: 4px;
-            margin: 10px;
-            border-radius: 50%;
-        }
-        img {
-            width: 2em;
-            height: 2em;
-            border-radius: 50%;
-        }
+    border-radius: 2em;
+    border: 1px solid $clr6;
+    padding: 5px 5px 5px 12px;
+    transition: box-shadow 0.2s ease;
+    img {
+      width: rem(30px);
+      border-radius: 50%;
+      margin-inline-start: 2px;
     }
+    &:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    }
+  }
+  .logo {
+    color: $clr1;
+    span {
+      font-family: airBnb-B;
+      color: $clr1;
+    }
+  }
+  nav a:not(:first-child) {
+    border-top: 1px solid $clr1;
+    padding: 0 5px;
+    margin: 10px;
+  }
+  nav .active {
+    color: $clr1;
+  }
 
-    .mini-search{
-        cursor: pointer;
-        transition: box-shadow 0.2s ease;
-        &:hover{
-            box-shadow: 0 2px 4px rgba(0,0,0,0.18);
-        }
-        outline:1px solid $clr6;
-
-        border-radius: 2em;
-        box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
-        button {
-            margin: 0;
-            padding: 0 16px;
-            font-size: rem(14px);
-            font-family: airBnb-Med;
-            &:last-of-type{
-                font-family: airBnb-Reg;
-                color: $clr4;
-            }
-            &:not(:last-of-type){
-                border-inline-end:1.3px solid $clr6
-            }
-        }
-        .search{
-            color: $clr8;
-            font-size: 16px;
-            border-radius: 50%;
-            background-color: $clr1;
-            padding: rem(4px);
-        }
-    }
-    nav {
-        cursor: pointer;
-        background-color: $clr8;
-        border-radius: 2em;
-        border: 1px solid $clr6;
-        padding: 5px 5px 5px 12px;
-        transition: box-shadow 0.2s ease;
-        img{
-            width: rem(30px);
-            border-radius: 50%;
-            margin-inline-start:2px;
-        }
-        &:hover{
-            box-shadow: 0 2px 4px rgba(0,0,0,0.18);
-        }
-    }
-    .logo{
-        color: $clr1;
-        span{
-            font-family: airBnb-B;
-            color: $clr1;
-        }
-        }
-    nav a:not(:first-child) {
-        border-top: 1px solid $clr1;
-        padding: 0 5px;
-        margin: 10px;
-    }
-    nav .active {
-        color: $clr1;
-    }
-    
+  .break-line {
+    height: rem(20px);
+    outline: 1px solid $clr6;
+  }
 }
+
