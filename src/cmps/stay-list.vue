@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="main-layout-list">
     <ul class="stay-list">
       <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" />
     </ul>
