@@ -73,6 +73,11 @@
       'img0 img1 img2'
       'img0 img3 img4';
     gap: em(8px, 15px);
+
+    border-radius: 0.75em;
+    overflow: hidden;
+    width: fit-content;
+
     .img0 {
       grid-area: img0;
     }
