@@ -15,9 +15,7 @@ export default {
       type: Array,
     },
   },
-  created() {
-    console.log(this.stays)
-  },
+  created() {},
   methods: {},
   computed: {},
   components: {

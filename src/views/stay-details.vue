@@ -1,6 +1,6 @@
 <template>
   <!-- HEADER -->
-  <section v-if="stay" class="stay-details">
+  <section v-if="getStay" class="stay-details">
     <div class="details-header">
       <h1>{{ getStay.name }}</h1>
     </div>
@@ -45,20 +45,20 @@ export default {
   name: 'stay-details',
   props: {},
   data() {
-    return {
-      stay: null,
-    }
+    return {}
   },
-  created() {
+  async created() {
     const { id } = this.$route.params
-    const stays = this.$store.getters.stays
-    this.stay = stays.find((stay) => stay._id === id)
-    console.log('this.stay: ', this.stay)
+    try {
+      await this.$store.dispatch({ type: 'loadStay', id })
+    } catch (err) {
+      throw new Error(err)
+    }
   },
   methods: {},
   computed: {
     getStay() {
-      return this.stay
+      return this.$store.getters.selectedStay
     },
   },
   components: {
