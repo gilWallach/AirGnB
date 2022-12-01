@@ -2,11 +2,11 @@
   <div :class="{ 'main-layout-list': isList, 'main-container-stay-details': !isList }">
 
     <header class="main-header flex align-center justify-between ">
-      <div class="logo">
+      <div class="logo-container">
         <router-link to="/">
-          <span role="img" aria-label="logo" class="flex align-center">
+          <span role="img" aria-label="logo" class="logo flex align-center">
             <airbnb />
-            AirGnB
+            <span>AirGnB</span>
           </span>
         </router-link>
       </div>
@@ -24,7 +24,7 @@
       <router-link to="/review">Reviews</router-link>
       <router-link to="/chat">Chat</router-link>
       <router-link to="/login">Login / Signup</router-link> -->
-      <nav class="main-nav flex align-center">
+      <nav class="main-nav flex align-center  justify-space-between">
         <hamburger />
         <div class="profile-img flex align-center">
           <img src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3" alt="" />
@@ -55,14 +55,14 @@ export default {
       isSearchOpen: false,
     }
   },
-  created(){
+  created() {
 
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser
     },
-    isList(){
+    isList() {
       return this.$store.getters.isList
     }
   },
