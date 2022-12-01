@@ -37,12 +37,12 @@ export default {
             return this.$store.getters.stays
         },
         urlChange(){
-            return this.$route.params
+            return this.$route.query
         }
     },
     watch:{
         urlChange(){
-            this.loadStays()
+            if(Object.keys(this.$route.query).length) this.loadStays()
         }
     },
     components: {
