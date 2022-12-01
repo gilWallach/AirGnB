@@ -21,7 +21,7 @@
         <p>{{ stay.capacity }} beds</p>
         <p>Dec 4-9</p>
         <p class="price">
-          ${{ stay.price?.toLocaleString() }} night
+          <span>${{ stay.price?.toLocaleString() }}</span> night
         </p>
       </div>
     </li>
