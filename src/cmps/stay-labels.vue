@@ -18,24 +18,17 @@
 </template>
 
 <script>
-import { labelService } from '../services/label.service.local'
+import { stayService } from '../services/stay.service.local'
 
 export default {
   name: 'stay-labels',
   props: {},
   data() {
     return {
-      labels: null,
+      labels: stayService.getLabels(),
     }
   },
-  async created() {
-    try {
-      const labels = await labelService.query()
-      this.labels = labels
-    } catch (err) {
-      throw new Error(err)
-    }
-  },
+  created() {},
   methods: {},
   computed: {},
   components: {},
