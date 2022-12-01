@@ -128,63 +128,93 @@
     }
   }
 
-  .summary-and-details {
-    width: 58%;
-    font-family: airBnb-Med;
-    .summary-container {
-      display: flex;
-      justify-content: space-between;
+  .details-reserve-container {
+    display: flex;
 
-      padding-top: 48px;
-      padding-bottom: 24px;
-
-      border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
-      .summary-text-container {
+    .summary-and-details {
+      flex-basis: 58%;
+      // width: 58%;
+      font-family: airBnb-Med;
+      .summary-container {
         display: flex;
-        flex-direction: column;
-        gap: 4px;
+        justify-content: space-between;
+
+        padding-top: 48px;
+        padding-bottom: 24px;
+
+        border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+        .summary-text-container {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+        .stay-summary-text {
+          color: lighten($clr3, 5%);
+          font-size: em(22px, 15px);
+          margin-bottom: 8px;
+        }
+        .capacity {
+          font-family: airBnb-Reg;
+          font-size: em(16px, 15px);
+          font-weight: 400;
+        }
       }
-      .stay-summary-text {
-        font-size: em(22px, 15px);
-        margin-bottom: 8px;
+
+      .host-img {
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        box-shadow: 0 0 0 1px #ede8e8;
       }
-      .capacity {
-        font-family: airBnb-Reg;
+
+      // hr {
+      //   width: 0.2em;
+      // }
+
+      .stay-highlights {
+        font-family: airBnB-Reg;
+        padding: 22px 0 6px;
+
+        border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+        .highlight-element {
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+          margin-bottom: 26px;
+        }
+        .highlight-header {
+          color: lighten($clr2, 5%);
+          font-size: em(16px, 15px);
+          font-weight: 600;
+          margin-bottom: 4px;
+        }
+        .highlight-txt {
+          font-size: em(14px, 15px);
+        }
+      }
+
+      .stay-summary-long {
+        font-family: airBnB-Reg;
         font-size: em(16px, 15px);
-        font-weight: 400;
+        padding: 32px 0 48px;
+
+        border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+        .show-more {
+          text-decoration: underline;
+          font-size: em(16px, 15px);
+          font-weight: 600;
+        }
+        p,
+        button {
+          margin: 0;
+          padding: 0;
+        }
       }
     }
 
-    .host-img {
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      box-shadow: 0 0 0 1px #ede8e8;
-    }
-
-    // hr {
-    //   width: 0.2em;
-    // }
-
-    .stay-highlights {
-      font-family: airBnB-Reg;
-      padding: 22px 0;
-
-      border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
-      .highlight-element {
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 26px;
-      }
-      .highlight-header {
-        font-size: em(16px, 15px);
-        font-weight: 600;
-        margin-bottom: 4px;
-      }
-      .highlight-txt {
-        font-size: em(14px, 15px);
-      }
+    .reserve-section {
+      flex-basis: 42%;
+      text-align: center;
     }
   }
 }

@@ -41,9 +41,9 @@
       </div>
 
       <!-- STAY SUMMARY AND DETAILS -->
-      <div class="summary-and-details">
+      <div class="details-reserve-container">
         <!-- START: summary and details should split 50-50 to contain reserve element AND more details -->
-        <div>
+        <div class="summary-and-details">
           <div class="summary-container">
             <div class="summary-text-container">
               <div class="stay-summary-text">
@@ -88,18 +88,23 @@
                 <div class="highlight-header">
                   Free cancellation before Sep 17.
                 </div>
-                <div class="highlight-txt">
-                  Cancellation FOC according to our terms and conditions.
-                </div>
+                <div class="highlight-txt"></div>
               </div>
             </div>
           </div>
+          <div class="stay-summary-long">
+            <p>{{ getStay.summary }}</p>
+            <button class="show-more">Show more ></button>
+          </div>
         </div>
+
+        <!-- RESERVE MODAL -->
+        <div class="reserve-section">Hello there!</div>
 
         <!--END: summary and details should split 50-50 to contain reserve element AND more details  -->
       </div>
 
-      <!-- <pre>{{ getStay }}</pre> -->
+      <pre>{{ getStay }}</pre>
     </section>
     <section v-else class="loading">Loading....</section>
   </div>
