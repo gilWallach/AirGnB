@@ -1,9 +1,5 @@
 <template>
   <div class="container home">
-    <div class="list-header">
-      <stay-labels />
-      <!-- <stay-filter /> -->
-    </div>
     <stay-list :stays="stays" />
   </div>
 </template>
@@ -17,7 +13,6 @@ import {
   getActionAddStayMsg,
 } from '../store/stay.store'
 
-import stayLabels from '../cmps/stay-labels.vue'
 import stayFilter from '../cmps/stay-filter.vue'
 import stayList from '../cmps/stay-list.vue'
 
@@ -80,7 +75,6 @@ export default {
   },
   components: {
     stayFilter,
-    stayLabels,
     stayList,
   },
 }

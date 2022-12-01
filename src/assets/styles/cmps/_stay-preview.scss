@@ -86,14 +86,19 @@
         .title {
             padding-top: em(12px);
 
+            svg {
+                padding-inline-end: 3px;
+            }
+
             p {
                 font-family: airBnb-Med;
                 color: $clr2;
+
+                .rating{
+                    margin-inline-start: 3px;
+                }
+            }
             }
 
-            span {
-                margin-inline-start: 3px;
-            }
-        }
 
     }

@@ -1,6 +1,5 @@
 <template>
   <section class="stay-preview" @click="goToDetails(stay._id)">
-    <!-- <router-link :to="`/stay/${stay._id}`" target="_blank"> -->
     <li class="card">
       <div class="img-container">
         <div class="wishlist">
@@ -11,13 +10,11 @@
       <div class="stay-txt">
         <div class="title flex justify-space-between align-center">
           <p><span>{{ shortLoc(stay.loc.city + ', ' + stay.loc.country) }}</span></p>
-          <!-- <p><span>{{ shortTxt(stay.loc.city) }},</span> <span>{{ stay.loc.country }}</span></p> -->
           <div class="rating flex align-center">
             <span>
               <star />
             </span>
-            <span>4.47</span>
-            <span>(254)</span>
+            <span>4.47 (254)</span>
           </div>
         </div>
         <p>{{ shortName(stay.name) }}</p>
@@ -28,7 +25,6 @@
         </p>
       </div>
     </li>
-    <!-- </router-link> -->
   </section>
 </template>
 

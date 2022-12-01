@@ -1,11 +1,26 @@
-.main-layout-list{
+.main-layout-list {
     display: grid;
     // grid-template-columns: rem(80px) 1fr rem(80px);
-    grid-template-columns: minmax(40px,1fr) minmax(auto, 1750px) minmax(40px,1fr);
+    grid-template-columns: minmax(40px, 1fr) minmax(auto, 1750px) minmax(40px, 1fr);
 
-    >*{
+    >* {
         grid-column: 2;
     }
+.list-top-container{
+    height: 78px;
+    margin-top: 20px;
+
+        .filter-btn {
+            justify-self: flex-end;
+            font-size: em(12px, 15px);
+            padding-inline: 44px;
+            gap: em(8px, 15px);
+            width: em(90px, 15px);
+            height: em(48px, 15px);
+            border: 1px solid $clr6;
+            border-radius: .8em;
+    }
+}
 }
 
 .stay-list {
