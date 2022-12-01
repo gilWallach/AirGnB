@@ -25,8 +25,12 @@
 
             .el-carousel__button, .el-carousel__indicator--horizontal{
                 border-radius: 50%;
-                height: 5px !important;
-                width: 5px !important;
+                height: 6px !important;
+                width: 6px !important;
+            }
+
+            .el-carousel__indicators{
+                transform: translateY(-50%);
             }
 
         }

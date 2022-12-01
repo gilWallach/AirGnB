@@ -1,11 +1,10 @@
 <template>
-  <section class="stay-preview">
-    <router-link :to="`/stay/${stay._id}`" target="_blank">
+  <section class="stay-preview" @click="goToDetails(stay._id)">
+    <!-- <router-link :to="`/stay/${stay._id}`" target="_blank"> -->
       <li class="card">
         <div class="img-container">
           <div class="wishlist"><heart /></div>
           <stay-carousel :stay="stay" />
-          <!-- <img :src="stay.imgUrls[0]" alt="stay imgs" class="card-image"> -->
         </div>
         <div class="stay-txt">
           <div class="title flex justify-space-between align-center">
@@ -15,14 +14,14 @@
               <span>New</span>
             </div>
           </div>
-          <p>{{ stay.capacity }} guests</p>
+          <p>{{ stay.capacity }} beds</p>
           <p>Dec 4-9</p>
           <p class="price">
             <span>${{ stay.price?.toLocaleString() }}</span> night
           </p>
         </div>
       </li>
-    </router-link>
+    <!-- </router-link> -->
   </section>
 </template>
 
@@ -41,12 +40,17 @@ export default {
     return {}
   },
   created() {},
-  methods: {},
+  methods: {
+    goToDetails(stayId){
+      let route = this.$router.resolve({ path: `/stay/${stayId}` });
+      window.open(route.href);
+  }
+},
   computed: {},
   components: {
     star,
     heart,
     stayCarousel,
   },
-}
+  }
 </script>

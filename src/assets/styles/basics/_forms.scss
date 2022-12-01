@@ -1,4 +1,4 @@
-button {
+button:not(.el-carousel__button) {
     cursor: pointer;
     min-height: 48px;
     min-width: 48px;

@@ -1,7 +1,7 @@
 <template>
 <section class='stay-carousel'>
-    <el-carousel trigger="click" autoplay="">
-      <el-carousel-item v-for="img in stay.imgUrls" :key="img">
+    <el-carousel trigger.stop="click" :autoplay="false">
+      <el-carousel-item v-for="img in stay.imgUrls" :key="img" >
         <img :src="img" alt="stay imgs" class="card-image">
       </el-carousel-item>
     </el-carousel>
@@ -18,6 +18,8 @@ name: 'stay-carousel',
   created(){},
  methods: {},
  computed: {},
- components: {}
+ components: {
+    
+ }
   }
  </script>
