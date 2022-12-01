@@ -3,6 +3,16 @@
     border-radius: 2em;
     justify-content: space-evenly;
     height: 66px;
+    >*:hover:not(.break-line){
+      background-color: $clr6;
+      & + .break-line{
+        display: none;
+      }
+    }
+    >*:not(.break-line){
+      border-radius: 2rem;
+      cursor: pointer;
+    }
   label {
     padding: 14px 24px;
     > p {
@@ -15,8 +25,11 @@
       color: $clr4;
     }
     input{
-        background-color: none;
+        background-color: transparent;
         border: 0;
+        &:focus{
+          outline: none;
+        }
     }
   }
   .break-line{

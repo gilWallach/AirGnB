@@ -1,8 +1,8 @@
 <template>
-  <div class="main-app">
+  <div class="main-app" >
     <user-msg />
     <app-header />
-    <router-view @setDetailsLayout="(isList = false)" @setListLayout="(isList = true)" />
+    <router-view @setDetailsLayout="(isList = false)" @setListLayout="(isList = true)"/>
   </div>
 </template>
 
