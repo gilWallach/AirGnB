@@ -80,6 +80,7 @@ export default {
     return {}
   },
   async created() {
+    this.$store.commit({type:'setDetails'})
     const { id } = this.$route.params
     try {
       await this.$store.dispatch({ type: 'loadStay', id })

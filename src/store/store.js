@@ -12,8 +12,20 @@ export const store = Vuex.createStore({
     reviewStore
   },
   state: {
+    isList:true
+  },
+  getters:{
+    isList({isList}){
+      return isList
+    }
   },
   mutations: {
+    setDetails(state){
+      state.isList = false
+    },
+    setList(state){
+      state.isList = true
+    }
   },
   actions: {
   },

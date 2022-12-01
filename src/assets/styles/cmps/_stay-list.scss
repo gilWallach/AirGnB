@@ -1,16 +1,19 @@
 .main-layout-list{
     display: grid;
-    grid-template-columns: em(80px, 15px) 1fr em(80px, 15px);
-    
-    .stay-list {
+    grid-template-columns: 40px 1fr 40px;
+
+    >*{
         grid-column: 2;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        // grid-template-columns: repeat(6, minmax(240px, 1fr));
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        grid-auto-flow: dense;
-        grid-gap: 1.4rem;
-        grid-row-gap: 2.5em;
     }
+}
+
+.stay-list {
+    padding: 0;
+    list-style: none;
+    display: grid;
+    // grid-template-columns: repeat(6, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-auto-flow: dense;
+    grid-gap: 1.4rem;
+    grid-row-gap: 2.5em;
 }

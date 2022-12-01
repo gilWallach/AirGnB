@@ -31,6 +31,7 @@ export default {
     },
   },
   created() {
+    this.$store.commit({type:'setList'})
     this.$store.dispatch({ type: 'loadStays' })
   },
   methods: {

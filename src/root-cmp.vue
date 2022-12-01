@@ -2,7 +2,7 @@
   <div class="main-app">
     <user-msg />
     <app-header />
-    <router-view />
+    <router-view @setDetailsLayout="(isList = false)" @setListLayout="(isList = true)" />
   </div>
 </template>
 
