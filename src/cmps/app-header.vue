@@ -1,5 +1,6 @@
 <template>
-  <div :class="{ 'main-layout-list': isList, 'main-container-stay-details': !isList }">
+  <div class="header-container"
+    :class="{ 'main-layout-list': isList, 'main-container-stay-details': !isList, 'search-open': isSearchOpen }">
 
     <header class="main-header flex align-center justify-between ">
       <div class="logo-container">
@@ -10,7 +11,7 @@
           </span>
         </router-link>
       </div>
-      <div class="mini-search flex align-center" @click="isSearchOpen = !isSearchOpen">
+      <div v-if="!isSearchOpen" class="mini-search flex align-center" @click="isSearchOpen = !isSearchOpen">
         <button>Anywhere</button>
         <div class="break-line"></div>
         <button>Any Week</button>
@@ -39,9 +40,12 @@
       </section>
     </header>
     <transition name="fade">
-      <secondary-header v-if="isSearchOpen" />
+      <secondary-header v-if="isSearchOpen" @close-search="(isSearchOpen = false)" />
     </transition>
   </div>
+  <transition name="fade">
+    <div class="main-screen" v-if="isSearchOpen" @click="(isSearchOpen = false)"></div>
+  </transition>
 </template>
 <script>
 import airbnb from '../assets/svg/airbnb.vue'
@@ -56,7 +60,10 @@ export default {
     }
   },
   created() {
-
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   computed: {
     loggedInUser() {
@@ -64,6 +71,14 @@ export default {
     },
     isList() {
       return this.$store.getters.isList
+    },
+  },
+  methods: {
+    doSomething() {
+      console.log('hi');
+    },
+    handleScroll(){
+      this.isSearchOpen=false
     }
   },
   components: {

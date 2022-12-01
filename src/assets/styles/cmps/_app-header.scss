@@ -1,10 +1,11 @@
 header {
+  &.menu-open {
+  }
   background-color: $clr8;
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
   &.main-header {
-    border-bottom: 1px solid $clr7;
     .logo {
       color: $clr1;
       span {
@@ -16,7 +17,6 @@ header {
         padding-left: 5px;
       }
     }
-
   }
   .loggedin-user {
     background-color: $clr1;
@@ -95,4 +95,26 @@ header {
     height: rem(20px);
     outline: 1px solid $clr6;
   }
+}
+
+.header-container {
+  position: fixed;
+  width: 100%;
+  background-color: $clr8;
+  z-index: 20;
+  top: 0;
+  border-bottom: 1px solid $clr7;
+  padding-bottom: 1.8em;
+}
+
+.main-screen {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  background-color: rgb(0 0 0 / 50%);
+  /* display: none; */
+  opacity: 1;
+  
+  transition: opacity .6s;
+  pointer-events: auto;
 }

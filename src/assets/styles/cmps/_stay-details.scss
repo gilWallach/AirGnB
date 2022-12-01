@@ -190,6 +190,7 @@
         }
         .highlight-txt {
           font-size: em(14px, 15px);
+          color: rgba($clr2, 0.7);
         }
       }
 
@@ -215,6 +216,17 @@
     .reserve-section {
       flex-basis: 42%;
       text-align: center;
+      padding-top: 48px;
+
+      .reserve-modal-full {
+        width: em(370.33px, 15px);
+        height: em(532px, 15px);
+        border-radius: 12px;
+        box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+        margin-inline-end: 0;
+        margin-inline-start: auto;
+        padding: 24px;
+      }
     }
   }
 }
