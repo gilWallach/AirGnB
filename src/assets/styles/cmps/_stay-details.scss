@@ -139,7 +139,11 @@
       padding-bottom: 24px;
 
       border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
-
+      .summary-text-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
       .stay-summary-text {
         font-size: em(22px, 15px);
         margin-bottom: 8px;
@@ -158,8 +162,29 @@
       box-shadow: 0 0 0 1px #ede8e8;
     }
 
-    hr {
-      width: 0.2em;
+    // hr {
+    //   width: 0.2em;
+    // }
+
+    .stay-highlights {
+      font-family: airBnB-Reg;
+      padding: 22px 0;
+
+      border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+      .highlight-element {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 26px;
+      }
+      .highlight-header {
+        font-size: em(16px, 15px);
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .highlight-txt {
+        font-size: em(14px, 15px);
+      }
     }
   }
 }
