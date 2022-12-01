@@ -1,0 +1,56 @@
+.el-popper.is-pure.is-light.el-picker__popper{
+    border-radius: rem(32px) rem(32px) 0 rem(32px);
+}
+
+.el-picker-panel__icon-btn.d-arrow-right,  
+.el-picker-panel__icon-btn.d-arrow-left,
+.el-picker-panel__icon-btn.is-disabled.arrow-left,  
+.el-picker-panel__icon-btn.is-disabled.arrow-right{
+    display: none;
+}
+
+.el-picker-panel__content.el-date-range-picker__content {
+    font-family: airBnb-Med;
+    color: $clr3;
+    padding: 0 27px;
+    td{
+        div{
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    &.is-right{
+        .el-date-range-picker__header{
+            // padding-top:22px;
+            // padding-bottom:49px;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            >div{
+                flex: 1;
+            }
+        }
+        .el-picker-panel__icon-btn.arrow-left{
+            display: none;
+        }
+    }
+
+    &.is-left{
+        border: none;
+        .el-date-range-picker__header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            >div{
+                flex: 1;
+            }
+        }
+        .el-picker-panel__icon-btn.arrow-right{
+            display: none;
+        }
+    }
+}
