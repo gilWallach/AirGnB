@@ -3,8 +3,20 @@ header {
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
-  &.main-header{
-      border-bottom: 1px solid $clr7;
+  &.main-header {
+    border-bottom: 1px solid $clr7;
+    .logo {
+      color: $clr1;
+      span {
+        font-family: airBnb-B;
+        color: $clr1;
+      }
+      span {
+        font-size: 20px;
+        padding-left: 5px;
+      }
+    }
+
   }
   .loggedin-user {
     background-color: $clr1;
@@ -38,7 +50,7 @@ header {
     button {
       margin: 0;
       padding: 0 16px;
-      font-size: rem(14px);
+      font-size: rem(12.2px);
       font-family: airBnb-Med;
       &:last-of-type {
         font-family: airBnb-Reg;
@@ -56,8 +68,9 @@ header {
   nav {
     cursor: pointer;
     background-color: $clr8;
-    border-radius: 2em;
-    border: 1px solid $clr6;
+    border-radius: rem(21px);
+    width: rem(77px);
+    outline: 1px solid $clr6;
     padding: 5px 5px 5px 12px;
     transition: box-shadow 0.2s ease;
     img {
@@ -67,13 +80,6 @@ header {
     }
     &:hover {
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-    }
-  }
-  .logo {
-    color: $clr1;
-    span {
-      font-family: airBnb-B;
-      color: $clr1;
     }
   }
   nav a:not(:first-child) {
@@ -90,4 +96,3 @@ header {
     outline: 1px solid $clr6;
   }
 }
-

@@ -43,7 +43,7 @@ export default {
         setFilterBy() {
             const { name } = this.filterBy
             this.$router.push({path:'/s', query:{name}})
-            eventBus.emit('search',this.filterBy)
+            // eventBus.emit('search',this.filterBy)
         }
     },
     components: {

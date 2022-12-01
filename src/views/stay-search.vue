@@ -11,13 +11,13 @@ import { eventBus } from '../services/event-bus.service';
 export default {
     name: 'stay-search',
     props: {},
-    async created() {
-        eventBus.on('search', this.loadStays)
-        await this.loadStays()
+    created() {
+        this.$store.commit({type:'setList'})
+        // eventBus.on('search', this.loadStays)
+        this.loadStays()
     },
     methods: {
         async loadStays() {
-            console.log(arguments)
             const { name } = this.$route.query
             console.log("🚀 ~ file: stay-search.vue:15 ~ name:", name)
             const filterBy = {
@@ -35,6 +35,14 @@ export default {
     computed: {
         stays() {
             return this.$store.getters.stays
+        },
+        urlChange(){
+            return this.$route.query
+        }
+    },
+    watch:{
+        urlChange(){
+            if(Object.keys(this.$route.query).length) this.loadStays()
         }
     },
     components: {
