@@ -21,7 +21,7 @@ async function query(filterBy = { name: '', price: 0 }) {
   if (filterBy.name) {
     const regex = new RegExp(filterBy.name, 'i')
     stays = stays.filter(
-      (stay) => regex.test(stay.name) || regex.test(stay.description)
+      (stay) => regex.test(stay.loc.city) || regex.test(stay.loc.country)
     )
   }
   if (filterBy.price) {

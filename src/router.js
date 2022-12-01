@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import chat from './views/chat.vue'
 import stayApp from './views/stay-app.vue'
+import staySearch from './views/stay-search.vue'
 import stayDetails from './views/stay-details.vue'
 import stayEdit from './views/stay-edit.vue'
 import reviewApp from './views/review-app.vue'
@@ -13,6 +14,11 @@ const routes = [
     path: '/',
     name: 'stay-app',
     component: stayApp
+  },
+  {
+    path: '/s',
+    name: 'stay-search',
+    component: staySearch
   },
   {
     path: '/stay/:id',
