@@ -99,7 +99,33 @@
         </div>
 
         <!-- RESERVE MODAL -->
-        <div class="reserve-section">Hello there!</div>
+        <div class="reserve-section">
+          <div class="reserve-modal-full flex column">
+            <div class="modal-header flex justify-space-between">
+              <div class="price">${{ getStay.price }} <span>night</span></div>
+              <div class="rating-reviews flex">
+                <star /><span> 4.82 </span><span class="separator">·</span>
+                <span class="reviews-amount"
+                  >{{ getStay.reviews?.length }} reviews
+                </span>
+              </div>
+            </div>
+            <div class="pax-dates-container">
+              <div class="dates">
+                <p>check-in</p>
+                <p>12/1/2022</p>
+                <p>checkout</p>
+                <p>12/8/2022</p>
+              </div>
+              <div class="pax">
+                <p>guests</p>
+                <p>1 guest</p>
+              </div>
+            </div>
+            <button>Reserve</button>
+            <p>You won't be charged yet</p>
+          </div>
+        </div>
 
         <!--END: summary and details should split 50-50 to contain reserve element AND more details  -->
       </div>
