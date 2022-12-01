@@ -1,6 +1,7 @@
 .main-layout-list{
     display: grid;
-    grid-template-columns: 40px 1fr 40px;
+    // grid-template-columns: rem(80px) 1fr rem(80px);
+    grid-template-columns: minmax(40px,1fr) minmax(auto, 1600px) minmax(40px,1fr);
 
     >*{
         grid-column: 2;
@@ -8,6 +9,7 @@
 }
 
 .stay-list {
+    width: 100%;
     padding: 0;
     list-style: none;
     display: grid;
