@@ -12,6 +12,7 @@ export default {
     name: 'stay-search',
     props: {},
     async created() {
+        this.$store.commit({type:'setList'})
         eventBus.on('search', this.loadStays)
         await this.loadStays()
     },
