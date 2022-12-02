@@ -1,46 +1,35 @@
 <template>
-  <section class="stay-labels">
+  <carousel :items-to-show="1.5" class="labels-container">
+    <slide v-for="label in labels" :key="label" class="single-label-container">
+      <img :src="label.imageUrl" alt="">
+      <span class="label-name">
+        {{ label.displayName }}
+      </span>
+    </slide>
 
-<!-- <labels-carousel/> -->
-
-    <ul class="labels-container">
-      <li v-for="(label, idx) in labels" :key="label.name" class="single-label-container flex">
-        <div>
-          <img :src="label.imageUrl" alt="label-img" />
-        </div>
-        <div class="label-name">
-          {{ label.displayName }}
-        </div>
-      </li>
-    </ul>
-  </section>
+    <template #addons>
+      <navigation />
+    </template>
+  </carousel>
 </template>
 
 <script>
-import { stayService } from '../services/stay.service.local'
-// import labelsCarousel from './carousel-test.vue'
+// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
+
+import {stayService} from '../services/stay.service.local.js'
 export default {
-  name: 'stay-labels',
-  props: {},
-  data() {
+  name: 'App',
+  data(){
     return {
-      labels: stayService.getLabels(),
-      settings: {
-        "dots": true,
-        "focusOnSelect": true,
-        "infinite": true,
-        "speed": 500,
-        "slidesToShow": 3,
-        "slidesToScroll": 3,
-        "touchThreshold": 5
-      }
+      labels: stayService.getLabels()
     }
   },
-  created() { },
-  methods: {},
-  computed: {},
   components: {
-    // labelsCarousel,
+    Carousel,
+    Slide,
+    Navigation,
   },
 }
 </script>

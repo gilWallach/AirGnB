@@ -130,30 +130,30 @@ function getLabels() {
       imageUrl:
         'https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg',
     },
-    {
-      name: 'castles',
-      displayName: 'Castles',
-      imageUrl:
-        'https://a0.muscache.com/pictures/1b6a8b70-a3b6-48b5-88e1-2243d9172c06.jpg',
-    },
-    {
-      name: 'cabins',
-      displayName: 'Cabins',
-      imageUrl:
-        'https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg',
-    },
-    {
-      name: 'mansions',
-      displayName: 'Mansions',
-      imageUrl:
-        'https://a0.muscache.com/pictures/78ba8486-6ba6-4a43-a56d-f556189193da.jpg',
-    },
-    {
-      name: 'luxe',
-      displayName: 'Luxe',
-      imageUrl:
-        'https://a0.muscache.com/pictures/c8e2ed05-c666-47b6-99fc-4cb6edcde6b4.jpg',
-    },
+    // {
+    //   name: 'castles',
+    //   displayName: 'Castles',
+    //   imageUrl:
+    //     'https://a0.muscache.com/pictures/1b6a8b70-a3b6-48b5-88e1-2243d9172c06.jpg',
+    // },
+    // {
+    //   name: 'cabins',
+    //   displayName: 'Cabins',
+    //   imageUrl:
+    //     'https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg',
+    // },
+    // {
+    //   name: 'mansions',
+    //   displayName: 'Mansions',
+    //   imageUrl:
+    //     'https://a0.muscache.com/pictures/78ba8486-6ba6-4a43-a56d-f556189193da.jpg',
+    // },
+    // {
+    //   name: 'luxe',
+    //   displayName: 'Luxe',
+    //   imageUrl:
+    //     'https://a0.muscache.com/pictures/c8e2ed05-c666-47b6-99fc-4cb6edcde6b4.jpg',
+    // },
     // {
     //   name: 'design',
     //   displayName: 'Design',
