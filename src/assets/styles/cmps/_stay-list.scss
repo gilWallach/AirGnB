@@ -8,12 +8,15 @@
     }
 .list-top-container{
     height: 78px;
-    margin-top: 111px;
+    margin-top: $header-height;
+    // margin-top: calc($header-height + 20px);
+    width: 100%;
 
         .filter-btn {
             justify-self: flex-end;
             font-size: em(12px, 15px);
             padding-inline: 44px;
+            margin-inline-start: 24px;
             gap: em(8px, 15px);
             width: em(90px, 15px);
             height: em(48px, 15px);

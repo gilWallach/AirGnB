@@ -1,10 +1,51 @@
 .carousel {
-display: flex;
+  display: flex;
+  max-width: calc(100% - 90px);
 
-button{
-  display: block;
-}
+  button:not(.el-carousel__button, .el-carousel__arrow) {
+    padding: 0;
+    margin: 0;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    border: 1px solid $clr4;
+    border-radius: 50%;
+    background-color: $clr8;
+    color: $clr2;
+    backdrop-filter: drop-shadow(10px 10px 10px $clr8);
+    transition: box-shadow 0.2s ease;
+    // z-index: 10;
+  }
+
+  .carousel__prev::after{
+    content: "";
+    width: 40px;
+    height: 100%;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), white 40px);
+    z-index: -1;
+    position: absolute;
+    right: -42px;
+  }
+  .carousel__next::before{
+    content: "";
+    width: 40px;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), white 40px);
+    z-index: -1;
+    position: absolute;
+    left: -42px;
+  }
+
+  button:not(.el-carousel__button, .el-carousel__arrow):hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    // transform: scale(1.04)
+  }
+
+  .carousel__viewport {
+    padding-inline: 86px;
+  }
+
   .carousel__track {
+
     padding: 0;
     display: grid;
     grid-auto-flow: column;
@@ -14,8 +55,8 @@ button{
     font-family: airBnb-Med;
     color: $clr4;
     list-style: none;
-  
-    .carousel__slide{
+
+    .carousel__slide {
       width: max-content !important;
       cursor: pointer;
       flex-direction: column;
@@ -23,10 +64,11 @@ button{
       align-items: center;
       gap: em(8px, 15px);
     }
-  
-    .carousel__pagination{
+
+    .carousel__pagination {
       display: none !important;
     }
+
     // &::before {
     //   content: '⬅️';
     // }
@@ -35,8 +77,8 @@ button{
       width: 1em;
       height: 1em;
     }
-  
-    .label-name{
+
+    .label-name {
       font-size: em(12px, 15px);
     }
   }
