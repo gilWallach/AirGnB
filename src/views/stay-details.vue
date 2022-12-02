@@ -161,7 +161,7 @@
         <!--END: summary and details should split 50-50 to contain reserve element AND more details  -->
       </div>
 
-      <pre>{{ getStay }}</pre>
+      <!-- <pre>{{ getStay }}</pre> -->
     </section>
     <section v-else class="loading">Loading....</section>
   </div>
