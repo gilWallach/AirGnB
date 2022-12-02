@@ -1,22 +1,22 @@
 button:not(.el-carousel__button, .el-carousel__arrow) {
-    cursor: pointer;
-    min-height: 48px;
-    min-width: 48px;
-    border:0;
-    background-color: $clr1;
-    color: $clr3;
-    padding: 5px 10px;
-    margin: 5px;
-    font-size: 14px;
-    background-color: transparent;
-    &.red{
-        font-size: 16px;
-        background-color: red;
-    }
+  cursor: pointer;
+  min-height: 48px;
+  min-width: 48px;
+  border: 0;
+  background-color: $clr1;
+  color: $clr3;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
+  background-color: transparent;
+  &.red {
+    font-size: 16px;
+    background-color: red;
+  }
 }
 
 form > * {
-    display: block;
-    width: 200px;
-    margin: 10px 0px;
+  display: block;
+  width: 200px;
+  margin: 10px 0px;
 }
