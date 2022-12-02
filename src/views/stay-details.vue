@@ -112,17 +112,24 @@
             </div>
             <div class="pax-dates-container">
               <div class="dates">
-                <p>check-in</p>
-                <p>12/1/2022</p>
-                <p>checkout</p>
-                <p>12/8/2022</p>
+                <div class="check-in flex column">
+                  <p>check-in</p>
+                  <p>12/1/2022</p>
+                </div>
+                <div class="checkout flex column">
+                  <p>checkout</p>
+                  <p>12/8/2022</p>
+                </div>
               </div>
-              <div class="pax">
-                <p>guests</p>
-                <p>1 guest</p>
+              <div class="pax flex justify-space-between">
+                <div>
+                  <p>guests</p>
+                  <p>1 guest</p>
+                </div>
+                <button><arrowDown /></button>
               </div>
             </div>
-            <button>Reserve</button>
+            <button class="btn btn-reserve">Reserve</button>
             <p>You won't be charged yet</p>
           </div>
         </div>
@@ -143,6 +150,7 @@ import save from '../assets/svg/save.vue'
 import dedicatedWorkspace from '../assets/svg/dedicated-workspace.vue'
 import selfCheckin from '../assets/svg/self-checkin.vue'
 import freeCxl from '../assets/svg/free-cxl.vue'
+import arrowDown from '../assets/svg/arrow-down.vue'
 export default {
   name: 'stay-details',
   props: {},
@@ -171,6 +179,7 @@ export default {
     dedicatedWorkspace,
     selfCheckin,
     freeCxl,
+    arrowDown,
   },
 }
 </script>

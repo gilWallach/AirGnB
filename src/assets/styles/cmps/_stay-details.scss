@@ -1,6 +1,8 @@
 .stay-details {
   font-family: airBnb-Med;
   grid-column: 2;
+  // margin-top: $header-height;
+  margin-top: 67px;
   .details-header > * {
     font-family: airBnb-Med !important;
     font-weight: 500 !important;
@@ -140,7 +142,8 @@
         justify-content: space-between;
 
         padding-top: 48px;
-        padding-bottom: 24px;
+        // padding-bottom: 18.5px;
+        padding-bottom: em(18.5px, 15px);
 
         border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
         .summary-text-container {
@@ -166,10 +169,6 @@
         height: 56px;
         box-shadow: 0 0 0 1px #ede8e8;
       }
-
-      // hr {
-      //   width: 0.2em;
-      // }
 
       .stay-highlights {
         font-family: airBnB-Reg;
@@ -226,6 +225,56 @@
         margin-inline-end: 0;
         margin-inline-start: auto;
         padding: 24px;
+
+        .pax-dates-container {
+          border-radius: 8px;
+          box-shadow: 0 0 0 1px $clr2;
+
+          .dates {
+            display: flex;
+            border-block-end: 1px solid $clr3;
+
+            .check-in {
+              flex-basis: 50%;
+              margin-left: 4px;
+              margin-right: auto;
+
+              text-align: left;
+              padding: 11px 0;
+              padding-left: 11px;
+
+              border-inline-end: 1px solid $clr3;
+            }
+            .checkout {
+              flex-basis: 50%;
+
+              text-align: left;
+              padding: 11px 0;
+              padding-left: 11px;
+            }
+          }
+
+          .pax {
+            text-align: left;
+            text-align: left;
+            padding: $box-padding 0;
+            padding-left: $box-padding;
+          }
+        }
+
+        .btn-reserve {
+          width: 100%;
+          align-self: center;
+
+          // box-shadow: 0 0 0 1px $clr1;
+          border-radius: 8px;
+
+          // background-color: darken($clr1, 15%);
+          background-color: rgb(220, 15, 99);
+          color: white;
+          font-family: airBnB-Med;
+          font-weight: 700;
+        }
       }
     }
   }
