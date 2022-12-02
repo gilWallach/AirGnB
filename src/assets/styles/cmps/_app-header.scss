@@ -105,6 +105,9 @@ header {
   top: 0;
   border-bottom: 1px solid $clr7;
   height: $header-height;
+  &.search-open{
+    height: calc($header-height*2);
+  }
 }
 
 .main-screen {
