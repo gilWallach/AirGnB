@@ -6,29 +6,34 @@
     >* {
         grid-column: 2;
     }
-.list-top-container{
-    height: 78px;
-    margin-top: $header-height;
-    // margin-top: calc($header-height + 20px);
-    width: 100%;
 
-        .filter-btn {
-            justify-self: flex-end;
-            font-size: em(12px, 15px);
-            padding-inline: 44px;
-            margin-inline-start: 24px;
-            gap: em(8px, 15px);
-            width: em(90px, 15px);
-            height: em(48px, 15px);
-            border: 1px solid $clr6;
-            border-radius: .8em;
+    .list-header-container {
+        position: fixed;
+        top: $header-height;
+        padding-block: 6px;
+        height: 78px;
+        width: 100%;
+        z-index: 10;
+        background-color: $clr8;
+
+            .filter-btn {
+                justify-self: flex-end;
+                font-size: em(12px, 15px);
+                padding-inline: 44px;
+                margin-inline-start: 24px;
+                gap: em(8px, 15px);
+                width: em(90px, 15px);
+                height: em(48px, 15px);
+                border: 1px solid $clr6;
+                border-radius: .8em;
+            }
     }
-}
 }
 
 .stay-list {
     width: 100%;
     padding: 0;
+    margin-top: ($header-height * 2) + 12px;
     list-style: none;
     display: grid;
     // grid-template-columns: repeat(6, minmax(240px, 1fr));

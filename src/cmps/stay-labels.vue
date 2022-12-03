@@ -18,14 +18,13 @@
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 
-import {stayService} from '../services/stay.service.local.js'
 export default {
-  name: 'App',
-  data(){
-    return {
-      labels: stayService.getLabels()
-    }
-  },
+  name: 'WrapAround',
+props:{
+  labels: {
+      type: Array,
+    },
+},
   components: {
     Carousel,
     Slide,

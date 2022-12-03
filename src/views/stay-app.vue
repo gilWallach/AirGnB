@@ -1,6 +1,6 @@
 <template>
   <div class="container home">
-    <stay-list :stays="stays" />
+    <stay-list :stays="stays" :labels="labels"/>
   </div>
 </template>
 
@@ -24,10 +24,14 @@ export default {
     stays() {
       return this.$store.getters.stays
     },
+    labels() {
+      return this.$store.getters.labels
+    },
   },
   created() {
     this.$store.commit({type:'setList'})
     this.$store.dispatch({ type: 'loadStays' })
+    this.$store.dispatch({ type: 'loadLabels' })
   },
   methods: {
     async addStay() {
