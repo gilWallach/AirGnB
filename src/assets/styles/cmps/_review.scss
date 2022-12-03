@@ -1,0 +1,44 @@
+.review {
+  flex-basis: 50%;
+  margin-bottom: em(19px, 15px);
+
+  font-family: airBnB-Reg;
+  font-size: 1em;
+
+  .review-header {
+    gap: 0.4em;
+    margin-bottom: em(14px, 15px);
+
+    .avatar {
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      object-fit: none;
+    }
+    .details > * {
+      margin: 0;
+    }
+
+    .details {
+      .review-title {
+        font-family: airBnB-Med;
+        font-size: em(16px, 15px);
+        font-weight: normal;
+
+        margin-bottom: 0.2em;
+      }
+      .review-subtitle {
+        font-size: em(14px, 15px);
+        color: $clr4;
+      }
+    }
+  }
+
+  .review-details {
+    .review-txt {
+      font-size: em(16px, 15px);
+      max-width: 44ch;
+      line-height: em(23px, 15px);
+    }
+  }
+}

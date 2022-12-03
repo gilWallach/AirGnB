@@ -31,7 +31,7 @@ async function query(filterBy = { name: '', label: '', capacity: 0 }) {
     })
   }
   if (filterBy.capacity) {
-    stays = stays.filter(stay => stay.capacity >= filterBy.capacity)
+    stays = stays.filter((stay) => stay.capacity >= filterBy.capacity)
   }
 
   return stays
@@ -325,12 +325,62 @@ async function _createStays() {
     reviews: [
       {
         id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        txt: 'The place of Emin is great and amidst of fruit trees. In a small village close to Düzce! Emin is very helpfull and the place is really cozy and has everything!',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Sanne',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'We had a great time staying here. If you are fine with a simple accommodation without luxury the you will love it. Don’t expect a hotel room 😉',
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Ulrich',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'friendly hosting, peaceful environment.. surely will come back for more',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Levent Sami',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'It was a very nice stay.. The place is clean.. The owner of the property was Emin.. Very nice and keen on your stay and your requirements.. I rate the property 5 stars.. Thank you Emin',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Samuel J. Lackson',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Emin is great and so is his place, really great location, his directions were super helpful and the house itself was better than the pictures. Highly recommend.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sven',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Landscape and the nature is beautiful.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sanjeev Sharma',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
         },
       },
     ],
@@ -363,7 +413,7 @@ async function _createStays() {
     host: {
       _id: 'u101',
       fullname: 'Gambit ',
-      imgUrl: 'https://robohash.org/O8V.png?set=set2&size=150x150',
+      imgUrl: 'https://robohash.org/E99.png?set=set2&size=150x150',
     },
     loc: {
       country: 'Portugal',
@@ -376,12 +426,62 @@ async function _createStays() {
     reviews: [
       {
         id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        txt: 'The place of Emin is great and amidst of fruit trees. In a small village close to Düzce! Emin is very helpfull and the place is really cozy and has everything!',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Sanne',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'We had a great time staying here. If you are fine with a simple accommodation without luxury the you will love it. Don’t expect a hotel room 😉',
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user1',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Ulrich',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'friendly hosting, peaceful environment.. surely will come back for more',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Levent Sami',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'It was a very nice stay.. The place is clean.. The owner of the property was Emin.. Very nice and keen on your stay and your requirements.. I rate the property 5 stars.. Thank you Emin',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Samuel J. Lackson',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Emin is great and so is his place, really great location, his directions were super helpful and the house itself was better than the pictures. Highly recommend.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sven',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Landscape and the nature is beautiful.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sanjeev Sharma',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
         },
       },
     ],
@@ -414,7 +514,7 @@ async function _createStays() {
     host: {
       _id: 'u101',
       fullname: 'Lebron James',
-      imgUrl: 'https://robohash.org/O8V.png?set=set2&size=150x150',
+      imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
     },
     loc: {
       country: 'Portugal',
@@ -427,12 +527,62 @@ async function _createStays() {
     reviews: [
       {
         id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        txt: 'The place of Emin is great and amidst of fruit trees. In a small village close to Düzce! Emin is very helpfull and the place is really cozy and has everything!',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Sanne',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'We had a great time staying here. If you are fine with a simple accommodation without luxury the you will love it. Don’t expect a hotel room 😉',
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'Benjamin Netanyahu',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Ulrich',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'friendly hosting, peaceful environment.. surely will come back for more',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Levent Sami',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'It was a very nice stay.. The place is clean.. The owner of the property was Emin.. Very nice and keen on your stay and your requirements.. I rate the property 5 stars.. Thank you Emin',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Samuel J. Lackson',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Emin is great and so is his place, really great location, his directions were super helpful and the house itself was better than the pictures. Highly recommend.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sven',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Landscape and the nature is beautiful.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sanjeev Sharma',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
         },
       },
     ],
@@ -466,7 +616,7 @@ async function _createStays() {
     host: {
       _id: 'u101',
       fullname: 'Miss Lucy',
-      imgUrl: 'https://robohash.org/O8V.png?set=set2&size=150x150',
+      imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
     },
     loc: {
       country: 'Israel',
@@ -479,12 +629,62 @@ async function _createStays() {
     reviews: [
       {
         id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        txt: 'The place of Emin is great and amidst of fruit trees. In a small village close to Düzce! Emin is very helpfull and the place is really cozy and has everything!',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Sanne',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'We had a great time staying here. If you are fine with a simple accommodation without luxury the you will love it. Don’t expect a hotel room 😉',
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Ulrich',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'friendly hosting, peaceful environment.. surely will come back for more',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Levent Sami',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'It was a very nice stay.. The place is clean.. The owner of the property was Emin.. Very nice and keen on your stay and your requirements.. I rate the property 5 stars.. Thank you Emin',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Samuel J. Lackson',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Emin is great and so is his place, really great location, his directions were super helpful and the house itself was better than the pictures. Highly recommend.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sven',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Landscape and the nature is beautiful.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sanjeev Sharma',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
         },
       },
     ],
@@ -518,7 +718,7 @@ async function _createStays() {
     host: {
       _id: 'u101',
       fullname: 'Aviv Ketter',
-      imgUrl: 'https://robohash.org/O8V.png?set=set2&size=150x150',
+      imgUrl: 'https://robohash.org/E99.png?set=set2&size=150x150',
     },
     loc: {
       country: 'Portugal',
@@ -531,12 +731,62 @@ async function _createStays() {
     reviews: [
       {
         id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        txt: 'The place of Emin is great and amidst of fruit trees. In a small village close to Düzce! Emin is very helpfull and the place is really cozy and has everything!',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Sanne',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'We had a great time staying here. If you are fine with a simple accommodation without luxury the you will love it. Don’t expect a hotel room 😉',
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Ulrich',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'friendly hosting, peaceful environment.. surely will come back for more',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Levent Sami',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'It was a very nice stay.. The place is clean.. The owner of the property was Emin.. Very nice and keen on your stay and your requirements.. I rate the property 5 stars.. Thank you Emin',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Samuel J. Lackson',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Emin is great and so is his place, really great location, his directions were super helpful and the house itself was better than the pictures. Highly recommend.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sven',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Landscape and the nature is beautiful.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sanjeev Sharma',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
         },
       },
     ],
@@ -583,12 +833,62 @@ async function _createStays() {
     reviews: [
       {
         id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        txt: 'The place of Emin is great and amidst of fruit trees. In a small village close to Düzce! Emin is very helpfull and the place is really cozy and has everything!',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Sanne',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'We had a great time staying here. If you are fine with a simple accommodation without luxury the you will love it. Don’t expect a hotel room 😉',
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Ulrich',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'friendly hosting, peaceful environment.. surely will come back for more',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Levent Sami',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'It was a very nice stay.. The place is clean.. The owner of the property was Emin.. Very nice and keen on your stay and your requirements.. I rate the property 5 stars.. Thank you Emin',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Samuel J. Lackson',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Emin is great and so is his place, really great location, his directions were super helpful and the house itself was better than the pictures. Highly recommend.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sven',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Landscape and the nature is beautiful.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sanjeev Sharma',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
         },
       },
     ],
@@ -622,7 +922,7 @@ async function _createStays() {
     host: {
       _id: 'u101',
       fullname: 'Gil Wallach',
-      imgUrl: 'https://robohash.org/O8V.png?set=set2&size=150x150',
+      imgUrl: 'https://robohash.org/E99.png?set=set2&size=150x150',
     },
     loc: {
       country: 'Brazil',
@@ -635,12 +935,62 @@ async function _createStays() {
     reviews: [
       {
         id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        txt: 'The place of Emin is great and amidst of fruit trees. In a small village close to Düzce! Emin is very helpfull and the place is really cozy and has everything!',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Sanne',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'We had a great time staying here. If you are fine with a simple accommodation without luxury the you will love it. Don’t expect a hotel room 😉',
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Ulrich',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'friendly hosting, peaceful environment.. surely will come back for more',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Levent Sami',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'It was a very nice stay.. The place is clean.. The owner of the property was Emin.. Very nice and keen on your stay and your requirements.. I rate the property 5 stars.. Thank you Emin',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Samuel J. Lackson',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Emin is great and so is his place, really great location, his directions were super helpful and the house itself was better than the pictures. Highly recommend.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sven',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Landscape and the nature is beautiful.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sanjeev Sharma',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
         },
       },
     ],
@@ -687,12 +1037,62 @@ async function _createStays() {
     reviews: [
       {
         id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        txt: 'The place of Emin is great and amidst of fruit trees. In a small village close to Düzce! Emin is very helpfull and the place is really cozy and has everything!',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Sanne',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'We had a great time staying here. If you are fine with a simple accommodation without luxury the you will love it. Don’t expect a hotel room 😉',
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Ulrich',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'friendly hosting, peaceful environment.. surely will come back for more',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Levent Sami',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'It was a very nice stay.. The place is clean.. The owner of the property was Emin.. Very nice and keen on your stay and your requirements.. I rate the property 5 stars.. Thank you Emin',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Samuel J. Lackson',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Emin is great and so is his place, really great location, his directions were super helpful and the house itself was better than the pictures. Highly recommend.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sven',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Landscape and the nature is beautiful.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sanjeev Sharma',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
         },
       },
     ],
@@ -726,7 +1126,7 @@ async function _createStays() {
     host: {
       _id: 'u101',
       fullname: 'Leo Messi',
-      imgUrl: 'https://robohash.org/O8V.png?set=set2&size=150x150',
+      imgUrl: 'https://robohash.org/E99.png?set=set2&size=150x150',
     },
     loc: {
       country: 'Portugal',
@@ -739,12 +1139,62 @@ async function _createStays() {
     reviews: [
       {
         id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        txt: 'The place of Emin is great and amidst of fruit trees. In a small village close to Düzce! Emin is very helpfull and the place is really cozy and has everything!',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Sanne',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'We had a great time staying here. If you are fine with a simple accommodation without luxury the you will love it. Don’t expect a hotel room 😉',
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Ulrich',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'friendly hosting, peaceful environment.. surely will come back for more',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Levent Sami',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'It was a very nice stay.. The place is clean.. The owner of the property was Emin.. Very nice and keen on your stay and your requirements.. I rate the property 5 stars.. Thank you Emin',
+        rate: 4,
+        by: {
+          _id: 'u101',
+          fullname: 'Samuel J. Lackson',
+          imgUrl: 'https://robohash.org/8N2.png?set=set1&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Emin is great and so is his place, really great location, his directions were super helpful and the house itself was better than the pictures. Highly recommend.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sven',
+          imgUrl: 'https://robohash.org/KBA.png?set=set3&size=150x150',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Landscape and the nature is beautiful.',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Sanjeev Sharma',
+          imgUrl: 'https://robohash.org/XUR.png?set=set2&size=150x150',
         },
       },
     ],

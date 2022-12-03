@@ -222,8 +222,6 @@
 
         padding-top: em(49px, 15px);
 
-        border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
-
         .amenities-header {
           color: lighten($clr2, 20%);
           margin-bottom: em(18px, 15px);
@@ -246,16 +244,19 @@
 
         .more-amenities {
           margin-bottom: em(52px, 15px);
-          .show-more-amenities {
+          .btn-show-amenities {
             width: fit-content;
-            padding: 11px 20px;
+            padding: 13px 20px;
             border: 1px solid black;
             font-family: airBnB-Med;
             font-size: em(16px, 15px);
-            letter-spacing: 0.02em;
+            letter-spacing: 0.01em;
 
             border: 1px solid black;
             border-radius: 8px;
+          }
+          .btn-show-amenities:hover {
+            cursor: pointer;
           }
         }
       }
@@ -407,6 +408,72 @@
 
         .modal-total {
           margin-top: em(22px, 15px);
+        }
+      }
+    }
+  }
+
+  .reviews-container {
+    font-family: airBnB-Reg;
+    padding-top: 3.5em;
+    margin-bottom: em(16px, 15px);
+
+    border-block-start: 0.2px solid rgba(0, 0, 0, 0.15);
+    border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+
+    .reviews-header {
+      margin-bottom: em(17px, 15px);
+      .title {
+        margin-bottom: em(34px, 15px);
+      }
+      .rating-reviews {
+        font-family: airBnB-Med;
+        font-size: em(22px, 15px);
+        color: lighten($clr3, 5%);
+      }
+
+      .reviews-kpis-list {
+        width: 100%;
+        columns: 2;
+
+        .review-item {
+          margin-bottom: 18px;
+          .kpi-title {
+            letter-spacing: 0.02em;
+          }
+          .rate-container {
+            font-size: em(12px, 15px);
+            padding-right: em(120px, 15px);
+          }
+        }
+      }
+    }
+
+    .reviews-details {
+      display: grid;
+      grid-template-columns: repeat(2, em(457.33px, 15px));
+      grid-auto-flow: row dense;
+      column-gap: em(108px, 15px);
+
+      > *:not(:nth-child(odd), .more-reviews) {
+        padding-left: em(5px, 15px);
+      }
+
+      .more-reviews {
+        margin-bottom: em(52px, 15px);
+        .btn-show-reviews {
+          width: fit-content;
+          padding: 13px 20px;
+          border: 1px solid black;
+          font-family: airBnB-Med;
+          font-size: em(16px, 15px);
+          letter-spacing: 0.01em;
+
+          border: 1px solid black;
+          border-radius: 8px;
+        }
+        .btn-show-reviews:hover {
+          cursor: pointer;
         }
       }
     }

@@ -148,7 +148,7 @@
           </div> -->
             </div>
             <div class="more-amenities">
-              <div class="show-more-amenities">Show all 30 amenities</div>
+              <div class="btn-show-amenities">Show all 30 amenities</div>
             </div>
           </div>
         </div>
@@ -215,6 +215,120 @@
 
         <!--END: summary and details should split 50-50 to contain reserve element AND more details  -->
       </div>
+
+      <!-- REVIEWS -->
+      <div class="reviews-container">
+        <!-- REVIEWS HEADER - KPIS SUMMARY -->
+        <div class="reviews-header">
+          <div class="title">
+            <div class="rating-reviews flex">
+              <star /><span>&nbsp; 4.82 </span
+              ><span class="separator">&nbsp;·&nbsp;</span>
+              <span class="reviews-amount"
+                >{{ getStay.reviews?.length }} reviews
+              </span>
+            </div>
+          </div>
+          <div class="reviews-kpis-list">
+            <div class="review-item flex justify-space-between">
+              <div class="kpi-title">Cleanliness</div>
+              <div class="rate-container flex">
+                <input
+                  type="range"
+                  value="4.6"
+                  step="0.1"
+                  min="0"
+                  max="5"
+                  disabled
+                />
+                <div class="rate-value">4.6</div>
+              </div>
+            </div>
+            <div class="review-item flex justify-space-between">
+              <div class="kpi-title">Communication</div>
+              <div class="rate-container flex">
+                <input
+                  type="range"
+                  value="5.0"
+                  step="0.1"
+                  min="0"
+                  max="5"
+                  disabled
+                />
+                <div class="rate-value">5.0</div>
+              </div>
+            </div>
+            <div class="review-item flex justify-space-between">
+              <div class="kpi-title">Check-in</div>
+              <div class="rate-container flex">
+                <input
+                  type="range"
+                  value="4.8"
+                  step="0.1"
+                  min="0"
+                  max="5"
+                  disabled
+                />
+                <div class="rate-value">4.8</div>
+              </div>
+            </div>
+            <div class="review-item flex justify-space-between">
+              <div class="kpi-title">Accuracy</div>
+              <div class="rate-container flex">
+                <input
+                  type="range"
+                  value="4.9"
+                  step="0.1"
+                  min="0"
+                  max="5"
+                  disabled
+                />
+                <div class="rate-value">4.9</div>
+              </div>
+            </div>
+            <div class="review-item flex justify-space-between">
+              <div class="kpi-title">Location</div>
+              <div class="rate-container flex">
+                <input
+                  type="range"
+                  value="4.8"
+                  step="0.1"
+                  min="0"
+                  max="5"
+                  disabled
+                />
+                <div class="rate-value">4.8</div>
+              </div>
+            </div>
+            <div class="review-item flex justify-space-between">
+              <div class="kpi-title">Value</div>
+              <div class="rate-container flex">
+                <input
+                  type="range"
+                  value="4.8"
+                  step="0.1"
+                  min="0"
+                  max="5"
+                  disabled
+                />
+                <div class="rate-value">4.8</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- REVIEWS DETAILS -->
+        <div class="reviews-details">
+          <review
+            v-for="review in getStay.reviews"
+            :review="review"
+            :key="review.id"
+          />
+          <div class="more-reviews">
+            <div class="btn-show-reviews">Show all 30 reviews</div>
+          </div>
+        </div>
+      </div>
+
       <!--!COMMENT OUT PRE BEFORE PUSH  -->
       <!-- <pre>{{ getStay }}</pre> -->
       <!--!COMMENT OUT PRE BEFORE PUSH  -->
@@ -225,6 +339,7 @@
 </template>
 
 <script>
+import review from '../cmps/review.vue'
 import star from '../assets/svg/star.vue'
 import share from '../assets/svg/share.vue'
 import save from '../assets/svg/save.vue'
@@ -265,6 +380,7 @@ export default {
     },
   },
   components: {
+    review,
     star,
     share,
     save,
