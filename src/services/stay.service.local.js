@@ -26,12 +26,10 @@ async function query(filterBy = { name: '', label: '' }) {
   }
   if (filterBy.label) {
     console.log(filterBy.label)
-    stays = stays.filter(
-      (stay) => {
-        // return stay.labels.some(stay.label === filterBy.label) 
-        return stay.labels.includes(filterBy.label) 
-      }
-    )
+    stays = stays.filter((stay) => {
+      // return stay.labels.some(stay.label === filterBy.label)
+      return stay.labels.includes(filterBy.label)
+    })
   }
   console.log(stays)
   return stays
@@ -544,7 +542,7 @@ async function _createStays() {
   })
   await storageService.post(STORAGE_KEY, {
     _id: '1000623423',
-    name: "Lionel Messi's Appartment",
+    name: "Lionel Messi's Apartment",
     type: 'House',
     imgUrls: [
       'https://images.unsplash.com/photo-1562368764-651b0bba96af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fGhvdXNlJTIwaW50ZXJpb3J8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',

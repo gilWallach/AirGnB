@@ -13,11 +13,11 @@
       </div>
       <div v-if="!isSearchOpen" class="mini-search flex align-center" @click="isSearchOpen = !isSearchOpen">
         <button>Start your search</button>
-        <button>Anywhere</button>
+        <button>{{ where }}</button>
         <div class="break-line"></div>
-        <button>Any Week</button>
+        <button>{{ when }}</button>
         <div class="break-line"></div>
-        <button>Add guests</button>
+        <button>{{ guests }}</button>
         <div class="search flex align-center justify-center">
           <search />
         </div>
@@ -73,13 +73,24 @@ export default {
     isList() {
       return this.$store.getters.isList
     },
+    where() {
+      const { name } = this.$route.query
+      return name ? name.charAt(0).toUpperCase() + name.substring(1).toLowerCase() : 'Anywhere'
+    },
+    when() {
+      return 'Any week'
+    },
+    guests() {
+      const { capacity } = this.$route.query
+      return capacity ? `${capacity} guests` : 'Add guests'
+    }
   },
   methods: {
     doSomething() {
       console.log('hi');
     },
-    handleScroll(){
-      this.isSearchOpen=false
+    handleScroll() {
+      this.isSearchOpen = false
     }
   },
   components: {

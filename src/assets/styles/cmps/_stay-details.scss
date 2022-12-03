@@ -215,6 +215,50 @@
           padding: 0;
         }
       }
+
+      .amenities-container {
+        font-family: airBnB-Reg;
+        font-size: 1em;
+
+        padding-top: em(49px, 15px);
+
+        border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+
+        .amenities-header {
+          color: lighten($clr2, 20%);
+          margin-bottom: em(18px, 15px);
+        }
+        .amenities-list {
+          columns: 2;
+          margin-bottom: em(28px, 15px);
+
+          .amenity-item {
+            .cancelled {
+              text-decoration: line-through;
+            }
+
+            display: flex;
+            align-items: center;
+            gap: 1.2em;
+            margin-bottom: 1em;
+          }
+        }
+
+        .more-amenities {
+          margin-bottom: em(52px, 15px);
+          .show-more-amenities {
+            width: fit-content;
+            padding: 11px 20px;
+            border: 1px solid black;
+            font-family: airBnB-Med;
+            font-size: em(16px, 15px);
+            letter-spacing: 0.02em;
+
+            border: 1px solid black;
+            border-radius: 8px;
+          }
+        }
+      }
     }
 
     .reserve-section {
@@ -227,6 +271,7 @@
         // height: em(532px, 15px);
         border-radius: 12px;
         box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+        border: 1px solid rgb(221, 221, 221);
         margin-inline-end: 0;
         margin-inline-start: auto;
         padding: 20px 24px 24px;
