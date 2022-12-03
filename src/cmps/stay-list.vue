@@ -10,16 +10,23 @@
       </div>
     </div>
     <ul class="stay-list" ref="list" >
-      <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" />
+      <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay"  @addToWishlist="addToWishlist"/>
     </ul>
   </section>
+  <transition name="fade">
+      <wishlist-modal v-if="isModalOpen" @closeModal="(isModalOpen = false)"/>
+    </transition>
+  <transition name="fade">
+    <div class="main-screen" v-if="isModalOpen" @click="(isModalOpen = false)"></div>
+  </transition>
 </template>
 
 <script>
 import stayLabels from './stay-labels.vue'
 import filterIcon from '../assets/svg/filter.vue'
 import stayPreview from './stay-preview.vue'
-import { entries } from 'lodash'
+import wishlistModal from './wishlist-modal.vue'
+import stayFilter from './stay-filter.vue'
 
 export default {
   name: 'stay-list',
@@ -34,7 +41,9 @@ export default {
   data(){
     return{
       listObserver: null,
-      scrollShadow: false
+      scrollShadow: false,
+
+      isModalOpen: false
     }
   },
   
@@ -43,9 +52,9 @@ export default {
       rootMargin: "-260px 0px 0px",
       threshold: .5
     })
-    console.log('this.$refs.list', this.$refs.list)
+    // console.log('this.$refs.list', this.$refs.list)
     this.listObserver.observe(this.$refs.list)
-    console.log('this.listObserver.observe(this.$refs.list)', this.listObserver.observe(this.$refs.list))
+    // console.log('this.listObserver.observe(this.$refs.list)', this.listObserver.observe(this.$refs.list))
   },
   methods: {
     onListObserved(entries) {
@@ -53,12 +62,17 @@ export default {
         this.scrollShadow = entry.isIntersecting ? true : false;
       })
     },
+    addToWishlist(stayId){
+      console.log(stayId)
+      this.isModalOpen = true
+    },
   },
   computed: {},
   components: {
     stayLabels,
     filterIcon,
     stayPreview,
+    wishlistModal,
   },
 }
 </script>

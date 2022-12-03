@@ -3,7 +3,7 @@
     <li class="card">
       <div class="img-container">
         <div class="wishlist">
-          <heart />
+          <heart @click.stop="$emit('addToWishlist', stay._id)"/>
         </div>
         <stay-carousel :stay="stay" />
       </div>
@@ -32,15 +32,18 @@
 import star from '../assets/svg/star.vue'
 import heart from '../assets/svg/heart.vue'
 import stayCarousel from './stay-carousel.vue'
+
 export default {
   name: 'stay-preview',
+  emits: [ 'addToWishlist'],
   props: {
     stay: {
       type: Object,
     },
   },
   data() {
-    return {}
+    return {
+    }
   },
   created() { },
   methods: {
@@ -62,6 +65,7 @@ export default {
     },
   },
   computed: {
+
   },
   components: {
     star,
