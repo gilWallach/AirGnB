@@ -16,6 +16,10 @@
         z-index: 10;
         background-color: $clr8;
 
+        // &.scroll-shadow{
+        //     box-shadow: 0px 0px 5px 0px #0000001f;
+        // }
+
             .filter-btn {
                 justify-self: flex-end;
                 font-size: em(12px, 15px);
