@@ -53,10 +53,17 @@ header {
       // font-size: rem(12.2px);
       font-size: 14px;
       font-family: airBnb-Med;
-      &:last-of-type {
-        font-family: airBnb-Reg;
-        color: $clr4;
-      }
+    }
+    input {
+        border: 0;
+        max-width: 93px;
+        text-align: center;
+        font-size: 14px;
+        font-family: "airBnb-Med";
+        &::placeholder {
+          font-family: airBnb-Reg;
+          color: $clr4;
+        }
     }
     .search {
       color: $clr8;

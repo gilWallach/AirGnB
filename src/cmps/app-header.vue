@@ -1,6 +1,8 @@
 <template>
-  <div class="header-container"
-    :class="{ 'main-layout-list': isList, 'main-container-stay-details': !isList, 'search-open': isSearchOpen }">
+  <div
+  @click="unSelectElements" 
+  class="header-container"
+  :class="{ 'main-layout-list': isList, 'main-container-stay-details': !isList, 'search-open': isSearchOpen }">
 
     <header class="main-header flex align-center justify-between ">
       <div class="logo-container">
@@ -17,7 +19,8 @@
         <div class="break-line"></div>
         <button>{{ when }}</button>
         <div class="break-line"></div>
-        <button>{{ guests }}</button>
+        <!-- <button>{{ guests }}</button> -->
+        <input :value="guests" type="text" placeholder="Add guests" disabled>
         <div class="search flex align-center justify-center">
           <search />
         </div>
@@ -82,7 +85,7 @@ export default {
     },
     guests() {
       const { capacity } = this.$route.query
-      return capacity ? `${capacity} guests` : 'Add guests'
+      return +capacity ? `${capacity} guests` : ''
     }
   },
   methods: {
@@ -91,6 +94,9 @@ export default {
     },
     handleScroll() {
       this.isSearchOpen = false
+    },
+    unSelectElements(){
+      this.$store.commit({type:'unSelectElements'})
     }
   },
   components: {

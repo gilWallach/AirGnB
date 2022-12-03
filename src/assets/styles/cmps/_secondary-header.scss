@@ -50,6 +50,7 @@
       &:focus {
         outline: none;
       }
+      max-width: 100px;
     }
     &.date {
       max-width: 260px;
@@ -61,10 +62,19 @@
 
   .search-container {
     color: $clr8;
-    height: 48px;
-    width: 48px;
+    min-height: 48px;
+    min-width: 48px;
     font-size: 16px;
     border-radius: 50%;
+    transition: border-radius 0.2s, padding 0.3s;
+    &.element-selected{
+      border-radius: 2em;
+      padding-inline-start: 15px;
+    }
+    span{
+      padding: 10px;
+      font-family: 'airBnb-Med';
+    }
     background-color: $clr1;
   }
 
@@ -73,11 +83,18 @@
   }
 }
 
+.add-guests-container{
+  max-width: 270px;
+  input{
+    cursor: pointer;
+  }
+}
+
 .add-guests-modal{
   position: absolute;
   bottom: 0;
   right: 0;
-  transform: translateY(107%);
+  transform: translateY(105%);
   max-height: calc(100vh - 150px);
   background-color: $clr8;
   border-radius: 2rem;

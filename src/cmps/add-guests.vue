@@ -8,14 +8,57 @@
                 </div>
                 <div class="counter flex align-center">
                     <button
-                    :disabled="!adults"
-                    @click="adults--" 
+                    :disabled="(!adults)"
+                    @click="updateCount('adults',-1)" 
                     class="round custom flex align-center justify-center">
                         <minus />
                     </button>
                     <span>{{adults}}</span>
                     <button
-                    @click="adults++"  
+                    :disabled="(capacity === 16)"
+                    @click="updateCount('adults',1)"  
+                    class="round custom flex align-center justify-center">
+                        <plus />
+                    </button>
+                </div>
+            </div>
+            <div class="children-container flex justify-space-between">
+                <div class="text">
+                    <p>Children</p>
+                    <span>Ages 2-12</span>
+                </div>
+                <div class="counter flex align-center">
+                    <button
+                    :disabled="(!children || capacity === 16)"
+                    @click="updateCount('children',-1)" 
+                    class="round custom flex align-center justify-center">
+                        <minus />
+                    </button>
+                    <span>{{children}}</span>
+                    <button
+                    :disabled="(capacity === 16)"
+                    @click="updateCount('children',1)"  
+                    class="round custom flex align-center justify-center">
+                        <plus />
+                    </button>
+                </div>
+            </div>
+            <div class="infants-container flex justify-space-between">
+                <div class="text">
+                    <p>Infants</p>
+                    <span>Under 2</span>
+                </div>
+                <div class="counter flex align-center">
+                    <button
+                    :disabled="(!infants)"
+                    @click="updateCount('infants',-1)" 
+                    class="round custom flex align-center justify-center">
+                        <minus />
+                    </button>
+                    <span>{{infants}}</span>
+                    <button
+                    :disabled="(capacity === 21)"
+                    @click="updateCount('infants',1)"  
                     class="round custom flex align-center justify-center">
                         <plus />
                     </button>
@@ -30,16 +73,24 @@ import plus from '../assets/svg/plus.vue'
 
 export default {
     name: 'add-guests',
+    emits:['guests-update'],
     props: {},
     data() {
         return {
             adults:0,
             children:0,
             infants:0,
+            capacity:0
         }
     },
     created() { },
-    methods: {},
+    methods: {
+        updateCount(type,diff){
+            this[type] += diff
+            this.capacity += diff
+            this.$emit('guests-update',this.capacity)
+        }
+    },
     computed: {},
     components: {
         minus,
