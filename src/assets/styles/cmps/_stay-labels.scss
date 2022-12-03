@@ -46,9 +46,6 @@
 
   .carousel__track {
     padding: 0;
-    // display: grid;
-    // grid-auto-flow: column;
-    // grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     gap: 4em;
     font-family: airBnb-Med;
     color: $clr4;
@@ -56,26 +53,25 @@
 
     .carousel__slide {
       width: max-content !important;
-      cursor: pointer;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: em(8px, 15px);
-    }
-    .carousel__slide::after{
-      content: '';
-      position: absolute;
-      bottom: -14px;
-      width: 100%;
-      box-shadow: inset 0px -2px 0px 0px $clr5;
+      div{
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: em(8px, 15px);
+        margin-top: 12px;
+        padding: 4px 0 14px;
+  
+        button{
+          border: transparent;
+        }
+      }
     }
 
-    // .carousel__slide:hover .carousel__slide::after{
-    //   content: '';
-    //   height: calc(14px - em(8px, 15px));
-    //   width: 100%;
-    //   box-shadow: inset 0px -2px 0px 0px $clr5;
-    // }
+    .carousel__slide:hover {
+      color: $clr2;
+      box-shadow: inset 0px -2px 0px 0px $clr5;
+    }
 
 
     img {
