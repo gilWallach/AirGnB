@@ -1,21 +1,25 @@
 <template>
   <section class="main-layout-list">
-    <div class="list-header-container main-layout-list" :class="{'scroll-shadow': scrollShadow}">
+    <div class="list-header-container main-layout-list" :class="{ 'scroll-shadow': scrollShadow }">
       <div class="list-list-header flex align-center justify-space-between">
-        <stay-labels :labels="labels"/>
-          <a href="#" class="filter-btn flex align-center justify-center">
-            <filter-icon/>
-            <span>Filters</span>
-          </a>        
+        <stay-labels :labels="labels" />
+
+        <button @click="openFilterModal" class="filter-btn flex align-center justify-center">
+          <filter-icon />
+          <span>Filters</span>
+        </button>
       </div>
     </div>
-    <ul class="stay-list" ref="list" >
-      <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay"  @addToWishlist="addToWishlist"/>
+
+    <ul class="stay-list" ref="list">
+      <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" @addToWishlist="addToWishlist" />
     </ul>
-  </section>
+
+  </section>  
   <transition name="fade">
-      <wishlist-modal v-if="isModalOpen" @closeModal="(isModalOpen = false)"/>
-    </transition>
+    <list-modal v-if="(isModalOpen)" @closeModal="closeModal" :isWishlist="isWishlist"/>
+  </transition>
+  
   <transition name="fade">
     <div class="main-screen" v-if="isModalOpen" @click="(isModalOpen = false)"></div>
   </transition>
@@ -23,10 +27,10 @@
 
 <script>
 import stayLabels from './stay-labels.vue'
-import filterIcon from '../assets/svg/filter.vue'
 import stayPreview from './stay-preview.vue'
-import wishlistModal from './wishlist-modal.vue'
-import stayFilter from './stay-filter.vue'
+import listModal from './list-modal.vue'
+
+import filterIcon from '../assets/svg/filter.vue'
 
 export default {
   name: 'stay-list',
@@ -38,15 +42,16 @@ export default {
       type: Array,
     },
   },
-  data(){
-    return{
+  data() {
+    return {
       listObserver: null,
       scrollShadow: false,
 
-      isModalOpen: false
+      isModalOpen: false,
+      iswishList: null,
     }
   },
-  
+
   mounted() {
     this.listObserver = new IntersectionObserver(this.onListObserved, {
       rootMargin: "-260px 0px 0px",
@@ -62,17 +67,25 @@ export default {
         this.scrollShadow = entry.isIntersecting ? true : false;
       })
     },
-    addToWishlist(stayId){
-      console.log(stayId)
+    addToWishlist(stayId) {
+      this.isWishlist = true
       this.isModalOpen = true
     },
+    openFilterModal() {
+      this.isWishlist = false
+      this.isModalOpen = true
+    },
+    closeModal() {
+      this.isModalOpen = false
+      this.isWishlist = null
+    }
   },
   computed: {},
   components: {
     stayLabels,
     filterIcon,
     stayPreview,
-    wishlistModal,
+    listModal,
   },
 }
 </script>

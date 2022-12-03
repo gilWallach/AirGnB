@@ -97,7 +97,7 @@ function getLabels() {
     },
     {
       name: 'trending',
-      displayName: 'Trending ',
+      displayName: 'Trending',
       imageUrl:
         'https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg',
     },
@@ -308,7 +308,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Trending', 'Play', 'Tropical'],
+    labels: ['Trending', 'Play', 'Adapted'],
     host: {
       _id: 'u101',
       fullname: 'Mister Javascript',
@@ -410,7 +410,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Play', 'Adapted'],
     host: {
       _id: 'u101',
       fullname: 'Lebron James',
@@ -462,7 +462,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Play', 'New'],
     host: {
       _id: 'u101',
       fullname: 'Miss Lucy',
@@ -514,7 +514,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Tropical'],
+    labels: ['Top of the world', 'New'],
     host: {
       _id: 'u101',
       fullname: 'Aviv Ketter',
@@ -618,7 +618,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Gil Wallach',
@@ -670,7 +670,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Raz Israeli',
@@ -722,7 +722,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Leo Messi',

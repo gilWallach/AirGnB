@@ -1,0 +1,37 @@
+.list-modal{
+    position: absolute;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $clr8;
+    width: 586px;
+    border-radius: 12px;
+    z-index: 20;
+    
+    h2{
+        font-size: 1.05rem;
+        margin: 0;
+        padding: 0;
+    }
+    
+    &.center-heading{
+        line-height: 64px
+    }
+    
+    .header{
+        height: 64px;
+        padding-inline: 24px;
+        border-bottom: 1px solid $clr5;
+
+        .close-btn{
+            position: fixed !important;
+            top: 32px;
+            transform: translateY(-50%);
+            left: 24px;
+            height: 32px;
+            width: 32px;
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
