@@ -15,7 +15,7 @@ export const stayService = {
 }
 window.cs = stayService
 
-async function query(filterBy = { name: '', price: 0 }) {
+async function query(filterBy = { name: '', label: '' }) {
   var stays = await storageService.query(STORAGE_KEY)
   if (!stays?.length) _createStays()
   if (filterBy.name) {
@@ -24,9 +24,16 @@ async function query(filterBy = { name: '', price: 0 }) {
       (stay) => regex.test(stay.loc.city) || regex.test(stay.loc.country)
     )
   }
-  if (filterBy.price) {
-    stays = stays.filter((stay) => stay.price <= filterBy.price)
+  if (filterBy.label) {
+    console.log(filterBy.label)
+    stays = stays.filter(
+      (stay) => {
+        // return stay.labels.some(stay.label === filterBy.label) 
+        return stay.labels.includes(filterBy.label) 
+      }
+    )
   }
+  console.log(stays)
   return stays
 }
 
@@ -301,7 +308,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Trending', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Mister Javascript',
@@ -352,7 +359,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Trending', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Gambit ',
@@ -403,7 +410,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Lebron James',
@@ -455,7 +462,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Miss Lucy',
@@ -507,7 +514,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Trending', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Aviv Ketter',
@@ -559,7 +566,7 @@ async function _createStays() {
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Trending', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Bar Ben Shimol',

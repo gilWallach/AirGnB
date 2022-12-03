@@ -1,6 +1,6 @@
 <template>
     <section class='stay-search main'>
-        <stay-list :stays="stays" />
+        <stay-list :stays="stays" :labels="labels"/>
     </section>
 </template>
 
@@ -12,37 +12,50 @@ export default {
     name: 'stay-search',
     props: {},
     created() {
-        this.$store.commit({type:'setList'})
+        this.$store.commit({ type: 'setList' })
         // eventBus.on('search', this.loadStays)
         this.loadStays()
+        this.loadLabels()
     },
     methods: {
         async loadStays() {
-            const { name } = this.$route.query
-            console.log("🚀 ~ file: stay-search.vue:15 ~ name:", name)
+            const { name, label } = this.$route.query
+            // console.log("🚀 ~ file: stay-search.vue:15 ~ name + label:", name, label)
             const filterBy = {
-                name
+                name,
+                label
             }
             //Go to params and filter your stays
             // Talk to the store
-            try{
+            try {
                 await this.$store.dispatch({ type: 'loadStays', filterBy })
-            } catch(err){
+            } catch (err) {
                 console.log(err)
             }
-        }
+        },
+        async loadLabels() {
+            try{
+                await this.$store.dispatch({ type: 'loadLabels' })
+            }
+            catch(err){
+                throw err
+            }           
+            }
     },
     computed: {
         stays() {
             return this.$store.getters.stays
         },
-        urlChange(){
+        urlChange() {
             return this.$route.query
+        },
+        labels() {
+            return this.$store.getters.labels
         }
     },
-    watch:{
-        urlChange(){
-            if(Object.keys(this.$route.query).length) this.loadStays()
+    watch: {
+        urlChange() {
+            if (Object.keys(this.$route.query).length) this.loadStays()
         }
     },
     components: {

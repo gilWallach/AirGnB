@@ -19,7 +19,7 @@ const stays = [
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: [ 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Davit Pok',
@@ -68,7 +68,7 @@ const stays = [
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Trending', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Davit Pok',
@@ -117,7 +117,7 @@ const stays = [
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Trending', 'Play'],
     host: {
       _id: 'u101',
       fullname: 'Davit Pok',
