@@ -96,6 +96,61 @@
             <p>{{ getStay.summary }}</p>
             <button class="show-more">Show more ></button>
           </div>
+
+          <!-- AMENITIES (WHAT THIS PALCE OFFERS) -->
+          <div class="amenities-container">
+            <h1 class="amenities-header">What this place offers</h1>
+            <div class="amenities-list">
+              <div class="amenity-item">
+                <div class="amenity-logo"><kitchen /></div>
+                <div class="amenity-txt">Kitchen</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-logo"><wifi /></div>
+                <div class="amenity-txt">Wifi</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-logo"><tv /></div>
+                <div class="amenity-txt">TV</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-logo"><smoking-allowed /></div>
+                <div class="amenity-txt">Smoking alllowed</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-logo"><cooking-basics /></div>
+                <div class="amenity-txt cancelled">Cooking <b></b>asics</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-logo"><private-entrance /></div>
+                <div class="amenity-txt">Private entrance</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-logo"><pool /></div>
+                <div class="amenity-txt">Pool</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-logo"><stove /></div>
+                <div class="amenity-txt">Stove</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-logo"><heating /></div>
+                <div class="amenity-txt">Heating</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-logo"><free-parking /></div>
+                <div class="amenity-txt cancelled">Free parking</div>
+              </div>
+              <!-- !understand how make this part dynamic while we have tens of amenities and we want to render the svgs... -->
+              <!-- <div v-for="amenity in getStay.amenities.slice(0, 2)" :key="amenity" class="amenity">
+            <component :is="amenity.toLowerCase()"></component>
+            <div class="amenity-txt">{{ amenity }}</div>
+          </div> -->
+            </div>
+            <div class="more-amenities">
+              <div class="show-more-amenities">Show all 30 amenities</div>
+            </div>
+          </div>
         </div>
 
         <!-- RESERVE MODAL -->
@@ -160,9 +215,11 @@
 
         <!--END: summary and details should split 50-50 to contain reserve element AND more details  -->
       </div>
-
+      <!--!COMMENT OUT PRE BEFORE PUSH  -->
       <!-- <pre>{{ getStay }}</pre> -->
+      <!--!COMMENT OUT PRE BEFORE PUSH  -->
     </section>
+
     <section v-else class="loading">Loading....</section>
   </div>
 </template>
@@ -175,6 +232,17 @@ import dedicatedWorkspace from '../assets/svg/dedicated-workspace.vue'
 import selfCheckin from '../assets/svg/self-checkin.vue'
 import freeCxl from '../assets/svg/free-cxl.vue'
 import arrowDown from '../assets/svg/arrow-down.vue'
+import wifi from '../assets/svg/wifi.vue'
+import tv from '../assets/svg/tv.vue'
+import kitchen from '../assets/svg/kitchen.vue'
+import petsAllowed from '../assets/svg/pets-allowed.vue'
+import cookingBasics from '../assets/svg/cooking-basics.vue'
+import smokingAllowed from '../assets/svg/smoking-allowed.vue'
+import privateEntrance from '../assets/svg/private-entrance.vue'
+import pool from '../assets/svg/pool.vue'
+import stove from '../assets/svg/stove.vue'
+import heating from '../assets/svg/heating.vue'
+import freeParking from '../assets/svg/free-parking.vue'
 export default {
   name: 'stay-details',
   props: {},
@@ -204,6 +272,17 @@ export default {
     selfCheckin,
     freeCxl,
     arrowDown,
+    wifi,
+    tv,
+    kitchen,
+    petsAllowed,
+    cookingBasics,
+    smokingAllowed,
+    privateEntrance,
+    pool,
+    stove,
+    heating,
+    freeParking,
   },
 }
 </script>
