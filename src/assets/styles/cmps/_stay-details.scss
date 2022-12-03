@@ -1,6 +1,8 @@
 .stay-details {
   font-family: airBnb-Med;
   grid-column: 2;
+  // margin-top: $header-height;
+  margin-top: 67px;
   .details-header > * {
     font-family: airBnb-Med !important;
     font-weight: 500 !important;
@@ -9,6 +11,11 @@
 
     margin-block-start: 24px !important;
     margin-block-end: 0;
+  }
+
+  .reg-text {
+    font-family: airBnB-Reg;
+    font-size: em(14px, 15px);
   }
 
   .rate {
@@ -140,7 +147,8 @@
         justify-content: space-between;
 
         padding-top: 48px;
-        padding-bottom: 24px;
+        // padding-bottom: 18.5px;
+        padding-bottom: em(18.5px, 15px);
 
         border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
         .summary-text-container {
@@ -166,10 +174,6 @@
         height: 56px;
         box-shadow: 0 0 0 1px #ede8e8;
       }
-
-      // hr {
-      //   width: 0.2em;
-      // }
 
       .stay-highlights {
         font-family: airBnB-Reg;
@@ -220,12 +224,145 @@
 
       .reserve-modal-full {
         width: em(370.33px, 15px);
-        height: em(532px, 15px);
+        // height: em(532px, 15px);
         border-radius: 12px;
         box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
         margin-inline-end: 0;
         margin-inline-start: auto;
-        padding: 24px;
+        padding: 20px 24px 24px;
+
+        .modal-header {
+          font-family: airBnb-Reg;
+          margin-bottom: em(18px, 15px);
+          .modal-header-price {
+            font-family: airBnb-Med;
+            font-size: em(22px, 15px);
+            // font-weight: 600;
+            line-height: em(26px, 15px);
+          }
+          .modal-header-text {
+            font-size: em(16px, 15px);
+          }
+
+          .rating-reviews {
+            font-size: em(14px, 15px);
+          }
+
+          .reviews-amount {
+            color: rgb(113, 113, 113);
+            font-weight: 600;
+            text-decoration: underline;
+          }
+        }
+        .pax-dates-container {
+          border-radius: 8px;
+          // box-shadow: 0 0 0 1px $clr5;
+          border: 1px solid $clr5;
+          margin-bottom: em(7px, 15px);
+
+          .dates {
+            display: flex;
+            border-block-end: 1px solid lighten($clr3, 55%);
+            p {
+              margin: 0;
+            }
+
+            .check-in {
+              flex-basis: 50%;
+
+              text-align: left;
+              font-family: airBnB-Reg;
+              font-size: em(10px, 15px);
+              font-weight: 600;
+              padding: 8px 0;
+              padding-left: $box-padding;
+
+              border-inline-end: 1px solid lighten($clr3, 55%);
+
+              .dates-txt {
+                font-size: em(13px, 10px);
+                font-family: airBnb-Reg;
+                font-weight: 400;
+                letter-spacing: 0.04em;
+              }
+            }
+            .checkout {
+              flex-basis: 50%;
+
+              text-align: left;
+              padding: 8px 0;
+              padding-left: $box-padding;
+              font-family: airBnB-Reg;
+              font-size: em(10px, 15px);
+              font-weight: 600;
+
+              .dates-txt {
+                font-size: em(13px, 10px);
+                font-family: airBnb-Reg;
+                font-weight: 400;
+                letter-spacing: 0.04em;
+              }
+            }
+          }
+
+          .pax {
+            text-align: left;
+            padding: 8px 0 10px;
+            padding-left: $box-padding;
+            font-family: airBnB-Reg;
+            font-size: em(10px, 15px);
+            font-weight: 600;
+            p {
+              margin: 0;
+            }
+
+            .pax-txt {
+              font-size: em(13px, 10px);
+              font-family: airBnb-Reg;
+              font-weight: 400;
+              letter-spacing: 0.04em;
+            }
+
+            .reserve-arrow {
+              padding: 10px 18px 0 0;
+            }
+          }
+        }
+
+        .btn-reserve {
+          width: 100%;
+          align-self: center;
+
+          border-radius: 8px;
+
+          background-color: rgb(220, 15, 99);
+          color: white;
+          font-size: 1em;
+          font-family: airBnB-Reg;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+
+          margin-bottom: em(16px, 15px);
+        }
+
+        .modal-rates {
+          border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+          margin-top: em(10.5px, 15px);
+
+          .underline {
+            text-decoration: underline;
+          }
+        }
+        .modal-rates > * {
+          width: 100%;
+          font-family: airBnb-Reg;
+          font-size: em(16px, 15px);
+          margin-bottom: 1em;
+        }
+
+        .modal-total {
+          margin-top: em(22px, 15px);
+        }
       }
     }
   }

@@ -101,10 +101,14 @@
         <!-- RESERVE MODAL -->
         <div class="reserve-section">
           <div class="reserve-modal-full flex column">
-            <div class="modal-header flex justify-space-between">
-              <div class="price">${{ getStay.price }} <span>night</span></div>
+            <div class="modal-header flex justify-space-between align-center">
+              <div>
+                <span class="modal-header-price">${{ getStay.price }}</span>
+                <span class="modal-header-text"> night</span>
+              </div>
               <div class="rating-reviews flex">
-                <star /><span> 4.82 </span><span class="separator">·</span>
+                <star /><span>&nbsp; 4.82 </span
+                ><span class="separator">&nbsp;·&nbsp;</span>
                 <span class="reviews-amount"
                   >{{ getStay.reviews?.length }} reviews
                 </span>
@@ -112,25 +116,52 @@
             </div>
             <div class="pax-dates-container">
               <div class="dates">
-                <p>check-in</p>
-                <p>12/1/2022</p>
-                <p>checkout</p>
-                <p>12/8/2022</p>
+                <div class="check-in flex column">
+                  <p>CHECK-IN</p>
+                  <p class="dates-txt">12/1/2022</p>
+                </div>
+                <div class="checkout flex column">
+                  <p>CHECKOUT</p>
+                  <p class="dates-txt">12/8/2022</p>
+                </div>
               </div>
-              <div class="pax">
-                <p>guests</p>
-                <p>1 guest</p>
+              <div class="pax flex justify-space-between">
+                <div>
+                  <p>GUESTS</p>
+                  <p class="pax-txt">1 guest</p>
+                </div>
+                <div class="reserve-arrow"><arrowDown /></div>
               </div>
             </div>
-            <button>Reserve</button>
-            <p>You won't be charged yet</p>
+            <button class="btn btn-reserve">Reserve</button>
+            <p class="reg-text">You won't be charged yet</p>
+            <!-- modal rates -->
+            <div class="modal-rates flex column align-center">
+              <div class="nights-and-rate flex justify-space-between">
+                <div class="underline">$215 x 7 nights</div>
+                <div>$1,502</div>
+              </div>
+              <div class="fee-container flex justify-space-between">
+                <div class="underline">Cleaning fee</div>
+                <div>$155</div>
+              </div>
+              <div class="fee-container flex justify-space-between">
+                <div class="underline">Service fee</div>
+                <div>$228</div>
+              </div>
+            </div>
+            <!-- modal total -->
+            <div class="modal-total flex justify-space-between">
+              <div>Total</div>
+              <div>$1885</div>
+            </div>
           </div>
         </div>
 
         <!--END: summary and details should split 50-50 to contain reserve element AND more details  -->
       </div>
 
-      <pre>{{ getStay }}</pre>
+      <!-- <pre>{{ getStay }}</pre> -->
     </section>
     <section v-else class="loading">Loading....</section>
   </div>
@@ -143,6 +174,7 @@ import save from '../assets/svg/save.vue'
 import dedicatedWorkspace from '../assets/svg/dedicated-workspace.vue'
 import selfCheckin from '../assets/svg/self-checkin.vue'
 import freeCxl from '../assets/svg/free-cxl.vue'
+import arrowDown from '../assets/svg/arrow-down.vue'
 export default {
   name: 'stay-details',
   props: {},
@@ -171,6 +203,7 @@ export default {
     dedicatedWorkspace,
     selfCheckin,
     freeCxl,
+    arrowDown,
   },
 }
 </script>
