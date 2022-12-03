@@ -1,6 +1,6 @@
 <template>
   <div
-  @click="unSelectElements" 
+  @click="unSelectElements"
   class="header-container"
   :class="{ 'main-layout-list': isList, 'main-container-stay-details': !isList, 'search-open': isSearchOpen }">
 
@@ -13,14 +13,16 @@
           </span>
         </router-link>
       </div>
-      <div v-if="!isSearchOpen" class="mini-search flex align-center" @click="isSearchOpen = !isSearchOpen">
+      <div v-if="!isSearchOpen" class="mini-search flex align-center" @click.stop="isSearchOpen = !isSearchOpen">
         <button>Start your search</button>
-        <button>{{ where }}</button>
+        <button @click="selected('where')">{{ where }}</button>
         <div class="break-line"></div>
-        <button>{{ when }}</button>
+        <button @click="selected('when')">{{ when }}</button>
         <div class="break-line"></div>
         <!-- <button>{{ guests }}</button> -->
-        <input :value="guests" type="text" placeholder="Add guests" disabled>
+        <div @click="selected('who')" >
+          <input :value="guests" type="text" placeholder="Add guests" disabled>
+        </div>
         <div class="search flex align-center justify-center">
           <search />
         </div>
@@ -97,7 +99,15 @@ export default {
     },
     unSelectElements(){
       this.$store.commit({type:'unSelectElements'})
-    }
+    },
+    selected(el) {
+            let select
+            console.log(el);
+            if (el === 'who') select = 'isGuestsSelected'
+            else if (el === 'where') select = 'isWhereSelected'
+            else select = 'isDateSelected'
+            this.$store.commit({ type: 'selectElement', select })
+        },
   },
   components: {
     airbnb,

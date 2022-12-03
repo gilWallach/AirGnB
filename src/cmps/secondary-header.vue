@@ -1,11 +1,11 @@
 <template>
-    <div @click="unSelectElements" class="secondary-header-container">
+    <div class="secondary-header-container">
         <header :class="{ selected: $store.getters.isElementSelected }"
             class="secondary-header big-search flex align-center justify-space-between">
             <label :class="{ selected: $store.getters.isWhereSelected }" class="flex column full"
                 @click.stop="selected('where')">
                 <p>Where</p>
-                <input v-model="filterBy.name" type="text" placeholder="Search destinations">
+                <input ref="input" v-model="filterBy.name" type="text" placeholder="Search destinations">
             </label>
             <div class="break-line"></div>
             <label class="flex column date" :class="{ selected: $store.getters.isDateSelected }" @click.stop="selected('date')">
@@ -55,6 +55,12 @@ export default {
         const { name, capacity } = this.$route.query
         if (name) this.filterBy.name = name.charAt(0).toUpperCase() + name.substring(1).toLowerCase()
         if (capacity) this.filterBy.capacity = +capacity
+    },
+    mounted(){
+        if(this.$store.getters.isWhereSelected) this.$refs.input.focus()
+    },
+    unmounted(){
+        this.unSelectElements()
     },
     methods: {
         setFilterBy() {

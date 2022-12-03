@@ -1,17 +1,17 @@
 <template>
-<section class="wishlist-modal">
+<section class="list-modal">
     <div class="header flex justify-center align-center">
         <button class="close-btn custom">
             <close @click="$emit('closeModal')"/>
         </button>
-        <h2 class="center-heading">Your wishlists</h2>
+        <h2 class="center-heading">Your lists</h2>
     </div>
     <div class="wishlist">
         <div class="line flex align-center">
             <button class="custom">
                 <img src="https://a0.muscache.com/im/pictures/da1a2f06-efb0-4079-abce-0f6fc82089e0.jpg" alt="plus-sign">
             </button>
-            <h2 class="center-heading">Create new wishlist</h2>
+            <h2 class="center-heading">Create new list</h2>
         </div>
         <div class="line flex align-center">
             <button class="custom">

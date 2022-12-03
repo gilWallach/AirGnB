@@ -13,7 +13,6 @@ import {
   getActionAddStayMsg,
 } from '../store/stay.store'
 
-import stayFilter from '../cmps/stay-filter.vue'
 import stayList from '../cmps/stay-list.vue'
 
 export default {
@@ -78,7 +77,6 @@ export default {
     },
   },
   components: {
-    stayFilter,
     stayList,
   },
 }
