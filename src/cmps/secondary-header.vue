@@ -1,8 +1,7 @@
 <template>
     <div class="secondary-header-container">
-        <header 
-        :class="{selected:isElementSelected}"
-        class="secondary-header big-search flex align-center justify-space-between">
+        <header :class="{ selected: isElementSelected }"
+            class="secondary-header big-search flex align-center justify-space-between">
             <label class="flex column full" ref="where" @click="selected('where')">
                 <p>Where</p>
                 <input v-model="filterBy.name" type="text" placeholder="Search destinations">
@@ -21,6 +20,7 @@
                 <label class="flex column">
                     <p>Who</p>
                     <span>Add guests</span>
+                    <add-guests/>
                 </label>
                 <button @click="setFilterBy" class="search-container flex align-center justify-center">
                     <search-big />
@@ -31,8 +31,9 @@
 
 </template>
 <script>
-import searchBig from '../assets/svg/search-big.vue';
-import datePicker from './date-picker.vue';
+import searchBig from '../assets/svg/search-big.vue'
+import datePicker from './date-picker.vue'
+import addGuests from './add-guests.vue'
 
 export default {
     name: 'secondary-header',
@@ -40,19 +41,21 @@ export default {
     data() {
         return {
             filterBy: {
-                name: ''
+                name: '',
+                capacity:0,
             },
-            isElementSelected:false
+            isElementSelected: false
         }
     },
     methods: {
         setFilterBy() {
             const { name } = this.filterBy
             this.$router.push({ path: '/s', query: { name } })
+            this.$emit('close-search')
         },
         selected(type) {
             const els = this.$refs
-            for(const key in els){
+            for (const key in els) {
                 els[key].classList.remove('selected')
             }
             this.$refs[type].classList.add('selected')
@@ -61,7 +64,8 @@ export default {
     },
     components: {
         searchBig,
-        datePicker
+        datePicker,
+        addGuests
     }
 }
 </script>

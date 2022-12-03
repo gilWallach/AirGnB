@@ -6,14 +6,12 @@
 
 <script>
 import stayList from '../cmps/stay-list.vue';
-import { eventBus } from '../services/event-bus.service';
 
 export default {
     name: 'stay-search',
     props: {},
     created() {
         this.$store.commit({type:'setList'})
-        // eventBus.on('search', this.loadStays)
         this.loadStays()
     },
     methods: {

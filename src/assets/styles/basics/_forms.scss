@@ -1,7 +1,12 @@
-button:not(.el-carousel__button, .el-carousel__arrow) {
+button:not(.el-carousel__button, .el-carousel__arrow ) {
   cursor: pointer;
-  min-height: 48px;
-  min-width: 48px;
+  &.round{
+   border-radius: 50%; 
+  }
+  &:not(.custom){
+    min-height: 48px;
+    min-width: 48px;
+  }
   border: 0;
   background-color: $clr1;
   color: $clr3;
