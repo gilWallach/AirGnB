@@ -13,10 +13,9 @@
     color: $clr2;
     backdrop-filter: drop-shadow(10px 10px 10px $clr8);
     transition: box-shadow 0.2s ease;
-    // z-index: 10;
   }
 
-  .carousel__prev::after{
+  .carousel__prev::after {
     content: "";
     width: 40px;
     height: 100%;
@@ -25,7 +24,8 @@
     position: absolute;
     right: -42px;
   }
-  .carousel__next::before{
+
+  .carousel__next::before {
     content: "";
     width: 40px;
     height: 100%;
@@ -41,16 +41,14 @@
   }
 
   .carousel__viewport {
-    padding-inline: 86px;
+    padding-inline: $header-height + 6px;
   }
 
   .carousel__track {
-
     padding: 0;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(auto-fill, minmax(max-content, 1fr));
-    grid-auto-columns: max-content;
+    // display: grid;
+    // grid-auto-flow: column;
+    // grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     gap: 4em;
     font-family: airBnb-Med;
     color: $clr4;
@@ -64,14 +62,22 @@
       align-items: center;
       gap: em(8px, 15px);
     }
-
-    .carousel__pagination {
-      display: none !important;
+    .carousel__slide::after{
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      width: 100%;
+      box-shadow: inset 0px -2px 0px 0px $clr5;
     }
 
-    // &::before {
-    //   content: '⬅️';
+    // .carousel__slide:hover .carousel__slide::after{
+    //   content: '';
+    //   height: calc(14px - em(8px, 15px));
+    //   width: 100%;
+    //   box-shadow: inset 0px -2px 0px 0px $clr5;
     // }
+
+
     img {
       display: block;
       width: 1em;
@@ -79,6 +85,8 @@
     }
 
     .label-name {
+      display: block;
+      position: relative;
       font-size: em(12px, 15px);
     }
   }

@@ -31,11 +31,15 @@ export function getActionAddStayMsg(stayId) {
 export const stayStore = {
   state: {
     stays: [],
+    labels: [],
     selectedStay: null,
   },
   getters: {
     stays({ stays }) {
       return stays
+    },
+    labels({ labels }) {
+      return labels
     },
     selectedStay(state) {
       return state.selectedStay
@@ -44,6 +48,9 @@ export const stayStore = {
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
+    },
+    setLabels(state, { labels }) {
+      state.labels = labels
     },
     addStay(state, { stay }) {
       state.stays.push(stay)
@@ -95,6 +102,15 @@ export const stayStore = {
         context.commit({ type: 'setStays', stays })
       } catch (err) {
         console.log('stayStore: Error in loadStays', err)
+        throw err
+      }
+    },
+    async loadLabels(context) {
+      try {
+        const labels = await stayService.getLabels()
+        context.commit({ type: 'setLabels', labels })
+      } catch (err) {
+        console.log('stayStore: Error in loadLabels', err)
         throw err
       }
     },
