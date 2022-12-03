@@ -23,6 +23,11 @@ export const mainSearchStore = {
         toggleElement(state, { select }) {
             state[select] = !state[select]
         },
+        selectElement(state, {select}){
+            console.log('selecting');
+            state[select] = true
+            console.log("🚀 ~ file: main-search-store.js:29 ~ selectElement ~ state[select]", state[select])
+        },
         unSelectElements(state) {
             state.isGuestsSelected = false
             state.isDateSelected = false
