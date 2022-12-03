@@ -25,13 +25,11 @@ async function query(filterBy = { name: '', label: '' }) {
     )
   }
   if (filterBy.label) {
-    console.log(filterBy.label)
     stays = stays.filter((stay) => {
       // return stay.labels.some(stay.label === filterBy.label)
       return stay.labels.includes(filterBy.label)
     })
   }
-  console.log(stays)
   return stays
 }
 
