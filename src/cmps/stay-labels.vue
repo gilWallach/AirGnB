@@ -1,11 +1,17 @@
 <template>
   <carousel :items-to-show="1.5" class="labels-container">
-    <slide v-for="label in labels" :key="label" class="single-label-container">
-      <img :src="label.imageUrl" alt="">
-      <span class="label-name">
-        {{ label.displayName }}
-      </span>
-    </slide>
+    <slide v-for="label in labels" 
+      :key="label" 
+      class="single-label-container"
+      >
+      <div @click="setFilterBy(label.displayName)" class="flex">
+        <img :src="label.imageUrl" alt="">
+        <span class="label-name">
+          {{ label.displayName }}
+        </span>
+      </div>     
+        
+      </slide>
 
     <template #addons>
       <navigation />
@@ -20,11 +26,25 @@ import { Carousel, Slide, Navigation } from 'vue3-carousel'
 
 export default {
   name: 'WrapAround',
-props:{
-  labels: {
+  props: {
+    labels: {
       type: Array,
     },
-},
+  },
+  data() {
+    return {
+      filterBy: {
+        label: ''
+      },
+    }
+  },
+  methods: {
+    setFilterBy(label) {
+      // console.log(label)
+            this.filterBy.label = label
+            this.$router.push({ path: '/s', query: { label } })
+        },
+  },
   components: {
     Carousel,
     Slide,
