@@ -15,7 +15,7 @@ export const stayService = {
 }
 window.cs = stayService
 
-async function query(filterBy = { name: '', label: '' }) {
+async function query(filterBy = { name: '', label: '', capacity: 0 }) {
   var stays = await storageService.query(STORAGE_KEY)
   if (!stays?.length) _createStays()
   if (filterBy.name) {
@@ -30,6 +30,10 @@ async function query(filterBy = { name: '', label: '' }) {
       return stay.labels.includes(filterBy.label)
     })
   }
+  if (filterBy.capacity) {
+    stays = stays.filter(stay => stay.capacity >= filterBy.capacity)
+  }
+
   return stays
 }
 

@@ -17,11 +17,12 @@ export default {
     },
     methods: {
         async loadStays() {
-            const { name, label } = this.$route.query
+            const { name, label , capacity } = this.$route.query
             // console.log("🚀 ~ file: stay-search.vue:15 ~ name + label:", name, label)
             const filterBy = {
                 name,
-                label
+                label,
+                capacity
             }
             //Go to params and filter your stays
             // Talk to the store
