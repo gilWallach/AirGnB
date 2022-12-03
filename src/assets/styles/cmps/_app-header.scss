@@ -50,7 +50,8 @@ header {
     button {
       margin: 0;
       padding: 0 16px;
-      font-size: rem(12.2px);
+      // font-size: rem(12.2px);
+      font-size: 14px;
       font-family: airBnb-Med;
       &:last-of-type {
         font-family: airBnb-Reg;
@@ -98,6 +99,23 @@ header {
 }
 
 .header-container {
+  &.main-container-stay-details {
+    position: absolute;
+    .mini-search {
+      width: 300px;
+      justify-content: space-between;
+      & > *:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
+  }
+  &.main-layout-list{
+    .mini-search {
+      & > :first-child {
+        display: none;
+      }
+    }
+  }
   position: fixed;
   width: 100%;
   background-color: $clr8;
@@ -105,8 +123,9 @@ header {
   top: 0;
   border-bottom: 1px solid $clr7;
   height: $header-height;
-  &.search-open{
-    height: calc($header-height*2);
+  transition: height 0.8s;
+  &.search-open {
+    height: calc($header-height * 2);
   }
 }
 
@@ -117,7 +136,7 @@ header {
   background-color: rgb(0 0 0 / 50%);
   /* display: none; */
   opacity: 1;
-  
-  transition: opacity .6s;
+
+  transition: opacity 0.6s;
   pointer-events: auto;
 }

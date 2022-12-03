@@ -40,6 +40,10 @@
     input {
       background-color: transparent;
       border: 0;
+      font-family: "airBnb-Med";
+      &::placeholder {
+        font-family: "airBnB-Reg";
+      }
       &:focus {
         outline: none;
       }

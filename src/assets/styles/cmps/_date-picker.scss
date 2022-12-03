@@ -1,181 +1,190 @@
-.el-popper.is-pure.is-light.el-picker__popper{
-    border-radius: rem(32px) rem(32px) 0 rem(32px);
-    transform: translate(10px, 10px);
-    overflow-y: scroll;
+.el-popper.is-pure.is-light.el-picker__popper {
+  border-radius: rem(32px) rem(32px) 0 rem(32px);
+  transform: translate(10px, 10px);
+  overflow-y: scroll;
 }
 
-.el-date-range-picker{
-    width: 760px;
+.el-date-range-picker {
+  width: 760px;
 }
 
-.el-picker-panel__icon-btn.d-arrow-right,  
+.el-picker-panel__icon-btn.d-arrow-right,
 .el-picker-panel__icon-btn.d-arrow-left,
-.el-picker-panel__icon-btn.is-disabled.arrow-left,  
-.el-picker-panel__icon-btn.is-disabled.arrow-right{
-    display: none;
+.el-picker-panel__icon-btn.is-disabled.arrow-left,
+.el-picker-panel__icon-btn.is-disabled.arrow-right {
+  display: none;
 }
 
 .el-picker-panel__content.el-date-range-picker__content {
-    font-family: airBnb-Med;
-    color: $clr3;
-    padding: 0 27px;
-    td{
-        div{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+  font-family: airBnb-Med;
+  color: $clr3;
+  padding: 0 27px;
+  td {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    &.is-right{
-        .el-date-range-picker__header{
-            // padding-top:22px;
-            // padding-bottom:49px;
-            display: flex;
-            flex-direction: row-reverse;
-            align-items: center;
-            justify-content: space-between;
-            >div{
-                flex: 1;
-            }
-        }
-        .el-picker-panel__icon-btn.arrow-left{
-            display: none;
-        }
-        .el-date-range-picker__header div{
-            margin-right: 0;
-        }
+  }
+  &.is-right {
+    .el-date-range-picker__header {
+      // padding-top:22px;
+      // padding-bottom:49px;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+      > div {
+        flex: 1;
+      }
     }
+    .el-picker-panel__icon-btn.arrow-left {
+      display: none;
+    }
+    .el-date-range-picker__header div {
+      margin-right: 0;
+    }
+  }
 
-    &.is-left{
-        border: none;
-        .el-date-range-picker__header{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            >div{
-                flex: 1;
-            }
-        }
-        .el-picker-panel__icon-btn.arrow-right{
-            display: none;
-        }
-        .el-date-range-picker__header div{
-            margin-left: 22px;
-        }
+  &.is-left {
+    border: none;
+    .el-date-range-picker__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      > div {
+        flex: 1;
+      }
     }
+    .el-picker-panel__icon-btn.arrow-right {
+      display: none;
+    }
+    .el-date-range-picker__header div {
+      margin-left: 22px;
+    }
+  }
 }
 
 // Inputs
 
 .el-date-editor.el-date-editor--daterange.el-input__wrapper.el-range-editor.el-tooltip__trigger.el-tooltip__trigger {
-    height: auto;
-    width: auto;
-    display: flex;
-    max-height: 18px;
-    justify-content: flex-start;
-    gap: 20px;
-  }
-  
-  .el-date-editor.el-input__wrapper{
+  height: auto;
+  width: auto;
+  display: flex;
+  max-height: 18px;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.el-date-editor.el-input__wrapper {
+  box-shadow: none;
+  background-color: transparent;
+  display: block;
+  &:hover {
     box-shadow: none;
+  }
+}
+
+.el-date-editor .el-range-input {
+  color: $clr2;
+  &::placeholder {
+    font-family: "airBnB-Reg";
+  }
+}
+
+.el-range-editor.el-input__wrapper {
+  display: block;
+  padding: 0;
+}
+
+.el-date-editor .el-range__icon {
+  display: none;
+}
+
+.el-date-editor .el-range-input {
+  height: 17.75px;
+  line-height: normal;
+  max-width: rem(81.66px);
+  text-align: start;
+  cursor: pointer;
+}
+
+.el-input__wrapper {
+  display: block;
+}
+
+.el-date-editor .el-range-separator {
+  flex: 0;
+  padding: 0;
+  outline: 1px solid $clr6;
+  transform: translateY(-9px);
+  height: 2.25rem;
+}
+
+// TD style
+.el-date-table td {
+  width: 48px;
+  height: 46px;
+  padding: 0;
+  border-radius: 50%;
+  &.available {
+    &.today {
+      span {
+        color: inherit;
+        font-weight: normal;
+      }
+    }
+  }
+  &.in-range {
+    .el-date-table-cell {
+      background-color: transparent;
+    }
+  }
+}
+
+.el-date-table td.available:not(.start-date):hover {
+  color: inherit;
+  outline: 1px solid $clr2;
+}
+
+.el-date-table td.available.end-date {
+  color: inherit;
+  background-color: $clr2;
+}
+
+.el-date-table td.in-range:not(.start-date) .el-date-table-cell:hover {
+  background-color: transparent;
+}
+
+.el-date-table td .el-date-table-cell .el-date-table-cell__text {
+  font-size: rem(14px);
+}
+
+.el-date-table td.end-date .el-date-table-cell__text,
+.el-date-table td.start-date .el-date-table-cell__text {
+  background-color: $clr2;
+  width: 48px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.el-date-table td.available:hover {
+  // background-color: transparent;
+  * {
+    // background-color: transparent;
+  }
+}
+
+.el-date-table td.end-date:not(.start-date) .el-date-table-cell__text {
+  background-color: transparent;
+  // color: $clr2;
+  > * {
     background-color: transparent;
-    display: block;
-    &:hover{
-      box-shadow: none;
-    }
   }
-  
-  .el-range-editor.el-input__wrapper{
-    display: block;
-    padding: 0;
-  }
-  
-  .el-date-editor .el-range__icon{
-    display: none;
-  }
-  
-  .el-date-editor .el-range-input{
-    height: 17.75px;
-    line-height: normal;
-    max-width: rem(81.66px);
-    text-align: start;
-    cursor: pointer;
-  }
-  
-  .el-input__wrapper{
-    display: block;
-  }
-  
-  .el-date-editor .el-range-separator{
-    flex: 0;
-    padding: 0;
-    outline: 1px solid $clr6;
-    transform: translateY(-9px);
-    height: 2.25rem;
-  }
+}
 
-  // TD style
-  .el-date-table td{
-    width: 48px;
-    height: 46px;
-    padding: 0;
-    border-radius: 50%;
-    &.available{
-        &.today{
-            span{
-                color: inherit;
-                font-weight: normal;
-            }
-        }
-    }
-    &.in-range{
-        .el-date-table-cell{
-            background-color: transparent;
-        }
-    }
-  }
-
-  .el-date-table td.available:hover{
-    color: inherit;
-    outline: 1px solid $clr2;
-  }
-  .el-date-table td.available.in-range:hover{
-    background-color: none;
-  }
-
-  .el-date-table td.available.in-range.end-date{
-    // background-color: blue;
-    // color: green($color: #000000);
-  }
-
-  .el-date-table td .el-date-table-cell .el-date-table-cell__text{
-    font-size: rem(14px);
-  }
-
-  .el-date-table td.end-date .el-date-table-cell__text, .el-date-table td.start-date .el-date-table-cell__text{
-    // background-color: $clr2;
-    width: 48px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .el-date-table td.available:hover{
-    background-color: transparent;
-    *{
-        background-color: transparent;
-    }
-  }
-
-  .el-date-table td.end-date:not(.start-date) .el-date-table-cell__text{
-    background-color: transparent;
-    color: black;
-    >*{
-        background-color: transparent;
-    }
-  }
-
-  .el-date-table td.start-date .el-date-table-cell__text{
-    background-color: $clr2;
-  }
+.el-date-table td.start-date .el-date-table-cell__text {
+  background-color: $clr2;
+}

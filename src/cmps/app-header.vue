@@ -12,6 +12,7 @@
         </router-link>
       </div>
       <div v-if="!isSearchOpen" class="mini-search flex align-center" @click="isSearchOpen = !isSearchOpen">
+        <button>Start your search</button>
         <button>Anywhere</button>
         <div class="break-line"></div>
         <button>Any Week</button>
