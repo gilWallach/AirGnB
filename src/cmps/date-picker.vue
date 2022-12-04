@@ -58,6 +58,7 @@ export default {
     },
     watch:{
         isDateSelected(){
+            console.log('hello');
         }
     }
 }

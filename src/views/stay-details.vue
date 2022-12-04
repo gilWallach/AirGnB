@@ -200,7 +200,7 @@
               </div>
             </div>
             <!-- <button class="btn btn-reserve">Reserve</button> -->
-            <gradient-button />
+            <gradient-button :data="'Reserve'"/>
             <p class="reg-text">You won't be charged yet</p>
             <!-- modal rates -->
             <div class="modal-rates flex column align-center">
