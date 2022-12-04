@@ -113,36 +113,36 @@ function getLabels() {
       imageUrl:
         'https://a0.muscache.com/pictures/f0c5ca0f-5aa0-4fe5-b38d-654264bacddf.jpg',
     },
-    // {
-    //   name: 'hanoks',
-    //   displayName: 'Hanoks',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/51f5cf64-5821-400c-8033-8a10c7787d69.jpg',
-    // },
-    // {
-    //   name: 'private-rooms',
-    //   displayName: 'Private rooms',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/eb7ba4c0-ea38-4cbb-9db6-bdcc8baad585.jpg',
-    // },
-    // {
-    //   name: 'omg',
-    //   displayName: 'OMG!',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg',
-    // },
-    // {
-    //   name: 'amazing-views',
-    //   displayName: 'Amazing views',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg',
-    // },
-    // {
-    //   name: 'castles',
-    //   displayName: 'Castles',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/1b6a8b70-a3b6-48b5-88e1-2243d9172c06.jpg',
-    // },
+    {
+      name: 'hanoks',
+      displayName: 'Hanoks',
+      imageUrl:
+        'https://a0.muscache.com/pictures/51f5cf64-5821-400c-8033-8a10c7787d69.jpg',
+    },
+    {
+      name: 'private-rooms',
+      displayName: 'Private rooms',
+      imageUrl:
+        'https://a0.muscache.com/pictures/eb7ba4c0-ea38-4cbb-9db6-bdcc8baad585.jpg',
+    },
+    {
+      name: 'omg',
+      displayName: 'OMG!',
+      imageUrl:
+        'https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg',
+    },
+    {
+      name: 'amazing-views',
+      displayName: 'Amazing views',
+      imageUrl:
+        'https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg',
+    },
+    {
+      name: 'castles',
+      displayName: 'Castles',
+      imageUrl:
+        'https://a0.muscache.com/pictures/1b6a8b70-a3b6-48b5-88e1-2243d9172c06.jpg',
+    },
     // {
     //   name: 'cabins',
     //   displayName: 'Cabins',
