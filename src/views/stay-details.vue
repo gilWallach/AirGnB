@@ -166,7 +166,7 @@
 
         <!-- RESERVE MODAL -->
         <div class="reserve-section">
-          <div class="reserve-modal-full flex column">
+          <div class="reserve-modal-full flex column" ref="reserveModal">
             <div class="modal-header flex justify-space-between align-center">
               <div>
                 <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
@@ -327,7 +327,7 @@
           </div>
         </div>
         <!-- REVIEWS DETAILS -->
-        <div class="reviews-details">
+        <div class="reviews-details" ref="reviewTest">
           <review
             v-for="review in getStay.reviews"
             :review="review"
@@ -388,6 +388,11 @@ export default {
         // threshold: 0.5,
       })
       this.galleryObserver.observe(this.$refs.elGallery)
+
+      const modalObserver = new IntersectionObserver(this.onModalObserved, {
+        rootMargin: '-100px 0px 0px 0px',
+      })
+      modalObserver.observe(this.$refs.reserveModal)
     } catch (err) {
       throw new Error(err)
     }
@@ -397,6 +402,13 @@ export default {
     onGalleryObserved(entries) {
       entries.forEach((entry) => {
         this.isShowSubHeader = entry.isIntersecting ? false : true
+      })
+    },
+    onModalObserved(entries) {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          this.$refs.reviewTest.style.transform = 'rotate(180deg)'
+        } else this.$refs.reviewTest.style.transform = 'rotate(0deg)'
       })
     },
   },

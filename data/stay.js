@@ -19,7 +19,7 @@ const stays = [
       'Pets allowed',
       'Cooking basics',
     ],
-    labels: [ 'Play', 'Tropical'],
+    labels: ['Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Davit Pok',
