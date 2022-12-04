@@ -15,6 +15,8 @@
       <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" @addToWishlist="addToWishlist" />
     </ul>
 
+<!-- <button style="width: 750px; height: 750px; background-color: blue;">Test</button> -->
+
   </section>  
   <transition name="fade">
     <list-modal v-if="(isModalOpen)" @closeModal="closeModal" :isWishlist="isWishlist"/>
@@ -54,16 +56,18 @@ export default {
 
   mounted() {
     this.listObserver = new IntersectionObserver(this.onListObserved, {
-      rootMargin: "-260px 0px 0px",
-      threshold: .5
+      rootMargin: "200px 0px 0px",
+      threshold: 0
     })
-    // console.log('this.$refs.list', this.$refs.list)
+    // this.listObserver.root.style.border = "2px solid #44aa44";
     this.listObserver.observe(this.$refs.list)
-    // console.log('this.listObserver.observe(this.$refs.list)', this.listObserver.observe(this.$refs.list))
+    console.log('this.listObserver.root', this.listObserver.root)
   },
   methods: {
     onListObserved(entries) {
       entries.forEach((entry) => {
+        // entry.target.style.opacity = entry.intersectionRatio
+        console.log(entry)
         this.scrollShadow = entry.isIntersecting ? true : false;
       })
     },

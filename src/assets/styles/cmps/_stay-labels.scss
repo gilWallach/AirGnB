@@ -19,7 +19,11 @@
     content: "";
     width: 40px;
     height: 100%;
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), white 40px);
+    background-image: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0),
+      white 40px
+    );
     z-index: -1;
     position: absolute;
     right: -42px;
@@ -29,7 +33,11 @@
     content: "";
     width: 40px;
     height: 100%;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), white 40px);
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      white 40px
+    );
     z-index: -1;
     position: absolute;
     left: -42px;
@@ -46,14 +54,14 @@
 
   .carousel__track {
     padding: 0;
-    gap: 4em;
+    gap: 36px;
     font-family: airBnb-Med;
     color: $clr4;
     list-style: none;
 
     .carousel__slide {
       width: max-content !important;
-      div{
+      div {
         cursor: pointer;
         flex-direction: column;
         justify-content: center;
@@ -61,8 +69,8 @@
         gap: em(8px, 15px);
         margin-top: 12px;
         padding: 4px 0 14px;
-  
-        button{
+
+        button {
           border: transparent;
         }
       }
@@ -72,7 +80,6 @@
       color: $clr2;
       box-shadow: inset 0px -2px 0px 0px $clr5;
     }
-
 
     img {
       display: block;
@@ -86,4 +93,15 @@
       font-size: em(12px, 15px);
     }
   }
+}
+
+section.carousel.labels-container:has(div:first-of-type):has(ol):has(
+    li:first-child.carousel__slide--active
+  )
+  > button:first-of-type, 
+section.carousel.labels-container:has(div:first-of-type):has(ol):has(
+    li:last-child.carousel__slide--active
+  )
+  > button:last-of-type {
+  display: none;
 }

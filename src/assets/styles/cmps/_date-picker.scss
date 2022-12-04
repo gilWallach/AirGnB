@@ -1,7 +1,8 @@
 .el-popper.is-pure.is-light.el-picker__popper {
   border-radius: rem(32px) rem(32px) 0 rem(32px);
-  transform: translate(10px, 10px);
-  overflow-y: scroll;
+  transform: translate(-26px, 10px);
+  inset: 138px auto auto 63.667px;
+  padding: 44px;
 }
 
 .el-date-range-picker {
