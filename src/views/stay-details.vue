@@ -13,7 +13,7 @@
       <div class="stay-details-container">
         <div class="details-ratings-container">
           <p class="rate">
-            <star /><span> 4.82 </span><span class="separator">·</span>
+            <star /><span>&nbsp; 4.82 </span><span class="separator">·</span>
           </p>
           <p>
             <span class="reviews-amount"

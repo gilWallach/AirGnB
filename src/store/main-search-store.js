@@ -24,9 +24,10 @@ export const mainSearchStore = {
             state[select] = !state[select]
         },
         selectElement(state, {select}){
-            console.log('selecting');
             state[select] = true
-            console.log("🚀 ~ file: main-search-store.js:29 ~ selectElement ~ state[select]", state[select])
+        },
+        unSelectElement(state, {select}){
+            state[select] = false
         },
         unSelectElements(state) {
             state.isGuestsSelected = false

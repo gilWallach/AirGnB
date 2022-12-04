@@ -8,7 +8,8 @@
                 <input ref="input" v-model="filterBy.name" type="text" placeholder="Search destinations">
             </label>
             <div class="break-line"></div>
-            <label class="flex column date" :class="{ selected: $store.getters.isDateSelected }" @click.stop="selected('date')">
+            <label class="flex column date" :class="{ selected: $store.getters.isDateSelected }"
+                @click.stop="selected('date')">
                 <div class="check-in-out flex align-center">
                     <p class="full">Check in</p>
                     <p class="full">Check out</p>
@@ -56,10 +57,10 @@ export default {
         if (name) this.filterBy.name = name.charAt(0).toUpperCase() + name.substring(1).toLowerCase()
         if (capacity) this.filterBy.capacity = +capacity
     },
-    mounted(){
-        if(this.$store.getters.isWhereSelected) this.$refs.input.focus()
+    mounted() {
+        if (this.$store.getters.isWhereSelected) this.$refs.input.focus()
     },
-    unmounted(){
+    unmounted() {
         this.unSelectElements()
     },
     methods: {
@@ -70,10 +71,35 @@ export default {
         },
         selected(el) {
             let select
-            if (el === 'who') select = 'isGuestsSelected'
-            else if (el === 'where') select = 'isWhereSelected'
-            else select = 'isDateSelected'
-            this.$store.commit({ type: 'toggleElement', select })
+            let type
+            if (el === 'who') {
+                select = 'isGuestsSelected'
+                if (this.$store.getters.isGuestsSelected) {
+                    type = 'unSelectElement'
+                } else {
+                    type = 'selectElement'
+                    this.unSelectElements
+                }
+            }
+            else if (el === 'where') {
+                select = 'isWhereSelected'
+                if (this.$store.getters.isWhereSelected) {
+                    type = 'unSelectElement'
+                } else {
+                    type = 'selectElement'
+                    this.unSelectElements()
+                }
+            }
+            else {
+                select = 'isDateSelected'
+                if (this.$store.getters.isDateSelected) {
+                    type = 'unSelectElement'
+                } else {
+                    type = 'selectElement'
+                    this.unSelectElements()
+                }
+            }
+            this.$store.commit({ type, select })
         },
         setCapacity(capacity) {
             this.filterBy.capacity = capacity

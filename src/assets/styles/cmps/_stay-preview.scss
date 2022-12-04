@@ -103,3 +103,9 @@
 
 
     }
+    
+    div.el-carousel.el-carousel--horizontal:has(ul):has(li:first-child.is-active) div button:first-of-type,
+    div.el-carousel.el-carousel--horizontal:has(ul):has(li:last-child.is-active) div button:last-of-type
+    {
+        display: none;
+    }

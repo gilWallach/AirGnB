@@ -112,5 +112,8 @@
     width: 32px !important;
     height: 32px;
     color: $clr4;
+    &:not(:first-child){
+      border-top: 1px solid $clr6;
+    }
   }
 }

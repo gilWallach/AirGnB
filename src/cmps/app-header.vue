@@ -14,7 +14,7 @@
         </router-link>
       </div>
       <div v-if="!isSearchOpen" class="mini-search flex align-center" @click.stop="isSearchOpen = !isSearchOpen">
-        <button>Start your search</button>
+        <button @click="selected('where')">Start your search</button>
         <button @click="selected('where')">{{ where }}</button>
         <div class="break-line"></div>
         <button @click="selected('when')">{{ when }}</button>
