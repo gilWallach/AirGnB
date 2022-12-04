@@ -100,11 +100,21 @@
   border-radius: 2rem;
   padding: 1rem 2rem;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.04),0 8px 16px rgba(0,0,0,0.15);
-  overflow-y: scroll;
   >*{
     min-width: 330px;
     padding-block: rem(24px);
     padding-inline-end:rem(4px);
+    &:not(:first-child){
+      border-top: 1px solid $clr6;
+    }
+    div:first-of-type{
+      p{
+        font-size: 1rem;
+      }
+      span{
+        font-size: rem(14px);
+      }
+    }
   }
   button{
     border: 1px solid $clr6;
@@ -112,8 +122,5 @@
     width: 32px !important;
     height: 32px;
     color: $clr4;
-    &:not(:first-child){
-      border-top: 1px solid $clr6;
-    }
   }
 }
