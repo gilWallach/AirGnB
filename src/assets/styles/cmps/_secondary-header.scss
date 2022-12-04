@@ -67,6 +67,18 @@
     font-size: 16px;
     border-radius: 50%;
     transition: border-radius 0.2s, padding 0.3s;
+    &:hover{
+      background-image:radial-gradient(
+      circle at calc((0 + var(--positionX, 0)) * 10%)
+        calc((0 + var(--positionY, 0)) * 5%),
+      rgb(241, 37, 75) 0%,
+      rgb(230, 30, 77) 27.5%,
+      rgb(227, 28, 95) 40%,
+      rgb(215, 4, 102) 57.5%,
+      rgb(189, 30, 89) 75%,
+      rgb(189, 30, 89) 100%
+    );
+    }
     &.element-selected {
       border-radius: 2em;
       padding-inline-start: 15px;
@@ -76,7 +88,6 @@
       font-family: "airBnb-Med";
     }
     background-color: $clr1;
-
   }
   .gradient-button {
     .content{
@@ -86,6 +97,7 @@
       }
       span{
         font-family: 'airBnb-Reg';
+        padding-left: 10px;
       }
     }
     .btn-container {
