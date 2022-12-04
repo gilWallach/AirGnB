@@ -24,13 +24,16 @@
                     <input :value="guests" type="text" placeholder="Add guests" disabled />
                     <add-guests v-if="$store.getters.isGuestsSelected" @guests-update="setCapacity" />
                 </label>
-                <button @click="setFilterBy" :class="{ 'element-selected': $store.getters.isElementSelected }"
-                    class="search-container flex align-center justify-center">
-                    <search-big />
-                    <transition name="fade">
-                        <span v-if="$store.getters.isElementSelected">Search</span>
+                <button v-if="!$store.getters.isElementSelected" @click="setFilterBy" :class="{ 'element-selected': $store.getters.isElementSelected }"
+                    class="custom search-container flex align-center justify-center">
+                    <transition  name="fade">
+                        <search-big />
                     </transition>
                 </button>
+                <transition v-else @click="setFilterBy" class="gradient-search" name="fade">
+                    <!-- <span v-if="$store.getters.isElementSelected">Search</span> -->
+                    <gradient-button class="btn search" :data="data" :search-cmp="true" />
+                </transition>
             </div>
         </header>
     </div>
@@ -40,6 +43,7 @@
 import searchBig from '../assets/svg/search-big.vue'
 import datePicker from './date-picker.vue'
 import addGuests from './add-guests.vue'
+import gradientButton from './gradient-button.vue'
 
 export default {
     name: 'secondary-header',
@@ -50,6 +54,7 @@ export default {
                 name: '',
                 capacity: 0,
             },
+            data: 'Search',
         }
     },
     created() {
@@ -117,7 +122,8 @@ export default {
     components: {
         searchBig,
         datePicker,
-        addGuests
+        addGuests,
+        gradientButton
     }
 }
 </script>

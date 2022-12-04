@@ -383,26 +383,23 @@ export default {
     const { id } = this.$route.params
     try {
       await this.$store.dispatch({ type: 'loadStay', id })
+      this.galleryObserver = new IntersectionObserver(this.onGalleryObserved, {
+        rootMargin: '0px 0px 0px 0px',
+        // threshold: 0.5,
+      })
+      this.galleryObserver.observe(this.$refs.elGallery)
     } catch (err) {
       throw new Error(err)
     }
   },
-  //   mounted(){
-  //     console.log(this.$refs.elGallery)
-  //     this.galleryObserver = new IntersectionObserver(this.onGalleryObserved, {
-  //       rootMargin: "20px 0px 0px",
-  //       // threshold: 0
-  //     })
-  //     this.galleryObserver.observe(this.$refs.elGallery)
-
-  //   },
-  //   methods: {
-  //     onGalleryObserved(entries){
-  //       entries.forEach(entry => {
-  //         this.isShowSubHeader = entry.isIntersecting ? false : true;
-  //       })
-  //   }
-  // },
+  mounted() {},
+  methods: {
+    onGalleryObserved(entries) {
+      entries.forEach((entry) => {
+        this.isShowSubHeader = entry.isIntersecting ? false : true
+      })
+    },
+  },
   computed: {
     getStay() {
       return this.$store.getters.selectedStay

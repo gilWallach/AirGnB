@@ -25,7 +25,7 @@
     border-radius: 2rem;
     cursor: pointer;
   }
-  .add-guests-container{
+  .add-guests-container {
     position: relative;
   }
   label {
@@ -67,15 +67,33 @@
     font-size: 16px;
     border-radius: 50%;
     transition: border-radius 0.2s, padding 0.3s;
-    &.element-selected{
+    &.element-selected {
       border-radius: 2em;
       padding-inline-start: 15px;
     }
-    span{
+    span {
       padding: 10px;
-      font-family: 'airBnb-Med';
+      font-family: "airBnb-Med";
     }
     background-color: $clr1;
+
+  }
+  .gradient-button {
+    .content{
+      border-radius: 2em;
+      .search-big{
+        color: $clr8;
+      }
+      span{
+        font-family: 'airBnb-Reg';
+      }
+    }
+    .btn-container {
+      margin: 0;
+      min-width: 111px;
+      transform: translateX(-18px);
+      border-radius: 2em;
+    }
   }
 
   .check-in-out {
@@ -83,14 +101,14 @@
   }
 }
 
-.add-guests-container{
+.add-guests-container {
   max-width: 270px;
-  input{
+  input {
     cursor: pointer;
   }
 }
 
-.add-guests-modal{
+.add-guests-modal {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -99,26 +117,26 @@
   background-color: $clr8;
   border-radius: 2rem;
   padding: 1rem 2rem;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.04),0 8px 16px rgba(0,0,0,0.15);
-  >*{
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
+  > * {
     min-width: 330px;
     padding-block: rem(24px);
-    padding-inline-end:rem(4px);
-    &:not(:first-child){
+    padding-inline-end: rem(4px);
+    &:not(:first-child) {
       border-top: 1px solid $clr6;
     }
-    div:first-of-type{
-      p{
+    div:first-of-type {
+      p {
         font-size: 1rem;
       }
-      span{
+      span {
         font-size: rem(14px);
       }
     }
   }
-  button{
+  button {
     border: 1px solid $clr6;
-    max-width:32px ;
+    max-width: 32px;
     width: 32px !important;
     height: 32px;
     color: $clr4;
