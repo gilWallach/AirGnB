@@ -1,5 +1,8 @@
 <template>
   <div class="main-container-stay-details">
+    <header v-if="isShowSubHeader" style="position: fixed; top: 0; height: 78px; width: 100%; background-color: antiquewhite;">
+      HEADER
+    </header>
     <!-- HEADER -->
     <section v-if="getStay" class="stay-details">
       <div class="details-header">
@@ -31,7 +34,7 @@
       </div>
 
       <!-- IMAGE GALLERY -->
-      <div class="gallery">
+      <div class="gallery" ref="elGallery">
         <img
           v-for="(img, idx) in getStay.imgUrls.slice(0, 5)"
           :src="img"
@@ -362,7 +365,10 @@ export default {
   name: 'stay-details',
   props: {},
   data() {
-    return {}
+    return {
+      galleryObserver: null,
+      isShowSubHeader: false
+    }
   },
   async created() {
     this.$store.commit({ type: 'setDetails' })
@@ -373,7 +379,22 @@ export default {
       throw new Error(err)
     }
   },
-  methods: {},
+//   mounted(){
+//     console.log(this.$refs.elGallery)
+//     this.galleryObserver = new IntersectionObserver(this.onGalleryObserved, {
+//       rootMargin: "20px 0px 0px",
+//       // threshold: 0
+//     })
+//     this.galleryObserver.observe(this.$refs.elGallery)
+
+//   },
+//   methods: {
+//     onGalleryObserved(entries){
+//       entries.forEach(entry => {
+//         this.isShowSubHeader = entry.isIntersecting ? false : true;
+//       })
+//   }
+// },
   computed: {
     getStay() {
       return this.$store.getters.selectedStay

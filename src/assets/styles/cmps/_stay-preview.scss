@@ -14,9 +14,10 @@
 
             .wishlist {
                 position: absolute;
-                top: 1.2em;
-                right: 1.2em;
+                top: 16px;
+                right: 16px;
                 z-index: 5;
+                padding: 0;
             }
 
             img {
@@ -57,7 +58,7 @@
                 .el-carousel__indicator--horizontal {
                     margin-inline-end: 3px;
                 }
-
+                
                 .el-carousel__arrow {
                     height: em(38px, 15px) !important;
                     width: em(38px, 15px) !important;
