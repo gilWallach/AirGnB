@@ -1,11 +1,11 @@
 <template>
     <div class="demo-date-picker">
-        <div class="block">
+        <div class="block" >
             <!-- <span class="demonstration">Default</span> -->
-            <el-date-picker v-model="dates" type="daterange" range-separator=""
-                start-placeholder="Add dates" end-placeholder="Add dates" clear-icon :prefix-icon="customPrefix"
-                :disabled-date="disabledDate" @change="setDates" @calendar-change="showDate" format="MMM D"
-                value-format="x" :editable="false" @panel-change="panelChange" />
+            <el-date-picker v-model="dates" type="daterange" range-separator="" start-placeholder="Add dates"
+                end-placeholder="Add dates" clear-icon :prefix-icon="customPrefix" :disabled-date="disabledDate"
+                @change="setDates" @calendar-change="showDate" format="MMM D" value-format="x" :editable="false"
+                @panel-change="panelChange" :popper-class="setPopperClass"  />
         </div>
         <!-- If I want to add +- days next add :shortcuts property -->
     </div>
@@ -16,7 +16,8 @@
 export default {
     data() {
         return {
-            dates: [,]
+            dates: [,],
+            isCurrMonth: true
         }
     },
     methods: {
@@ -40,24 +41,25 @@ export default {
             const previousDate = date.setDate(date.getDate() - 1);
             return time.getTime() <= previousDate
         },
-        panelChange(date){
+        panelChange(date) {
             const currDate = new Date(Date.now())
             const month = currDate.getMonth()
-            console.log(month);
-            console.log(date);
-            // console.log(date[0])
+            this.isCurrMonth = month === date[0].getMonth() ? true : false
         }
     },
     computed: {
         customPrefix() {
             return 'h'
         },
-        isDateSelected(){
+        isDateSelected() {
             return this.$store.getters.isDateSelected
+        },
+        setPopperClass(){
+            return this.isCurrMonth ? 'curr-month' : ''
         }
     },
-    watch:{
-        isDateSelected(){
+    watch: {
+        isDateSelected() {
             console.log('hello');
         }
     }
