@@ -1,6 +1,15 @@
 <template>
   <div class="main-container-stay-details">
-    <header v-if="isShowSubHeader" style="position: fixed; top: 0; height: 78px; width: 100%; background-color: antiquewhite;">
+    <header
+      v-if="isShowSubHeader"
+      style="
+        position: fixed;
+        top: 0;
+        height: 78px;
+        width: 100%;
+        background-color: antiquewhite;
+      "
+    >
       HEADER
     </header>
     <!-- HEADER -->
@@ -122,7 +131,7 @@
               </div>
               <div class="amenity-item">
                 <div class="amenity-logo"><cooking-basics /></div>
-                <div class="amenity-txt cancelled">Cooking <b></b>asics</div>
+                <div class="amenity-txt cancelled">Cooking basics</div>
               </div>
               <div class="amenity-item">
                 <div class="amenity-logo"><private-entrance /></div>
@@ -161,15 +170,15 @@
           <div class="reserve-modal-full flex column">
             <div class="modal-header flex justify-space-between align-center">
               <div>
-                <span class="modal-header-price">${{ getStay.price }}</span>
+                <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
+                <span class="modal-header-price">$215</span>
                 <span class="modal-header-text"> night</span>
               </div>
               <div class="rating-reviews flex">
                 <star /><span>&nbsp; 4.82 </span
                 ><span class="separator">&nbsp;·&nbsp;</span>
-                <span class="reviews-amount"
-                  >{{ getStay.reviews?.length }} reviews
-                </span>
+                <!-- <span class="reviews-amount">{{ getStay.reviews?.length }} reviews -->
+                <span class="reviews-amount">30 reviews </span>
               </div>
             </div>
             <div class="pax-dates-container">
@@ -198,7 +207,7 @@
             <div class="modal-rates flex column align-center">
               <div class="nights-and-rate flex justify-space-between">
                 <div class="underline">$215 x 7 nights</div>
-                <div>$1,502</div>
+                <div>$1,505</div>
               </div>
               <div class="fee-container flex justify-space-between">
                 <div class="underline">Cleaning fee</div>
@@ -212,7 +221,7 @@
             <!-- modal total -->
             <div class="modal-total flex justify-space-between">
               <div>Total</div>
-              <div>$1885</div>
+              <div>$1888</div>
             </div>
           </div>
         </div>
@@ -367,7 +376,7 @@ export default {
   data() {
     return {
       galleryObserver: null,
-      isShowSubHeader: false
+      isShowSubHeader: false,
     }
   },
   async created() {
@@ -379,22 +388,22 @@ export default {
       throw new Error(err)
     }
   },
-//   mounted(){
-//     console.log(this.$refs.elGallery)
-//     this.galleryObserver = new IntersectionObserver(this.onGalleryObserved, {
-//       rootMargin: "20px 0px 0px",
-//       // threshold: 0
-//     })
-//     this.galleryObserver.observe(this.$refs.elGallery)
+  //   mounted(){
+  //     console.log(this.$refs.elGallery)
+  //     this.galleryObserver = new IntersectionObserver(this.onGalleryObserved, {
+  //       rootMargin: "20px 0px 0px",
+  //       // threshold: 0
+  //     })
+  //     this.galleryObserver.observe(this.$refs.elGallery)
 
-//   },
-//   methods: {
-//     onGalleryObserved(entries){
-//       entries.forEach(entry => {
-//         this.isShowSubHeader = entry.isIntersecting ? false : true;
-//       })
-//   }
-// },
+  //   },
+  //   methods: {
+  //     onGalleryObserved(entries){
+  //       entries.forEach(entry => {
+  //         this.isShowSubHeader = entry.isIntersecting ? false : true;
+  //       })
+  //   }
+  // },
   computed: {
     getStay() {
       return this.$store.getters.selectedStay
