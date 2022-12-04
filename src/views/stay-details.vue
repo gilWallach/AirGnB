@@ -188,7 +188,8 @@
                 <div class="reserve-arrow"><arrowDown /></div>
               </div>
             </div>
-            <button class="btn btn-reserve">Reserve</button>
+            <!-- <button class="btn btn-reserve">Reserve</button> -->
+            <gradient-button />
             <p class="reg-text">You won't be charged yet</p>
             <!-- modal rates -->
             <div class="modal-rates flex column align-center">
@@ -224,9 +225,7 @@
             <div class="rating-reviews flex">
               <star /><span>&nbsp; 4.82 </span
               ><span class="separator">&nbsp;·&nbsp;</span>
-              <span class="reviews-amount"
-                >{{ getStay.reviews?.length }} reviews
-              </span>
+              <span class="reviews-amount">30 reviews </span>
             </div>
           </div>
           <div class="reviews-kpis-list">
@@ -340,6 +339,7 @@
 
 <script>
 import review from '../cmps/review.vue'
+import gradientButton from '../cmps/gradient-button.vue'
 import star from '../assets/svg/star.vue'
 import share from '../assets/svg/share.vue'
 import save from '../assets/svg/save.vue'
@@ -399,6 +399,7 @@ export default {
     stove,
     heating,
     freeParking,
+    gradientButton,
   },
 }
 </script>
