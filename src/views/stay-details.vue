@@ -25,9 +25,8 @@
             <star /><span>&nbsp; 4.82 </span><span class="separator">·</span>
           </p>
           <p>
-            <span class="reviews-amount"
-              >{{ getStay.reviews?.length }} reviews
-            </span>
+            <!-- <span class="reviews-amount">{{ getStay.reviews?.length }} reviews -->
+            <span class="reviews-amount">30 reviews </span>
             <span class="separator">·</span>
           </p>
           <p class="address">
