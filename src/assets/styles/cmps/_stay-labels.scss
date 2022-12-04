@@ -15,9 +15,9 @@
     transition: box-shadow 0.2s ease;
   }
 
-  .carousel__prev::after {
+  .carousel__track li:first-child::after {
     content: "";
-    width: 40px;
+    width: 54px;
     height: 100%;
     background-image: linear-gradient(
       to left,
@@ -26,12 +26,11 @@
     );
     z-index: -1;
     position: absolute;
-    right: -42px;
+    left: 0;
   }
-
-  .carousel__next::before {
+  .carousel__track li:last-child::before {
     content: "";
-    width: 40px;
+    width: 54px;
     height: 100%;
     background-image: linear-gradient(
       to right,
@@ -40,16 +39,12 @@
     );
     z-index: -1;
     position: absolute;
-    left: -42px;
+    right: 0;
   }
 
   button:not(.el-carousel__button, .el-carousel__arrow):hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     // transform: scale(1.04)
-  }
-
-  .carousel__viewport {
-    padding-inline: $header-height + 6px;
   }
 
   .carousel__track {
@@ -75,6 +70,7 @@
         }
       }
     }
+    
 
     .carousel__slide:hover {
       color: $clr2;
