@@ -3,6 +3,11 @@
   transform: translate(-26px, 10px);
   inset: 138px auto auto 63.667px;
   padding: 44px;
+  &.curr-month{
+    .el-picker-panel__icon-btn.arrow-left{
+      display: none;
+    }
+  }
 }
 
 .el-date-range-picker {
