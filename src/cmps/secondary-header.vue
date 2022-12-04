@@ -3,13 +3,13 @@
         <header :class="{ selected: $store.getters.isElementSelected }"
             class="secondary-header big-search flex align-center justify-space-between">
             <label :class="{ selected: $store.getters.isWhereSelected }" class="flex column full"
-                @click.stop="selected('where')">
+                @click.stop.prevent="selected('where')">
                 <p>Where</p>
                 <input ref="input" v-model="filterBy.name" type="text" placeholder="Search destinations">
             </label>
             <div class="break-line"></div>
             <label class="flex column date" :class="{ selected: $store.getters.isDateSelected }"
-                @click.stop="selected('date')">
+                @click.stop.prevent="selected('date')">
                 <div class="check-in-out flex align-center">
                     <p class="full">Check in</p>
                     <p class="full">Check out</p>
@@ -78,7 +78,7 @@ export default {
                     type = 'unSelectElement'
                 } else {
                     type = 'selectElement'
-                    this.unSelectElements
+                    this.unSelectElements()
                 }
             }
             else if (el === 'where') {
@@ -88,9 +88,10 @@ export default {
                 } else {
                     type = 'selectElement'
                     this.unSelectElements()
+                    this.$refs.input.focus()
                 }
             }
-            else {
+            else if (el === 'date') {
                 select = 'isDateSelected'
                 if (this.$store.getters.isDateSelected) {
                     type = 'unSelectElement'

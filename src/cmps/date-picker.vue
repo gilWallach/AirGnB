@@ -52,6 +52,13 @@ export default {
         customPrefix() {
             return 'h'
         },
+        isDateSelected(){
+            return this.$store.getters.isDateSelected
+        }
+    },
+    watch:{
+        isDateSelected(){
+        }
     }
 }
 </script>
