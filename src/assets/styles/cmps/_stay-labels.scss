@@ -15,32 +15,32 @@
     transition: box-shadow 0.2s ease;
   }
 
-  .carousel__track li:first-child::after {
-    content: "";
-    width: 54px;
-    height: 100%;
-    background-image: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 0),
-      white 40px
-    );
-    z-index: -1;
-    position: absolute;
-    left: 0;
-  }
-  .carousel__track li:last-child::before {
-    content: "";
-    width: 54px;
-    height: 100%;
-    background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      white 40px
-    );
-    z-index: -1;
-    position: absolute;
-    right: 0;
-  }
+  // .carousel__track li:first-child::after {
+  //   content: "";
+  //   width: 54px;
+  //   height: 100%;
+  //   background-image: linear-gradient(
+  //     to left,
+  //     rgba(255, 255, 255, 0),
+  //     white 40px
+  //   );
+  //   z-index: -1;
+  //   position: absolute;
+  //   left: 0;
+  // }
+  // .carousel__track li:last-child::before {
+  //   content: "";
+  //   width: 54px;
+  //   height: 100%;
+  //   background-image: linear-gradient(
+  //     to right,
+  //     rgba(255, 255, 255, 0),
+  //     white 40px
+  //   );
+  //   z-index: -1;
+  //   position: absolute;
+  //   right: 0;
+  // }
 
   button:not(.el-carousel__button, .el-carousel__arrow):hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
