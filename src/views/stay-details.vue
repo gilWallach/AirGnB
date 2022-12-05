@@ -1,5 +1,6 @@
 <template>
   <div class="main-container-stay-details">
+    <!-- SUB-HEADER floating element, appears when scrolling below gallery -->
     <header
       v-if="isShowSubHeader"
       style="
@@ -25,8 +26,9 @@
             <star /><span>&nbsp; 4.82 </span><span class="separator">·</span>
           </p>
           <p>
-            <!-- <span class="reviews-amount">{{ getStay.reviews?.length }} reviews -->
-            <span class="reviews-amount">30 reviews </span>
+            <span class="reviews-amount"
+              >{{ getStay.reviews?.length }} reviews</span
+            >
             <span class="separator">·</span>
           </p>
           <p class="address">
@@ -58,11 +60,10 @@
           <div class="summary-container">
             <div class="summary-text-container">
               <div class="stay-summary-text">
-                {{ getStay.type }} hosted by {{ getStay.host.fullname }}
+                {{ getStay.roomType }} hosted by {{ getStay.host.fullname }}
               </div>
               <div class="capacity">
-                {{ getStay.capacity }} beds ·
-                {{ Math.ceil(getStay.capacity / 2) }} rooms ·
+                {{ getStay.capacity }} beds · {{ getStay.bedrooms }} rooms ·
                 {{ getStay.capacity + 3 }} guests
               </div>
             </div>
@@ -98,7 +99,7 @@
               <div class="highlight-icon"><free-cxl /></div>
               <div class="highlight-feature">
                 <div class="highlight-header">
-                  Free cancellation before Sep 17.
+                  Free cancellation before {{ this.nextMonth }} 28.
                 </div>
                 <div class="highlight-txt"></div>
               </div>
@@ -106,6 +107,7 @@
           </div>
           <div class="stay-summary-long">
             <p>{{ getStay.summary }}</p>
+            <p>...</p>
             <button class="show-more">Show more ></button>
           </div>
 
@@ -113,6 +115,7 @@
           <div class="amenities-container">
             <h1 class="amenities-header">What this place offers</h1>
             <div class="amenities-list">
+              <!-- STATIC AMENITIES LIST -->
               <div class="amenity-item">
                 <div class="amenity-logo"><kitchen /></div>
                 <div class="amenity-txt">Kitchen</div>
@@ -160,7 +163,9 @@
           </div> -->
             </div>
             <div class="more-amenities">
-              <div class="btn-show-amenities">Show all 30 amenities</div>
+              <div class="btn-show-amenities">
+                Show all {{ getStay.amenities?.length }} amenities
+              </div>
             </div>
           </div>
         </div>
@@ -237,91 +242,62 @@
             <div class="rating-reviews flex">
               <star /><span>&nbsp; 4.82 </span
               ><span class="separator">&nbsp;·&nbsp;</span>
-              <span class="reviews-amount">30 reviews </span>
+              <span class="reviews-amount">{{ getStay.reviews?.length }} </span>
             </div>
           </div>
+
           <div class="reviews-kpis-list">
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Cleanliness</div>
-              <div class="rate-container flex">
-                <input
-                  type="range"
-                  value="4.6"
-                  step="0.1"
-                  min="0"
-                  max="5"
-                  disabled
-                />
+              <div class="rate-container flex align-center">
+                <div class="kpis">
+                  <div class="cleanliness"></div>
+                </div>
                 <div class="rate-value">4.6</div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Communication</div>
-              <div class="rate-container flex">
-                <input
-                  type="range"
-                  value="5.0"
-                  step="0.1"
-                  min="0"
-                  max="5"
-                  disabled
-                />
+              <div class="rate-container flex align-center">
+                <div class="kpis">
+                  <div class="communication"></div>
+                </div>
                 <div class="rate-value">5.0</div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Check-in</div>
-              <div class="rate-container flex">
-                <input
-                  type="range"
-                  value="4.8"
-                  step="0.1"
-                  min="0"
-                  max="5"
-                  disabled
-                />
+              <div class="rate-container flex align-center">
+                <div class="kpis">
+                  <div class="check-in"></div>
+                </div>
                 <div class="rate-value">4.8</div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Accuracy</div>
-              <div class="rate-container flex">
-                <input
-                  type="range"
-                  value="4.9"
-                  step="0.1"
-                  min="0"
-                  max="5"
-                  disabled
-                />
+              <div class="rate-container flex align-center">
+                <div class="kpis">
+                  <div class="accuracy"></div>
+                </div>
                 <div class="rate-value">4.9</div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Location</div>
-              <div class="rate-container flex">
-                <input
-                  type="range"
-                  value="4.8"
-                  step="0.1"
-                  min="0"
-                  max="5"
-                  disabled
-                />
+              <div class="rate-container flex align-center">
+                <div class="kpis">
+                  <div class="location"></div>
+                </div>
                 <div class="rate-value">4.8</div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Value</div>
-              <div class="rate-container flex">
-                <input
-                  type="range"
-                  value="4.8"
-                  step="0.1"
-                  min="0"
-                  max="5"
-                  disabled
-                />
+              <div class="rate-container flex align-center">
+                <div class="kpis">
+                  <div class="location"></div>
+                </div>
                 <div class="rate-value">4.8</div>
               </div>
             </div>
@@ -335,7 +311,9 @@
             :key="review.id"
           />
           <div class="more-reviews">
-            <div class="btn-show-reviews">Show all 30 reviews</div>
+            <div class="btn-show-reviews">
+              Show all {{ getStay.reviews?.length }} reviews
+            </div>
           </div>
         </div>
       </div>
@@ -352,6 +330,7 @@
 <script>
 import review from '../cmps/review.vue'
 import gradientButton from '../cmps/gradient-button.vue'
+import longText from '../cmps/long-text.vue'
 import star from '../assets/svg/star.vue'
 import share from '../assets/svg/share.vue'
 import save from '../assets/svg/save.vue'
@@ -413,14 +392,14 @@ export default {
         }
       })
     },
-    defaultUrl(){
-      console.log('hello')
-      this.src='https://robohash.org/70072865?set=set1'
-    }
   },
   computed: {
     getStay() {
       return this.$store.getters.selectedStay
+    },
+    nextMonth() {
+      const month = new Date().toString().slice(4, 8)
+      return month
     },
   },
   components: {
@@ -444,6 +423,7 @@ export default {
     heating,
     freeParking,
     gradientButton,
+    longText,
   },
 }
 </script>
