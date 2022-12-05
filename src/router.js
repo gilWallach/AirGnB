@@ -8,6 +8,7 @@ import stayEdit from './views/stay-edit.vue'
 import reviewApp from './views/review-app.vue'
 import loginSignup from './views/login-signup.vue'
 import userDetails from './views/user-details.vue'
+import orderConfirm from './views/order-confirm.vue'
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
     path: '/stay/edit/:id?',
     name: 'stay-edit',
     component: stayEdit
+  },
+  {
+    path: '/order-confirm',
+    name: 'order-confirm',
+    component: orderConfirm
   },
   {
     path: '/review',
