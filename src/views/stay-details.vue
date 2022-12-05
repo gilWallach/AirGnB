@@ -31,16 +31,6 @@
             <span class="reviews-amount"
               >{{ getStay.reviews.length + ' ' + formatReviews }}
             </span>
-            =======
-            <star /><span
-              >&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span
-            ><span class="separator">·</span>
-          </p>
-          <p>
-            <span class="reviews-amount"
-              >{{ getStay.reviews.length + ' ' + formatReviews }}
-            </span>
-            >>>>>>> 79c2e7a8d9f1d9ed42398a6be2928f34436a1d29
             <span class="separator">·</span>
           </p>
           <p class="address">
