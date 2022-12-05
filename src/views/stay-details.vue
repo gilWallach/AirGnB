@@ -31,6 +31,16 @@
             <span class="reviews-amount"
               >{{ getStay.reviews.length + ' ' + formatReviews }}
             </span>
+            =======
+            <star /><span
+              >&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span
+            ><span class="separator">·</span>
+          </p>
+          <p>
+            <span class="reviews-amount"
+              >{{ getStay.reviews.length + ' ' + formatReviews }}
+            </span>
+            >>>>>>> 79c2e7a8d9f1d9ed42398a6be2928f34436a1d29
             <span class="separator">·</span>
           </p>
           <p class="address">
@@ -119,15 +129,21 @@
             <div class="amenities-list">
               <!-- STATIC AMENITIES LIST -->
               <div class="amenity-item">
-                <div class="amenity-logo"><kitchen /></div>
+                <div class="amenity-logo">
+                  <kitchen />
+                </div>
                 <div class="amenity-txt">Kitchen</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><wifi /></div>
+                <div class="amenity-logo">
+                  <wifi />
+                </div>
                 <div class="amenity-txt">Wifi</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><tv /></div>
+                <div class="amenity-logo">
+                  <tv />
+                </div>
                 <div class="amenity-txt">TV</div>
               </div>
               <div class="amenity-item">
@@ -143,15 +159,21 @@
                 <div class="amenity-txt">Private entrance</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><pool /></div>
+                <div class="amenity-logo">
+                  <pool />
+                </div>
                 <div class="amenity-txt">Pool</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><stove /></div>
+                <div class="amenity-logo">
+                  <stove />
+                </div>
                 <div class="amenity-txt">Stove</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><heating /></div>
+                <div class="amenity-logo">
+                  <heating />
+                </div>
                 <div class="amenity-txt">Heating</div>
               </div>
               <div class="amenity-item">
@@ -213,16 +235,22 @@
                     </p>
                   </label>
                 </div>
-                <div v-if="isDatesModalOpen" class="dates-modal flex column">
-                  <date-picker :data="'Select dates'" @set-dates="setDates" />
+                <div class="dates-modal flex column">
+                  <date-picker @set-dates="setDates" />
                 </div>
               </div>
-              <div class="pax flex justify-space-between">
+              <div
+                @click="isGuestModalOpen = !isGuestModalOpen"
+                class="pax flex justify-space-between"
+              >
                 <div>
                   <p>GUESTS</p>
                   <p class="pax-txt">1 guest</p>
                 </div>
-                <div class="reserve-arrow"><arrowDown /></div>
+                <div class="reserve-arrow">
+                  <arrowDown />
+                </div>
+                <add-guests v-if="isGuestModalOpen" />
               </div>
             </div>
             <!-- <button class="btn btn-reserve">Reserve</button> -->
@@ -344,6 +372,7 @@
 </template>
 
 <script>
+import addGuests from '../cmps/add-guests.vue'
 import datePicker from '../cmps/date-picker.vue'
 import review from '../cmps/review.vue'
 import gradientButton from '../cmps/gradient-button.vue'
@@ -373,7 +402,7 @@ export default {
     return {
       galleryObserver: null,
       isShowSubHeader: false,
-      isDatesModalOpen: false,
+      isGuestModalOpen: false,
       order: {
         checkInDate: null,
         checkOutDate: null,
@@ -435,6 +464,7 @@ export default {
     },
   },
   components: {
+    addGuests,
     datePicker,
     review,
     star,

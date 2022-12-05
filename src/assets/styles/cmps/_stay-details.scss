@@ -84,8 +84,8 @@
     grid-template-columns: minmax(326px, 560px) repeat(2, minmax(155px, 272px));
     grid-template-rows: repeat(2, minmax(164px, 243px));
     grid-template-areas:
-      'img0 img1 img2'
-      'img0 img3 img4';
+      "img0 img1 img2"
+      "img0 img3 img4";
     gap: em(8px, 15px);
 
     margin-top: 24px;
@@ -309,16 +309,23 @@
         .pax-dates-container {
           border-radius: 8px;
           // box-shadow: 0 0 0 1px $clr5;
-          border: 1px solid $clr5;
+          outline: 1px solid $clr6;
           margin-bottom: em(11px, 15px);
 
           .dates {
             display: flex;
+            border: 0;
             border-block-end: 1px solid lighten($clr3, 55%);
             p {
               margin: 0;
             }
-
+            &:hover {
+              // outline: 1px solid $clr2;
+              border-radius: rem(8px);
+              // border: 0;
+              // outline: 0;
+              box-shadow: rgb(34 34 34) 0px 0px 0px 2px inset !important;
+            }
             .check-in {
               flex-basis: 50%;
 
@@ -358,6 +365,7 @@
           }
 
           .pax {
+            position: relative;
             text-align: left;
             padding: 8px 0 10px;
             padding-left: $box-padding;
@@ -377,6 +385,27 @@
 
             .reserve-arrow {
               padding: 10px 18px 0 0;
+            }
+            .add-guests {
+              position: absolute;
+              z-index: 10;
+              bottom: 0;
+              transform: translateY(-20px);
+              right: 0;
+              width: 100%;
+              // border-radius: rem(4px) !important;
+
+              .add-guests-modal {
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px !important;
+                border-radius: rem(4px) !important;
+                padding: 16px;
+                width: 100%;
+                > * {
+                  min-height: 56px !important;
+                  min-width: auto;
+                  width: 100%;
+                }
+              }
             }
           }
         }
