@@ -1,10 +1,16 @@
 <template>
   <section class="main-layout-list">
-    <div class="list-header-container main-layout-list" :class="{ 'scroll-shadow': scrollShadow }">
-      <div v-if="(labels && labels.length)" class="list-list-header flex align-center justify-space-between">
-        <stay-labels :labels="labels" />
+    <div
+      class="list-header-container main-layout-list"
+      :class="{ 'scroll-shadow': scrollShadow }"
+    >
+      <div class="list-list-header flex align-center justify-space-between">
+        <stay-labels v-if="labels" :labels="labels" />
 
-        <button @click="openFilterModal" class="filter-btn flex align-center justify-center">
+        <button
+          @click="openFilterModal"
+          class="filter-btn flex align-center justify-center"
+        >
           <filter-icon />
           <span>Filters</span>
         </button>
@@ -12,18 +18,30 @@
     </div>
 
     <ul class="stay-list" ref="list">
-      <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" @addToWishlist="addToWishlist" />
+      <stay-preview
+        v-for="stay in stays"
+        :key="stay._id"
+        :stay="stay"
+        @addToWishlist="addToWishlist"
+      />
     </ul>
 
-<!-- <button style="width: 750px; height: 750px; background-color: blue;">Test</button> -->
-
-  </section>  
+    <!-- <button style="width: 750px; height: 750px; background-color: blue;">Test</button> -->
+  </section>
   <transition name="fade">
-    <list-modal v-if="(isModalOpen)" @closeModal="closeModal" :isWishlist="isWishlist"/>
+    <list-modal
+      v-if="isModalOpen"
+      @closeModal="closeModal"
+      :isWishlist="isWishlist"
+    />
   </transition>
-  
+
   <transition name="fade">
-    <div class="main-screen" v-if="isModalOpen" @click="(isModalOpen = false)"></div>
+    <div
+      class="main-screen"
+      v-if="isModalOpen"
+      @click="isModalOpen = false"
+    ></div>
   </transition>
 </template>
 
@@ -56,19 +74,17 @@ export default {
 
   mounted() {
     this.listObserver = new IntersectionObserver(this.onListObserved, {
-      rootMargin: "200px 0px 0px",
-      threshold: 0
+      rootMargin: '200px 0px 0px',
+      threshold: 0,
     })
     // this.listObserver.root.style.border = "2px solid #44aa44";
     this.listObserver.observe(this.$refs.list)
-    console.log('this.listObserver.root', this.listObserver.root)
   },
   methods: {
     onListObserved(entries) {
       entries.forEach((entry) => {
         // entry.target.style.opacity = entry.intersectionRatio
-        console.log(entry)
-        this.scrollShadow = entry.isIntersecting ? true : false;
+        this.scrollShadow = entry.isIntersecting ? true : false
       })
     },
     addToWishlist(stayId) {
@@ -82,7 +98,7 @@ export default {
     closeModal() {
       this.isModalOpen = false
       this.isWishlist = null
-    }
+    },
   },
   computed: {},
   components: {

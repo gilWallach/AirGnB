@@ -1,0 +1,16 @@
+.user-actions {
+  position: absolute;
+  top: em(51px);
+  right: 0;
+
+  background-color: white;
+
+  width: em(240px);
+
+  border-radius: 8px;
+  box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px;
+
+  .actions-list {
+    font-family: airBnB-Reg;
+  }
+}

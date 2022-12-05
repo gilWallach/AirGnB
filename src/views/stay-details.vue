@@ -23,12 +23,24 @@
       <div class="stay-details-container">
         <div class="details-ratings-container">
           <p class="rate">
-            <star /><span>&nbsp; 4.82 </span><span class="separator">·</span>
+            <star /><span
+              >&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span
+            ><span class="separator">·</span>
           </p>
           <p>
             <span class="reviews-amount"
-              >{{ getStay.reviews?.length }} reviews</span
-            >
+              >{{ getStay.reviews.length + ' ' + formatReviews }}
+            </span>
+            =======
+            <star /><span
+              >&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span
+            ><span class="separator">·</span>
+          </p>
+          <p>
+            <span class="reviews-amount"
+              >{{ getStay.reviews.length + ' ' + formatReviews }}
+            </span>
+            >>>>>>> 79c2e7a8d9f1d9ed42398a6be2928f34436a1d29
             <span class="separator">·</span>
           </p>
           <p class="address">
@@ -117,15 +129,21 @@
             <div class="amenities-list">
               <!-- STATIC AMENITIES LIST -->
               <div class="amenity-item">
-                <div class="amenity-logo"><kitchen /></div>
+                <div class="amenity-logo">
+                  <kitchen />
+                </div>
                 <div class="amenity-txt">Kitchen</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><wifi /></div>
+                <div class="amenity-logo">
+                  <wifi />
+                </div>
                 <div class="amenity-txt">Wifi</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><tv /></div>
+                <div class="amenity-logo">
+                  <tv />
+                </div>
                 <div class="amenity-txt">TV</div>
               </div>
               <div class="amenity-item">
@@ -141,15 +159,21 @@
                 <div class="amenity-txt">Private entrance</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><pool /></div>
+                <div class="amenity-logo">
+                  <pool />
+                </div>
                 <div class="amenity-txt">Pool</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><stove /></div>
+                <div class="amenity-logo">
+                  <stove />
+                </div>
                 <div class="amenity-txt">Stove</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><heating /></div>
+                <div class="amenity-logo">
+                  <heating />
+                </div>
                 <div class="amenity-txt">Heating</div>
               </div>
               <div class="amenity-item">
@@ -176,33 +200,57 @@
             <div class="modal-header flex justify-space-between align-center">
               <div>
                 <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
-                <span class="modal-header-price">$215</span>
+                <span class="modal-header-price">{{
+                  getStay.price.toLocaleString('en-IN', {
+                    style: 'currency',
+                    currency: 'USD',
+                    maximumSignificantDigits: 1,
+                  })
+                }}</span>
                 <span class="modal-header-text"> night</span>
               </div>
-              <div class="rating-reviews flex">
+              <div class="rating-reviews flex" v-if="getStay.reviews.length">
                 <star /><span>&nbsp; 4.82 </span
                 ><span class="separator">&nbsp;·&nbsp;</span>
-                <!-- <span class="reviews-amount">{{ getStay.reviews?.length }} reviews -->
-                <span class="reviews-amount">30 reviews </span>
+                <span class="reviews-amount"
+                  >{{ getStay.reviews.length + ' ' + formatReviews }}
+                </span>
               </div>
             </div>
             <div class="pax-dates-container">
               <div class="dates">
                 <div class="check-in flex column">
-                  <p>CHECK-IN</p>
-                  <p class="dates-txt">12/1/2022</p>
+                  <label for="i">
+                    <p>CHECK-IN</p>
+                    <p class="dates-txt">
+                      {{ order.checkInDate || 'Add date' }}
+                    </p>
+                  </label>
                 </div>
                 <div class="checkout flex column">
-                  <p>CHECKOUT</p>
-                  <p class="dates-txt">12/8/2022</p>
+                  <label for="o">
+                    <p>CHECKOUT</p>
+                    <p class="dates-txt">
+                      {{ order.checkOutDate || 'Add date' }}
+                    </p>
+                  </label>
+                </div>
+                <div class="dates-modal flex column">
+                  <date-picker @set-dates="setDates" />
                 </div>
               </div>
-              <div class="pax flex justify-space-between">
+              <div
+                @click="isGuestModalOpen = !isGuestModalOpen"
+                class="pax flex justify-space-between"
+              >
                 <div>
                   <p>GUESTS</p>
                   <p class="pax-txt">1 guest</p>
                 </div>
-                <div class="reserve-arrow"><arrowDown /></div>
+                <div class="reserve-arrow">
+                  <arrowDown />
+                </div>
+                <add-guests v-if="isGuestModalOpen" />
               </div>
             </div>
             <!-- <button class="btn btn-reserve">Reserve</button> -->
@@ -304,7 +352,7 @@
           </div>
         </div>
         <!-- REVIEWS DETAILS -->
-        <div class="reviews-details" ref="reviewTest">
+        <div class="reviews-details">
           <review
             v-for="review in getStay.reviews"
             :review="review"
@@ -317,10 +365,6 @@
           </div>
         </div>
       </div>
-
-      <!--!COMMENT OUT PRE BEFORE PUSH  -->
-      <!-- <pre>{{ getStay }}</pre> -->
-      <!--!COMMENT OUT PRE BEFORE PUSH  -->
     </section>
 
     <section v-else class="loading">Loading....</section>
@@ -328,6 +372,8 @@
 </template>
 
 <script>
+import addGuests from '../cmps/add-guests.vue'
+import datePicker from '../cmps/date-picker.vue'
 import review from '../cmps/review.vue'
 import gradientButton from '../cmps/gradient-button.vue'
 import longText from '../cmps/long-text.vue'
@@ -356,6 +402,12 @@ export default {
     return {
       galleryObserver: null,
       isShowSubHeader: false,
+      isGuestModalOpen: false,
+      order: {
+        checkInDate: null,
+        checkOutDate: null,
+        guests: 1,
+      },
     }
   },
   async created() {
@@ -392,17 +444,28 @@ export default {
         }
       })
     },
+    setDates(dates) {
+      this.order.checkInDate = dates[0].toLocaleString().split(',')[0]
+      this.order.checkOutDate = dates[1]?.toLocaleString().split(',')[0] || null
+    },
   },
   computed: {
     getStay() {
       return this.$store.getters.selectedStay
     },
+    formatReviews() {
+      return this.getStay.reviews.length > 1 ? 'reviews' : 'review'
+    },
     nextMonth() {
-      const month = new Date().toString().slice(4, 8)
-      return month
+      const date = new Date()
+      const month = date.getMonth()
+      date.setMonth(month + 1)
+      return date.toLocaleString('en-US', { month: 'short' })
     },
   },
   components: {
+    addGuests,
+    datePicker,
     review,
     star,
     share,
