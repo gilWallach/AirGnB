@@ -7,7 +7,7 @@
             <h2 class="center-heading">Filters</h2>
         </div>
         <div class="filters-container">
-            <h1>Hello from filter</h1>            
+            <h1>Hello from filter</h1>
         </div>
 
         <!-- <el-checkbox-group @change="setFilterBy" v-model="filterBy.type">

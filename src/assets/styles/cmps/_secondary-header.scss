@@ -90,6 +90,7 @@
     background-color: $clr1;
   }
   .gradient-button {
+    transform: translateX(5px);
     .content{
       border-radius: 2em;
       .search-big{

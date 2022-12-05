@@ -68,9 +68,10 @@
             </div>
             <span
               ><img
-                :src="getStay.host.imgUrl"
+                :src="getStay.host.thumbnailUrl"
                 alt="host-image"
                 class="host-img"
+                onerror="this.src=`https://res.cloudinary.com/raz-mister-toy/image/upload/v1670229254/wbgnvdojxyealwsczvec.png`"
             /></span>
           </div>
 
@@ -412,6 +413,10 @@ export default {
         }
       })
     },
+    defaultUrl(){
+      console.log('hello')
+      this.src='https://robohash.org/70072865?set=set1'
+    }
   },
   computed: {
     getStay() {

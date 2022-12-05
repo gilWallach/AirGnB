@@ -66,12 +66,14 @@ header {
           color: $clr4;
         }
     }
-    .search {
+    div.search {
       color: $clr8;
       font-size: 16px;
       border-radius: 50%;
       background-color: $clr1;
       padding: rem(4px);
+      width: 32px;
+      height: 32px;
     }
   }
   nav {
