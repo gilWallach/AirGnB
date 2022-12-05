@@ -59,7 +59,7 @@ export default {
     },
     shortName(txt) {
       if (txt.length > 24) {
-        return txt.substring(0, 24) + '...'
+        return txt.substring(0, 27) + '...'
       }
       else return txt
     },

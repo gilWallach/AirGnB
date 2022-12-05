@@ -143,90 +143,90 @@ function getLabels() {
       imageUrl:
         'https://a0.muscache.com/pictures/1b6a8b70-a3b6-48b5-88e1-2243d9172c06.jpg',
     },
-    // {
-    //   name: 'cabins',
-    //   displayName: 'Cabins',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg',
-    // },
-    // {
-    //   name: 'mansions',
-    //   displayName: 'Mansions',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/78ba8486-6ba6-4a43-a56d-f556189193da.jpg',
-    // },
-    // {
-    //   name: 'luxe',
-    //   displayName: 'Luxe',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/c8e2ed05-c666-47b6-99fc-4cb6edcde6b4.jpg',
-    // },
-    // {
-    //   name: 'design',
-    //   displayName: 'Design',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/50861fca-582c-4bcc-89d3-857fb7ca6528.jpg',
-    // },
-    // {
-    //   name: 'tree-houses',
-    //   displayName: 'Tree houses',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg',
-    // },
-    // {
-    //   name: 'tropical',
-    //   displayName: 'Tropical',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg',
-    // },
-    // {
-    //   name: 'creative-spaces',
-    //   displayName: 'Creative spaces',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/8a43b8c6-7eb4-421c-b3a9-1bd9fcb26622.jpg',
-    // },
-    // {
-    //   name: 'lakefront',
-    //   displayName: 'Lakefront',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/677a041d-7264-4c45-bb72-52bff21eb6e8.jpg',
-    // },
-    // {
-    //   name: 'ski-in-out',
-    //   displayName: 'Ski in/out',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/757deeaa-c78f-488f-992b-d3b1ecc06fc9.jpg',
-    // },
-    // {
-    //   name: 'tiny-homes',
-    //   displayName: 'Tiny homes',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/35919456-df89-4024-ad50-5fcb7a472df9.jpg',
-    // },
-    // {
-    //   name: 'beachfront',
-    //   displayName: 'Beachfront',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg',
-    // },
-    // {
-    //   name: 'off-the-grid',
-    //   displayName: 'Off the grid',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/9a2ca4df-ee90-4063-b15d-0de7e4ce210a.jpg',
-    // },
-    // {
-    //   name: 'amazing-pools',
-    //   displayName: 'Amazing pools',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg',
-    // },
-    // {
-    //   name: 'caves',
-    //   displayName: 'Caves',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg',
-    // },
+    {
+      name: 'cabins',
+      displayName: 'Cabins',
+      imageUrl:
+        'https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg',
+    },
+    {
+      name: 'mansions',
+      displayName: 'Mansions',
+      imageUrl:
+        'https://a0.muscache.com/pictures/78ba8486-6ba6-4a43-a56d-f556189193da.jpg',
+    },
+    {
+      name: 'luxe',
+      displayName: 'Luxe',
+      imageUrl:
+        'https://a0.muscache.com/pictures/c8e2ed05-c666-47b6-99fc-4cb6edcde6b4.jpg',
+    },
+    {
+      name: 'design',
+      displayName: 'Design',
+      imageUrl:
+        'https://a0.muscache.com/pictures/50861fca-582c-4bcc-89d3-857fb7ca6528.jpg',
+    },
+    {
+      name: 'tree-houses',
+      displayName: 'Tree houses',
+      imageUrl:
+        'https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg',
+    },
+    {
+      name: 'tropical',
+      displayName: 'Tropical',
+      imageUrl:
+        'https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg',
+    },
+    {
+      name: 'creative-spaces',
+      displayName: 'Creative spaces',
+      imageUrl:
+        'https://a0.muscache.com/pictures/8a43b8c6-7eb4-421c-b3a9-1bd9fcb26622.jpg',
+    },
+    {
+      name: 'lakefront',
+      displayName: 'Lakefront',
+      imageUrl:
+        'https://a0.muscache.com/pictures/677a041d-7264-4c45-bb72-52bff21eb6e8.jpg',
+    },
+    {
+      name: 'ski-in-out',
+      displayName: 'Ski in/out',
+      imageUrl:
+        'https://a0.muscache.com/pictures/757deeaa-c78f-488f-992b-d3b1ecc06fc9.jpg',
+    },
+    {
+      name: 'tiny-homes',
+      displayName: 'Tiny homes',
+      imageUrl:
+        'https://a0.muscache.com/pictures/35919456-df89-4024-ad50-5fcb7a472df9.jpg',
+    },
+    {
+      name: 'beachfront',
+      displayName: 'Beachfront',
+      imageUrl:
+        'https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg',
+    },
+    {
+      name: 'off-the-grid',
+      displayName: 'Off the grid',
+      imageUrl:
+        'https://a0.muscache.com/pictures/9a2ca4df-ee90-4063-b15d-0de7e4ce210a.jpg',
+    },
+    {
+      name: 'amazing-pools',
+      displayName: 'Amazing pools',
+      imageUrl:
+        'https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg',
+    },
+    {
+      name: 'caves',
+      displayName: 'Caves',
+      imageUrl:
+        'https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg',
+    },
     // {
     //   name: 'a-frames',
     //   displayName: 'A-frames',

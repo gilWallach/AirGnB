@@ -76,7 +76,7 @@
         }
 
         .price {
-            padding-top: em(6px);
+            padding-top: 6px;
             color: $clr2;
 
             span {
@@ -85,7 +85,7 @@
         }
 
         .title {
-            padding-top: em(12px);
+            padding-top: 12px;
 
             svg {
                 padding-inline-end: 3px;
@@ -94,6 +94,7 @@
             p {
                 font-family: airBnb-Med;
                 color: $clr2;
+                padding-bottom: 6px;
 
                 .rating{
                     margin-inline-start: 3px;

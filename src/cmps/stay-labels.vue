@@ -1,43 +1,31 @@
 <template>
-  <carousel :items-to-show="2.5" class="labels-container">
-    <slide v-for="label in labels" :key="label" class="single-label-container">
+  <Carousel :items-to-show="2.5">
+    <Slide v-for="label in labels" :key="label.displayName">
       <div @click="setFilterBy(label.displayName)" class="flex">
         <img :src="label.imageUrl" alt="">
         <span class="label-name">
           {{ label.displayName }}
         </span>
       </div>
-    </slide>
+    </Slide>
 
     <template #addons>
       <Navigation />
     </template>
-  </carousel>
+  </Carousel>
 </template>
 
 <script>
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
-import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import { defineComponent } from 'vue'
+import { Carousel, Navigation, Slide } from 'vue3-carousel'
 
-export default {
-  name: 'WrapAround',
+import 'vue3-carousel/dist/carousel.css'
+
+export default defineComponent({
+  name: 'Breakpoints',
   props: {
     labels: {
       type: Array,
-    },
-  },
-  data() {
-    return {
-      filterBy: {
-        label: ''
-      },
-    }
-  },
-  methods: {
-    setFilterBy(label) {
-      this.filterBy.label = label
-      this.$router.push({ path: '/s', query: { label } })
     },
   },
   components: {
@@ -45,5 +33,5 @@ export default {
     Slide,
     Navigation,
   },
-}
+})
 </script>

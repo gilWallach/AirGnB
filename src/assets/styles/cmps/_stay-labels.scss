@@ -90,13 +90,13 @@
   }
 }
 
-section.carousel.labels-container:has(div:first-of-type):has(ol):has(
-    li:first-child.carousel__slide--active
-  )
-  > button:first-of-type, 
-section.carousel.labels-container:has(div:first-of-type):has(ol):has(
-    li:last-child.carousel__slide--active
-  )
-  > button:last-of-type {
-  display: none;
-}
+// section.carousel.labels-container:has(div:first-of-type):has(ol):has(
+//     li:first-child.carousel__slide--active
+//   )
+//   > button:first-of-type, 
+// section.carousel.labels-container:has(div:first-of-type):has(ol):has(
+//     li:last-child.carousel__slide--active
+//   )
+//   > button:last-of-type {
+//   display: none;
+// }
