@@ -17,7 +17,7 @@ window.cs = stayService
 
 async function query(filterBy = { name: '', label: '', capacity: 0 }) {
   var stays = await storageService.query(STORAGE_KEY)
-  if (!stays?.length) _createStays1()
+  if (!stays?.length) _createStays()
   if (filterBy.name) {
     const regex = new RegExp(filterBy.name, 'i')
     stays = stays.filter(
@@ -284,7 +284,7 @@ function getLabels() {
   ]
 }
 
-async function _createStays1() {
+async function _createStays() {
   await storageService.post(STORAGE_KEY, {
     _id: '622f337a75c7d36e498aaaf8',
     name: 'Westin Kaanapali KORVN 2BR',
@@ -4493,7 +4493,7 @@ async function _createStays1() {
   })
 }
 
-// async function _createStays() {
+// async function _createStays_old() {
 //   await storageService.post(STORAGE_KEY, {
 //     _id: '10006546',
 //     name: "Gil's Amazing Private Island",
