@@ -55,7 +55,7 @@
             alt=""
           />
         </div>
-        <user-actions v-if="isShowUserActions" />
+        <user-actions v-if="showUserActions" />
       </nav>
       <section class="loggedin-user" v-if="loggedInUser">
         <router-link :to="`/user/${loggedInUser._id}`">
@@ -120,11 +120,11 @@ export default {
       const { capacity } = this.$route.query
       return +capacity ? `${capacity} guests` : ''
     },
+    showUserActions() {
+      return this.isShowUserActions
+    },
   },
   methods: {
-    doSomething() {
-      console.log('hi')
-    },
     handleScroll() {
       this.isSearchOpen = false
     },
@@ -133,7 +133,6 @@ export default {
     },
     selected(el) {
       let select
-      console.log(el)
       if (el === 'who') select = 'isGuestsSelected'
       else if (el === 'where') select = 'isWhereSelected'
       else select = 'isDateSelected'
@@ -141,6 +140,9 @@ export default {
     },
     onToggleUserActions() {
       this.isShowUserActions = !this.isShowUserActions
+    },
+    onCloseUserActions() {
+      this.isShowUserActions = false
     },
   },
   components: {
