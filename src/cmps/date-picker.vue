@@ -1,7 +1,6 @@
 <template>
     <div class="demo-date-picker">
         <div class="block">
-            <span class="header fs22" v-if="data">{{ data }}</span>
             <el-date-picker v-model="dates" type="daterange" range-separator="" start-placeholder="Add dates"
                 end-placeholder="Add dates" clear-icon :prefix-icon="customPrefix" :disabled-date="disabledDate"
                 @change="setDates" @calendar-change="showDate" format="MMM D" value-format="x" :editable="false"
@@ -14,11 +13,6 @@
 <script>
 
 export default {
-    props: {
-        data: {
-            type: String,
-        }
-    },
     data() {
         return {
             dates: [,],

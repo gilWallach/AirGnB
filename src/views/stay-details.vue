@@ -1,16 +1,13 @@
 <template>
   <div class="main-container-stay-details">
     <!-- SUB-HEADER floating element, appears when scrolling below gallery -->
-    <header
-      v-if="isShowSubHeader"
-      style="
+    <header v-if="isShowSubHeader" style="
         position: fixed;
         top: 0;
         height: 78px;
         width: 100%;
         background-color: antiquewhite;
-      "
-    >
+      ">
       HEADER
     </header>
     <!-- HEADER -->
@@ -23,10 +20,10 @@
       <div class="stay-details-container">
         <div class="details-ratings-container">
           <p class="rate">
-            <star /><span>&nbsp; {{getStay.reviews.length ? '4.82' : 'New' }} </span><span class="separator">·</span>
+            <star /><span>&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span><span class="separator">·</span>
           </p>
           <p>
-            <span class="reviews-amount">{{getStay.reviews.length +' '+ formatReviews }} </span>
+            <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }} </span>
             <span class="separator">·</span>
           </p>
           <p class="address">
@@ -36,19 +33,19 @@
 
         <!-- SHARE AND SAVE -->
         <div class="action-btns">
-          <div class="share action-btn"><share /> <span>Share</span></div>
-          <div class="save action-btn"><save /> <span>Save</span></div>
+          <div class="share action-btn">
+            <share /> <span>Share</span>
+          </div>
+          <div class="save action-btn">
+            <save /> <span>Save</span>
+          </div>
         </div>
       </div>
 
       <!-- IMAGE GALLERY -->
       <div class="gallery" ref="elGallery">
-        <img
-          v-for="(img, idx) in getStay.imgUrls.slice(0, 5)"
-          :src="img"
-          alt="stay-image"
-          :class="'gallery-img img' + idx"
-        />
+        <img v-for="(img, idx) in getStay.imgUrls.slice(0, 5)" :src="img" alt="stay-image"
+          :class="'gallery-img img' + idx" />
       </div>
 
       <!-- STAY SUMMARY AND DETAILS -->
@@ -65,13 +62,8 @@
                 {{ getStay.capacity + 3 }} guests
               </div>
             </div>
-            <span
-              ><img
-                :src="getStay.host.thumbnailUrl"
-                alt="host-image"
-                class="host-img"
-                onerror="this.src=`https://res.cloudinary.com/raz-mister-toy/image/upload/v1670229254/wbgnvdojxyealwsczvec.png`"
-            /></span>
+            <span><img :src="getStay.host.thumbnailUrl" alt="host-image" class="host-img"
+                onerror="this.src=`https://res.cloudinary.com/raz-mister-toy/image/upload/v1670229254/wbgnvdojxyealwsczvec.png`" /></span>
           </div>
 
           <div class="stay-highlights">
@@ -115,15 +107,21 @@
             <div class="amenities-list">
               <!-- STATIC AMENITIES LIST -->
               <div class="amenity-item">
-                <div class="amenity-logo"><kitchen /></div>
+                <div class="amenity-logo">
+                  <kitchen />
+                </div>
                 <div class="amenity-txt">Kitchen</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><wifi /></div>
+                <div class="amenity-logo">
+                  <wifi />
+                </div>
                 <div class="amenity-txt">Wifi</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><tv /></div>
+                <div class="amenity-logo">
+                  <tv />
+                </div>
                 <div class="amenity-txt">TV</div>
               </div>
               <div class="amenity-item">
@@ -139,15 +137,21 @@
                 <div class="amenity-txt">Private entrance</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><pool /></div>
+                <div class="amenity-logo">
+                  <pool />
+                </div>
                 <div class="amenity-txt">Pool</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><stove /></div>
+                <div class="amenity-logo">
+                  <stove />
+                </div>
                 <div class="amenity-txt">Stove</div>
               </div>
               <div class="amenity-item">
-                <div class="amenity-logo"><heating /></div>
+                <div class="amenity-logo">
+                  <heating />
+                </div>
                 <div class="amenity-txt">Heating</div>
               </div>
               <div class="amenity-item">
@@ -174,39 +178,45 @@
             <div class="modal-header flex justify-space-between align-center">
               <div>
                 <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
-                <span class="modal-header-price">{{getStay.price.toLocaleString('en-IN', { style: 'currency', currency: 'USD',maximumSignificantDigits: 1 })}}</span>
+                <span class="modal-header-price">{{ getStay.price.toLocaleString('en-IN', {
+                    style: 'currency', currency:
+                      'USD', maximumSignificantDigits: 1
+                  })
+                }}</span>
                 <span class="modal-header-text"> night</span>
               </div>
               <div class="rating-reviews flex" v-if="getStay.reviews.length">
-                <star /><span>&nbsp; 4.82 </span
-                ><span class="separator">&nbsp;·&nbsp;</span>
-                <span class="reviews-amount" >{{getStay.reviews.length +' '+ formatReviews }} </span>
+                <star /><span>&nbsp; 4.82 </span><span class="separator">&nbsp;·&nbsp;</span>
+                <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }} </span>
               </div>
             </div>
-            <div class="pax-dates-container" >
+            <div class="pax-dates-container">
               <div class="dates">
                 <div class="check-in flex column">
                   <label for="i">
                     <p>CHECK-IN</p>
-                    <p class="dates-txt">{{order.checkInDate || 'Add date'}}</p>
+                    <p class="dates-txt">{{ order.checkInDate || 'Add date' }}</p>
                   </label>
                 </div>
                 <div class="checkout flex column">
                   <label for="o">
-                  <p>CHECKOUT</p>
-                    <p class="dates-txt">{{order.checkOutDate || 'Add date'}}</p>
+                    <p>CHECKOUT</p>
+                    <p class="dates-txt">{{ order.checkOutDate || 'Add date' }}</p>
                   </label>
                 </div>
-                <div v-if="isDatesModalOpen" class="dates-modal flex column">
-                    <date-picker :data="'Select dates'" @set-dates="setDates"/>
+                <div class="dates-modal flex column">
+                  <date-picker @set-dates="setDates" />
                 </div>
               </div>
-              <div class="pax flex justify-space-between">
+              <div @click="(isGuestModalOpen = !isGuestModalOpen)" class="pax flex justify-space-between">
                 <div>
                   <p>GUESTS</p>
                   <p class="pax-txt">1 guest</p>
                 </div>
-                <div class="reserve-arrow"><arrowDown /></div>
+                <div class="reserve-arrow">
+                  <arrowDown />
+                </div>
+                <add-guests v-if="isGuestModalOpen"/>
               </div>
             </div>
             <!-- <button class="btn btn-reserve">Reserve</button> -->
@@ -244,8 +254,7 @@
         <div class="reviews-header">
           <div class="title">
             <div class="rating-reviews flex">
-              <star /><span>&nbsp; 4.82 </span
-              ><span class="separator">&nbsp;·&nbsp;</span>
+              <star /><span>&nbsp; 4.82 </span><span class="separator">&nbsp;·&nbsp;</span>
               <span class="reviews-amount">{{ getStay.reviews?.length }} </span>
             </div>
           </div>
@@ -309,11 +318,7 @@
         </div>
         <!-- REVIEWS DETAILS -->
         <div class="reviews-details" ref="reviewTest">
-          <review
-            v-for="review in getStay.reviews"
-            :review="review"
-            :key="review.id"
-          />
+          <review v-for="review in getStay.reviews" :review="review" :key="review.id" />
           <div class="more-reviews">
             <div class="btn-show-reviews">
               Show all {{ getStay.reviews?.length }} reviews
@@ -332,6 +337,7 @@
 </template>
 
 <script>
+import addGuests from '../cmps/add-guests.vue'
 import datePicker from '../cmps/date-picker.vue'
 import review from '../cmps/review.vue'
 import gradientButton from '../cmps/gradient-button.vue'
@@ -361,11 +367,11 @@ export default {
     return {
       galleryObserver: null,
       isShowSubHeader: false,
-      isDatesModalOpen:false,
-      order:{
-        checkInDate:null,
-        checkOutDate:null,
-        guests:1
+      isGuestModalOpen: false,
+      order: {
+        checkInDate: null,
+        checkOutDate: null,
+        guests: 1
       }
     }
   },
@@ -388,7 +394,7 @@ export default {
       throw new Error(err)
     }
   },
-  mounted() {},
+  mounted() { },
   methods: {
     onGalleryObserved(entries) {
       entries.forEach((entry) => {
@@ -403,7 +409,7 @@ export default {
         }
       })
     },
-    setDates(dates){
+    setDates(dates) {
       this.order.checkInDate = dates[0].toLocaleString().split(',')[0]
       this.order.checkOutDate = dates[1]?.toLocaleString().split(',')[0] || null
     }
@@ -412,8 +418,8 @@ export default {
     getStay() {
       return this.$store.getters.selectedStay
     },
-    formatReviews(){
-      return this.getStay.reviews.length >1 ? 'reviews' : 'review'
+    formatReviews() {
+      return this.getStay.reviews.length > 1 ? 'reviews' : 'review'
     },
     nextMonth() {
       const date = new Date()
@@ -423,6 +429,7 @@ export default {
     },
   },
   components: {
+    addGuests,
     datePicker,
     review,
     star,
