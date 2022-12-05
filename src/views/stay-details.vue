@@ -416,8 +416,10 @@ export default {
       return this.getStay.reviews.length >1 ? 'reviews' : 'review'
     },
     nextMonth() {
-      const month = new Date().toString().slice(4, 8)
-      return month
+      const date = new Date()
+      const month = date.getMonth()
+      date.setMonth(month + 1)
+      return date.toLocaleString('en-US', { month: 'short' })
     },
   },
   components: {
