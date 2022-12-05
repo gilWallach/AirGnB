@@ -23,10 +23,14 @@
       <div class="stay-details-container">
         <div class="details-ratings-container">
           <p class="rate">
-            <star /><span>&nbsp; {{getStay.reviews.length ? '4.82' : 'New' }} </span><span class="separator">·</span>
+            <star /><span
+              >&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span
+            ><span class="separator">·</span>
           </p>
           <p>
-            <span class="reviews-amount">{{getStay.reviews.length +' '+ formatReviews }} </span>
+            <span class="reviews-amount"
+              >{{ getStay.reviews.length + ' ' + formatReviews }}
+            </span>
             <span class="separator">·</span>
           </p>
           <p class="address">
@@ -174,31 +178,43 @@
             <div class="modal-header flex justify-space-between align-center">
               <div>
                 <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
-                <span class="modal-header-price">{{getStay.price.toLocaleString('en-IN', { style: 'currency', currency: 'USD',maximumSignificantDigits: 1 })}}</span>
+                <span class="modal-header-price">{{
+                  getStay.price.toLocaleString('en-IN', {
+                    style: 'currency',
+                    currency: 'USD',
+                    maximumSignificantDigits: 1,
+                  })
+                }}</span>
                 <span class="modal-header-text"> night</span>
               </div>
               <div class="rating-reviews flex" v-if="getStay.reviews.length">
                 <star /><span>&nbsp; 4.82 </span
                 ><span class="separator">&nbsp;·&nbsp;</span>
-                <span class="reviews-amount" >{{getStay.reviews.length +' '+ formatReviews }} </span>
+                <span class="reviews-amount"
+                  >{{ getStay.reviews.length + ' ' + formatReviews }}
+                </span>
               </div>
             </div>
-            <div class="pax-dates-container" >
+            <div class="pax-dates-container">
               <div class="dates">
                 <div class="check-in flex column">
                   <label for="i">
                     <p>CHECK-IN</p>
-                    <p class="dates-txt">{{order.checkInDate || 'Add date'}}</p>
+                    <p class="dates-txt">
+                      {{ order.checkInDate || 'Add date' }}
+                    </p>
                   </label>
                 </div>
                 <div class="checkout flex column">
                   <label for="o">
-                  <p>CHECKOUT</p>
-                    <p class="dates-txt">{{order.checkOutDate || 'Add date'}}</p>
+                    <p>CHECKOUT</p>
+                    <p class="dates-txt">
+                      {{ order.checkOutDate || 'Add date' }}
+                    </p>
                   </label>
                 </div>
                 <div v-if="isDatesModalOpen" class="dates-modal flex column">
-                    <date-picker :data="'Select dates'" @set-dates="setDates"/>
+                  <date-picker :data="'Select dates'" @set-dates="setDates" />
                 </div>
               </div>
               <div class="pax flex justify-space-between">
@@ -308,7 +324,7 @@
           </div>
         </div>
         <!-- REVIEWS DETAILS -->
-        <div class="reviews-details" ref="reviewTest">
+        <div class="reviews-details">
           <review
             v-for="review in getStay.reviews"
             :review="review"
@@ -321,10 +337,6 @@
           </div>
         </div>
       </div>
-
-      <!--!COMMENT OUT PRE BEFORE PUSH  -->
-      <!-- <pre>{{ getStay }}</pre> -->
-      <!--!COMMENT OUT PRE BEFORE PUSH  -->
     </section>
 
     <section v-else class="loading">Loading....</section>
@@ -361,12 +373,12 @@ export default {
     return {
       galleryObserver: null,
       isShowSubHeader: false,
-      isDatesModalOpen:false,
-      order:{
-        checkInDate:null,
-        checkOutDate:null,
-        guests:1
-      }
+      isDatesModalOpen: false,
+      order: {
+        checkInDate: null,
+        checkOutDate: null,
+        guests: 1,
+      },
     }
   },
   async created() {
@@ -403,17 +415,17 @@ export default {
         }
       })
     },
-    setDates(dates){
+    setDates(dates) {
       this.order.checkInDate = dates[0].toLocaleString().split(',')[0]
       this.order.checkOutDate = dates[1]?.toLocaleString().split(',')[0] || null
-    }
+    },
   },
   computed: {
     getStay() {
       return this.$store.getters.selectedStay
     },
-    formatReviews(){
-      return this.getStay.reviews.length >1 ? 'reviews' : 'review'
+    formatReviews() {
+      return this.getStay.reviews.length > 1 ? 'reviews' : 'review'
     },
     nextMonth() {
       const date = new Date()

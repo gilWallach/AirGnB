@@ -56,15 +56,15 @@ header {
     }
     input {
       cursor: pointer;
-        border: 0;
-        max-width: 93px;
-        text-align: center;
-        font-size: 14px;
-        font-family: "airBnb-Med";
-        &::placeholder {
-          font-family: airBnb-Reg;
-          color: $clr4;
-        }
+      border: 0;
+      max-width: 93px;
+      text-align: center;
+      font-size: 14px;
+      font-family: 'airBnb-Med';
+      &::placeholder {
+        font-family: airBnb-Reg;
+        color: $clr4;
+      }
     }
     div.search {
       color: $clr8;
@@ -83,6 +83,7 @@ header {
     width: rem(77px);
     outline: 1px solid $clr6;
     padding: 5px 5px 5px 12px;
+    position: relative;
     transition: box-shadow 0.2s ease;
     img {
       width: rem(30px);
