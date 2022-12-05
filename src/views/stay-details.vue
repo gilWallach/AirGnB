@@ -407,8 +407,9 @@ export default {
     onModalObserved(entries) {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) {
-          this.$refs.reviewTest.style.transform = 'rotate(180deg)'
-        } else this.$refs.reviewTest.style.transform = 'rotate(0deg)'
+          // this.modalInSubHeader = true
+          //   this.$refs.reviewTest.style.transform = 'rotate(180deg)'
+        }
       })
     },
   },
