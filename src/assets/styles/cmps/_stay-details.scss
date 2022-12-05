@@ -214,6 +214,10 @@
           margin: 0;
           padding: 0;
         }
+        p {
+          max-width: 100%;
+          line-height: 1.4em;
+        }
       }
 
       .amenities-container {
@@ -414,7 +418,6 @@
       }
     }
   }
-
   .reviews-container {
     font-family: airBnB-Reg;
     padding-top: 3.5em;
@@ -446,6 +449,43 @@
           .rate-container {
             font-size: em(12px, 15px);
             padding-right: em(120px, 15px);
+            gap: em(12px, 15px);
+          }
+          .kpis {
+            height: 4px;
+            width: em(152px);
+            background-color: $clr6;
+            border-radius: 2em;
+
+            .cleanliness,
+            .communication,
+            .check-in,
+            .accuracy,
+            .location,
+            .value {
+              height: 4px;
+              width: em(4.6/5 * 152px);
+              background-color: $clr2;
+              border-radius: 2em;
+            }
+            .cleanliness {
+              width: em(4.6/5 * 152px);
+            }
+            .communication {
+              width: em(5/5 * 152px);
+            }
+            .check-in {
+              width: em(4.8/5 * 152px);
+            }
+            .accuracy {
+              width: em(4.9/5 * 152px);
+            }
+            .location {
+              width: em(4.8/5 * 152px);
+            }
+            .value {
+              width: em(4.8/5 * 152px);
+            }
           }
         }
       }
