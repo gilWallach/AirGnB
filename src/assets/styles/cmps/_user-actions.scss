@@ -2,15 +2,25 @@
   position: absolute;
   top: em(51px);
   right: 0;
+  //   padding: em(16px);
 
   background-color: white;
 
   width: em(240px);
 
+  font-family: airBnB-Med;
+
   border-radius: 8px;
   box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px;
 
-  .actions-list {
-    font-family: airBnB-Reg;
+  .list-items {
+    list-style: none;
+    padding: 1em;
+
+    > li {
+      padding: em(5.5px) em(4px) em(19px);
+      //   padding-top: 5px;
+      //   padding-bottom: 15px;
+    }
   }
 }

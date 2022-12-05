@@ -1,0 +1,33 @@
+.login-signup-modal {
+  & > * {
+    padding: 0 em(18px) em(18px);
+  }
+
+  position: fixed;
+  top: 20.5%;
+  left: 50.7%;
+  margin-top: -128.25px;
+  margin-left: -284px;
+  z-index: 20;
+
+  width: em(532px);
+
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px;
+  font-family: airBnB-Med;
+  font-size: em(16px);
+
+  border-radius: 10px;
+
+  .header {
+    gap: 9em;
+    border-bottom: 1px solid rgb(235, 235, 235);
+
+    .close-btn {
+      padding: 0;
+    }
+    .center-heading {
+      align-self: center;
+    }
+  }
+}
