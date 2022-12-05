@@ -6,21 +6,21 @@
             </button>
             <h2 class="center-heading">Filters</h2>
         </div>
-        <div class="filters-container">
-            <!-- <div class="line">
-                <HistogramSlider :width="600" :bar-height="100" :data="data" />
-            </div> -->
-        </div>
-
-        <el-checkbox-group @change="setFilterBy" v-model="filterBy.type">
-            <el-checkbox label="Entire place" />
-            <p>A place all to yourself</p>
-            <el-checkbox label="Private room" />
-            <p>Your own room in a home or a hotel, plus some shared common spaces</p>
-            <el-checkbox label="Shared room" />
-            <p>A sleeping space and common areas that may be shared with others</p>
-        </el-checkbox-group>
-
+        <!-- <div class="filters-container">
+            <form @submit.prevent="setFilterBy">
+                <div>
+                    <legend>Type of place</legend>
+                    <input v-model="filterBy.roomType" type="checkbox" name="roomType" value="Entire place">Entire place<br>
+                    <p>A place all to yourself</p>
+                    <input v-model="filterBy.roomType" type="checkbox" name="roomType" value="Private room">Private room<br>
+                    <p>Your own room in a home or a hotel, plus some shared common spaces</p>
+                    <input v-model="filterBy.roomType" type="checkbox" name="roomType" value="Shared room">Shared room<br>
+                    <p>A sleeping space and common areas that may be shared with others</p>
+                    <br>
+                    <input type="submit" value="Submit now">
+                </div>
+            </form>
+        </div> -->
     </section>
 </template>
 
@@ -28,7 +28,6 @@
 // import { ref } from 'vue'
 
 import close from '../assets/svg/close.vue'
-import { ref } from 'vue'
 
 // import Vue from 'vue'
 // import HistogramSlider from 'vue-histogram-slider'
@@ -43,7 +42,7 @@ export default {
             filterBy: {
                 minPrice: 0,
                 maxPrice: 1500,
-                type: ref([]),
+                roomType: [],
             },
         }
     },
@@ -51,12 +50,17 @@ export default {
     methods: {
         setFilterBy() {
             var filter = this.filterBy
-            console.log(filter.type)
+            console.log(filter)
             // this.$store.commit({
             //     type: 'setFilterBy',
             //     filterBy: JSON.parse(JSON.stringify(filter))
             // })
             // this.$store.dispatch('loadStays')
+            this.filterBy = {
+                minPrice: 0,
+                maxPrice: 1500,
+                roomType: [],
+            }
         },
     },
     computed: {},

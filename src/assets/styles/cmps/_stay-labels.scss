@@ -1,10 +1,10 @@
-.carousel {
+.carousel .carousel__viewport {
   display: flex;
-  max-width: calc(100% - 90px);
+  max-width: 900px;
 
   button:not(.el-carousel__button, .el-carousel__arrow) {
-    padding: 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
     min-width: 28px !important;
     min-height: 28px !important;
     border: 1px solid $clr4;

@@ -1,8 +1,8 @@
 <template>
   <section class="main-layout-list">
     <div class="list-header-container main-layout-list" :class="{ 'scroll-shadow': scrollShadow }">
-      <div class="list-list-header flex align-center justify-space-between">
-        <stay-labels v-if="labels" :labels="labels" />
+      <div v-if="(labels && labels.length)" class="list-list-header flex align-center justify-space-between">
+        <stay-labels :labels="labels" />
 
         <button @click="openFilterModal" class="filter-btn flex align-center justify-center">
           <filter-icon />

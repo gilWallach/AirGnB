@@ -200,11 +200,11 @@ const stays = [
 const orders = [
   {
     _id: 'o1225',
-    hostId: 'u102',
+    hostId: '622f3401e36c59e6164fab4d',
     createdAt: 9898989,
     buyer: {
-      _id: 'u101',
-      fullname: 'User 1',
+      _id: '622f3401e36c59e6164fab4e',
+      fullname: 'Leo',
     },
     totalPrice: 160,
     startDate: '2025/10/15',
@@ -214,9 +214,9 @@ const orders = [
       kids: 1,
     },
     stay: {
-      _id: 'h102',
-      name: 'House Of Uncle My',
-      price: 80.0,
+      _id: '622f337a75c7d36e498aaaf8',
+      name: 'Westin Kaanapali KORVN 2BR',
+      price: 595,
     },
     msgs: [],
     status: 'pending', // pending, approved

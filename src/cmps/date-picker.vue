@@ -22,12 +22,14 @@ export default {
     },
     methods: {
         showDate(dates) {
+            console.log(dates);
+            this.$emit('set-dates',dates)
             const inTS = new Date(dates[0])?.getTime() || null
             const outTS = new Date(dates[1])?.getTime() || null
             // if(inTS) this.dates.push(inTS)
             // if (inTS) this.dates[0] = inTS
             // if (outTS) this.dates[1] = outTS
-            console.log(outTS);
+            // console.log(outTS);
             // this.dates = [inTS,outTS]
             // this.dates = dates
 
@@ -51,17 +53,9 @@ export default {
         customPrefix() {
             return 'h'
         },
-        isDateSelected() {
-            return this.$store.getters.isDateSelected
-        },
         setPopperClass(){
             return this.isCurrMonth ? 'curr-month' : ''
         }
     },
-    watch: {
-        isDateSelected() {
-            console.log('hello');
-        }
-    }
 }
 </script>
