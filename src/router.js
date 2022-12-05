@@ -9,7 +9,7 @@ import reviewApp from './views/review-app.vue'
 import loginSignup from './views/login-signup.vue'
 import userDetails from './views/user-details.vue'
 import orderConfirm from './views/order-confirm.vue'
-import backofficeList from './views/backoffice-list.vue'
+import ordersList from './views/orders-list.vue'
 
 const routes = [
   {
@@ -58,10 +58,9 @@ const routes = [
     component: userDetails
   },
   {
-    path: '/user/:id/backoffice',
-    // path: '/user/backoffice',
-    name: 'backoffice-list',
-    component: backofficeList
+    path: '/user/orders',
+    name: 'orders-list',
+    component: ordersList
   }
 ]
 

@@ -1,0 +1,130 @@
+import { storageService } from './async-storage.service.js'
+import { utilService } from './util.service.js'
+import { userService } from './user.service.js'
+
+const STORAGE_KEY = 'orders'
+
+export const orderService = {
+  query,
+  getById,
+  save,
+  remove,
+  getEmptyOrder,
+  addOrderMsg,
+}
+window.cs = orderService
+
+async function query(filterBy = { name: '', capacity: 0 }) {
+  var orders = await storageService.query(STORAGE_KEY)
+  if (!orders?.length) _createOrders()
+  // if (filterBy.name) {
+  //   const regex = new RegExp(filterBy.name, 'i')
+  //   orders = orders.filter(
+  //     (order) => regex.test(order.loc.city) || regex.test(order.loc.country)
+  //   )
+  // }
+  // if (filterBy.capacity) {
+  //   orders = orders.filter((order) => order.capacity >= filterBy.capacity)
+  // }
+
+  return orders
+}
+
+function getById(orderId) {
+  return storageService.get(STORAGE_KEY, orderId)
+}
+
+async function remove(orderId) {
+  await storageService.remove(STORAGE_KEY, orderId)
+}
+
+async function save(order) {
+  var savedOrder
+  if (order._id) {
+    savedOrder = await storageService.put(STORAGE_KEY, order)
+  } else {
+    // Later, owner is set by the backend
+    order.owner = userService.getLoggedinUser()
+    savedOrder = await storageService.post(STORAGE_KEY, order)
+  }
+  return savedOrder
+}
+
+async function addOrderMsg(orderId, txt) {
+  // Later, this is all done by the backend
+  const order = await getById(orderId)
+  if (!order.msgs) order.msgs = []
+
+  const msg = {
+    id: utilService.makeId(),
+    by: userService.getLoggedinUser(),
+    txt,
+  }
+  order.msgs.push(msg)
+  await storageService.put(STORAGE_KEY, order)
+
+  return msg
+}
+
+function getEmptyOrder() {
+  return {
+    name: '',
+    price: 0,
+    summary: '',
+  }
+}
+
+async function _createOrders() {
+  await storageService.post(STORAGE_KEY, 
+    {
+      _id: 'o1225',
+      hostId: '622f3401e36c59e6164fab4d',
+      createdAt: 9898989,
+      buyer: {
+        _id: '622f3401e36c59e6164fab4e',
+        fullname: 'Leo',
+      },
+      totalPrice: 1785,
+      startDate: '2025/10/15',
+      endDate: '2025/10/17',
+      guests: {
+        adults: 2,
+        kids: 1,
+      },
+      order: {
+        _id: '622f337a75c7d36e498aaaf8',
+        name: 'Westin Kaanapali KORVN 2BR',
+        price: 595,
+      },
+      msgs: [],
+      status: 'pending', // pending, approved
+    },)
+}
+
+// function getOrders() {
+//   return [
+//     {
+//       _id: 'o1225',
+//       hostId: '622f3401e36c59e6164fab4d',
+//       createdAt: 9898989,
+//       buyer: {
+//         _id: '622f3401e36c59e6164fab4e',
+//         fullname: 'Leo',
+//       },
+//       totalPrice: 1785,
+//       startDate: '2025/10/15',
+//       endDate: '2025/10/17',
+//       guests: {
+//         adults: 2,
+//         kids: 1,
+//       },
+//       order: {
+//         _id: '622f337a75c7d36e498aaaf8',
+//         name: 'Westin Kaanapali KORVN 2BR',
+//         price: 595,
+//       },
+//       msgs: [],
+//       status: 'pending', // pending, approved
+//     },
+//   ]
+// }

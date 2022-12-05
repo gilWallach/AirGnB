@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import { userStore } from './user.store.js'
 import { stayStore } from './stay.store.js'
 import { reviewStore } from './review.store.js'
+import { orderStore } from './orders-store.js'
 import { mainSearchStore } from './main-search-store.js'
 
 export const store = Vuex.createStore({
@@ -11,7 +12,8 @@ export const store = Vuex.createStore({
     userStore,
     stayStore,
     reviewStore,
-    mainSearchStore
+    mainSearchStore,
+    orderStore
   },
   state: {
     isList: true
