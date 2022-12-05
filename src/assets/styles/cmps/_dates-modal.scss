@@ -1,0 +1,35 @@
+.dates{
+    position: relative;
+    >div:not(:last-of-type){
+        z-index: 10;
+    }
+}
+
+.dates-modal{
+    position: absolute;
+    bottom: 0;
+    right: -10%;
+    min-width: 770px;
+    background-color: $clr8;
+    // box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+    padding: 24px 32px 16px;
+    text-align: left;
+    .el-date-editor.el-date-editor--daterange.el-input__wrapper{
+        input{
+            display: none;
+        }
+        span{
+            display: none;
+        }
+    }
+    .el-popper.is-pure.is-light.el-picker__popper{
+        transform: translate(0, 4px);    
+        border-radius: 0;
+        padding: rem(5px);
+        padding-top: rem(30px);
+        bottom: 0;
+        border: 0;
+        box-shadow: none;
+    }
+
+}

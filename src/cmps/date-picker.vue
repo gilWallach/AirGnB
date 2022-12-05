@@ -1,11 +1,11 @@
 <template>
     <div class="demo-date-picker">
-        <div class="block" >
-            <!-- <span class="demonstration">Default</span> -->
+        <div class="block">
+            <span class="header fs22" v-if="data">{{ data }}</span>
             <el-date-picker v-model="dates" type="daterange" range-separator="" start-placeholder="Add dates"
                 end-placeholder="Add dates" clear-icon :prefix-icon="customPrefix" :disabled-date="disabledDate"
                 @change="setDates" @calendar-change="showDate" format="MMM D" value-format="x" :editable="false"
-                @panel-change="panelChange" :popper-class="setPopperClass"  />
+                @panel-change="panelChange" :popper-class="setPopperClass" id="io" :teleported="false" />
         </div>
         <!-- If I want to add +- days next add :shortcuts property -->
     </div>
@@ -14,6 +14,11 @@
 <script>
 
 export default {
+    props: {
+        data: {
+            type: String,
+        }
+    },
     data() {
         return {
             dates: [,],
@@ -22,8 +27,7 @@ export default {
     },
     methods: {
         showDate(dates) {
-            console.log(dates);
-            this.$emit('set-dates',dates)
+            this.$emit('set-dates', dates)
             const inTS = new Date(dates[0])?.getTime() || null
             const outTS = new Date(dates[1])?.getTime() || null
             // if(inTS) this.dates.push(inTS)
@@ -53,7 +57,7 @@ export default {
         customPrefix() {
             return 'h'
         },
-        setPopperClass(){
+        setPopperClass() {
             return this.isCurrMonth ? 'curr-month' : ''
         }
     },
