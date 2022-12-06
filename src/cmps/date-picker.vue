@@ -3,8 +3,9 @@
         <div class="block">
             <el-date-picker v-model="dates" type="daterange" range-separator="" start-placeholder="Add dates"
                 end-placeholder="Add dates" clear-icon :prefix-icon="customPrefix" :disabled-date="disabledDate"
-                @change="setDates" @calendar-change="showDate" format="MMM D" value-format="x" :editable="false"
-                @panel-change="panelChange" :popper-class="setPopperClass" id="io" :teleported="false" />
+                @change="setDates" @calendar-change="showDate" format="MMM D" value-format="MM/DD/YYYY"
+                :editable="false" @panel-change="panelChange" :popper-class="setPopperClass" id="io"
+                :teleported="false" />
         </div>
         <!-- If I want to add +- days next add :shortcuts property -->
     </div>
@@ -35,6 +36,8 @@ export default {
         },
         setDates() {
             console.log(this.dates)
+            const dates = this.dates
+            this.$emit('filter-dates', dates)
         },
         disabledDate(time) {
             const date = new Date();
