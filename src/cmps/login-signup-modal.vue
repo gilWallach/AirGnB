@@ -2,12 +2,15 @@
   <section class="login-signup-modal">
     <div>
       <div class="header flex align-center">
-        <button class="close-btn flex align-center">
+        <button class="close-btn flex align-center custom">
           <close @click="$emit('closeModal')" />
         </button>
         <div class="center-heading">Log in or sign up</div>
       </div>
 
+      <main>
+        <h3 class="welcome-header header fs18">Welcome to AirGnB</h3>
+      </main>
       <form @submit.prevent="doLogin">
         <select v-model="loginCred.username">
           <option value="">Select User</option>

@@ -21,6 +21,7 @@
 
 <script>
 import loginSignupModal from './login-signup-modal.vue'
+import listModal from './list-modal.vue'
 export default {
   name: 'user-actions',
   props: {},
@@ -39,6 +40,7 @@ export default {
   computed: {},
   components: {
     loginSignupModal,
+    listModal,
   },
 }
 </script>
