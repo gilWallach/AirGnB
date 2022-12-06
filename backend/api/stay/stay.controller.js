@@ -6,9 +6,9 @@ async function getStays(req, res) {
   try {
     logger.debug('Getting Stays')
     const filterBy = {
-      txt: req.query.txt || '',
+      name: req.query.name || '',
     }
-    const stays = await stayService.query(filterBy)
+    const stays = await stayService.query(filterBy) // add filtering by capacity and country/city using the "name field"
     res.json(stays)
   } catch (err) {
     logger.error('Failed to get stays', err)

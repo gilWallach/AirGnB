@@ -3,10 +3,11 @@ const logger = require('../../services/logger.service')
 const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
 
-async function query(filterBy = { txt: '' }) {
+async function query(filterBy = { name: '' }) {
   try {
     const criteria = {
-      vendor: { $regex: filterBy.txt, $options: 'i' },
+      name: { $regex: filterBy.name, $options: 'i' },
+      //name, capacity/ date (in/out)
     }
     const collection = await dbService.getCollection('stay')
     var stays = await collection.find(criteria).toArray()

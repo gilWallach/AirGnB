@@ -24,6 +24,7 @@ const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const reviewRoutes = require('./api/review/review.routes')
 const stayRoutes = require('./api/stay/stay.routes')
+const orderRoutes = require('./api/order/order.routes')
 const { setupSocketAPI } = require('./services/socket.service')
 
 // routes
@@ -34,6 +35,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/review', reviewRoutes)
 app.use('/api/stay', stayRoutes)
+app.use('/api/order', orderRoutes)
 setupSocketAPI(http)
 
 // Make every server-side-route to match the index.html
@@ -46,5 +48,5 @@ app.get('/**', (req, res) => {
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030
 http.listen(port, () => {
-  logger.info('Server is running on port: ' + port)
+  logger.info('Server is running on https://127.0.0.1:' + port)
 })
