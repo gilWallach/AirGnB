@@ -44,7 +44,9 @@ async function save(order) {
     savedOrder = await storageService.put(STORAGE_KEY, order)
   } else {
     // Later, owner is set by the backend
-    order.owner = userService.getLoggedinUser()
+    order.buyer = userService.getLoggedinUser()
+    order.createdAt = Date.now()
+    delete order.buyer.imgUrl
     savedOrder = await storageService.post(STORAGE_KEY, order)
   }
   return savedOrder

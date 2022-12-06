@@ -27,14 +27,15 @@
                         </p>
                     </li>
                     <li class="flex align-center justify-space-between">
-                        <span>Total</span><span>{{ priceWithService }}</span></li>
+                        <span>Total</span><span>{{ priceWithService }}</span>
+                    </li>
                 </ul>
             </div>
             <div class="reservation-image"></div>
         </div>
         <div class="confirmation-btns flex align-center justify-center">
             <button>Back</button>
-            <gradient-button :data="'Confirm'" @click="setOrder"/>
+            <gradient-button :data="'Confirm'" @click="setOrder" />
         </div>
     </section>
 </template>
@@ -68,24 +69,25 @@ export default {
         const { guests, checkInDate, checkOutDate, totalNights, price, pricePerNight, priceWithService } = this.$route.query
         this.order.startDate = checkInDate
         this.order.endDate = checkOutDate
-        this.order.guests = guests
+        this.order.guests = +guests
         this.order.totalPrice = price
         this.order.totalNights = totalNights
         this.pricePerNight = pricePerNight
         this.priceWithService = priceWithService
     },
     methods: {
-        async setOrder(){
-            const order = {...this.order}
+        async setOrder() {
+            const order = { ...this.order }
             order.totalPrice = +order.totalPrice.substring(1)
-            order.status='pending'
+            order.status = 'pending'
             order.msgs = []
-            // order.buyer = 
+            const { _id, name, price } = this.stay
+            const miniStay = { _id, name, price }
+            order.stay = miniStay
             console.log(order);
-            return
-            try{
-                await this.$store.dispatch({type:'setOrder', order})
-            } catch (err){
+            try {
+                await this.$store.dispatch({ type: 'addOrder', order })
+            } catch (err) {
                 throw err
             }
         }
