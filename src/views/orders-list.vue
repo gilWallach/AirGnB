@@ -15,7 +15,7 @@
           <td>{{ currOrder.order.name }}</td>
           <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
           <td>
-            <select v-model="currOrder.status" name="status" :value="currOrder.status">
+            <select v-model="currOrder.status" name="status" :value="currOrder.status" @change="updateOrder(currOrder)">
               <option value="approved">Approved</option>
               <option value="pending">Pending</option>
               <option value="declined">Declined</option>
@@ -40,6 +40,7 @@ export default {
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
       this.orders = JSON.parse(JSON.stringify(this.$store.getters.orders))
+      console.log('from cmp', this.orders)
     } catch (err) {
       throw err
     }
@@ -65,9 +66,9 @@ export default {
         declined: status === 'declined',
       }
     },
-    setOrderStatus(order, value){
-      console.log(value)
-    }
+    async updateOrder(order) {
+      await this.$store.dispatch({ type: 'updateOrder', order })
+    },
   },
   computed: {
 
