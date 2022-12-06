@@ -14,18 +14,11 @@ export const orderService = {
 }
 window.cs = orderService
 
-async function query(filterBy = { name: '', capacity: 0 }) {
+async function query() {
   var orders = await storageService.query(STORAGE_KEY)
   if (!orders?.length) _createOrders()
-  // if (filterBy.name) {
-  //   const regex = new RegExp(filterBy.name, 'i')
-  //   orders = orders.filter(
-  //     (order) => regex.test(order.loc.city) || regex.test(order.loc.country)
-  //   )
-  // }
-  // if (filterBy.capacity) {
-  //   orders = orders.filter((order) => order.capacity >= filterBy.capacity)
-  // }
+  const loggedinUser = userService.getLoggedinUser()
+  orders = orders.filter((order) => order.hostId === loggedinUser._id)
 
   return orders
 }
@@ -75,7 +68,7 @@ function getEmptyOrder() {
 }
 
 function _createOrders() {
-  utilService.saveToStorage(STORAGE_KEY, 
+  utilService.saveToStorage(STORAGE_KEY,
     [{
       _id: 'o1225',
       hostId: '622f3401e36c59e6164fab4d',
@@ -100,7 +93,7 @@ function _createOrders() {
       status: 'pending', // pending, approved
     },
     {
-      _id: 'o1225',
+      _id: 'o1226',
       hostId: '622f3401e36c59e6164fab4d',
       createdAt: 9898989,
       buyer: {
@@ -116,14 +109,14 @@ function _createOrders() {
       },
       order: {
         _id: '622f337a75c7d36e498aaaf8',
-        name: 'Westin Kaanapali KORVN 2BR',
+        name: 'Yaron Charming Villa',
         price: 595,
       },
       msgs: [],
       status: 'approved', // pending, approved
     },
     {
-      _id: 'o1225',
+      _id: 'o1227',
       hostId: '622f3401e36c59e6164fab4d',
       createdAt: 9898989,
       buyer: {
@@ -139,15 +132,15 @@ function _createOrders() {
       },
       order: {
         _id: '622f337a75c7d36e498aaaf8',
-        name: 'Westin Kaanapali KORVN 2BR',
+        name: 'Muki Charming Duplex',
         price: 595,
       },
       msgs: [],
       status: 'approved', // pending, approved
     },
     {
-      _id: 'o1225',
-      hostId: '622f3401e36c59e6164fab4d',
+      _id: 'o1228',
+      hostId: '622f3401e36c59e6164fa555',
       createdAt: 9898989,
       buyer: {
         _id: '622f3401e36c59e6164fab4e',
@@ -162,7 +155,7 @@ function _createOrders() {
       },
       order: {
         _id: '622f337a75c7d36e498aaaf8',
-        name: 'Westin Kaanapali KORVN 2BR',
+        name: 'Puki Charming Duplex',
         price: 595,
       },
       msgs: [],

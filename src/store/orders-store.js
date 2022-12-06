@@ -80,6 +80,7 @@ export const orderStore = {
         },
         async updateOrder(context, { order }) {
             try {
+                console.log('from update', order)
                 order = await orderService.save(order)
                 context.commit(getActionUpdateOrder(order))
                 return order
@@ -91,6 +92,7 @@ export const orderStore = {
         async loadOrders(context, { filterBy }) {
             try {
                 const orders = await orderService.query(filterBy)
+                console.log('from load', orders)
                 context.commit({ type: 'setOrders', orders })
             } catch (err) {
                 console.log('orderStore: Error in loadOrders', err)
