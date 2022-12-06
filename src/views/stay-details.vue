@@ -215,9 +215,8 @@
                   <date-picker @set-dates="setDates" />
                 </div>
               </div>
-              <div @click.stop="isGuestModalOpen = !isGuestModalOpen"
-              :class="{'selected':isGuestModalOpen}" 
-              class="pax flex justify-space-between">
+              <div @click.stop="isGuestModalOpen = !isGuestModalOpen" :class="{ 'selected': isGuestModalOpen }"
+                class="pax flex justify-space-between">
                 <div>
                   <p>GUESTS</p>
                   <p class="pax-txt">{{ order.guests }} guest</p>
@@ -402,6 +401,10 @@ export default {
     } catch (err) {
       throw new Error(err)
     }
+    const { startDate,
+      endDate } = this.$route.query
+    this.order.checkInDate = startDate
+    this.order.checkOutDate = endDate
   },
   mounted() { },
   methods: {
