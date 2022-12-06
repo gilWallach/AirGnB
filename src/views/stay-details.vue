@@ -226,7 +226,7 @@
                   <arrow-down v-else />
                 </div>
                 <transition name="fade">
-                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" />
+                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" :adultNum="1" />
                 </transition>
               </div>
             </div>
@@ -377,8 +377,8 @@ export default {
       isShowSubHeader: false,
       isGuestModalOpen: false,
       order: {
-        checkInDate: null,
-        checkOutDate: null,
+        checkInDate: new Date().toLocaleString().split(',')[0],
+        checkOutDate: this.setDay().toLocaleString().split(',')[0],
         guests: 1,
       },
     }
@@ -427,6 +427,12 @@ export default {
     doReserve() {
       const { guests, checkInDate, checkOutDate } = this.order
       this.$router.push({ path: '/order-confirm', query: { guests, checkInDate, checkOutDate } })
+    },
+    setDay() {
+      const date = new Date()
+      const day = date.getDate()
+      date.setDate(day + 3)
+      return date
     }
   },
   computed: {
