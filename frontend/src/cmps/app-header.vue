@@ -1,13 +1,9 @@
 <template>
-  <div
-    @click="unSelectElements"
-    class="header-container"
-    :class="{
-      'main-layout-list': isList,
-      'main-container-stay-details': !isList,
-      'search-open': isSearchOpen,
-    }"
-  >
+  <div @click="unSelectElements" class="header-container" :class="{
+    'main-layout-list': isList,
+    'main-container-stay-details': !isList,
+    'search-open': isSearchOpen,
+  }">
     <header class="main-header flex align-center justify-between">
       <div class="logo-container">
         <router-link to="/">
@@ -17,11 +13,7 @@
           </span>
         </router-link>
       </div>
-      <div
-        v-if="!isSearchOpen"
-        class="mini-search flex align-center"
-        @click.stop="isSearchOpen = !isSearchOpen"
-      >
+      <div v-if="!isSearchOpen" class="mini-search flex align-center" @click.stop="isSearchOpen = !isSearchOpen">
         <button @click="selected('where')">Start your search</button>
         <button @click="selected('where')">{{ where }}</button>
         <div class="break-line"></div>
@@ -29,12 +21,7 @@
         <div class="break-line"></div>
         <!-- <button>{{ guests }}</button> -->
         <div @click="selected('who')">
-          <input
-            :value="guests"
-            type="text"
-            placeholder="Add guests"
-            disabled
-          />
+          <input :value="guests" type="text" placeholder="Add guests" disabled />
         </div>
         <div class="search flex align-center justify-center">
           <search />
@@ -44,21 +31,12 @@
       <router-link to="/review">Reviews</router-link>
       <router-link to="/chat">Chat</router-link>
       <router-link to="/login">Login / Signup</router-link> -->
-      <nav
-        class="main-nav flex align-center justify-space-between"
-        @click="onToggleUserActions"
-      >
+      <nav class="main-nav flex align-center justify-space-between" @click="onToggleUserActions">
         <hamburger />
         <div class="profile-img flex align-center">
-          <img
-            src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
-            alt=""
-          />
+          <img src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3" alt="" />
         </div>
-        <user-actions
-          v-if="showUserActions"
-          @closeUserActions="closeUserActions"
-        />
+        <user-actions v-if="showUserActions" @closeUserActions="closeUserActions" />
       </nav>
       <!-- <section class="loggedin-user" v-if="loggedInUser">
         <router-link :to="`/user/${loggedInUser._id}`">
@@ -69,25 +47,14 @@
       </section> -->
     </header>
     <transition name="fade">
-      <secondary-header
-        v-if="isSearchOpen"
-        @close-search="isSearchOpen = false"
-      />
+      <secondary-header v-if="isSearchOpen" @close-search="isSearchOpen = false" />
     </transition>
   </div>
   <transition name="fade">
-    <div
-      class="main-screen"
-      v-if="isSearchOpen"
-      @click="isSearchOpen = false"
-    ></div>
+    <div class="main-screen" v-if="isSearchOpen" @click="isSearchOpen = false"></div>
   </transition>
   <transition name="fade">
-    <div
-      class="main-screen-transparent"
-      v-if="isShowWhiteScreen"
-      @click="closeUserActions"
-    ></div>
+    <div class="main-screen-transparent" v-if="isShowWhiteScreen" @click="closeUserActions"></div>
   </transition>
 </template>
 <script>
@@ -125,8 +92,18 @@ export default {
         : 'Anywhere'
     },
     when() {
-      const {startDate, endDate} = this.$route.query
-      return startDate? startDate +" - " + endDate : 'Any week'
+      const { startDate, endDate } = this.$route.query
+      if (!startDate) return 'Any week'
+      const inDate = new Date(startDate)
+      const outDate = new Date(endDate)
+      const inMonth = new Intl.DateTimeFormat('en', { month: 'short' }).format(inDate)
+      const outMonth = new Intl.DateTimeFormat('en', { month: 'short' }).format(outDate)
+      console.log(inMonth, outMonth);
+      const inDay = inDate.getDate()
+      const outDay = outDate.getDate()
+      const strDates = inMonth === outMonth ?
+        inMonth + ' ' + inDay + " - " + outDay : `${inMonth} ${inDay} - ${outMonth} ${outDay}`
+      return strDates
     },
     guests() {
       const { capacity } = this.$route.query
