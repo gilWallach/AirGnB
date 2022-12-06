@@ -1,54 +1,45 @@
 <template>
-  <section class="backoffice-list">
+  <section v-if="orders" class='orders-list main-layout-list'>
     <h1 class="fs22"> Reservation</h1>
-    <el-table ref="singleTableRef" :data="formattedOrders" highlight-current-row style="width: 100%">
-      <!-- <el-table ref="singleTableRef" :data="tableData" highlight-current-row style="width: 100%"
-      @current-change="handleCurrentChange"> -->
-      <!-- <el-table-column type="index" width="50" /> -->
-      <el-table-column property="status" label="Status" width="80" />
-      <el-table-column property="guests" label="Guests" width="120" />
-      <el-table-column property="startDate" label="Check-in" />
-      <el-table-column property="endDate" label="Check-out" />
-      <el-table-column property="createdAt" label="Booked" />
-      <el-table-column property="listing" label="Listing" />
-      <el-table-column property="totalPrice" label="Total payout" />
-      <el-table-column property="action" label="Actions" />
-    </el-table>
-    <!-- <div style="margin-top: 20px">
-      <el-button @click="setCurrent(tableData[1])">Select second row</el-button>
-      <el-button @click="setCurrent()">Clear selection</el-button>
-    </div> -->
+    <div class="list">
+      <table>
+        <tr>
+          <th v-for="hr in tableHeadings" class="fs16">{{ hr }}</th>
+        </tr>
+        <tr v-for="currOrder in orders">
+          <td :class="styleStatus(currOrder.status)" class="fs18 bold">{{ currOrder.status }}</td>
+          <td>{{ formatGuests(currOrder.guests) }}</td>
+          <td>{{ currOrder.startDate }}</td>
+          <td>{{ currOrder.endDate }}</td>
+          <td>{{ formatCreatedAt(currOrder.createdAt) }}</td>
+          <td>{{ currOrder.order.name }}</td>
+          <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
+          <td>
+            <select v-model="currOrder.status" name="status" :value="currOrder.status">
+              <option value="approved">Approved</option>
+              <option value="pending">Pending</option>
+              <option value="declined">Declined</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
   </section>
 </template>
-
 <script>
-// import { ref } from 'vue'
-import { ElTable } from 'element-plus'
-import StayApp from './stay-app.vue'
-
 export default {
+  name: 'orders-list',
+  props: {},
   data() {
     return {
-      User: {
-        status: '',
-        guests: null,
-        startDate: '',
-        endDate: '',
-        createdAt: null,
-        listing: null,
-        totalPrice: '',
-      },
+      tableHeadings: ['Status', 'Guests', 'Check-in', 'Check-out', 'Booked', 'Listing', 'Total Payout', 'Actions'],
       orders: null,
-      formattedOrders: null
     }
   },
   async created() {
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
       this.orders = this.$store.getters.orders
-      console.log(this.orders)
-      this.formattedOrders = this.formatOrders
-      console.log(this.formattedOrders)
     } catch (err) {
       throw err
     }
@@ -57,64 +48,30 @@ export default {
     formatGuests(guests) {
       const guestsArr = Object.values(guests)
       return guestsArr.reduce((acc, n) => acc + n, 0)
+    },
+    formatCreatedAt(createdAt) {
+      return new Date(createdAt).toLocaleDateString('en-US')
+    },
+    formatTotalPrice(totalPrice) {
+      return (totalPrice).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      })
+    },
+    styleStatus(status){
+      return {
+        approved: status === 'approved',
+        pending: status === 'pending',
+        declined: status === 'declined',
+      }
+    },
+    setOrderStatus(order, value){
+      console.log(value)
     }
   },
   computed: {
-    formatOrders() {
-      return this.orders.map(currOrder => {
-        const { status, guests, startDate, endDate, createdAt, order, totalPrice } = currOrder
-        return {
-          status,
-          guests: this.formatGuests(guests),
-          startDate,
-          endDate,
-          createdAt: new Date(createdAt).toLocaleDateString('en-US'),
-          listing: order.name,
-          totalPrice: (totalPrice).toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          })
-        }
-      })
-    }
-  }
-}
 
-// const currentRow = ref()
-// const singleTableRef = ref < InstanceType < typeof ElTable >> ()-- >
-</script>
-
-<!-- <script lang="ts" setup>
-import { ref } from 'vue'
-import { ElTable } from 'element-plus'
-
-interface User {
-  status: string
-  guests: string
-  startDate: string
-  endDate: string
-  createdAt: string
-  listing: string
-  totalPrice: string
-}
-
-const currentRow = ref()
-const singleTableRef = ref<InstanceType<typeof ElTable>>() -->
-
-<!-- // const setCurrent = (row?: User) => {
-//   singleTableRef.value!.setCurrentRow(row)
-// }
-// const handleCurrentChange = (val: User | undefined) => {
-//   currentRow.value = val
-// }
-const tableData: User[] = [
-  {
-    status: '2016-05-03',
-    guests: 'Tom',
-    startDate: 'No. 189, Grove St, Los Angeles',
-    endDate: 'No. 189, Grove St, Los Angeles',
-    createdAt: 'No. 189, Grove St, Los Angeles',
-    listing: 'No. 189, Grove St, Los Angeles',
-    totalPrice: 'No. 189, Grove St, Los Angeles',
   },
-] -->
+  components: {}
+}
+</script>

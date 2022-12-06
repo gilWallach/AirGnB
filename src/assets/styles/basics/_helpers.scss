@@ -30,8 +30,16 @@
   font-size: em(22px);
 }
 
+.bold{
+  font-family: airBnb-Med;
+}
+
 .text-center {
   text-align: center;
+}
+
+.l-grey{
+  color: $clr5;
 }
 // flex helpers
 

@@ -30,15 +30,11 @@ export function getActionAddOrderMsg(orderId) {
 export const orderStore = {
     state: {
         orders: [],
-        labels: [],
         selectedOrder: null,
     },
     getters: {
         orders({orders}) {
             return orders
-        },
-        labels({ labels }) {
-            return labels
         },
         selectedOrder(state) {
             return state.selectedOrder
@@ -47,9 +43,6 @@ export const orderStore = {
     mutations: {
         setOrders(state, { orders }) {
             state.orders = orders
-        },
-        setLabels(state, { labels }) {
-            state.labels = labels
         },
         addOrder(state, { order }) {
             state.orders.push(order)
@@ -101,15 +94,6 @@ export const orderStore = {
                 context.commit({ type: 'setOrders', orders })
             } catch (err) {
                 console.log('orderStore: Error in loadOrders', err)
-                throw err
-            }
-        },
-        async loadLabels(context) {
-            try {
-                const labels = await orderService.getLabels()
-                context.commit({ type: 'setLabels', labels })
-            } catch (err) {
-                console.log('orderStore: Error in loadLabels', err)
                 throw err
             }
         },

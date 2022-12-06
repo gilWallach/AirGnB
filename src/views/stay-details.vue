@@ -1,15 +1,14 @@
 <template>
   <div class="main-container-stay-details" @click="(isGuestModalOpen = false)">
     <!-- SUB-HEADER floating element, appears when scrolling below gallery -->
-    <header v-if="isShowSubHeader" style="
-        position: fixed;
-        top: 0;
-        height: 78px;
-        width: 100%;
-        background-color: antiquewhite;
-      ">
-      HEADER
-    </header>
+    <div class="main-container-stay-details sticky-header-container">
+      <header v-if="isShowSubHeader" class="sticky-header">
+        <button class="fs14 bold btn-sticky-nav">Photos</button>
+        <button class="fs14 bold btn-sticky-nav">Amenities</button>
+        <button class="fs14 bold btn-sticky-nav">Reviews</button>
+        <button class="fs14 bold btn-sticky-nav">Location</button>
+      </header>
+    </div>
     <!-- HEADER -->
     <section v-if="getStay" class="stay-details">
       <div class="details-header">
@@ -226,7 +225,7 @@
                   <arrow-down v-else />
                 </div>
                 <transition name="fade">
-                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" />
+                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" :adultNum="1" />
                 </transition>
               </div>
             </div>
@@ -377,8 +376,8 @@ export default {
       isShowSubHeader: false,
       isGuestModalOpen: false,
       order: {
-        checkInDate: null,
-        checkOutDate: null,
+        checkInDate: new Date().toLocaleString().split(',')[0],
+        checkOutDate: this.setDay().toLocaleString().split(',')[0],
         guests: 1,
       },
     }
@@ -427,6 +426,12 @@ export default {
     doReserve() {
       const { guests, checkInDate, checkOutDate } = this.order
       this.$router.push({ path: '/order-confirm', query: { guests, checkInDate, checkOutDate } })
+    },
+    setDay() {
+      const date = new Date()
+      const day = date.getDate()
+      date.setDate(day + 3)
+      return date
     }
   },
   computed: {
