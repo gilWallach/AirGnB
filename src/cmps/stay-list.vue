@@ -22,8 +22,8 @@
         v-for="stay in stays"
         :key="stay._id"
         :stay="stay"
-        @addToWishlist="addToWishlist"
         :date="date"
+        @addToWishlist="addToWishlist"
       />
     </ul>
 
@@ -77,20 +77,20 @@ export default {
   },
 
   mounted() {
-    this.listObserver = new IntersectionObserver(this.onListObserved, {
-      rootMargin: '200px 0px 0px',
-      threshold: 0,
-    })
+    // this.listObserver = new IntersectionObserver(this.onListObserved, {
+    //   rootMargin: '200px 0px 0px',
+    //   threshold: 0,
+    // })
     // this.listObserver.root.style.border = "2px solid #44aa44";
-    this.listObserver.observe(this.$refs.list)
+    // this.listObserver.observe(this.$refs.list)
   },
   methods: {
-    onListObserved(entries) {
-      entries.forEach((entry) => {
-        // entry.target.style.opacity = entry.intersectionRatio
-        this.scrollShadow = entry.isIntersecting ? true : false
-      })
-    },
+    // onListObserved(entries) {
+    //   entries.forEach((entry) => {
+    //     // entry.target.style.opacity = entry.intersectionRatio
+    //     this.scrollShadow = entry.isIntersecting ? true : false
+    //   })
+    // },
     addToWishlist(stayId) {
       this.isWishlist = true
       this.isModalOpen = true

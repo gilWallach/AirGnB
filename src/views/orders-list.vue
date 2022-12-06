@@ -7,6 +7,7 @@
           <th v-for="hr in tableHeadings" class="fs16">{{ hr }}</th>
         </tr>
         <tr v-for="currOrder in orders">
+          <td><img :src="getBuyerImgUrl(currOrder.buyer._id)" alt=""></td>
           <td :class="styleStatus(currOrder.status)" class="fs18 bold">{{ currOrder.status }}</td>
           <td>{{ formatGuests(currOrder.guests) }}</td>
           <td>{{ currOrder.startDate }}</td>
@@ -40,12 +41,14 @@ export default {
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
       this.orders = JSON.parse(JSON.stringify(this.$store.getters.orders))
-      console.log('from cmp', this.orders)
     } catch (err) {
       throw err
     }
   },
   methods: {
+    async getBuyerImgUrl(buyerId){
+      await this.$store.dispatch({ type: 'getUserById', buyerId })
+    },
     formatGuests(guests) {
       const guestsArr = Object.values(guests)
       if(!guestsArr.length) return guests

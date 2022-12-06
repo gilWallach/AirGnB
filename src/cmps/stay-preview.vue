@@ -19,7 +19,7 @@
         </div>
         <p>{{ stay.name }}</p>
         <p>{{ stay.capacity }} beds</p>
-        <p>Dec 4-9</p>
+        <p v-if="!date">Dec 4-9</p>
         <p class="price">
           <span>${{ stay.price?.toLocaleString() }}</span> night
         </p>
@@ -50,8 +50,13 @@ export default {
   },
   methods: {
     goToDetails(stayId) {
-      const { startDate, endDate } = this.date
-      let route = this.$router.resolve({ path: `/stay/${stayId}`, query: { startDate, endDate } });
+      let route
+      if (this.date) {
+        const { startDate, endDate } = this.date
+        route = this.$router.resolve({ path: `/stay/${stayId}`, query: { startDate, endDate } })
+      }
+      // console.log(this.date)
+      route = this.$router.resolve({ path: `/stay/${stayId}`})
       window.open(route.href);
     },
   },

@@ -83,6 +83,15 @@ export const userStore = {
         throw err
       }
     },
+    async getUserById({ commit }, {buyerId} ) {
+      try {
+        const user = await userService.getById(buyerId)
+        return user
+      } catch (err) {
+        console.log('userStore: Error in getUserById', err)
+        throw err
+      }
+    },
     async loadAndWatchUser({ commit }, { userId }) {
       try {
         const user = await userService.getById(userId)
