@@ -3,7 +3,7 @@
         <div class="block">
             <el-date-picker v-model="dates" type="daterange" range-separator="" start-placeholder="Add dates"
                 end-placeholder="Add dates" clear-icon :prefix-icon="customPrefix" :disabled-date="disabledDate"
-                @change="setDates" @calendar-change="showDate" format="MMM D" value-format="MM/DD/YYYY"
+                @calendar-change="showDate" format="MMM D" value-format="MM/DD/YYYY"
                 :editable="false" @panel-change="panelChange" :popper-class="setPopperClass" id="io"
                 :teleported="false" />
         </div>
@@ -23,21 +23,6 @@ export default {
     methods: {
         showDate(dates) {
             this.$emit('set-dates', dates)
-            const inTS = new Date(dates[0])?.getTime() || null
-            const outTS = new Date(dates[1])?.getTime() || null
-            // if(inTS) this.dates.push(inTS)
-            // if (inTS) this.dates[0] = inTS
-            // if (outTS) this.dates[1] = outTS
-            // console.log(outTS);
-            // this.dates = [inTS,outTS]
-            // this.dates = dates
-
-            // console.log('date:',this.value1[0])
-        },
-        setDates() {
-            console.log(this.dates)
-            const dates = this.dates
-            this.$emit('filter-dates', dates)
         },
         disabledDate(time) {
             const date = new Date();

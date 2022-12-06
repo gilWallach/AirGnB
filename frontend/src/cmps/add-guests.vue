@@ -7,12 +7,12 @@
                     <span>Ages 13 or above</span>
                 </div>
                 <div class="counter flex align-center">
-                    <button :disabled="(!adults)" @click.stop="updateCount('adults', -1)"
+                    <button :disabled="(!guests.adults)" @click.stop="updateCount('adults', -1)"
                         class="round custom flex align-center justify-center">
                         <minus />
                     </button>
-                    <span>{{ adults }}</span>
-                    <button :disabled="(capacity === 16)" @click.stop="updateCount('adults', 1)"
+                    <span>{{ guests.adults }}</span>
+                    <button :disabled="(guests.capacity === 16)" @click.stop="updateCount('adults', 1)"
                         class="round custom flex align-center justify-center">
                         <plus />
                     </button>
@@ -24,12 +24,12 @@
                     <span>Ages 2-12</span>
                 </div>
                 <div class="counter flex align-center">
-                    <button :disabled="(!children || capacity === 16)" @click.stop="updateCount('children', -1)"
-                        class="round custom flex align-center justify-center">
+                    <button :disabled="(!guests.children || guests.capacity === 16)"
+                        @click.stop="updateCount('children', -1)" class="round custom flex align-center justify-center">
                         <minus />
                     </button>
-                    <span>{{ children }}</span>
-                    <button :disabled="(capacity === 16)" @click.stop="updateCount('children', 1)"
+                    <span>{{ guests.children }}</span>
+                    <button :disabled="(guests.capacity === 16)" @click.stop="updateCount('children', 1)"
                         class="round custom flex align-center justify-center">
                         <plus />
                     </button>
@@ -41,12 +41,12 @@
                     <span>Under 2</span>
                 </div>
                 <div class="counter flex align-center">
-                    <button :disabled="(!infants)" @click.stop="updateCount('infants', -1)"
+                    <button :disabled="(!guests.infants)" @click.stop="updateCount('infants', -1)"
                         class="round custom flex align-center justify-center">
                         <minus />
                     </button>
-                    <span>{{ infants }}</span>
-                    <button :disabled="(capacity === 21)" @click.stop="updateCount('infants', 1)"
+                    <span>{{ guests.infants }}</span>
+                    <button :disabled="(guests.capacity === 21)" @click.stop="updateCount('infants', 1)"
                         class="round custom flex align-center justify-center">
                         <plus />
                     </button>
@@ -63,27 +63,36 @@ export default {
     name: 'add-guests',
     emits: ['guests-update'],
     props: {
-        adultNum: {
-            type: Number
+        allGuests: {
+            type: Object
         }
     },
     data() {
         return {
-            adults: this.adultNum || 0,
-            children: 0,
-            infants: 0,
-            capacity: this.adultNum || 0
+            guests: this.allGuests || {
+                adults: 0,
+                children: 0,
+                infants: 0,
+                capacity: 0,
+            },
         }
     },
-    created() { },
+    created() {
+        const { guests } = this.$route.query
+        if (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests)).length) this.guests = JSON.parse(guests)
+    },
     methods: {
         updateCount(type, diff) {
-            this[type] += diff
-            this.capacity += diff
-            this.$emit('guests-update', this.capacity)
+            this.guests[type] += diff
+            this.guests.capacity += diff
+            this.$emit('guests-update', { ...this.guests })
         }
     },
-    computed: {},
+    computed: {
+        // getCapacity() {
+        //     return this.guests.adults + this.guests.children + this.guests.infants
+        // }
+    },
     components: {
         minus,
         plus

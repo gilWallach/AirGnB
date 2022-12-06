@@ -2,27 +2,50 @@
     <div class="secondary-header-container">
         <header :class="{ selected: $store.getters.isElementSelected }"
             class="secondary-header big-search flex align-center justify-space-between">
-            <label :class="{ selected: $store.getters.isWhereSelected }" class="flex column full"
+            <label :class="{ selected: $store.getters.isWhereSelected }" class="flex column full "
                 @click.stop.prevent="selected('where')">
                 <p>Where</p>
-                <input ref="input" v-model="filterBy.name" type="text" placeholder="Search destinations">
+                <input class="where" ref="input" v-model="filterBy.name" type="text" placeholder="Search destinations">
             </label>
             <div class="break-line"></div>
-            <label class="flex column date" :class="{ selected: $store.getters.isDateSelected }"
+            <!-- <label class="flex column date" :class="{ selected: $store.getters.isDateSelected }"
                 @click.stop.prevent="selected('date')">
                 <div class="check-in-out flex align-center">
                     <p class="full">Check in</p>
                     <p class="full">Check out</p>
                 </div>
-                <date-picker @filter-dates="setDatesFilter" />
-            </label>
+            <date-picker @filter-dates="setDatesFilter" /> -->
+            <div class="flex header-dates align-center">
+                <div @click.stop="selected('date')" class="check-in flex column"
+                    :class="{ selected: $store.getters.isDateSelected }">
+                    <label for="i">
+                        <p>Check in</p>
+                        <input disabled @click.prevent type="text" class="dates-txt" :value="inDate"
+                            placeholder="Add dates" />
+                    </label>
+                </div>
+                <div class="break-line"></div>
+                <div @click.stop="selected('date')" class="checkout flex column"
+                    :class="{ selected: $store.getters.isDateSelected }">
+                    <label for="o">
+                        <p>Check out</p>
+                        <input disabled @click.prevent type="text" class="dates-txt" :value="outDate"
+                            placeholder="Add dates" />
+                    </label>
+                </div>
+                <div class="header-dates-modal flex column">
+                    <date-picker @set-dates="setDates" />
+                </div>
+            </div>
+            <!-- </label> -->
             <div class="break-line"></div>
             <div @click.stop="selected('who')" :class="{ selected: $store.getters.isGuestsSelected }"
                 class="add-guests-container flex-container flex align-center justify-space-between full">
                 <label class="flex column full">
                     <p>Who</p>
                     <input :value="guests" type="text" placeholder="Add guests" disabled />
-                    <add-guests v-if="$store.getters.isGuestsSelected" @guests-update="setCapacity" />
+                    <add-guests v-if="$store.getters.isGuestsSelected" @guests-update="setGuests"
+                        :allGuests="filterBy.guests" />
                 </label>
                 <button v-if="!$store.getters.isElementSelected" @click="setFilterBy"
                     :class="{ 'element-selected': $store.getters.isElementSelected }"
@@ -53,7 +76,7 @@ export default {
         return {
             filterBy: {
                 name: '',
-                capacity: 0,
+                guests: null,
                 date: {
                     in: null,
                     out: null
@@ -63,9 +86,19 @@ export default {
         }
     },
     created() {
-        const { name, capacity } = this.$route.query
+        const { name, guests, startDate, endDate } = this.$route.query
         if (name) this.filterBy.name = name.charAt(0).toUpperCase() + name.substring(1).toLowerCase()
-        if (capacity) this.filterBy.capacity = +capacity
+        if (guests && Object.keys(guests).length) {
+            console.log('Guests', guests);
+            const guestsObject = JSON.parse(guests)
+        }
+        if (startDate) {
+            const inDate = new Date(startDate)
+            const outDate = new Date(endDate)
+            console.log(inDate, outDate)
+            this.filterBy.date.in = inDate
+            this.filterBy.date.out = outDate
+        }
     },
     mounted() {
         if (this.$store.getters.isWhereSelected) this.$refs.input.focus()
@@ -75,8 +108,8 @@ export default {
     },
     methods: {
         setFilterBy() {
-            const { name, capacity, date } = this.filterBy
-            this.$router.push({ path: '/s', query: { name, capacity, startDate: date.in, endDate: date.out } })
+            const { name, date, guests } = this.filterBy
+            this.$router.push({ path: '/s', query: { name, startDate: this.longDate(date.in), endDate: this.longDate(date.out), guests: JSON.stringify(guests) } })
             this.$emit('close-search')
         },
         selected(el) {
@@ -112,21 +145,41 @@ export default {
             }
             this.$store.commit({ type, select })
         },
-        setCapacity(capacity) {
-            this.filterBy.capacity = capacity
+        setGuests(guests) {
+            console.log(guests)
+            this.filterBy.guests = guests
         },
-        setDatesFilter(dates) {
+        setDates(dates) {
             this.filterBy.date.in = dates[0]
             this.filterBy.date.out = dates[1]
         },
         unSelectElements() {
             this.$store.commit({ type: 'unSelectElements' })
-        }
+        },
+        longDate(date) {
+            const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+            const dateObj = new Date(date)
+            return dateObj.toLocaleString('en-US', options)
+        },
     },
     computed: {
         guests() {
-            return this.filterBy.capacity ? `${this.filterBy.capacity} guests` : ''
+            if (!this.filterBy.guests) return ''
+            return `${this.filterBy.guests.capacity} guests`
         },
+        inDate() {
+
+            if (!this.filterBy.date.in) return ''
+            const options = { month: 'short', day: 'numeric' }
+            return this.filterBy.date.in.toLocaleString("en-US", options)
+        },
+        outDate() {
+
+            if (!this.filterBy.date.out) return ''
+            const options = { month: 'short', day: 'numeric' }
+            return this.filterBy.date.out.toLocaleString("en-US", options)
+        },
+
     },
     components: {
         searchBig,

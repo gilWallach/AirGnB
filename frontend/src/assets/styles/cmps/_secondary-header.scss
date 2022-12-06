@@ -53,7 +53,9 @@
       &:focus {
         outline: none;
       }
-      max-width: 100px;
+      &:not(.where) {
+        max-width: 100px;
+      }
     }
     &.date {
       max-width: 260px;
@@ -70,17 +72,17 @@
     font-size: 16px;
     border-radius: 50%;
     transition: border-radius 0.2s, padding 0.3s;
-    &:hover{
-      background-image:radial-gradient(
-      circle at calc((0 + var(--positionX, 0)) * 10%)
-        calc((0 + var(--positionY, 0)) * 5%),
-      rgb(241, 37, 75) 0%,
-      rgb(230, 30, 77) 27.5%,
-      rgb(227, 28, 95) 40%,
-      rgb(215, 4, 102) 57.5%,
-      rgb(189, 30, 89) 75%,
-      rgb(189, 30, 89) 100%
-    );
+    &:hover {
+      background-image: radial-gradient(
+        circle at calc((0 + var(--positionX, 0)) * 10%)
+          calc((0 + var(--positionY, 0)) * 5%),
+        rgb(241, 37, 75) 0%,
+        rgb(230, 30, 77) 27.5%,
+        rgb(227, 28, 95) 40%,
+        rgb(215, 4, 102) 57.5%,
+        rgb(189, 30, 89) 75%,
+        rgb(189, 30, 89) 100%
+      );
     }
     &.element-selected {
       border-radius: 2em;
@@ -94,13 +96,13 @@
   }
   .gradient-button {
     transform: translateX(5px);
-    .content{
+    .content {
       border-radius: 2em;
-      .search-big{
+      .search-big {
         color: $clr8;
       }
-      span{
-        font-family: 'airBnb-Reg';
+      span {
+        font-family: "airBnb-Reg";
         padding-left: 10px;
       }
     }
@@ -114,6 +116,20 @@
 
   .check-in-out {
     gap: 37px;
+  }
+
+  .header-dates {
+    position: relative;
+    input {
+      cursor: pointer;
+    }
+    .el-popper.is-pure.is-light.el-picker__popper {
+      inset: -76.1667px auto auto -7.333px !important;
+      top: 0 !important;
+      // inset: 0 !important;
+      transform: translate(-41%, 17%) !important;
+      border-radius: 2em;
+    }
   }
 }
 

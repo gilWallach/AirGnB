@@ -106,8 +106,10 @@ export default {
       return strDates
     },
     guests() {
-      const { capacity } = this.$route.query
-      return +capacity ? `${capacity} guests` : ''
+      const { guests } = this.$route.query
+      if (!guests || !JSON.parse(guests) || !Object.keys(JSON.parse(guests))) return ''
+      const guestsObject = JSON.parse(guests)
+      return `${guestsObject.capacity} guests`
     },
     showUserActions() {
       return this.isShowUserActions

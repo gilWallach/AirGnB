@@ -75,6 +75,10 @@
 }
 
 // Inputs
+.el-date-editor.el-date-editor--daterange.el-input__wrapper.el-range-editor.el-tooltip__trigger.el-tooltip__trigger{
+  display: none !important;
+}
+
 
 .el-date-editor.el-date-editor--daterange.el-input__wrapper.el-range-editor.el-tooltip__trigger.el-tooltip__trigger {
   height: auto;

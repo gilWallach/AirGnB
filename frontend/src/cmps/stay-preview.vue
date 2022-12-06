@@ -42,7 +42,7 @@ export default {
     },
     date: {
       type: Object
-    }
+    },
   },
   data() {
     return {
@@ -51,9 +51,10 @@ export default {
   methods: {
     goToDetails(stayId) {
       let route
+      const {guests} = this.$route.query
       if (this.date) {
         const { startDate, endDate } = this.date
-        route = this.$router.resolve({ path: `/stay/${stayId}`, query: { startDate, endDate } })
+        route = this.$router.resolve({ path: `/stay/${stayId}`, query: { startDate, endDate, guests } })
       }
       else{
         route = this.$router.resolve({ path: `/stay/${stayId}`})
