@@ -55,7 +55,6 @@ export default {
         const { startDate, endDate } = this.date
         route = this.$router.resolve({ path: `/stay/${stayId}`, query: { startDate, endDate } })
       }
-      // console.log(this.date)
       else{
         route = this.$router.resolve({ path: `/stay/${stayId}`})
       }
