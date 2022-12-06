@@ -33,7 +33,7 @@ const routes = [
     component: stayEdit
   },
   {
-    path: '/order-confirm',
+    path: '/order-confirm/:id',
     name: 'order-confirm',
     component: orderConfirm
   },

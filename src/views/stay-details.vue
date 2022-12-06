@@ -225,7 +225,7 @@
                   <arrow-down v-else />
                 </div>
                 <transition name="fade">
-                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" />
+                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" :adultNum="1" />
                 </transition>
               </div>
             </div>
@@ -376,8 +376,8 @@ export default {
       isShowSubHeader: false,
       isGuestModalOpen: false,
       order: {
-        checkInDate: null,
-        checkOutDate: null,
+        checkInDate: new Date().toLocaleString().split(',')[0],
+        checkOutDate: this.setDay().toLocaleString().split(',')[0],
         guests: 1,
       },
     }
@@ -425,7 +425,20 @@ export default {
     },
     doReserve() {
       const { guests, checkInDate, checkOutDate } = this.order
-      this.$router.push({ path: '/order-confirm', query: { guests, checkInDate, checkOutDate } })
+      const { id } = this.$route.params
+      this.$router.push({
+        name: 'order-confirm', params: { id }, query: {
+          guests, checkInDate, checkOutDate,
+          totalNights: this.formatNights, price: this.formatTotalPrice,
+          pricePerNight: this.formatPricePerNight, priceWithService: this.formatTotalPriceWithService
+        }
+      })
+    },
+    setDay() {
+      const date = new Date()
+      const day = date.getDate()
+      date.setDate(day + 3)
+      return date
     }
   },
   computed: {
@@ -449,11 +462,12 @@ export default {
       return totalNights
     },
     formatPricePerNight() {
+      const night = this.formatNights > 1 ? 'nights' : 'night'
       return this.getStay.price.toLocaleString('en-IN', {
         style: 'currency',
         currency: 'USD',
         maximumSignificantDigits: 1,
-      }) + ' x ' + this.formatNights + ' nights'
+      }) + ' x ' + this.formatNights + ' ' + night
     },
     formatTotalPrice() {
       return (this.getStay.price * this.formatNights).toLocaleString('en-IN', {
