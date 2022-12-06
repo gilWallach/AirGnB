@@ -215,7 +215,9 @@
                   <date-picker @set-dates="setDates" />
                 </div>
               </div>
-              <div @click.stop="isGuestModalOpen = !isGuestModalOpen" class="pax flex justify-space-between">
+              <div @click.stop="isGuestModalOpen = !isGuestModalOpen"
+              :class="{'selected':isGuestModalOpen}" 
+              class="pax flex justify-space-between">
                 <div>
                   <p>GUESTS</p>
                   <p class="pax-txt">{{ order.guests }} guest</p>

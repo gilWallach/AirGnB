@@ -25,10 +25,8 @@ async function query(filterBy = { name: '', label: '', capacity: 0 }) {
     )
   }
   if (filterBy.label) {
-    stays = stays.filter((stay) => {
-      // return stay.labels.some(stay.label === filterBy.label)
-      return stay.labels.includes(filterBy.label)
-    })
+    const regex = new RegExp(filterBy.label, 'i')
+    stays = stays.filter((stay) => regex.test(stay.type))
   }
   if (filterBy.capacity) {
     stays = stays.filter((stay) => stay.capacity >= filterBy.capacity)
