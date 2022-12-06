@@ -52,7 +52,7 @@ export default {
     myDashboard() {
       //   const user = this.loggedinUser
       //   if (!user.orders.length) return
-      let route = this.$router.resolve({ path: `/stay/user/orders` })
+      let route = this.$router.resolve({ path: `/user/orders` })
       window.open(route.href)
 
       //   this.$router.push('/user/orders')
