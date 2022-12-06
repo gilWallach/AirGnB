@@ -125,7 +125,8 @@ export default {
         : 'Anywhere'
     },
     when() {
-      return 'Any week'
+      const {startDate, endDate} = this.$route.query
+      return startDate? startDate +" - " + endDate : 'Any week'
     },
     guests() {
       const { capacity } = this.$route.query
