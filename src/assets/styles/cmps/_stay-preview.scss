@@ -58,7 +58,7 @@
                 .el-carousel__indicator--horizontal {
                     margin-inline-end: 3px;
                 }
-                
+
                 .el-carousel__arrow {
                     height: em(38px, 15px) !important;
                     width: em(38px, 15px) !important;
@@ -72,7 +72,12 @@
         p {
             margin: 0 0 3px;
             color: $clr4;
-            max-width: 80%;
+            max-width: 75%;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .price {
@@ -96,17 +101,16 @@
                 color: $clr2;
                 padding-bottom: 6px;
 
-                .rating{
+                .rating {
                     margin-inline-start: 3px;
                 }
             }
-            }
+        }
 
 
     }
-    
+
     div.el-carousel.el-carousel--horizontal:has(ul):has(li:first-child.is-active) div button:first-of-type,
-    div.el-carousel.el-carousel--horizontal:has(ul):has(li:last-child.is-active) div button:last-of-type
-    {
+    div.el-carousel.el-carousel--horizontal:has(ul):has(li:last-child.is-active) div button:last-of-type {
         display: none;
     }

@@ -9,7 +9,7 @@
       </div>
       <div class="stay-txt">
         <div class="title flex justify-space-between align-center">
-          <p><span>{{ shortLoc(stay.loc.city + ', ' + stay.loc.country) }}</span></p>
+          <p><span>{{ stay.loc.city + ', ' + stay.loc.country }}</span></p>
           <div class="rating flex align-center">
             <span>
               <star />
@@ -17,7 +17,7 @@
             <span>4.47 (254)</span>
           </div>
         </div>
-        <p>{{ shortName(stay.name) }}</p>
+        <p>{{ stay.name }}</p>
         <p>{{ stay.capacity }} beds</p>
         <p>Dec 4-9</p>
         <p class="price">
@@ -48,20 +48,8 @@ export default {
   created() { },
   methods: {
     goToDetails(stayId) {
-      let route = this.$router.resolve({ path: `/stay/${stayId}` });
+      let route = this.$router.resolve({ path: `/stay/${stayId}` })
       window.open(route.href);
-    },
-    shortLoc(txt) {
-      if (txt.length > 17) {
-        return txt.substring(0, 17) + '...'
-      }
-      else return txt
-    },
-    shortName(txt) {
-      if (txt.length > 24) {
-        return txt.substring(0, 27) + '...'
-      }
-      else return txt
     },
   },
   computed: {
