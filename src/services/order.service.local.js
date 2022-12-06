@@ -86,7 +86,7 @@ function _createOrders() {
         adults: 2,
         kids: 1,
       },
-      order: {
+      stay: {
         _id: '622f337a75c7d36e498aaaf8',
         name: 'Westin Kaanapali KORVN 2BR',
         price: 595,
@@ -109,7 +109,7 @@ function _createOrders() {
         adults: 2,
         kids: 1,
       },
-      order: {
+      stay: {
         _id: '622f337a75c7d36e498aaaf8',
         name: 'Yaron Charming Villa',
         price: 595,
@@ -132,7 +132,7 @@ function _createOrders() {
         adults: 2,
         kids: 1,
       },
-      order: {
+      stay: {
         _id: '622f337a75c7d36e498aaaf8',
         name: 'Muki Charming Duplex',
         price: 595,
@@ -155,7 +155,7 @@ function _createOrders() {
         adults: 2,
         kids: 1,
       },
-      order: {
+      stay: {
         _id: '622f337a75c7d36e498aaaf8',
         name: 'Puki Charming Duplex',
         price: 595,

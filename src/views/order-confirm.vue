@@ -81,7 +81,8 @@ export default {
             order.totalPrice = +order.totalPrice.substring(1)
             order.status = 'pending'
             order.msgs = []
-            const { _id, name, price } = this.stay
+            const { _id, name, price, host } = this.stay
+            order.hostId = host._id
             const miniStay = { _id, name, price }
             order.stay = miniStay
             console.log(order);

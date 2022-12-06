@@ -4491,6 +4491,266 @@ async function _createStays() {
     ],
     likedByUsers: [],
   })
+  await storageService.post(STORAGE_KEY, {
+    "_id": "622f337d75c7d36e498aac34",
+    "name": "The Porto Concierge - Bouganvillea Oporto Flat",
+    "type": "Lakefront",
+    "imgUrls": [
+      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436261/hwqt72njlhf9hkqou9ka.jpg",
+      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437290/ll70bfq1cxslz2x2snoa.jpg",
+      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436872/i3jblqgpdttpwvshbffo.jpg",
+      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437262/ifklqhihs1qinbmap5hd.jpg",
+      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436460/qi3vkpts37b4k0dedosc.jpg"
+    ],
+    "price": 65,
+    "summary": "Lovely apartment in a retro style, fully equipped, in the heart of Porto downtown, right next to one of the most iconic spots: Mercado do Bolhão. Very bright and comfortable with balcony. The Porto Concierge service available 24/7 for your convenience. Free luggage storage at our Welcome Center.",
+    "capacity": 4,
+    "amenities": [
+      "TV",
+      "Cable TV",
+      "Internet",
+      "Wifi",
+      "Air conditioning",
+      "Kitchen",
+      "Buzzer/wireless intercom",
+      "Heating",
+      "Family/kid friendly",
+      "Suitable for events",
+      "Washer",
+      "Dryer",
+      "Essentials",
+      "24-hour check-in",
+      "Hangers",
+      "Hair dryer",
+      "Iron"
+    ],
+    "bathrooms": 1,
+    "bedrooms": 1,
+    "roomType": "Entire place",
+    "host": {
+      "_id": "622f3401e36c59e6164fab4d",
+      "fullname": "Edgar",
+      "location": "PT",
+      "about": "",
+      "responseTime": "within an hour",
+      "thumbnailUrl": "https://a0.muscache.com/im/pictures/d17abb7c-beb0-4dbe-976e-fc633de18b4b.jpg?aki_policy=profile_small",
+      "pictureUrl": "https://a0.muscache.com/im/pictures/d17abb7c-beb0-4dbe-976e-fc633de18b4b.jpg?aki_policy=profile_x_medium",
+      "isSuperhost": false,
+      "id": "75091963"
+    },
+    "loc": {
+      "country": "Portugal",
+      "countryCode": "PT",
+      "city": "Porto",
+      "address": "Porto, Porto, Portugal",
+      "lat": -8.60701,
+      "lan": 41.14987
+    },
+    "reviews": [
+      {
+        "at": "2016-06-16T04:00:00.000Z",
+        "by": {
+          "_id": "622f3403e36c59e6164fb06c",
+          "fullname": "Ben",
+          "imgUrl": "https://robohash.org/952317?set=set1",
+          "id": "952317"
+        },
+        "txt": "Stayed in Edgar's place for 5 days. Great location, super clean, perfect location for walking everywhere and exploring the city. The apartment itself is really amazing, the photos definitely don't do it justice!"
+      },
+      {
+        "at": "2016-06-22T04:00:00.000Z",
+        "by": {
+          "_id": "622f3407e36c59e6164fbce8",
+          "fullname": "Sandrine",
+          "imgUrl": "https://robohash.org/31203266?set=set1",
+          "id": "31203266"
+        },
+        "txt": "We really enjoyed the flat. It is very well equipped, well located and completely conform to pictures.\r\nPerfect for the long weekend we spent in Porto.\r\nOnly negative aspect was a really poor soundproofing, but as we stayed mostly outside, it was not such a problem for us.\r\nVery much appreciated all attentions among others, a bottle of wine, bath towels... \r\nAnother positive thing is the supermarket next door :)"
+      },
+      {
+        "at": "2016-06-25T04:00:00.000Z",
+        "by": {
+          "_id": "622f3403e36c59e6164faf42",
+          "fullname": "Shawn",
+          "imgUrl": "https://robohash.org/69588050?set=set1",
+          "id": "69588050"
+        },
+        "txt": "Perfect location and amazing hospitality! Edgar set up a ride for us from the airport to the apartment, and also had a concierge member waiting at the front door to explain the apartment and surrounding area. Also, Edgar had a very quick response time. He answered all questions within minutes. The apartment itself is very modern and has great personality. The back \"garden\" is secluded and is a nice area to have a morning coffee. There is minimal street/neighborhood noise. All-in-all, the entire experience surpassed my expectations, and I would highly recommend this as a great Porto location! "
+      },
+      {
+        "at": "2016-06-28T04:00:00.000Z",
+        "by": {
+          "_id": "622f3404e36c59e6164fb316",
+          "fullname": "Michael",
+          "imgUrl": "https://robohash.org/13748136?set=set1",
+          "id": "13748136"
+        },
+        "txt": "Un appartement refait à neuf, dans un immeuble du XIX, très bien situé, calme et bien décoré.\nAccueil très agréable, il a fait bon vivre dans ce petit cocon!"
+      },
+      {
+        "at": "2016-07-01T04:00:00.000Z",
+        "by": {
+          "_id": "622f3402e36c59e6164fae58",
+          "fullname": "Alex And Holly",
+          "imgUrl": "https://robohash.org/71778619?set=set1",
+          "id": "71778619"
+        },
+        "txt": "It was an immaculate apartment, very clean and smelt amazing. It had everything you could possibly need for a comfortable stay. The location is convienient and close to shops and market, and within walking distance to major attractions. Communication with the host was easy. We thouroughly enjoyed our stay in Porto!"
+      },
+      {
+        "at": "2016-07-08T04:00:00.000Z",
+        "by": {
+          "_id": "622f3403e36c59e6164fb1fd",
+          "fullname": "Katherine",
+          "imgUrl": "https://robohash.org/34000740?set=set1",
+          "id": "34000740"
+        },
+        "txt": "This apartment is probably the best AirBnB we have stayed in so far.\r\nIt is in a fantastic location and was very easy to find.\r\nThe apartment has recently been renovated and has all the essentials you need.\r\nWe cooked in the apartment for 2 evenings and the kitchen had everything we required.\r\nThe outdoor balcony is a beautiful quiet spot where you can sit back and enjoy a glass of wine after a day of sightseeing.\r\nI would highly recommend this apartment to anyone. We loved (Website hidden by Airbnb) we hope to be back again.\r\n"
+      },
+      {
+        "at": "2016-07-15T04:00:00.000Z",
+        "by": {
+          "_id": "622f3403e36c59e6164fb1be",
+          "fullname": "Sarah",
+          "imgUrl": "https://robohash.org/9949459?set=set1",
+          "id": "9949459"
+        },
+        "txt": "We had a perfect 3 days in Porto. The apartment is perfectly placed, the communication and welcome anticipated our flight delay. The apartment is just beautiful, the photos do not do it justice! Spacious, lovely afternoon light, calm even though it is in the centre. We are definitely keeping this on our list for future visits to Porto. Highly recommend!"
+      },
+      {
+        "at": "2016-07-18T04:00:00.000Z",
+        "by": {
+          "_id": "622f3404e36c59e6164fb546",
+          "fullname": "Nicoleta",
+          "imgUrl": "https://robohash.org/9404947?set=set1",
+          "id": "9404947"
+        },
+        "txt": "The flat looks brand new and modern, better than in pictures. Everything was very clean and we had a pleasant stay. \r\nThe flat is fully equipped with modern appliances, including a dish-washing machine. Also, the coffee machine was very useful in the morning. The led lightning provided a cozy atmosphere.\r\n\r\nAlthough it's on a main street, 5-10 minutes of walking from the main train station, it's not facing the street and it's very quiet.\r\nThere are some sources of noise for sensible ears: \r\n- the early morning resupply of the down stairs supermarket (rather annoying)\r\n- the building is not soundproofed and one can hear some noise from other flats (in our experience it was very limited)"
+      },
+      {
+        "at": "2016-07-21T04:00:00.000Z",
+        "by": {
+          "_id": "622f3404e36c59e6164fb3a6",
+          "fullname": "Kirill",
+          "imgUrl": "https://robohash.org/7132563?set=set1",
+          "id": "7132563"
+        },
+        "txt": "Extremely beautiful and nicely decorated apartment at the perfect spot in Porto! I wish we had more time to spend there. It is very well located on a street that gets quiet at night and very close to the busy nightlife. Definitely recommend and will book there the next time."
+      },
+      {
+        "at": "2016-07-23T04:00:00.000Z",
+        "by": {
+          "_id": "622f3407e36c59e6164fbe39",
+          "fullname": "Matteo",
+          "imgUrl": "https://robohash.org/27041413?set=set1",
+          "id": "27041413"
+        },
+        "txt": "Really nice apartment in the city center, with all the comforts and a nice welcome by the host."
+      },
+      {
+        "at": "2016-08-08T04:00:00.000Z",
+        "by": {
+          "_id": "622f3406e36c59e6164fbac0",
+          "fullname": "María&Eduardo",
+          "imgUrl": "https://robohash.org/9351458?set=set1",
+          "id": "9351458"
+        },
+        "txt": "I honestly would not recommend booking this apartment to any friend of mine. The flat is beautiful and location very good, but the treatment received does not correspond at all with the quality of accommodation. We were waiting for 40 minutes on our arrival without answering our calls. When we finally went in the apartment was still uncleaned and was not ready until 7pm. When we finally arrived to the flat and it was prepared, the cleanliness left much to be desired. We understand that failures can be anywhere, but Vania, the girl in charge of managing the property did not inform us of anything and when she finally picked up the phone his response was curt and inconsiderate. This unpleasant reception made our arrival in Oporto quite bitter. This level of zero communication is maintained throughout our stay, when we asked if we could leave more than one hour our bags the day of departure (because the apartment had been ready 5 hours later the official checkin it was the minimum) Vania an hour later, curtly he replied that it was not possible ... Anyway, hosts nothing  professional at all times. Very bad"
+      },
+      {
+        "at": "2016-08-26T04:00:00.000Z",
+        "by": {
+          "_id": "622f3407e36c59e6164fbe1f",
+          "fullname": "Jason",
+          "imgUrl": "https://robohash.org/2912700?set=set1",
+          "id": "2912700"
+        },
+        "txt": "We loved this apartment. It is right next to the old market square in a most central location to get around the entire city. There are plenty of shops, eateries, taxi stands nearby. We were greeted on time right as the apartment finished getting cleaned. We really enjoyed our stay here and will be back the next time we swing through Porto!"
+      },
+      {
+        "at": "2016-09-03T04:00:00.000Z",
+        "by": {
+          "_id": "622f3403e36c59e6164faf54",
+          "fullname": "Pierre-Emmanuel",
+          "imgUrl": "https://robohash.org/26192881?set=set1",
+          "id": "26192881"
+        },
+        "txt": "Tres bel appartement, idéalement situé"
+      },
+      {
+        "at": "2016-09-08T04:00:00.000Z",
+        "by": {
+          "_id": "622f3402e36c59e6164fac17",
+          "fullname": "Corentine",
+          "imgUrl": "https://robohash.org/19042326?set=set1",
+          "id": "19042326"
+        },
+        "txt": "Très joli appartement, conforme aux photos et bien équipe . Nous le recommandons."
+      },
+      {
+        "at": "2016-09-12T04:00:00.000Z",
+        "by": {
+          "_id": "622f3404e36c59e6164fb2ea",
+          "fullname": "Anina",
+          "imgUrl": "https://robohash.org/1133109?set=set1",
+          "id": "1133109"
+        },
+        "txt": "Sehr zentrale Lage gleich neben dem Mercado do Bolhão. Wir haben uns in dem Apartment sehr wohl gefühlt."
+      },
+      {
+        "at": "2016-09-18T04:00:00.000Z",
+        "by": {
+          "_id": "622f3404e36c59e6164fb467",
+          "fullname": "Erik",
+          "imgUrl": "https://robohash.org/75604243?set=set1",
+          "id": "75604243"
+        },
+        "txt": "Mooi ingericht appartement, op een centrale lokatie. Alles binnen loopafstand, en metro om de hoek. \r\nHet appartement is zeer compleet, alle mogelijke keukenspullen en apparaten aanwezig.  Prima bedden, alles schoon en netjes. Aanrader!"
+      },
+      {
+        "at": "2016-09-19T04:00:00.000Z",
+        "by": {
+          "_id": "622f3406e36c59e6164fbc36",
+          "fullname": "Armance",
+          "imgUrl": "https://robohash.org/14796722?set=set1",
+          "id": "14796722"
+        },
+        "txt": "Top! It was a pleasure to stay in this apartment ! Everything was good!\nBe careful with your hour of arrival, it s a concierge service (not in the same place)"
+      },
+      {
+        "at": "2016-09-22T04:00:00.000Z",
+        "by": {
+          "_id": "622f3402e36c59e6164fad2c",
+          "fullname": "Lindsay",
+          "imgUrl": "https://robohash.org/3333301?set=set1",
+          "id": "3333301"
+        },
+        "txt": "I have to say, we've stayed in many Airbnbs, and this has to be one of our favorites so far. We loved the layout, design, location, and price. The apartment is very close to the train station, so it was very easy to get to. Once we arrived, we were greeted very promptly and courteously. The apartment is AMAZING! The pictures are exactly what you get. We would DEFINITELY recommend this place to other people. "
+      },
+      {
+        "at": "2016-09-27T04:00:00.000Z",
+        "by": {
+          "_id": "622f3404e36c59e6164fb2c6",
+          "fullname": "Lantao",
+          "imgUrl": "https://robohash.org/17764113?set=set1",
+          "id": "17764113"
+        },
+        "txt": "C'est un bon appartement situé au centre de la ville. Je l'aime beaucoup."
+      },
+      {
+        "at": "2016-09-30T04:00:00.000Z",
+        "by": {
+          "_id": "622f3402e36c59e6164fac2a",
+          "fullname": "Moritz",
+          "imgUrl": "https://robohash.org/43402629?set=set1",
+          "id": "43402629"
+        },
+        "txt": "We had great stay in Porto. The apartment was wonderful in a great location. Definitely next time again."
+      }
+    ],
+    "likedByUsers": []
+  },
+  )
 }
 
 // async function _createStays_old() {

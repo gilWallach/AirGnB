@@ -12,7 +12,7 @@
           <td>{{ currOrder.startDate }}</td>
           <td>{{ currOrder.endDate }}</td>
           <td>{{ formatCreatedAt(currOrder.createdAt) }}</td>
-          <td>{{ currOrder.order.name }}</td>
+          <td>{{ currOrder.stay.name }}</td>
           <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
           <td>
             <select v-model="currOrder.status" name="status" :value="currOrder.status" @change="updateOrder(currOrder)">
@@ -48,6 +48,7 @@ export default {
   methods: {
     formatGuests(guests) {
       const guestsArr = Object.values(guests)
+      if(!guestsArr.length) return guests
       return guestsArr.reduce((acc, n) => acc + n, 0)
     },
     formatCreatedAt(createdAt) {

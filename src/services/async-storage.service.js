@@ -25,7 +25,7 @@ function get(entityType, entityId) {
 function post(entityType, newEntity) {
   newEntity = JSON.parse(JSON.stringify(newEntity))
   // newEntity._id = _makeId()
-  newEntity._id = '622f3401e36c59e6164fab4d'
+  newEntity._id = entityType === 'user' ? '622f3401e36c59e6164fab4d' : _makeId()
   return query(entityType).then((entities) => {
     entities.push(newEntity)
     _save(entityType, entities)
