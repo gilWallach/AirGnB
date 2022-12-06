@@ -1,73 +1,83 @@
 <template>
-  <section class="login-signup-modal">
+  <section @click.stop class="login-signup-modal">
     <div>
       <div class="header flex align-center">
-        <button class="close-btn flex align-center">
-          <close @click="$emit('closeModal')" />
+        <button
+          @click.stop="$emit('closeModal')"
+          class="close-btn flex align-center custom"
+        >
+          <close />
         </button>
         <div class="center-heading">Log in or sign up</div>
       </div>
 
-      <form @submit.prevent="doLogin">
-        <select v-model="loginCred.username">
-          <option value="">Select User</option>
-          <option v-for="user in users" :key="user._id" :value="user.username">
-            {{ user.fullname }}
-          </option>
-        </select>
-        <!-- <input type="text" v-model="loginCred.username" placeholder="User name" />
-        <input
-          type="text"
-          v-model="loginCred.password"
-          placeholder="Password"
-        /> -->
-        <button>Login</button>
-      </form>
-      <p class="mute">user1 or admin, pass:123</p>
-      <form @submit.prevent="doSignup">
-        <h2>Signup</h2>
-        <input
-          type="text"
-          v-model="signupCred.fullname"
-          placeholder="Your full name"
-        />
-        <input
-          type="text"
-          v-model="signupCred.password"
-          placeholder="Password"
-        />
-        <input
-          type="text"
-          v-model="signupCred.username"
-          placeholder="Username"
-        />
-        <img-uploader @uploaded="onUploaded"></img-uploader>
-        <button>Signup</button>
-      </form>
-    </div>
+      <main>
+        <h3 class="welcome-header header fs18">Welcome to AirGnB</h3>
 
-    <hr />
-    <details>
-      <summary>Admin Section</summary>
-      <ul>
-        <li v-for="user in users" :key="user._id">
-          <pre>{{ user }}</pre>
-          <button @click="removeUser(user._id)">x</button>
-        </li>
-      </ul>
-    </details>
+        <p>{{ msg }}</p>
+
+        <section v-if="isLogin" className="login-form">
+          <form @submit.prevent="doLogin" class="login-signup-form">
+            <legend>Login</legend>
+            <input
+              v-model="loginCred.username"
+              type="text"
+              placeholder="Username"
+            />
+            <input
+              v-model="loginCred.password"
+              type="text"
+              placeholder="Password"
+            />
+            <button>LOGIN</button>
+          </form>
+        </section>
+        <section v-else className="signup-form">
+          <form @submit.prevent="doSignup" class="login-signup-form">
+            <legend>Sign-Up</legend>
+            <input
+              v-model="signupCred.fullname"
+              type="text"
+              placeholder="Full Name"
+            />
+            <input
+              v-model="signupCred.username"
+              type="text"
+              placeholder="Username"
+            />
+            <input
+              v-model="signupCred.password"
+              type="text"
+              placeholder="Password"
+            />
+            <button>SIGN UP</button>
+          </form>
+        </section>
+      </main>
+    </div>
   </section>
 </template>
 <script>
 import close from '../assets/svg/close.vue'
 export default {
   name: 'login-signup-modal',
-  props: {},
+  props: {
+    isLogin: {
+      type: Boolean,
+    },
+  },
   data() {
     return {
+      loginCred: {
+        username: '',
+        password: '',
+      },
+      signupCred: {
+        fullname: '',
+        username: '',
+        password: '',
+      },
       msg: '',
-      loginCred: { username: 'user1', password: '123' },
-      signupCred: { username: '', password: '', fullname: '', imgUrl: '' },
     }
   },
   computed: {

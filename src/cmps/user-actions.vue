@@ -1,13 +1,17 @@
 <template>
   <section class="user-actions" ref="userActions">
     <ul class="list-items clean-list fs14">
-      <li @click.stop="openModal">Sign up</li>
-      <li>Log in</li>
+      <li @click.stop="openModal(false)">Sign up</li>
+      <li @click.stop="openModal(true)">Log in</li>
     </ul>
   </section>
 
   <transition name="fade">
-    <loginSignupModal v-if="isModalOpen" @closeModal="closeModal" />
+    <loginSignupModal
+      v-if="isModalOpen"
+      @closeModal="closeModal"
+      :isLogin="isLogin"
+    />
   </transition>
 
   <transition name="fade">
@@ -21,24 +25,34 @@
 
 <script>
 import loginSignupModal from './login-signup-modal.vue'
+import listModal from './list-modal.vue'
 export default {
   name: 'user-actions',
   props: {},
+  emits: ['closeUserActions'],
   data() {
     return {
       isModalOpen: false,
+      isLogin: true,
     }
   },
   created() {},
   methods: {
-    openModal() {
+    openModal(isLogin) {
+      this.isLogin = isLogin
       this.isModalOpen = true
       this.$refs.userActions.style.opacity = '0'
+    },
+    closeModal() {
+      this.isModalOpen = false
+      this.$emit('closeUserActions')
+      this.$refs.userActions.style.opacity = '1'
     },
   },
   computed: {},
   components: {
     loginSignupModal,
+    listModal,
   },
 }
 </script>
