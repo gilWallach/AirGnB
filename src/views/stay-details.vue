@@ -425,7 +425,14 @@ export default {
     },
     doReserve() {
       const { guests, checkInDate, checkOutDate } = this.order
-      this.$router.push({ path: '/order-confirm', query: { guests, checkInDate, checkOutDate } })
+      const { id } = this.$route.params
+      this.$router.push({
+        name: 'order-confirm', params: { id }, query: {
+          guests, checkInDate, checkOutDate,
+          totalNights: this.formatNights, price: this.formatTotalPrice,
+          pricePerNight: this.formatPricePerNight, priceWithService: this.formatTotalPriceWithService
+        }
+      })
     },
     setDay() {
       const date = new Date()
@@ -455,11 +462,12 @@ export default {
       return totalNights
     },
     formatPricePerNight() {
+      const night = this.formatNights > 1 ? 'nights' : 'night'
       return this.getStay.price.toLocaleString('en-IN', {
         style: 'currency',
         currency: 'USD',
         maximumSignificantDigits: 1,
-      }) + ' x ' + this.formatNights + ' nights'
+      }) + ' x ' + this.formatNights + ' ' + night
     },
     formatTotalPrice() {
       return (this.getStay.price * this.formatNights).toLocaleString('en-IN', {

@@ -1,3 +1,25 @@
 .order-confirm{
     margin-top: $header-height * 1.5;
+    p{
+        max-width: initial;
+    }
+    p:not(:last-of-type){
+        margin: 0;
+    }
+
+    .confirmation-btns{
+        > :first-child{
+            background-color: $clr4;
+            color: $clr8;
+            border-radius: em(8px);
+        }
+        > *{
+            flex: 1;
+        }
+        .gradient-button{
+            >*{
+                margin: 0
+            };
+        }
+    }
 }

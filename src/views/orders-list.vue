@@ -39,7 +39,7 @@ export default {
   async created() {
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
-      this.orders = this.$store.getters.orders
+      this.orders = JSON.parse(JSON.stringify(this.$store.getters.orders))
     } catch (err) {
       throw err
     }
