@@ -82,6 +82,13 @@
       @click="isSearchOpen = false"
     ></div>
   </transition>
+  <transition name="fade">
+    <div
+      class="main-screen-transparent"
+      v-if="isShowWhiteScreen"
+      @click="closeUserActions"
+    ></div>
+  </transition>
 </template>
 <script>
 import airbnb from '../assets/svg/airbnb.vue'
@@ -95,6 +102,7 @@ export default {
     return {
       isSearchOpen: false,
       isShowUserActions: false,
+      isShowWhiteScreen: false,
     }
   },
   created() {
@@ -143,12 +151,14 @@ export default {
     },
     onToggleUserActions() {
       this.isShowUserActions = !this.isShowUserActions
+      this.isShowWhiteScreen = !this.isShowWhiteScreen
     },
     // onCloseUserActions() {
     //   this.isShowUserActions = false
     // },
     closeUserActions() {
       this.isShowUserActions = false
+      this.isShowWhiteScreen = false
     },
   },
   components: {
