@@ -1,6 +1,6 @@
 <template>
     <section class='stay-search main'>
-        <stay-list :stays="stays" :labels="labels"/>
+        <stay-list :stays="stays" :labels="labels" :date="date" />
     </section>
 </template>
 
@@ -10,14 +10,21 @@ import stayList from '../cmps/stay-list.vue';
 export default {
     name: 'stay-search',
     props: {},
+    data() {
+        return {
+            date: {}
+        }
+    },
     created() {
-        this.$store.commit({type:'setList'})
+        this.$store.commit({ type: 'setList' })
         this.loadStays()
         this.loadLabels()
+        const { startDate, endDate } = this.$route.query
+        this.date = { startDate, endDate }
     },
     methods: {
         async loadStays() {
-            const { name, label , capacity } = this.$route.query
+            const { name, label, capacity } = this.$route.query
             const filterBy = {
                 name,
                 label,
@@ -32,13 +39,13 @@ export default {
             }
         },
         async loadLabels() {
-            try{
+            try {
                 await this.$store.dispatch({ type: 'loadLabels' })
             }
-            catch(err){
+            catch (err) {
                 throw err
-            }           
             }
+        }
     },
     computed: {
         stays() {

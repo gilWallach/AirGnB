@@ -23,6 +23,7 @@
         :key="stay._id"
         :stay="stay"
         @addToWishlist="addToWishlist"
+        :date="date"
       />
     </ul>
 
@@ -61,6 +62,9 @@ export default {
     labels: {
       type: Array,
     },
+    date:{
+      type:Object
+    }
   },
   data() {
     return {

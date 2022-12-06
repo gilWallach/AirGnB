@@ -3,7 +3,7 @@
     <li class="card">
       <div class="img-container">
         <div class="wishlist">
-          <heart @click.stop="$emit('addToWishlist', stay._id)"/>
+          <heart @click.stop="$emit('addToWishlist', stay._id)" />
         </div>
         <stay-carousel :stay="stay" />
       </div>
@@ -35,11 +35,14 @@ import stayCarousel from './stay-carousel.vue'
 
 export default {
   name: 'stay-preview',
-  emits: [ 'addToWishlist'],
+  emits: ['addToWishlist'],
   props: {
     stay: {
       type: Object,
     },
+    date: {
+      type: Object
+    }
   },
   data() {
     return {
@@ -48,7 +51,9 @@ export default {
   created() { },
   methods: {
     goToDetails(stayId) {
-      let route = this.$router.resolve({ path: `/stay/${stayId}` });
+      console.log(this.date);
+      const { startDate, endDate } = this.date
+      let route = this.$router.resolve({ path: `/stay/${stayId}`, query: { startDate, endDate } });
       window.open(route.href);
     },
     shortLoc(txt) {
