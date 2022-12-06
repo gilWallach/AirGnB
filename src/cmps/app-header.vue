@@ -55,7 +55,10 @@
             alt=""
           />
         </div>
-        <user-actions v-if="showUserActions" />
+        <user-actions
+          v-if="showUserActions"
+          @closeUserActions="closeUserActions"
+        />
       </nav>
       <section class="loggedin-user" v-if="loggedInUser">
         <router-link :to="`/user/${loggedInUser._id}`">
@@ -141,7 +144,10 @@ export default {
     onToggleUserActions() {
       this.isShowUserActions = !this.isShowUserActions
     },
-    onCloseUserActions() {
+    // onCloseUserActions() {
+    //   this.isShowUserActions = false
+    // },
+    closeUserActions() {
       this.isShowUserActions = false
     },
   },
