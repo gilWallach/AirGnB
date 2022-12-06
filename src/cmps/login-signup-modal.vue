@@ -107,9 +107,6 @@ export default {
         this.msg = 'Failed to login'
       }
     },
-    doLogout() {
-      this.$store.dispatch({ type: 'logout' })
-    },
     async doSignup() {
       if (
         !this.signupCred.fullname ||

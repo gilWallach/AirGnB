@@ -49,11 +49,23 @@
     border: none;
   }
 
+  .login-signup-form {
+    padding: 0;
+
+    legend {
+      padding: 0;
+    }
+  }
+
   .login-form,
   .signup-form {
+    padding: 0;
     input {
       width: 100%;
       height: em(40px);
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 0 0 1px black;
     }
     button,
     .gradient-button {

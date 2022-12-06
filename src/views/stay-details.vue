@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container-stay-details" @click="(isGuestModalOpen = false)">
+  <div class="main-container-stay-details" @click="isGuestModalOpen = false">
     <!-- SUB-HEADER floating element, appears when scrolling below gallery -->
     <div class="main-container-stay-details sticky-header-container">
       <header v-if="isShowSubHeader" class="sticky-header">
@@ -19,10 +19,13 @@
       <div class="stay-details-container">
         <div class="details-ratings-container">
           <p class="rate">
-            <star /><span>&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span><span class="separator">·</span>
+            <star /><span
+              >&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span
+            ><span class="separator">·</span>
           </p>
           <p>
-            <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
+            <span class="reviews-amount"
+              >{{ getStay.reviews.length + ' ' + formatReviews }}
             </span>
             <span class="separator">·</span>
           </p>
@@ -33,19 +36,19 @@
 
         <!-- SHARE AND SAVE -->
         <div class="action-btns">
-          <div class="share action-btn">
-            <share /> <span>Share</span>
-          </div>
-          <div class="save action-btn">
-            <save /> <span>Save</span>
-          </div>
+          <div class="share action-btn"><share /> <span>Share</span></div>
+          <div class="save action-btn"><save /> <span>Save</span></div>
         </div>
       </div>
 
       <!-- IMAGE GALLERY -->
       <div class="gallery" ref="elGallery">
-        <img v-for="(img, idx) in getStay.imgUrls.slice(0, 5)" :src="img" alt="stay-image"
-          :class="'gallery-img img' + idx" />
+        <img
+          v-for="(img, idx) in getStay.imgUrls.slice(0, 5)"
+          :src="img"
+          alt="stay-image"
+          :class="'gallery-img img' + idx"
+        />
       </div>
 
       <!-- STAY SUMMARY AND DETAILS -->
@@ -62,8 +65,13 @@
                 {{ getStay.capacity + 3 }} guests
               </div>
             </div>
-            <span><img :src="getStay.host.thumbnailUrl" alt="host-image" class="host-img"
-                onerror="this.src=`https://res.cloudinary.com/raz-mister-toy/image/upload/v1670229254/wbgnvdojxyealwsczvec.png`" /></span>
+            <span
+              ><img
+                :src="getStay.host.thumbnailUrl"
+                alt="host-image"
+                class="host-img"
+                onerror="this.src=`https://res.cloudinary.com/raz-mister-toy/image/upload/v1670229254/wbgnvdojxyealwsczvec.png`"
+            /></span>
           </div>
 
           <div class="stay-highlights">
@@ -158,11 +166,6 @@
                 <div class="amenity-logo"><free-parking /></div>
                 <div class="amenity-txt cancelled">Free parking</div>
               </div>
-              <!-- !understand how make this part dynamic while we have tens of amenities and we want to render the svgs... -->
-              <!-- <div v-for="amenity in getStay.amenities.slice(0, 2)" :key="amenity" class="amenity">
-            <component :is="amenity.toLowerCase()"></component>
-            <div class="amenity-txt">{{ amenity }}</div>
-          </div> -->
             </div>
             <div class="more-amenities">
               <div class="btn-show-amenities">
@@ -179,17 +182,19 @@
               <div>
                 <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
                 <span class="modal-header-price">{{
-                    getStay.price.toLocaleString('en-IN', {
-                      style: 'currency',
-                      currency: 'USD',
-                      maximumFractionDigits: 0
-                    })
+                  getStay.price.toLocaleString('en-IN', {
+                    style: 'currency',
+                    currency: 'USD',
+                    maximumFractionDigits: 0,
+                  })
                 }}</span>
                 <span class="modal-header-text"> night</span>
               </div>
               <div class="rating-reviews flex" v-if="getStay.reviews.length">
-                <star /><span>&nbsp; 4.82 </span><span class="separator">&nbsp;·&nbsp;</span>
-                <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
+                <star /><span>&nbsp; 4.82 </span
+                ><span class="separator">&nbsp;·&nbsp;</span>
+                <span class="reviews-amount"
+                  >{{ getStay.reviews.length + ' ' + formatReviews }}
                 </span>
               </div>
             </div>
@@ -215,8 +220,11 @@
                   <date-picker @set-dates="setDates" />
                 </div>
               </div>
-              <div @click.stop="isGuestModalOpen = !isGuestModalOpen" :class="{ 'selected': isGuestModalOpen }"
-                class="pax flex justify-space-between">
+              <div
+                @click.stop="isGuestModalOpen = !isGuestModalOpen"
+                :class="{ selected: isGuestModalOpen }"
+                class="pax flex justify-space-between"
+              >
                 <div>
                   <p>GUESTS</p>
                   <p class="pax-txt">{{ order.guests }} guest</p>
@@ -226,7 +234,11 @@
                   <arrow-down v-else />
                 </div>
                 <transition name="fade">
-                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" :adultNum="1" />
+                  <add-guests
+                    v-if="isGuestModalOpen"
+                    @guests-update="addGuests"
+                    :adultNum="1"
+                  />
                 </transition>
               </div>
             </div>
@@ -251,7 +263,7 @@
             <!-- modal total -->
             <div class="modal-total flex justify-space-between">
               <div>Total</div>
-              <div>{{ (formatTotalPriceWithService) }}</div>
+              <div>{{ formatTotalPriceWithService }}</div>
             </div>
           </div>
         </div>
@@ -265,7 +277,8 @@
         <div class="reviews-header">
           <div class="title">
             <div class="rating-reviews flex">
-              <star /><span>&nbsp; 4.82 </span><span class="separator">&nbsp;·&nbsp;</span>
+              <star /><span>&nbsp; 4.82 </span
+              ><span class="separator">&nbsp;·&nbsp;</span>
               <span class="reviews-amount">{{ getStay.reviews?.length }} </span>
             </div>
           </div>
@@ -329,7 +342,11 @@
         </div>
         <!-- REVIEWS DETAILS -->
         <div class="reviews-details">
-          <review v-for="review in getStay.reviews" :review="review" :key="review.id" />
+          <review
+            v-for="review in getStay.reviews"
+            :review="review"
+            :key="review.id"
+          />
           <div class="more-reviews">
             <div class="btn-show-reviews">
               Show all {{ getStay.reviews?.length }} reviews
@@ -401,12 +418,11 @@ export default {
     } catch (err) {
       throw new Error(err)
     }
-    const { startDate,
-      endDate } = this.$route.query
+    const { startDate, endDate } = this.$route.query
     this.order.checkInDate = startDate
     this.order.checkOutDate = endDate
   },
-  mounted() { },
+  mounted() {},
   methods: {
     onGalleryObserved(entries) {
       entries.forEach((entry) => {
@@ -432,11 +448,17 @@ export default {
       const { guests, checkInDate, checkOutDate } = this.order
       const { id } = this.$route.params
       this.$router.push({
-        name: 'order-confirm', params: { id }, query: {
-          guests, checkInDate, checkOutDate,
-          totalNights: this.formatNights, price: this.formatTotalPrice,
-          pricePerNight: this.formatPricePerNight, priceWithService: this.formatTotalPriceWithService
-        }
+        name: 'order-confirm',
+        params: { id },
+        query: {
+          guests,
+          checkInDate,
+          checkOutDate,
+          totalNights: this.formatNights,
+          price: this.formatTotalPrice,
+          pricePerNight: this.formatPricePerNight,
+          priceWithService: this.formatTotalPriceWithService,
+        },
       })
     },
     setDay() {
@@ -444,7 +466,7 @@ export default {
       const day = date.getDate()
       date.setDate(day + 3)
       return date
-    }
+    },
   },
   computed: {
     getStay() {
@@ -468,11 +490,17 @@ export default {
     },
     formatPricePerNight() {
       const night = this.formatNights > 1 ? 'nights' : 'night'
-      return this.getStay.price.toLocaleString('en-IN', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 0,
-      }) + ' x ' + this.formatNights + ' ' + night
+      return (
+        this.getStay.price.toLocaleString('en-IN', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 0,
+        }) +
+        ' x ' +
+        this.formatNights +
+        ' ' +
+        night
+      )
     },
     formatTotalPrice() {
       return (this.getStay.price * this.formatNights).toLocaleString('en-IN', {
@@ -482,12 +510,15 @@ export default {
       })
     },
     formatTotalPriceWithService() {
-      return (this.getStay.price * this.formatNights + 383).toLocaleString('en-IN', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 0,
-      })
-    }
+      return (this.getStay.price * this.formatNights + 383).toLocaleString(
+        'en-IN',
+        {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 0,
+        }
+      )
+    },
   },
   components: {
     addGuests,

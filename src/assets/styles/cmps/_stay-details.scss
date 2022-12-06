@@ -84,8 +84,8 @@
     grid-template-columns: minmax(326px, 560px) repeat(2, minmax(155px, 272px));
     grid-template-rows: repeat(2, minmax(164px, 243px));
     grid-template-areas:
-      "img0 img1 img2"
-      "img0 img3 img4";
+      'img0 img1 img2'
+      'img0 img3 img4';
     gap: em(8px, 15px);
 
     margin-top: 24px;
@@ -281,6 +281,7 @@
         border: 1px solid rgb(221, 221, 221);
         margin-inline-end: 0;
         margin-inline-start: auto;
+        margin-block-end: em(52px, 15px);
         padding: 20px 24px 24px;
 
         .modal-header {
@@ -372,7 +373,8 @@
             font-family: airBnB-Reg;
             font-size: em(10px, 15px);
             font-weight: 600;
-            &:hover, &.selected{
+            &:hover,
+            &.selected {
               border-radius: rem(8px);
               box-shadow: rgb(34 34 34) 0px 0px 0px 2px inset;
             }
@@ -399,7 +401,8 @@
               width: 100%;
               // border-radius: rem(4px) !important;
               .add-guests-modal {
-                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px !important;
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px,
+                  rgba(0, 0, 0, 0.07) 0px 0px 0px 1px !important;
                 border-radius: rem(4px) !important;
                 padding: 16px;
                 width: 100%;
