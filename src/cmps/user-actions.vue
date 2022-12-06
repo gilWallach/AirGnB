@@ -52,8 +52,10 @@ export default {
     myDashboard() {
       //   const user = this.loggedinUser
       //   if (!user.orders.length) return
+      let route = this.$router.resolve({ path: `/stay/user/orders` })
+      window.open(route.href)
 
-      this.$router.push('/user/orders')
+      //   this.$router.push('/user/orders')
     },
   },
   computed: {
