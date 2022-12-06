@@ -48,4 +48,22 @@
     padding-left: 0;
     border: none;
   }
+
+  .login-form,
+  .signup-form {
+    input {
+      width: 100%;
+      height: em(40px);
+    }
+    button,
+    .gradient-button {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+  }
+
+  .msg {
+    color: lighten($clr1, 10%);
+  }
 }
