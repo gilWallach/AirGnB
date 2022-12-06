@@ -372,6 +372,10 @@
             font-family: airBnB-Reg;
             font-size: em(10px, 15px);
             font-weight: 600;
+            &:hover, &.selected{
+              border-radius: rem(8px);
+              box-shadow: rgb(34 34 34) 0px 0px 0px 2px inset;
+            }
             p {
               margin: 0;
             }
@@ -394,7 +398,6 @@
               right: 0;
               width: 100%;
               // border-radius: rem(4px) !important;
-
               .add-guests-modal {
                 box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px !important;
                 border-radius: rem(4px) !important;

@@ -14,7 +14,7 @@
                     <p class="full">Check in</p>
                     <p class="full">Check out</p>
                 </div>
-                <date-picker />
+                <date-picker @filter-dates="setDatesFilter" />
             </label>
             <div class="break-line"></div>
             <div @click.stop="selected('who')" :class="{ selected: $store.getters.isGuestsSelected }"
@@ -24,9 +24,10 @@
                     <input :value="guests" type="text" placeholder="Add guests" disabled />
                     <add-guests v-if="$store.getters.isGuestsSelected" @guests-update="setCapacity" />
                 </label>
-                <button v-if="!$store.getters.isElementSelected" @click="setFilterBy" :class="{ 'element-selected': $store.getters.isElementSelected }"
+                <button v-if="!$store.getters.isElementSelected" @click="setFilterBy"
+                    :class="{ 'element-selected': $store.getters.isElementSelected }"
                     class="custom search-container flex align-center justify-center">
-                    <transition  name="fade">
+                    <transition name="fade">
                         <search-big />
                     </transition>
                 </button>
@@ -53,6 +54,10 @@ export default {
             filterBy: {
                 name: '',
                 capacity: 0,
+                date: {
+                    in: null,
+                    out: null
+                }
             },
             data: 'Search',
         }
@@ -70,8 +75,8 @@ export default {
     },
     methods: {
         setFilterBy() {
-            const { name, capacity } = this.filterBy
-            this.$router.push({ path: '/s', query: { name, capacity } })
+            const { name, capacity, date } = this.filterBy
+            this.$router.push({ path: '/s', query: { name, capacity, startDate: date.in, endDate: date.out } })
             this.$emit('close-search')
         },
         selected(el) {
@@ -109,6 +114,10 @@ export default {
         },
         setCapacity(capacity) {
             this.filterBy.capacity = capacity
+        },
+        setDatesFilter(dates) {
+            this.filterBy.date.in = dates[0]
+            this.filterBy.date.out = dates[1]
         },
         unSelectElements() {
             this.$store.commit({ type: 'unSelectElements' })

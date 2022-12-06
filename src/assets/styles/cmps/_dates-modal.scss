@@ -63,4 +63,10 @@
         }
     }
   }
+
+
+}
+
+.dates:has(div.dates-modal:has(.available.in-range.start-date)) {
+    background-color: blue;
 }
