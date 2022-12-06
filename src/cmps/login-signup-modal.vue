@@ -61,6 +61,7 @@
 <script>
 import gradientButton from '../cmps/gradient-button.vue'
 import close from '../assets/svg/close.vue'
+import { showSuccessMsg } from '../services/event-bus.service'
 export default {
   name: 'login-signup-modal',
   props: {
@@ -100,8 +101,16 @@ export default {
         return
       }
       try {
-        await this.$store.dispatch({ type: 'login', userCred: this.loginCred })
-        this.$router.push('/')
+        const user = await this.$store.dispatch({
+          type: 'login',
+          userCred: this.loginCred,
+        })
+        if (!user) {
+          this.msg = 'Invalid user crednetials'
+          return
+        } else {
+          location.reload()
+        }
       } catch (err) {
         console.log(err)
         this.msg = 'Failed to login'
