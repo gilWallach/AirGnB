@@ -6,10 +6,8 @@ import { store } from './store/store.js'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
-// import HistogramSlider from 'vue-histogram-slider';
-// import 'vue-histogram-slider/dist/histogram-slider.css';
- 
-// Vue.component(HistogramSlider.name, HistogramSlider);
+import { Chart, DoughnutController, ArcElement, Tooltip } from 'chart.js'
+Chart.register(DoughnutController, ArcElement, Tooltip)
 
 import './assets/styles/main.scss'
 import './assets/styles/setup/_typography.scss'

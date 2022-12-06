@@ -14,12 +14,11 @@
             <span>
               <star />
             </span>
-            <span>4.47 (254)</span>
+            <span>{{ reviewsAvg }} ({{stay.reviews.length}})</span>
           </div>
         </div>
         <p>{{ stay.name }}</p>
         <p>{{ stay.capacity }} beds</p>
-        <p v-if="!date">Dec 4-9</p>
         <p class="price">
           <span>${{ stay.price?.toLocaleString() }}</span> night
         </p>
@@ -56,11 +55,22 @@ export default {
         const { startDate, endDate } = this.date
         route = this.$router.resolve({ path: `/stay/${stayId}`, query: { startDate, endDate, guests } })
       }
-      else{
-        route = this.$router.resolve({ path: `/stay/${stayId}`})
+      else {
+        route = this.$router.resolve({ path: `/stay/${stayId}` })
       }
       window.open(route.href);
     },
+  },
+  computed: {
+    reviewsAvg() {
+      const reviews = this.stay.reviews
+
+      let average = reviews.reduce((sum, review) => {
+        return sum + review.rate
+      }, 0) / reviews.length
+
+      return average.toFixed(2)
+    }
   },
   components: {
     star,

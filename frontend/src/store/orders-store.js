@@ -60,7 +60,6 @@ export const orderStore = {
             order.msgs.push(msg)
         },
         setFilterBy(state, { filterBy }) {
-            console.log(filterBy)
             state.filterBy = filterBy
         },
         setSelectedOrder(state, { order }) {
@@ -92,7 +91,6 @@ export const orderStore = {
         async loadOrders(context, { filterBy }) {
             try {
                 const orders = await orderService.query(filterBy)
-                console.log('from load', orders)
                 context.commit({ type: 'setOrders', orders })
             } catch (err) {
                 console.log('orderStore: Error in loadOrders', err)
