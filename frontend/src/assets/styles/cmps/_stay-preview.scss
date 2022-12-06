@@ -1,0 +1,116 @@
+    .card {
+        background-color: $clr8;
+        aspect-ratio: 1 /1;
+        color: $clr2;
+        line-height: rem(19px);
+        max-width: 800px;
+        cursor: pointer;
+
+        .img-container {
+            position: relative;
+            border-radius: .75em;
+            overflow: hidden;
+            aspect-ratio: 1 / 0.94;
+
+            .wishlist {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                z-index: 5;
+                padding: 0;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                align-self: center;
+            }
+
+            .stay-carousel {
+                width: 100%;
+                height: 100%;
+
+                .el-carousel {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .el-carousel__container {
+                    width: 100%;
+                    height: 100%;
+
+                }
+
+                .el-carousel__button,
+                .el-carousel__indicator--horizontal {
+                    border-radius: 50%;
+                    height: 6px !important;
+                    width: 6px !important;
+                }
+
+                .el-carousel__indicators--horizontal {
+                    bottom: 0;
+                    margin-bottom: 10px;
+                    transform: translateX(-50%);
+                }
+
+                .el-carousel__indicator--horizontal {
+                    margin-inline-end: 3px;
+                }
+
+                .el-carousel__arrow {
+                    height: em(38px, 15px) !important;
+                    width: em(38px, 15px) !important;
+                    background-color: rgba(255, 255, 255, 0.9);
+                    color: $clr2;
+                    transition: transform 0.25s ease
+                }
+            }
+        }
+
+        p {
+            margin: 0 0 3px;
+            color: $clr4;
+            max-width: 75%;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .price {
+            padding-top: 6px;
+            color: $clr2;
+
+            span {
+                font-family: airBnb-Med;
+            }
+        }
+
+        .title {
+            padding-top: 12px;
+
+            svg {
+                padding-inline-end: 3px;
+            }
+
+            p {
+                font-family: airBnb-Med;
+                color: $clr2;
+                padding-bottom: 6px;
+
+                .rating {
+                    margin-inline-start: 3px;
+                }
+            }
+        }
+
+
+    }
+
+    div.el-carousel.el-carousel--horizontal:has(ul):has(li:first-child.is-active) div button:first-of-type,
+    div.el-carousel.el-carousel--horizontal:has(ul):has(li:last-child.is-active) div button:last-of-type {
+        display: none;
+    }
