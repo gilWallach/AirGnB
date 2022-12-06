@@ -74,9 +74,9 @@ function getEmptyOrder() {
   }
 }
 
-async function _createOrders() {
-  await storageService.post(STORAGE_KEY, 
-    {
+function _createOrders() {
+  utilService.saveToStorage(STORAGE_KEY, 
+    [{
       _id: 'o1225',
       hostId: '622f3401e36c59e6164fab4d',
       createdAt: 9898989,
@@ -98,7 +98,76 @@ async function _createOrders() {
       },
       msgs: [],
       status: 'pending', // pending, approved
-    },)
+    },
+    {
+      _id: 'o1225',
+      hostId: '622f3401e36c59e6164fab4d',
+      createdAt: 9898989,
+      buyer: {
+        _id: '622f3401e36c59e6164fab4e',
+        fullname: 'Leo',
+      },
+      totalPrice: 1785,
+      startDate: '2025/10/15',
+      endDate: '2025/10/17',
+      guests: {
+        adults: 2,
+        kids: 1,
+      },
+      order: {
+        _id: '622f337a75c7d36e498aaaf8',
+        name: 'Westin Kaanapali KORVN 2BR',
+        price: 595,
+      },
+      msgs: [],
+      status: 'approved', // pending, approved
+    },
+    {
+      _id: 'o1225',
+      hostId: '622f3401e36c59e6164fab4d',
+      createdAt: 9898989,
+      buyer: {
+        _id: '622f3401e36c59e6164fab4e',
+        fullname: 'Leo',
+      },
+      totalPrice: 1785,
+      startDate: '2025/10/15',
+      endDate: '2025/10/17',
+      guests: {
+        adults: 2,
+        kids: 1,
+      },
+      order: {
+        _id: '622f337a75c7d36e498aaaf8',
+        name: 'Westin Kaanapali KORVN 2BR',
+        price: 595,
+      },
+      msgs: [],
+      status: 'approved', // pending, approved
+    },
+    {
+      _id: 'o1225',
+      hostId: '622f3401e36c59e6164fab4d',
+      createdAt: 9898989,
+      buyer: {
+        _id: '622f3401e36c59e6164fab4e',
+        fullname: 'Leo',
+      },
+      totalPrice: 1785,
+      startDate: '2025/10/15',
+      endDate: '2025/10/17',
+      guests: {
+        adults: 2,
+        kids: 1,
+      },
+      order: {
+        _id: '622f337a75c7d36e498aaaf8',
+        name: 'Westin Kaanapali KORVN 2BR',
+        price: 595,
+      },
+      msgs: [],
+      status: 'declined', // pending, approved
+    }])
 }
 
 // function getOrders() {

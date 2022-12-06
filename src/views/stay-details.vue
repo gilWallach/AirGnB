@@ -1,15 +1,14 @@
 <template>
   <div class="main-container-stay-details" @click="(isGuestModalOpen = false)">
     <!-- SUB-HEADER floating element, appears when scrolling below gallery -->
-    <header v-if="isShowSubHeader" style="
-        position: fixed;
-        top: 0;
-        height: 78px;
-        width: 100%;
-        background-color: antiquewhite;
-      ">
-      HEADER
-    </header>
+    <div class="main-container-stay-details sticky-header-container">
+      <header v-if="isShowSubHeader" class="sticky-header">
+        <button class="fs14 bold btn-sticky-nav">Photos</button>
+        <button class="fs14 bold btn-sticky-nav">Amenities</button>
+        <button class="fs14 bold btn-sticky-nav">Reviews</button>
+        <button class="fs14 bold btn-sticky-nav">Location</button>
+      </header>
+    </div>
     <!-- HEADER -->
     <section v-if="getStay" class="stay-details">
       <div class="details-header">
