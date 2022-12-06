@@ -9,7 +9,7 @@
                 <ul class="clean-list">
                     <li>
                         <h3>Trip dates:</h3>
-                        <span>{{ order.checkInDate }} - {{ order.checkOutDate }}</span>
+                        <span>{{ order.startDate }} - {{ order.endDate }}</span>
                     </li>
                     <li>
                         <h3>Guests:</h3>
@@ -21,7 +21,7 @@
                     <li>
                         <h3>Price Details</h3>
                         <p class="flex align-center justify-space-between"><span>{{ pricePerNight }}</span>
-                            <span>{{ this.order.price }}</span>
+                            <span>{{ this.order.totalPrice }}</span>
                         </p>
                         <p class="flex align-center justify-space-between"><span>Service fee</span> <span>$383</span>
                         </p>
@@ -34,7 +34,7 @@
         </div>
         <div class="confirmation-btns flex align-center justify-center">
             <button>Back</button>
-            <gradient-button :data="'Confirm'" />
+            <gradient-button :data="'Confirm'" @click="setOrder"/>
         </div>
     </section>
 </template>
@@ -47,10 +47,10 @@ export default {
     data() {
         return {
             order: {
-                checkInDate: null,
-                checkOutDate: null,
+                startDate: null,
+                endDate: null,
                 guests: 0,
-                price: 0,
+                totalPrice: 0,
                 totalNights: 0
             },
             pricePerNight: '',
@@ -66,27 +66,33 @@ export default {
             throw err
         }
         const { guests, checkInDate, checkOutDate, totalNights, price, pricePerNight, priceWithService } = this.$route.query
-        this.order.checkInDate = checkInDate
-        this.order.checkOutDate = checkOutDate
+        this.order.startDate = checkInDate
+        this.order.endDate = checkOutDate
         this.order.guests = guests
-        this.order.price = price
+        this.order.totalPrice = price
         this.order.totalNights = totalNights
         this.pricePerNight = pricePerNight
         this.priceWithService = priceWithService
     },
-    methods: {},
+    methods: {
+        async setOrder(){
+            const order = {...this.order}
+            order.totalPrice = +order.totalPrice.substring(1)
+            order.status='pending'
+            order.msgs = []
+            // order.buyer = 
+            console.log(order);
+            return
+            try{
+                await this.$store.dispatch({type:'setOrder', order})
+            } catch (err){
+                throw err
+            }
+        }
+    },
     computed: {
         stay() {
             return this.$store.getters.selectedStay
-        },
-        formatPricePerNight() {
-            const { totalNights } = this.order
-            const night = totalNights > 1 ? 'nights' : 'night'
-            return this.stay.price.toLocaleString('en-IN', {
-                style: 'currency',
-                currency: 'USD',
-                maximumSignificantDigits: 1,
-            }) + ' x ' + totalNights + ' ' + night
         },
     },
     components: {

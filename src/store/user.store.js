@@ -18,11 +18,11 @@ export const userStore = {
     mutations: {
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
-            state.loggedinUser = (user)? {...user} : null
+            state.loggedinUser = (user) ? { ...user } : null
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user
-        },       
+        },
         setUsers(state, { users }) {
             state.users = users
         },
@@ -73,12 +73,12 @@ export const userStore = {
                 console.log('userStore: Error in loadUsers', err)
                 throw err
             }
-        },        
+        },
         async loadAndWatchUser({ commit }, { userId }) {
             try {
                 const user = await userService.getById(userId)
                 commit({ type: 'setWatchedUser', user })
-                
+
             } catch (err) {
                 console.log('userStore: Error in loadAndWatchUser', err)
                 throw err
@@ -113,9 +113,9 @@ export const userStore = {
             }
         },
         // Keep this action for compatability with a common user.service ReactJS/VueJS
-        setWatchedUser({commit}, payload) {
+        setWatchedUser({ commit }, payload) {
             commit(payload)
-        },       
+        },
 
     }
 }

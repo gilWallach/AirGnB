@@ -182,7 +182,7 @@
                     getStay.price.toLocaleString('en-IN', {
                       style: 'currency',
                       currency: 'USD',
-                      maximumSignificantDigits: 1,
+                      maximumFractionDigits: 0
                     })
                 }}</span>
                 <span class="modal-header-text"> night</span>
@@ -466,21 +466,21 @@ export default {
       return this.getStay.price.toLocaleString('en-IN', {
         style: 'currency',
         currency: 'USD',
-        maximumSignificantDigits: 1,
+        maximumFractionDigits: 0,
       }) + ' x ' + this.formatNights + ' ' + night
     },
     formatTotalPrice() {
       return (this.getStay.price * this.formatNights).toLocaleString('en-IN', {
         style: 'currency',
         currency: 'USD',
-        maximumSignificantDigits: 1,
+        maximumFractionDigits: 0,
       })
     },
     formatTotalPriceWithService() {
       return (this.getStay.price * this.formatNights + 383).toLocaleString('en-IN', {
         style: 'currency',
         currency: 'USD',
-        maximumSignificantDigits: 1,
+        maximumFractionDigits: 0,
       })
     }
   },

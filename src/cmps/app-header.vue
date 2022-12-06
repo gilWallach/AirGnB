@@ -57,13 +57,13 @@
         </div>
         <user-actions v-if="showUserActions" />
       </nav>
-      <section class="loggedin-user" v-if="loggedInUser">
+      <!-- <section class="loggedin-user" v-if="loggedInUser">
         <router-link :to="`/user/${loggedInUser._id}`">
           {{ loggedInUser.fullname }}
         </router-link>
         <span>{{ loggedInUser.score.toLocaleString() }}</span>
         <img :src="loggedInUser.imgUrl" />
-      </section>
+      </section> -->
     </header>
     <transition name="fade">
       <secondary-header
