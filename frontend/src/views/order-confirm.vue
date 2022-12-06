@@ -11,12 +11,11 @@
                         <h3>Trip dates:</h3>
                         <span>{{ order.startDate }} - {{ order.endDate }}</span>
                     </li>
-                    <li>
+                    <li class="flex column">
                         <h3>Guests:</h3>
-                        <span>{{ order.guests }} adult</span>
-                        <!-- <span v-if="order.adults">{{order.adults}} adult</span> -->
-                        <!-- <span v-if="order.children">{{order.children}} children</span> -->
-                        <!-- <span v-if="order.infants">{{order.infants}} infants</span> -->
+                        <span v-if="order.guests.adults">{{order.guests.adults}} adult</span>
+                        <span v-if="order.guests.children">{{order.guests.children}} children</span>
+                        <span v-if="order.guests.infants">{{order.guests.infants}} infants</span>
                     </li>
                     <li>
                         <h3>Price Details</h3>
@@ -69,7 +68,7 @@ export default {
         const { guests, checkInDate, checkOutDate, totalNights, price, pricePerNight, priceWithService } = this.$route.query
         this.order.startDate = checkInDate
         this.order.endDate = checkOutDate
-        this.order.guests = +guests
+        this.order.guests = JSON.parse(guests)
         this.order.totalPrice = price
         this.order.totalNights = totalNights
         this.pricePerNight = pricePerNight

@@ -24,7 +24,8 @@ export default {
     },
     methods: {
         async loadStays() {
-            const { name, label, capacity } = this.$route.query
+            const { name, label, guests } = this.$route.query
+            const capacity = (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests))) ? JSON.parse(guests).capacity : 0
             const filterBy = {
                 name,
                 label,

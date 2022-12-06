@@ -3,12 +3,13 @@
     padding-top: $header-height / 2;
 
     .list {
+        max-width: 70%;
         margin-top: $header-height / 4;
-        box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+        box-shadow: $clr5 0px 6px 16px;
 
         table {
             width: 100%;
-
+            padding: 16px;
             th {
                 height: 95px;
                 padding: 42px 0 0 8px;
@@ -18,16 +19,45 @@
             
             tr {
                 display: grid;
-                grid-template-columns: .75fr .5fr 1fr 1fr 1fr 3fr 1fr 1fr;
+                grid-template-columns: 0.75fr 0.75fr 0.5fr 1fr 1fr 1fr 2.5fr 1fr 1fr;
                 align-items: center;
                 justify-content: left;
-                height: 76px;
+                min-height: 76px;
                 font-size: em(14px);
-                box-shadow: rgb(0 0 0 / 12%) 0px 1px 2px;
+                border-bottom: .5px solid $clr7;
+                // box-shadow: $clr5 0px 1px 2px;
+
                 
                 td{
                     padding-inline-start: 8px;
 
+                }
+
+                .center-td{
+                    text-align: center;
+                }
+
+                .buyer-details-td{
+                    padding: 8px;
+                    flex-direction: column;
+                }
+
+                & .buyer-img-container{
+                    height: 58px;
+                    width: 58px;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    img{
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+                & p{
+                    padding-top: 8px;
+                    margin: 0;
+                    text-align: center;
                 }
 
                 
