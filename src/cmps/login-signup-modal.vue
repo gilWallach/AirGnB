@@ -8,13 +8,14 @@
         >
           <close />
         </button>
-        <div class="center-heading">Log in or sign up</div>
+        <div v-if="isLogin" class="center-heading">Log in</div>
+        <div v-else class="center-heading">sign up</div>
       </div>
 
       <main>
         <h3 class="welcome-header header fs18">Welcome to AirGnB</h3>
 
-        <p>{{ msg }}</p>
+        <p class="msg">{{ showMsg }}</p>
 
         <section v-if="isLogin" className="login-form">
           <form @submit.prevent="doLogin" class="login-signup-form">
@@ -29,7 +30,7 @@
               type="text"
               placeholder="Password"
             />
-            <button>LOGIN</button>
+            <button><gradient-button :data="'LOG IN'" /></button>
           </form>
         </section>
         <section v-else className="signup-form">
@@ -50,7 +51,7 @@
               type="text"
               placeholder="Password"
             />
-            <button>SIGN UP</button>
+            <button><gradient-button :data="'SIGN UP'" /></button>
           </form>
         </section>
       </main>
@@ -58,6 +59,7 @@
   </section>
 </template>
 <script>
+import gradientButton from '../cmps/gradient-button.vue'
 import close from '../assets/svg/close.vue'
 export default {
   name: 'login-signup-modal',
@@ -135,8 +137,13 @@ export default {
       this.signupCred.imgUrl = imgUrl
     },
   },
-  computed: {},
+  computed: {
+    showMsg() {
+      return this.msg
+    },
+  },
   components: {
+    gradientButton,
     close,
   },
 }
