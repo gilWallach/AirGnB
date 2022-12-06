@@ -151,3 +151,14 @@ header {
   transition: opacity 0.6s;
   pointer-events: auto;
 }
+
+.main-screen-transparent {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  background-color: transparent;
+  /* display: none; */
+  opacity: 1;
+
+  pointer-events: auto;
+}

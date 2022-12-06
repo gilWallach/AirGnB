@@ -118,7 +118,7 @@ export default {
         return
       }
       await this.$store.dispatch({ type: 'signup', userCred: this.signupCred })
-      this.$router.push('/')
+      this.$emit('closeModal')
     },
     loadUsers() {
       this.$store.dispatch({ type: 'loadUsers' })
