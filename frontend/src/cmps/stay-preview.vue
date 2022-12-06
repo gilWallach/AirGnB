@@ -56,7 +56,9 @@ export default {
         route = this.$router.resolve({ path: `/stay/${stayId}`, query: { startDate, endDate } })
       }
       // console.log(this.date)
-      route = this.$router.resolve({ path: `/stay/${stayId}`})
+      else{
+        route = this.$router.resolve({ path: `/stay/${stayId}`})
+      }
       window.open(route.href);
     },
   },
