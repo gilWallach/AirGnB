@@ -390,6 +390,7 @@ async function _createStays() {
           id: '10711825',
         },
         txt: 'I had a great experience working with Patty and Peter.  Both were very attentive in sorting out the booking details and following up directly when I had questions.  I rented a 2 bedroom unit at the Westin Villas  in Maui and both the unit and property was absolutely amazing.  I think we had the best unit on the resort complete with 2 outdoor patios with direct access  to  the  beach.  I would HIGHLY recommend renting with Patty and Peter.',
+        rate: 4.5
       },
       {
         at: '2016-07-28T04:00:00.000Z',
@@ -400,6 +401,7 @@ async function _createStays() {
           id: '70072865',
         },
         txt: 'Peter quickly responded to any questions I had before, and during the trip. Will use again, highly recommend. ',
+        rate: 4.3
       },
       {
         at: '2016-09-11T04:00:00.000Z',
@@ -410,6 +412,7 @@ async function _createStays() {
           id: '71179725',
         },
         txt: 'We had the perfect location for a room, first floor right in front of the pool. The resort is beautiful, and the staff is so friendly! I enjoyed it so much, we talked about buying a timeshare ourselves.',
+        rate: 4.8
       },
       {
         at: '2017-01-07T05:00:00.000Z',
@@ -420,6 +423,7 @@ async function _createStays() {
           id: '65593239',
         },
         txt: 'Beautiful location. Patty & Peter were super helpful and easy to work with!',
+        rate: 4.7
       },
       {
         at: '2017-04-07T04:00:00.000Z',
@@ -430,6 +434,7 @@ async function _createStays() {
           id: '26215688',
         },
         txt: 'Great spot for the kids and family and close to beach and everything at the resort. We will definitely be back.',
+        rate: 3.8
       },
       {
         at: '2017-05-09T04:00:00.000Z',
@@ -440,6 +445,7 @@ async function _createStays() {
           id: '117390236',
         },
         txt: 'The unit and the Westin offer variety of amenities you can possibly ask for. Sofa beds are very comfortable to sleep in. But there is charge for ocean view upgrade. Overall, I highly recommend to book with Patty and Peter. ',
+        rate: 4.3
       },
       {
         at: '2018-02-24T05:00:00.000Z',
@@ -450,6 +456,7 @@ async function _createStays() {
           id: '15143517',
         },
         txt: "We spent a great week at Patty and Peter's place. The place was exactly as shown in the pictures, very comfortable, nice view, with all amenities. The resort is great with several pools, a long beach, many restaurants, and of course a lot of great activities all around.",
+        rate: 4.5
       },
       {
         at: '2018-06-16T04:00:00.000Z',
@@ -460,6 +467,7 @@ async function _createStays() {
           id: '78173091',
         },
         txt: 'This place was perfect for my family. We had plenty of room to spread out and the service could not have been any better',
+        rate: 4.6
       },
       {
         at: '2018-06-29T04:00:00.000Z',
@@ -470,6 +478,7 @@ async function _createStays() {
           id: '100535039',
         },
         txt: 'We love Westin Kaanapalli',
+        rate: 4.2
       },
     ],
     likedByUsers: [],
@@ -539,6 +548,7 @@ async function _createStays() {
           id: '81703602',
         },
         txt: 'The place was great, as was the host! I would recommend staying here.',
+        rate: 4.7
       },
       {
         at: '2016-07-08T04:00:00.000Z',
@@ -678,6 +688,7 @@ async function _createStays() {
           id: '19177194',
         },
         txt: "Mes parents ont passé un excellent séjour à Porto dans l'appartement de Maria qui est bien équipé, confortable et très propre. Il est situé au coeur du centre ville et tout est accessible à pied. Si vous venez en voiture, prévoir de se garer dans le parking souterrain payant juste à côté. Mes parents remercient chaudement Maria et son mari qui ont été adorables, notamment par leur accueil chaleureux.",
+        rate: 4.2
       },
       {
         at: '2016-08-10T04:00:00.000Z',
@@ -923,6 +934,7 @@ async function _createStays() {
           id: '4523027',
         },
         txt: "Shaila's place is amazing! It's new, it's clean and it's big! And Shaila is very accommodating, we found everything we needed (cooking, coffee) and more. Given that we were the first guests she hosted through airbnb I can say that she did an amazing job! \r\n",
+        rate: 4.5
       },
       {
         at: '2013-06-04T04:00:00.000Z',
@@ -1178,6 +1190,7 @@ async function _createStays() {
           id: '65117711',
         },
         txt: "Host: Marian gave us a warm welcome and treated us kindly from the very beginning. She offered us help, told us what to visit and even put water, milk and orange juice in the fridge! We could have breakfast at her place which was perfect because she has a little sweet balcony! \r\nLocation: calmly situated in a side street, very near to the Placa Catalunya, the Rambla and the gothic area of Barcelona (very beautiful:)) so you have the old cultural center as well as all the restaurants and bars just nearby.\r\nHouse/Room: the appartment is not a huge, but I think you have everything you need (beautiful sitting room, balcony, kitchen) in it. You have to share the appartment with Marian so pay attention and don't be too loud in the evening!!\r\ndisadvantage: the heat is terrible in summer and there is no air-condition..\r\n\r\nI would overall recommend it to everybody!! But if you want to party and stay up late, take a hostel or another appartment.",
+        rate: 3.8
       },
       {
         at: '2016-08-11T04:00:00.000Z',
@@ -1261,6 +1274,7 @@ async function _createStays() {
           id: '58999873',
         },
         txt: 'Una instancia muy céntrica en uno de estos edificios antiguos del Barri Gotic. No es poco haber conseguido estar en el centro de Barcelona en la misma semana del Mobile World Congress. Isabel es un encanto de anfitrión.',
+
       },
       {
         at: '2016-03-24T04:00:00.000Z',
