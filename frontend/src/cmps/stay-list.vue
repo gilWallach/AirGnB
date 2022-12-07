@@ -1,5 +1,5 @@
 <template>
-  <section class="main-layout-list">
+  <section class="main-layout-list flex">
     <div class="placeholder" ref="placeholder"></div>
     <div class="list-header-container main-layout-list" :class="{ 'scroll-shadow': scrollShadow }">
       <div class="list-header flex align-center justify-space-between">
@@ -11,7 +11,7 @@
         </button>
       </div>
     </div>
-    <p v-if="(isSearch)" class="serch-results-number bold">{{stays.length}}</p>
+    <p v-if="(isSearch)" class="serch-results-number">{{stays.length}} homes in {{$route.query.name}}</p>
     <ul class="stay-list">
       <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" :date="date" @addToWishlist="addToWishlist" />
     </ul>

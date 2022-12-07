@@ -53,7 +53,7 @@ export default {
           status: 'Status Data',
           borderRadius: 6,
           data,
-          backgroundColor: ["#77CEFF", "#0079AF", "#123E6B"]
+          backgroundColor: ["rgb(0, 166, 0)", "rgb(218, 200, 1)", "rgb(161, 0, 0)"]
         }]
       }
     }

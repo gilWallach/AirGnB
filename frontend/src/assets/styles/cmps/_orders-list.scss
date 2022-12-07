@@ -3,7 +3,7 @@
     padding-top: $header-height / 2;
 
     .list {
-        max-width: 70%;
+        max-width: 760px;
         margin-top: $header-height / 4;
         box-shadow: $clr5 0px 6px 16px;
 
@@ -70,7 +70,9 @@
             }
         }
     }
-
+.content-container{
+    width: max-content;
+}
     .approved {
         color: rgb(0, 166, 0);
     }
