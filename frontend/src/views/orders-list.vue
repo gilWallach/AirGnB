@@ -1,7 +1,8 @@
 <template>
   <section v-if="orders" class="orders-list main-layout-list">
     <h1 class="fs22">Reservation</h1>
-    <div class="content-container flex">
+    <div class="content-container">
+
       <div class="list">
         <table>
           <tr>
@@ -25,7 +26,7 @@
             <td class="center-td">{{ formatGuests(currOrder.guests) }}</td>
             <td>{{ currOrder.startDate }}</td>
             <td>{{ currOrder.endDate }}</td>
-            <td>{{ formatCreatedAt(currOrder.createdAt) }}</td>
+            <!-- <td>{{ formatCreatedAt(currOrder) }}</td> -->
             <td>{{ currOrder.stay.name }}</td>
             <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
             <td>
@@ -44,7 +45,7 @@
         </table>
       </div>
   
-      <div class="charts-container flex">
+      <div class="charts-container">
         <status-chart :orders="orders" />
       </div>
     </div>
@@ -65,7 +66,6 @@ export default {
         'Guests',
         'Check-in',
         'Check-out',
-        'Booked',
         'Listing',
         'Total Payout',
         'Actions',
@@ -96,7 +96,8 @@ export default {
       return guestsArr.reduce((acc, n) => acc + n, 0)
     },
     formatCreatedAt(createdAt) {
-      return new Date(createdAt).toLocaleDateString('en-US')
+      console.log(createdAt)
+      // return new Date(createdAt).toLocaleDateString('en-US')
     },
     formatTotalPrice(totalPrice) {
       return totalPrice.toLocaleString('en-US', {
