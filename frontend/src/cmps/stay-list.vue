@@ -11,9 +11,7 @@
         </button>
       </div>
     </div>
-    <div v-if="(isSearch)" class="serch-results-number">
-      IS SERCH
-    </div>
+    <p v-if="(isSearch)" class="serch-results-number bold">{{stays.length}}</p>
     <ul class="stay-list">
       <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" :date="date" @addToWishlist="addToWishlist" />
     </ul>
@@ -60,8 +58,9 @@ export default {
     }
   },
   created() {
-    console.log(typeof(this.$route.query))
-    // if (this.$route.query !== {} ) this.isSearch = true
+    console.log('this.$route.query.name', this.$route.query.name)
+    if (this.$route.query.name) this.isSearch = true
+    // if (Object.values(this.$route.query).length) this.isSearch = true
   },
   mounted() {
     this.listObserver = new IntersectionObserver(this.onListObserved, {
