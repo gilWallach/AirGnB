@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+MongoDB user and pass:
+
+=======
+>>>>>>> de18dfabd48d670c7f605187d97d42105bb61649
 DB Connection String: mongodb+srv://rgnb:rgnb123@cluster0.0xuxuyn.mongodb.net/?retryWrites=true&w=majority
 DB Name: airgnb_db
 username: rgnb

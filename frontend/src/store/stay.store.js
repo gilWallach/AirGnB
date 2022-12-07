@@ -1,5 +1,5 @@
-import { stayService } from '../services/stay.service.local'
-// import { stayService } from '../services/stay.service'
+// import { stayService } from '../services/stay.service.local'
+import { stayService } from '../services/stay.service'
 
 export function getActionRemoveStay(stayId) {
   return {
@@ -96,7 +96,7 @@ export const stayStore = {
         throw err
       }
     },
-    async loadStays(context,{filterBy}) {
+    async loadStays(context, { filterBy }) {
       try {
         const stays = await stayService.query(filterBy)
         context.commit({ type: 'setStays', stays })
