@@ -74,13 +74,11 @@ export const orderStore = {
         context.commit(getActionAddOrder(order))
         return order
       } catch (err) {
-        console.log('orderStore: Error in addOrder', err)
         throw err
       }
     },
     async updateOrder(context, { order }) {
       try {
-        console.log('from update', order)
         order = await orderService.save(order)
         context.commit(getActionUpdateOrder(order))
         return order

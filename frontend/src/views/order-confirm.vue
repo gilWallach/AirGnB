@@ -85,7 +85,6 @@ export default {
             order.host = { _id: hostId, fullname, thumbnailUrl }
             const miniStay = { _id, name, price }
             order.stay = miniStay
-            console.log(order);
             try {
                 await this.$store.dispatch({ type: 'addOrder', order })
             } catch (err) {
