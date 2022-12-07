@@ -7,38 +7,26 @@
                 <p>Where</p>
                 <input class="where" ref="input" v-model="filterBy.name" type="text" placeholder="Search destinations">
             </label>
-            <div class="break-line"></div>
-            <!-- <label class="flex column date" :class="{ selected: $store.getters.isDateSelected }"
-                @click.stop.prevent="selected('date')">
-                <div class="check-in-out flex align-center">
-                    <p class="full">Check in</p>
-                    <p class="full">Check out</p>
-                </div>
-            <date-picker @filter-dates="setDatesFilter" /> -->
-            <div class="flex header-dates align-center">
-                <div @click.stop="selected('date')" class="check-in flex column"
-                    :class="{ selected: $store.getters.isDateSelected }">
-                    <label for="i">
-                        <p>Check in</p>
-                        <input disabled @click.prevent type="text" class="dates-txt" :value="inDate"
-                            placeholder="Add dates" />
-                    </label>
-                </div>
-                <div class="break-line"></div>
-                <div @click.stop="selected('date')" class="checkout flex column"
-                    :class="{ selected: $store.getters.isDateSelected }">
-                    <label for="o">
-                        <p>Check out</p>
-                        <input disabled @click.prevent type="text" class="dates-txt" :value="outDate"
-                            placeholder="Add dates" />
-                    </label>
-                </div>
-                <div class="header-dates-modal flex column">
-                    <date-picker @set-dates="setDates" />
-                </div>
-            </div>
+            <!-- <div class="flex header-dates align-center"> -->
+            <!-- <div @click.stop="selected('check-in')" class="check-in flex column" -->
+            <!-- :class="{ selected: $store.getters.isCheckInSelected }"> -->
+            <label for="i" class="checkout flex column" @click.stop="selected('check-in')"
+                :class="{ selected: $store.getters.isCheckInSelected }">
+                <p>Check in</p>
+                <input disabled @click.prevent type="text" class="dates-txt" :value="inDate" placeholder="Add dates" />
+            </label>
+            <!-- </div> -->
+            <!-- <div @click.stop="selected('check-out')" class="checkout flex column" -->
+            <!-- :class="{ selected: $store.getters.isCheckOutSelected }"> -->
+            <label for="o" class="checkout flex column" @click.stop="selected('check-out')"
+                :class="{ selected: $store.getters.isCheckOutSelected }">
+                <p>Check out</p>
+                <input disabled @click.prevent type="text" class="dates-txt" :value="outDate" placeholder="Add dates" />
+            </label>
+            <!-- </div> -->
+
+            <!-- </div> -->
             <!-- </label> -->
-            <div class="break-line"></div>
             <div @click.stop="selected('who')" :class="{ selected: $store.getters.isGuestsSelected }"
                 class="add-guests-container flex-container flex align-center justify-space-between full">
                 <label class="flex column full">
@@ -58,6 +46,9 @@
                     <!-- <span v-if="$store.getters.isElementSelected">Search</span> -->
                     <gradient-button class="btn search" :data="data" :search-cmp="true" />
                 </transition>
+            </div>
+            <div class="header-dates-modal flex column">
+                <date-picker @set-dates="setDates" />
             </div>
         </header>
     </div>
@@ -91,6 +82,7 @@ export default {
         if (guests && Object.keys(guests).length) {
             console.log('Guests', guests);
             const guestsObject = JSON.parse(guests)
+            this.filterBy.guests = guestsObject
         }
         if (startDate) {
             const inDate = new Date(startDate)
@@ -134,9 +126,19 @@ export default {
                     this.$refs.input.focus()
                 }
             }
-            else if (el === 'date') {
-                select = 'isDateSelected'
-                if (this.$store.getters.isDateSelected) {
+            else if (el === 'check-in') {
+                select = 'isCheckInSelected'
+                if (this.$store.getters.isCheckInSelected) {
+                    type = 'unSelectElement'
+                } else {
+                    type = 'selectElement'
+                    this.unSelectElements()
+                }
+            }
+            else if (el === 'check-out') {
+                console.log('checkout');
+                select = 'isCheckOutSelected'
+                if (this.$store.getters.isCheckOutSelected) {
                     type = 'unSelectElement'
                 } else {
                     type = 'selectElement'

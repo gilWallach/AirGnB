@@ -1,0 +1,6 @@
+{
+  "stayCollection": "stay",
+  "userCollection": "user",
+  "db": "airgnb_db",
+  "connectionStr": "mongodb+srv://rgnb:rgnb123@cluster0.0xuxuyn.mongodb.net/?retryWrites=true&w=majority"
+}

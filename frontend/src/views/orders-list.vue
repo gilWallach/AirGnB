@@ -42,22 +42,32 @@
         </tr>
       </table>
     </div>
-  </section>
 
+<<<<<<< HEAD
   <section v-if="orders" class="charts">
     <div class="chart-container">
       <h3>Orders status average</h3>
       <DoughnutChart :chartData="getStatusData" />
+=======
+    <div class="charts-container">
+      <status-chart :orders="orders"/>
+>>>>>>> 1206c96c0c2bc59798b945daba18b78684735cdc
     </div>
   </section>
 </template>
 <script>
+<<<<<<< HEAD
 import { DoughnutChart } from 'vue-chart-3'
 import { Chart, registerables } from 'chart.js'
 
 import userAvatar from '../assets/svg/user-avatar.vue'
 
 Chart.register(...registerables)
+=======
+
+import userAvatar from '../assets/svg/user-avatar.vue'
+import statusChart from '../cmps/status-chart.vue'
+>>>>>>> 1206c96c0c2bc59798b945daba18b78684735cdc
 
 export default {
   name: 'orders-list',
@@ -76,6 +86,7 @@ export default {
         'Actions',
       ],
       orders: null,
+<<<<<<< HEAD
       statusData: ['Approved', 'Pending', 'Declined'],
       options: {
         plugins: {
@@ -84,6 +95,8 @@ export default {
           },
         },
       },
+=======
+>>>>>>> 1206c96c0c2bc59798b945daba18b78684735cdc
     }
   },
   async created() {
@@ -120,6 +133,7 @@ export default {
       await this.$store.dispatch({ type: 'updateOrder', order })
     },
   },
+<<<<<<< HEAD
   computed: {
     getStatusData() {
       const data = this.statusData.map((status) => {
@@ -149,5 +163,11 @@ export default {
     userAvatar,
     DoughnutChart,
   },
+=======
+  components: {
+    userAvatar,
+    statusChart
+  }
+>>>>>>> 1206c96c0c2bc59798b945daba18b78684735cdc
 }
 </script>

@@ -15,7 +15,7 @@ export const stayService = {
 }
 window.cs = stayService
 
-async function query(filterBy = { name: '', price: 0 }) {
+async function query(filterBy = { name: '', capacity: 0 }) {
   return httpService.get(STORAGE_KEY, filterBy)
 
   // var stays = await storageService.query(STORAGE_KEY)
@@ -59,7 +59,7 @@ async function addStayMsg(stayId, txt) {
 function getEmptyStay() {
   return {
     name: '',
+    capacity: 0,
     price: 0,
-    description: '',
   }
 }
