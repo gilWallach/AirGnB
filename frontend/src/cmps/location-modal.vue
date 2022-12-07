@@ -3,7 +3,7 @@
         <div class="popup-lt-side flex" bis_skin_checked="1">
             <div class="lt map-header" bis_skin_checked="1">Search by region</div>
             <div class="maps-wrapper" bis_skin_checked="1">
-                <div class="map-loc" bis_skin_checked="1">
+                <div class="map-loc" bis_skin_checked="1" @click="$emit('setLocation','United States')">
                     <div class="img-con" bis_skin_checked="1"
                         style="background-image: url(https://res.cloudinary.com/nisan/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency//v1659373328/air2b/united-state_heslmk.jpg);">
                     </div><span>United States</span>
