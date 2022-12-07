@@ -1,6 +1,6 @@
 <template>
     <section class='stay-search main'>
-        <stay-list :stays="stays" :labels="labels" :date="date" />
+        <stay-list :stays="stays" :labels="labels" :date="date" @filter-type="filterByType" />
     </section>
 </template>
 
@@ -23,12 +23,13 @@ export default {
         this.date = { startDate, endDate }
     },
     methods: {
-        async loadStays() {
-            const { name, label, guests } = this.$route.query
+        async loadStays(typeFilter) {
+            const { name, type: queryType, guests } = this.$route.query
+            const type = typeFilter || queryType
             const capacity = (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests))) ? JSON.parse(guests).capacity : 0
             const filterBy = {
                 name,
-                label,
+                type,
                 capacity
             }
             //Go to params and filter your stays
@@ -46,6 +47,9 @@ export default {
             catch (err) {
                 throw err
             }
+        },
+        filterByType(type) {
+            this.loadStays(type)
         }
     },
     computed: {

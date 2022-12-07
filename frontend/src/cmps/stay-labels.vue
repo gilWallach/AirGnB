@@ -19,6 +19,7 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 export default {
   name: 'WrapAround',
+  emits: ['filter-type'],
   components: {
     Carousel,
     Slide,
@@ -30,17 +31,11 @@ export default {
       type: Array,
     },
   },
-  data() {
-    return {
-      filterBy: {
-        label: '',
-      },
-    }
-  },
   methods: {
-    setFilterBy(label) {
-      this.filterBy.label = label
-      this.$router.push({ path: '/s', query: { label } })
+    setFilterBy(type) {
+      this.$emit('filter-type', type)
+      const { name, startDate, endDate, guests } = this.$route.query
+      this.$router.push({ path: '/s', query: { type, name, startDate, endDate, guests } })
     },
   },
   setup() {
