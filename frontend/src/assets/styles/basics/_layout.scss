@@ -8,7 +8,7 @@
   grid-template-columns: minmax(rem(40px), auto),
     minmax(auto, 1200px) minmax(rem(40px), auto);
 
-  > * {
+  >* {
     grid-column: 2;
 
     &.full {
@@ -17,24 +17,18 @@
   }
 
   @include for-narrow-layout {
-    grid-template-columns: minmax(20px, 1fr) minmax(auto, $mobile-breakpoint) minmax(
-        20px,
-        1fr
-      );
+    grid-template-columns: minmax(20px, 1fr) minmax(auto, $mobile-breakpoint) minmax(20px,
+        1fr);
   }
 
   @include for-normal-layout {
-    grid-template-columns: minmax(20px, 1fr) minmax(auto, $narrow-breakpoint) minmax(
-        20px,
-        1fr
-      );
+    grid-template-columns: minmax(20px, 1fr) minmax(auto, $narrow-breakpoint) minmax(20px,
+        1fr);
   }
 
   @include for-wide-layout {
-    grid-template-columns: minmax(20px, 1fr) minmax(auto, $normal-breakpoint) minmax(
-        20px,
-        1fr
-      );
+    grid-template-columns: minmax(20px, 1fr) minmax(auto, $normal-breakpoint) minmax(20px,
+        1fr);
   }
 }
 
@@ -46,16 +40,25 @@
 
 .main-container-stay-details {
   display: grid;
-  grid-template-columns: minmax(rem(40px), auto) minmax(auto, 1120px) minmax(
-      rem(40px),
-      auto
-    );
+  grid-template-columns: minmax(rem(40px), auto) minmax(auto, 1120px) minmax(rem(40px),
+      auto);
 
-  > * {
+  >* {
     grid-column: 2;
 
     &.full {
       grid-column: 1 /-1;
     }
+  }
+}
+
+.main-layout-list {
+
+  display: grid;
+  // grid-template-columns: rem(80px) 1fr rem(80px);
+  grid-template-columns: minmax(40px, 1fr) minmax(auto, 1750px) minmax(40px, 1fr);
+
+  >* {
+    grid-column: 2;
   }
 }
