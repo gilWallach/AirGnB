@@ -189,3 +189,12 @@
     color: $clr4;
   }
 }
+
+.checkin.selected
+  ~ .header-dates-modal
+  .el-popper.is-pure.is-light.el-picker__popper, 
+.checkout.selected
+  ~ .header-dates-modal
+  .el-popper.is-pure.is-light.el-picker__popper{
+  display: block !important;
+}
