@@ -1,55 +1,67 @@
 <template>
-  <section class="order-confirm main-container-stay-details">
-    <h1 class="header fs22">One last step</h1>
-    <p>Dear guest,</p>
-    <p>
-      In order to complete your reservation, please confirm your trip details
-    </p>
-    <div class="content-container flex justify-space-between align-center">
-      <div class="reservation-details">
-        <h2>Reservation details</h2>
-        <ul class="clean-list">
-          <li>
-            <h3>Trip dates:</h3>
-            <span>{{ order.startDate }} - {{ order.endDate }}</span>
-          </li>
-          <li class="flex column">
-            <h3>Guests:</h3>
-            <span v-if="order.guests.adults"
-              >{{ order.guests.adults }} adult</span
-            >
-            <span v-if="order.guests.children"
-              >{{ order.guests.children }} children</span
-            >
-            <span v-if="order.guests.infants"
-              >{{ order.guests.infants }} infants</span
-            >
-          </li>
-          <li>
-            <h3>Price Details</h3>
-            <p class="flex align-center justify-space-between">
-              <span>{{ pricePerNight }}</span>
-              <span>{{ this.order.totalPrice }}</span>
-            </p>
-            <p class="flex align-center justify-space-between">
-              <span>Service fee</span> <span>$383</span>
-            </p>
-          </li>
-          <li class="flex align-center justify-space-between">
-            <span>Total</span><span>{{ priceWithService }}</span>
-          </li>
-        </ul>
+  <div class="main-container-stay-details">
+    <section class="order-confirm">
+      <div>
+        <h1 class="header fs22">One last step</h1>
+        <p class="fs14">Dear guest,</p>
+        <p class="fs14 subtitle">
+          In order to complete your reservation,
+          <span class="bold">please confirm your trip details</span>
+        </p>
+        <div class="content-container flex justify-space-between align-center">
+          <div class="reservation-details">
+            <h2 class="underline fs18">Reservation details</h2>
+            <ul class="clean-list">
+              <li class="flex column list-item">
+                <h3 class="fs16">Dates</h3>
+                <span>{{ order.startDate }} - {{ order.endDate }}</span>
+              </li>
+              <li class="flex column list-item">
+                <h3 class="fs16">Guests</h3>
+                <span v-if="order.guests.adults"
+                  >{{ order.guests.adults }} adult</span
+                >
+                <span v-if="order.guests.children"
+                  >{{ order.guests.children }} children</span
+                >
+                <span v-if="order.guests.infants"
+                  >{{ order.guests.infants }} infants</span
+                >
+              </li>
+              <li class="list-item">
+                <h3 class="fs16">Price Breakdown</h3>
+                <p class="flex align-center justify-space-between">
+                  <span>{{ pricePerNight }}</span>
+                  <span>{{ this.order.netPrice }}</span>
+                </p>
+                <p class="flex align-center justify-space-between last-item">
+                  <span>Service fee</span> <span>$383</span>
+                </p>
+              </li>
+              <li
+                class="flex align-center justify-space-between list-item bold fs22"
+              >
+                <span>Total</span><span>{{ totalPrice }}</span>
+              </li>
+            </ul>
+          </div>
+          <div class="reservation-image"></div>
+        </div>
+        <div class="confirmation-btns flex column justify-center">
+          <button @click="back">Back</button>
+          <gradient-button :data="'Confirm'" @click="setOrder" />
+        </div>
       </div>
-      <div class="reservation-image"></div>
-    </div>
-    <div class="confirmation-btns flex align-center justify-center">
-      <button>Back</button>
-      <gradient-button :data="'Confirm'" @click="setOrder" />
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 <script>
 import gradientButton from '../cmps/gradient-button.vue'
+import {
+  showSuccessMsg,
+  showErrorMsg,
+  eventBus,
+} from '../services/event-bus.service'
 
 export default {
   name: 'order-confirm',
@@ -60,11 +72,11 @@ export default {
         startDate: null,
         endDate: null,
         guests: 0,
-        totalPrice: 0,
+        netPrice: 0,
         totalNights: 0,
       },
       pricePerNight: '',
-      priceWithService: '',
+      totalPrice: '',
     }
   },
   async created() {
@@ -87,15 +99,15 @@ export default {
     this.order.startDate = checkInDate
     this.order.endDate = checkOutDate
     this.order.guests = JSON.parse(guests)
-    this.order.totalPrice = price
+    this.order.netPrice = price
     this.order.totalNights = totalNights
     this.pricePerNight = pricePerNight
-    this.priceWithService = priceWithService
+    this.totalPrice = priceWithService
   },
   methods: {
     async setOrder() {
       const order = { ...this.order }
-      order.totalPrice = +order.totalPrice.substring(1).replace(',', '')
+      order.totalPrice = +this.totalPrice.substring(1).replace(',', '')
       order.status = 'pending'
       order.msgs = []
       const { _id, name, price, host } = this.stay
@@ -105,9 +117,17 @@ export default {
       order.stay = miniStay
       try {
         await this.$store.dispatch({ type: 'addOrder', order })
+        showSuccessMsg('order created!')
+        this.$router.push('/')
       } catch (err) {
-        throw err
+        // console.log(err)
+        showErrorMsg('could not create order, please try again later')
       }
+    },
+    back() {
+      const stayId = this.$route.params.id
+      //   console.log('stayid: ', stayId)
+      this.$router.push(`/stay/${stayId}`)
     },
   },
   computed: {

@@ -39,6 +39,11 @@
 <script>
 import loginSignupModal from './login-signup-modal.vue'
 import listModal from './list-modal.vue'
+import {
+  showErrorMsg,
+  showSuccessMsg,
+  eventBus,
+} from '../services/event-bus.service'
 export default {
   name: 'user-actions',
   props: {},
@@ -72,8 +77,10 @@ export default {
     async doLogout() {
       try {
         await this.$store.dispatch({ type: 'logout' })
-        location.reload()
+        showSuccessMsg('logged out!')
+        // location.reload()
       } catch (err) {
+        showErrorMsg("can't log out... please try again later")
         throw err
       }
     },

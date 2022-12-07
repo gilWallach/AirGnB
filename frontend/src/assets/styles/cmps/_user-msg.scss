@@ -1,16 +1,14 @@
-
-
 .alert {
-    background-color: lightgray;
-    position: absolute;
-    top: 0;
-    right: 0.5em;
-    padding: 1em;
-    &.alert-success {
-        background-color: lightgreen;
-    }
-    &.alert-error {
-        background-color: lightcoral;
-    }
+  background-color: lightgray;
+  position: absolute;
+  top: 0;
+  right: 0.5em;
+  padding: 1em;
+  z-index: 500;
+  &.alert-success {
+    background-color: lightgreen;
+  }
+  &.alert-error {
+    background-color: lightcoral;
+  }
 }
-

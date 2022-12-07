@@ -1,11 +1,17 @@
 <template>
-  <section class="main-layout-list">
+  <section v-if="stays" class="main-layout-list">
     <div class="placeholder" ref="placeholder"></div>
-    <div class="list-header-container main-layout-list" :class="{ 'scroll-shadow': scrollShadow }">
+    <div
+      class="list-header-container main-layout-list"
+      :class="{ 'scroll-shadow': scrollShadow }"
+    >
       <div class="list-header flex align-center justify-space-between">
         <stay-labels v-if="labels" :labels="labels" />
 
-        <button @click="openFilterModal" class="filter-btn flex align-center justify-center">
+        <button
+          @click="openFilterModal"
+          class="filter-btn flex align-center justify-center"
+        >
           <filter-icon />
           <span>Filters</span>
         </button>
@@ -13,17 +19,32 @@
     </div>
 
     <ul class="stay-list">
-      <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" :date="date" @addToWishlist="addToWishlist" />
+      <stay-preview
+        v-for="stay in stays"
+        :key="stay._id"
+        :stay="stay"
+        :date="date"
+        @addToWishlist="addToWishlist"
+      />
     </ul>
 
     <!-- <button style="width: 750px; height: 750px; background-color: blue;">Test</button> -->
   </section>
+  <div class="skeleton-r9bf0qw8pwg"><div v-if="isLoaded"></div></div>
   <transition name="fade">
-    <list-modal v-if="isModalOpen" @closeModal="closeModal" :isWishlist="isWishlist" />
+    <list-modal
+      v-if="isModalOpen"
+      @closeModal="closeModal"
+      :isWishlist="isWishlist"
+    />
   </transition>
 
   <transition name="fade">
-    <div class="main-screen" v-if="isModalOpen" @click="isModalOpen = false"></div>
+    <div
+      class="main-screen"
+      v-if="isModalOpen"
+      @click="isModalOpen = false"
+    ></div>
   </transition>
 </template>
 
@@ -44,8 +65,8 @@ export default {
       type: Array,
     },
     date: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   data() {
     return {
