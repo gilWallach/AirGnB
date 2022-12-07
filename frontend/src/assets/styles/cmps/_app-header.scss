@@ -60,7 +60,7 @@ header {
       max-width: 93px;
       text-align: center;
       font-size: 14px;
-      font-family: 'airBnb-Med';
+      font-family: "airBnb-Med";
       &::placeholder {
         font-family: airBnb-Reg;
         color: $clr4;
@@ -125,6 +125,20 @@ header {
       & > :first-child {
         display: none;
       }
+      > * {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      > button::after {
+        content: "";
+        position: absolute;
+        color: $clr6;
+        height: 24px;
+        outline: 0.1px solid $clr6;
+        right: 0;
+      }
     }
   }
   position: fixed;
@@ -162,3 +176,4 @@ header {
 
   pointer-events: auto;
 }
+

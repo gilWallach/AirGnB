@@ -16,9 +16,7 @@
       <div v-if="!isSearchOpen" class="mini-search flex align-center" @click.stop="isSearchOpen = !isSearchOpen">
         <button @click="selected('where')">Start your search</button>
         <button @click="selected('where')">{{ where }}</button>
-        <div class="break-line"></div>
         <button @click="selected('when')">{{ when }}</button>
-        <div class="break-line"></div>
         <!-- <button>{{ guests }}</button> -->
         <div @click="selected('who')">
           <input :value="guests" type="text" placeholder="Add guests" disabled />
@@ -27,10 +25,6 @@
           <search />
         </div>
       </div>
-      <!-- <router-link to="/">Stays</router-link>
-      <router-link to="/review">Reviews</router-link>
-      <router-link to="/chat">Chat</router-link>
-      <router-link to="/login">Login / Signup</router-link> -->
       <nav class="main-nav flex align-center justify-space-between" @click="onToggleUserActions">
         <hamburger />
         <div class="profile-img flex align-center">
@@ -38,13 +32,6 @@
         </div>
         <user-actions v-if="showUserActions" @closeUserActions="closeUserActions" />
       </nav>
-      <!-- <section class="loggedin-user" v-if="loggedInUser">
-        <router-link :to="`/user/${loggedInUser._id}`">
-          {{ loggedInUser.fullname }}
-        </router-link>
-        <span>{{ loggedInUser.score.toLocaleString() }}</span>
-        <img :src="loggedInUser.imgUrl" />
-      </section> -->
     </header>
     <transition name="fade">
       <secondary-header v-if="isSearchOpen" @close-search="isSearchOpen = false" />
