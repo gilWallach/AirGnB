@@ -43,31 +43,14 @@
       </table>
     </div>
 
-<<<<<<< HEAD
-  <section v-if="orders" class="charts">
-    <div class="chart-container">
-      <h3>Orders status average</h3>
-      <DoughnutChart :chartData="getStatusData" />
-=======
     <div class="charts-container">
-      <status-chart :orders="orders"/>
->>>>>>> 1206c96c0c2bc59798b945daba18b78684735cdc
+      <status-chart :orders="orders" />
     </div>
   </section>
 </template>
 <script>
-<<<<<<< HEAD
-import { DoughnutChart } from 'vue-chart-3'
-import { Chart, registerables } from 'chart.js'
-
-import userAvatar from '../assets/svg/user-avatar.vue'
-
-Chart.register(...registerables)
-=======
-
 import userAvatar from '../assets/svg/user-avatar.vue'
 import statusChart from '../cmps/status-chart.vue'
->>>>>>> 1206c96c0c2bc59798b945daba18b78684735cdc
 
 export default {
   name: 'orders-list',
@@ -86,7 +69,6 @@ export default {
         'Actions',
       ],
       orders: null,
-<<<<<<< HEAD
       statusData: ['Approved', 'Pending', 'Declined'],
       options: {
         plugins: {
@@ -95,8 +77,6 @@ export default {
           },
         },
       },
-=======
->>>>>>> 1206c96c0c2bc59798b945daba18b78684735cdc
     }
   },
   async created() {
@@ -133,41 +113,9 @@ export default {
       await this.$store.dispatch({ type: 'updateOrder', order })
     },
   },
-<<<<<<< HEAD
-  computed: {
-    getStatusData() {
-      const data = this.statusData.map((status) => {
-        const dataInNums = this.orders.reduce((acc, order) => {
-          order.status === status ? acc + 1 : acc, 0
-
-          // console.log(acc)
-        })
-        // console.log('dataInNums / this.statusData.length * 100', dataInNums / this.statusData.length * 100)
-        return (dataInNums / this.statusData.length) * 100
-      })
-
-      return {
-        statusData: this.statusData,
-        datasets: [
-          {
-            status: 'Status Data',
-            borderRadius: 6,
-            data,
-            backgroundColor: ['#77CEFF', '#0079AF', '#123E6B'],
-          },
-        ],
-      }
-    },
-  },
   components: {
     userAvatar,
-    DoughnutChart,
+    statusChart,
   },
-=======
-  components: {
-    userAvatar,
-    statusChart
-  }
->>>>>>> 1206c96c0c2bc59798b945daba18b78684735cdc
 }
 </script>
