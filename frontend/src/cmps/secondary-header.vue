@@ -2,10 +2,11 @@
     <div class="secondary-header-container">
         <header :class="{ selected: $store.getters.isElementSelected }"
             class="secondary-header big-search flex align-center justify-space-between">
-            <label :class="{ selected: $store.getters.isWhereSelected }" class="flex column full "
+            <label :class="{ selected: $store.getters.isWhereSelected }" class="flex column full where"
                 @click.stop.prevent="selected('where')">
                 <p>Where</p>
                 <input class="where" ref="input" v-model="filterBy.name" type="text" placeholder="Search destinations">
+                <location-modal v-if="$store.getters.isWhereSelected" />
             </label>
             <!-- <div class="flex header-dates align-center"> -->
             <!-- <div @click.stop="selected('check-in')" class="check-in flex column" -->
@@ -59,6 +60,7 @@ import searchBig from '../assets/svg/search-big.vue'
 import datePicker from './date-picker.vue'
 import addGuests from './add-guests.vue'
 import gradientButton from './gradient-button.vue'
+import locationModal from './location-modal.vue'
 
 export default {
     name: 'secondary-header',
@@ -186,7 +188,8 @@ export default {
         searchBig,
         datePicker,
         addGuests,
-        gradientButton
+        gradientButton,
+        locationModal
     }
 }
 </script>
