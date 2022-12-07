@@ -1,6 +1,7 @@
 const orderService = require('./order.service.js')
 
 const logger = require('../../services/logger.service')
+const ObjectId = require('mongodb').ObjectId
 
 async function getOrders(req, res) {
   try {
@@ -29,12 +30,15 @@ async function getOrderById(req, res) {
 }
 
 async function addOrder(req, res) {
+  console.log('req: ', req)
   const { loggedinUser } = req
-
+  logger.debug('loggedinUser', loggedinUser)
   try {
     const order = req.body
-    order.host = loggedinUser
+    order.buyer = loggedinUser
     const addedOrder = await orderService.add(order)
+    addedOrder.createdAt = ObjectId(addedOrder._id).getTimestamp()
+    logger.debug('order', order)
     res.json(addedOrder)
   } catch (err) {
     logger.error('Failed to add order', err)
