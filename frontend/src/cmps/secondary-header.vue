@@ -10,18 +10,18 @@
             <!-- <div class="flex header-dates align-center"> -->
             <!-- <div @click.stop="selected('check-in')" class="check-in flex column" -->
             <!-- :class="{ selected: $store.getters.isCheckInSelected }"> -->
-            <label for="i" class="checkout flex column" @click.stop="selected('check-in')"
+            <label class="checkin flex column" @click.stop="selected('check-in')"
                 :class="{ selected: $store.getters.isCheckInSelected }">
                 <p>Check in</p>
-                <input disabled @click.prevent type="text" class="dates-txt" :value="inDate" placeholder="Add dates" />
+                <input disabled type="text" class="dates-txt" :value="inDate" placeholder="Add dates" />
             </label>
             <!-- </div> -->
             <!-- <div @click.stop="selected('check-out')" class="checkout flex column" -->
             <!-- :class="{ selected: $store.getters.isCheckOutSelected }"> -->
-            <label for="o" class="checkout flex column" @click.stop="selected('check-out')"
+            <label class="checkout flex column" @click.stop="selected('check-out')"
                 :class="{ selected: $store.getters.isCheckOutSelected }">
                 <p>Check out</p>
-                <input disabled @click.prevent type="text" class="dates-txt" :value="outDate" placeholder="Add dates" />
+                <input disabled type="text" class="dates-txt" :value="outDate" placeholder="Add dates" />
             </label>
             <!-- </div> -->
 
@@ -136,7 +136,6 @@ export default {
                 }
             }
             else if (el === 'check-out') {
-                console.log('checkout');
                 select = 'isCheckOutSelected'
                 if (this.$store.getters.isCheckOutSelected) {
                     type = 'unSelectElement'

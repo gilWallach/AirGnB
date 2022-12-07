@@ -28,11 +28,15 @@
   font-family: airBnb-Med;
   color: $clr3;
   padding: 0 27px;
+  
   td {
     div {
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    &.next-month{
+      display: none;
     }
   }
   &.is-right {

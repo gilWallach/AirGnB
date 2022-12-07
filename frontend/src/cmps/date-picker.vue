@@ -1,5 +1,5 @@
 <template>
-    <div class="demo-date-picker">
+    <div @click.stop.prevent class="demo-date-picker">
         <div class="block">
             <el-date-picker v-model="dates" type="daterange" range-separator="" start-placeholder="Add dates"
                 end-placeholder="Add dates" clear-icon :prefix-icon="customPrefix" :disabled-date="disabledDate"

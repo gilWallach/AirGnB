@@ -16,7 +16,7 @@
       <div v-if="!isSearchOpen" class="mini-search flex align-center" @click.stop="isSearchOpen = !isSearchOpen">
         <button @click="selected('where')">Start your search</button>
         <button @click="selected('where')">{{ where }}</button>
-        <button @click="selected('when')">{{ when }}</button>
+        <button @click="selected('check-in')">{{ when }}</button>
         <!-- <button>{{ guests }}</button> -->
         <div @click="selected('who')">
           <input :value="guests" type="text" placeholder="Add guests" disabled />
@@ -113,7 +113,7 @@ export default {
       let select
       if (el === 'who') select = 'isGuestsSelected'
       else if (el === 'where') select = 'isWhereSelected'
-      else select = 'isDateSelected'
+      else select = 'isCheckInSelected'
       this.$store.commit({ type: 'selectElement', select })
     },
     onToggleUserActions() {
