@@ -5,11 +5,13 @@
   height: 66px;
   max-width: 848px;
   margin: auto;
+  & > label:has(+ *.selected) p::after,
+  & > label.selected p::after,
   & > label:has(+ *:hover) p::after,
   & > label:hover p::after {
     display: none;
   }
-  > *:not(:last-child):not(.header-dates-modal) {
+  > *:not(:last-child):not(.header-dates-modal):not(.add-guests-container) {
     // display: flex;
     // justify-content: center;
     position: relative;
@@ -25,20 +27,11 @@
   &.selected {
     background-color: $clr7;
   }
-  > *:hover:not(.selected) {
-    background-color: $clr6;
-    & + .break-line {
-      display: none;
-    }
-  }
   > .selected {
     background-color: $clr8;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid $clr8;
     z-index: 10;
-    & + .break-line {
-      display: none;
-    }
   }
 
   > *:not(.break-line) {
@@ -148,7 +141,7 @@
     }
   }
 
-  button,
+  button:not(.custom),
   .gradient-button {
     position: absolute;
     right: 4px;
