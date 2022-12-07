@@ -2,18 +2,23 @@
 export const mainSearchStore = {
     state: {
         isGuestsSelected: false,
-        isDateSelected: false,
         isWhereSelected: false,
+        isCheckInSelected: false,
+        isCheckOutSelected: false
     },
     getters: {
-        isElementSelected({ isGuestsSelected, isDateSelected, isWhereSelected }) {
-            return (isGuestsSelected || isDateSelected || isWhereSelected)
+        isElementSelected({ isGuestsSelected, isCheckInSelected, isCheckOutSelected, isWhereSelected }) {
+            return (isGuestsSelected || isWhereSelected || isCheckInSelected ||
+                isCheckOutSelected)
         },
         isGuestsSelected({ isGuestsSelected }) {
             return isGuestsSelected
         },
-        isDateSelected({ isDateSelected }) {
-            return isDateSelected
+        isCheckInSelected({ isCheckInSelected }) {
+            return isCheckInSelected
+        },
+        isCheckOutSelected({ isCheckOutSelected }) {
+            return isCheckOutSelected
         },
         isWhereSelected({ isWhereSelected }) {
             return isWhereSelected
@@ -23,16 +28,17 @@ export const mainSearchStore = {
         toggleElement(state, { select }) {
             state[select] = !state[select]
         },
-        selectElement(state, {select}){
+        selectElement(state, { select }) {
             state[select] = true
         },
-        unSelectElement(state, {select}){
+        unSelectElement(state, { select }) {
             state[select] = false
         },
         unSelectElements(state) {
             state.isGuestsSelected = false
-            state.isDateSelected = false
             state.isWhereSelected = false
+            state.isCheckOutSelected = false
+            state.isCheckInSelected = false
         }
     },
 }
