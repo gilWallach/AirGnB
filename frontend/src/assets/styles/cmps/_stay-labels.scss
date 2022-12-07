@@ -1,6 +1,11 @@
-.carousel .carousel__viewport {
+.carousel {
   display: flex;
-  max-width: 900px;
+  overflow: hidden;
+}
+
+.carousel__viewport {
+  display: flex;
+  // max-width: 900px;
 
   button:not(.el-carousel__button, .el-carousel__arrow) {
     padding: 0 !important;
@@ -56,6 +61,7 @@
 
     .carousel__slide {
       width: max-content !important;
+
       div {
         cursor: pointer;
         flex-direction: column;
@@ -70,7 +76,7 @@
         }
       }
     }
-    
+
 
     .carousel__slide:hover {
       color: $clr2;
@@ -90,13 +96,7 @@
   }
 }
 
-section.carousel.labels-container:has(div:first-of-type):has(ol):has(
-    li:first-child.carousel__slide--active
-  )
-  > button:first-of-type, 
-section.carousel.labels-container:has(div:first-of-type):has(ol):has(
-    li:last-child.carousel__slide--active
-  )
-  > button:last-of-type {
+section.carousel.labels-container:has(div:first-of-type):has(ol):has(li:first-child.carousel__slide--active)>button:first-of-type,
+section.carousel.labels-container:has(div:first-of-type):has(ol):has(li:last-child.carousel__slide--active)>button:last-of-type {
   display: none;
 }

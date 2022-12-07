@@ -1,7 +1,8 @@
 <template>
   <section class="main-layout-list">
+    <div class="placeholder" ref="placeholder"></div>
     <div class="list-header-container main-layout-list" :class="{ 'scroll-shadow': scrollShadow }">
-      <div class="list-list-header flex align-center justify-space-between">
+      <div class="list-header flex align-center justify-space-between">
         <stay-labels v-if="labels" :labels="labels" />
 
         <button @click="openFilterModal" class="filter-btn flex align-center justify-center">
@@ -11,7 +12,7 @@
       </div>
     </div>
 
-    <ul class="stay-list" ref="list">
+    <ul class="stay-list">
       <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" :date="date" @addToWishlist="addToWishlist" />
     </ul>
 
@@ -57,20 +58,23 @@ export default {
   },
 
   mounted() {
-    // this.listObserver = new IntersectionObserver(this.onListObserved, {
-    //   rootMargin: '200px 0px 0px',
-    //   threshold: 0,
-    // })
+    this.listObserver = new IntersectionObserver(this.onListObserved, {
+      // rootMargin: '200px 0px 0px',
+      // threshold: 0,
+    })
     // this.listObserver.root.style.border = "2px solid #44aa44";
-    // this.listObserver.observe(this.$refs.list)
+    this.listObserver.observe(this.$refs.placeholder)
   },
   methods: {
-    // onListObserved(entries) {
-    //   entries.forEach((entry) => {
-    //     // entry.target.style.opacity = entry.intersectionRatio
-    //     this.scrollShadow = entry.isIntersecting ? true : false
-    //   })
-    // },
+    onListObserved(entries) {
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) console.log('in intersecting')
+        if (!entry.isIntersecting) console.log('out intersecting')
+        // entry.target.style.opacity = entry.intersectionRatio
+        this.scrollShadow = entry.isIntersecting ? false : true
+      })
+    },
     addToWishlist(stayId) {
       this.isWishlist = true
       this.isModalOpen = true

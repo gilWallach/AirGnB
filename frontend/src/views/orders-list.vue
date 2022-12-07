@@ -31,22 +31,16 @@
         </tr>
       </table>
     </div>
-  </section>
 
-  <section v-if="orders" class="charts">
-    <div class="chart-container">
-            <h3>Orders status average</h3>
-            <DoughnutChart :chartData="getStatusData" />
-        </div>
+    <div class="charts-container">
+      <status-chart :orders="orders"/>
+    </div>
   </section>
 </template>
 <script>
-import { DoughnutChart } from "vue-chart-3"
-import { Chart, registerables } from "chart.js"
 
 import userAvatar from '../assets/svg/user-avatar.vue'
-
-Chart.register(...registerables);
+import statusChart from '../cmps/status-chart.vue'
 
 export default {
 
@@ -56,14 +50,6 @@ export default {
     return {
       tableHeadings: ['', 'Status', 'Guests', 'Check-in', 'Check-out', 'Booked', 'Listing', 'Total Payout', 'Actions'],
       orders: null,
-      statusData: ['Approved', 'Pending', 'Declined'],
-            options: {
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                }
-            }
     }
   },
   async created() {
@@ -100,38 +86,9 @@ export default {
       await this.$store.dispatch({ type: 'updateOrder', order })
     },
   },
-  computed: {
-    getStatusData() {
-            const data = this.statusData.map(status => {
-              const dataInNums = this.orders.reduce(
-                (acc, order) => {
-                  order.status === status
-                  ? acc + 1
-                  : acc,
-                  0
-
-                  // console.log(acc)
-                }
-                )
-                // console.log('dataInNums / this.statusData.length * 100', dataInNums / this.statusData.length * 100)
-                return dataInNums / this.statusData.length * 100
-            })
-
-            return {
-              statusData: this.statusData,
-                datasets: [{
-                    status: 'Status Data',
-                    borderRadius: 6,
-                    data,
-                    backgroundColor: ["#77CEFF", "#0079AF", "#123E6B"]
-                }]
-            }
-        }
-
-    },
   components: {
     userAvatar,
-    DoughnutChart
+    statusChart
   }
 }
 </script>

@@ -1,49 +1,48 @@
-.main-layout-list {
+.placeholder {
+    height: $header-height * 2;
+}
+
+.list-header-container {
+    position: fixed;
+    top: $header-height;
+    padding-block: 6px;
+    height: 84px;
+    width: 100%;
+    z-index: 10;
+    background-color: $clr8;
+
+    & .list-header {
+        flex: 1;
+        overflow: hidden;
+    }
+
+    &.scroll-shadow {
+        box-shadow: 0px 0px 5px 0px #0000001f;
+    }
+
+    .filter-btn {
+        justify-self: flex-end;
+        font-size: em(12px, 15px);
+        padding-inline: 44px;
+        margin-inline-start: 24px;
+        margin-block: 12px;
+        gap: em(8px, 15px);
+        width: em(90px, 15px);
+        height: em(48px, 15px);
+        border: 1px solid $clr6;
+        border-radius: .8em;
+    }
+}
+
+.stay-list {
+    width: 100%;
+    padding: 0;
+    // margin-top: ($header-height * 2) + 8px;
+    list-style: none;
     display: grid;
-    // grid-template-columns: rem(80px) 1fr rem(80px);
-    grid-template-columns: minmax(40px, 1fr) minmax(auto, 1750px) minmax(40px, 1fr);
-
-    >* {
-        grid-column: 2;
-    }
-
-    .list-header-container {
-        position: fixed;
-        top: $header-height;
-        padding-block: 6px;
-        height: 84px;
-        width: 100%;
-        z-index: 10;
-        background-color: $clr8;
-
-        // &.scroll-shadow{
-        //     box-shadow: 0px 0px 5px 0px #0000001f;
-        // }
-
-            .filter-btn {
-                justify-self: flex-end;
-                font-size: em(12px, 15px);
-                padding-inline: 44px;
-                margin-inline-start: 24px;
-                margin-block: 12px;
-                gap: em(8px, 15px);
-                width: em(90px, 15px);
-                height: em(48px, 15px);
-                border: 1px solid $clr6;
-                border-radius: .8em;
-            }
-    }
-
-    .stay-list {
-        width: 100%;
-        padding: 0;
-        margin-top: ($header-height * 2) + 8px;
-        list-style: none;
-        display: grid;
-        // grid-template-columns: repeat(6, minmax(240px, 1fr));
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        grid-auto-flow: dense;
-        grid-gap: 1.4rem;
-        grid-row-gap: 2.5em;
-    }
+    // grid-template-columns: repeat(6, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-auto-flow: dense;
+    grid-gap: 1.4rem;
+    grid-row-gap: 2.5em;
 }
