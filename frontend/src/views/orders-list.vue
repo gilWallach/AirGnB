@@ -1,50 +1,53 @@
 <template>
   <section v-if="orders" class="orders-list main-layout-list">
     <h1 class="fs22">Reservation</h1>
-    <div class="list">
-      <table>
-        <tr>
-          <th v-for="hr in tableHeadings" class="fs16">{{ hr }}</th>
-        </tr>
-        <tr v-for="currOrder in orders">
-          <td class="buyer-details-td flex align-center justify-center">
-            <div class="buyer-img-container">
-              <img
-                v-if="currOrder.buyer.imgUrl"
-                :src="currOrder.buyer.imgUrl"
-                alt=""
-              />
-              <user-avatar v-else />
-            </div>
-            <p>{{ currOrder.buyer.fullname }}</p>
-          </td>
-          <td :class="styleStatus(currOrder.status)" class="fs18 bold">
-            {{ currOrder.status }}
-          </td>
-          <td class="center-td">{{ formatGuests(currOrder.guests) }}</td>
-          <td>{{ currOrder.startDate }}</td>
-          <td>{{ currOrder.endDate }}</td>
-          <td>{{ formatCreatedAt(currOrder.createdAt) }}</td>
-          <td>{{ currOrder.stay.name }}</td>
-          <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
-          <td>
-            <select
-              v-model="currOrder.status"
-              name="status"
-              :value="currOrder.status"
-              @change="updateOrder(currOrder)"
-            >
-              <option value="approved">Approved</option>
-              <option value="pending">Pending</option>
-              <option value="declined">Declined</option>
-            </select>
-          </td>
-        </tr>
-      </table>
-    </div>
+    <div class="content-container flex">
 
-    <div class="charts-container">
-      <status-chart :orders="orders" />
+      <div class="list">
+        <table>
+          <tr>
+            <th v-for="hr in tableHeadings" class="fs16">{{ hr }}</th>
+          </tr>
+          <tr v-for="currOrder in orders">
+            <td class="buyer-details-td flex align-center justify-center">
+              <div class="buyer-img-container">
+                <img
+                  v-if="currOrder.buyer.imgUrl"
+                  :src="currOrder.buyer.imgUrl"
+                  alt=""
+                />
+                <user-avatar v-else />
+              </div>
+              <p>{{ currOrder.buyer.fullname }}</p>
+            </td>
+            <td :class="styleStatus(currOrder.status)" class="fs18 bold">
+              {{ currOrder.status }}
+            </td>
+            <td class="center-td">{{ formatGuests(currOrder.guests) }}</td>
+            <td>{{ currOrder.startDate }}</td>
+            <td>{{ currOrder.endDate }}</td>
+            <!-- <td>{{ formatCreatedAt(currOrder) }}</td> -->
+            <td>{{ currOrder.stay.name }}</td>
+            <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
+            <td>
+              <select
+                v-model="currOrder.status"
+                name="status"
+                :value="currOrder.status"
+                @change="updateOrder(currOrder)"
+              >
+                <option value="approved">Approved</option>
+                <option value="pending">Pending</option>
+                <option value="declined">Declined</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </div>
+  
+      <div class="charts-container">
+        <status-chart :orders="orders" />
+      </div>
     </div>
   </section>
 </template>
@@ -63,7 +66,6 @@ export default {
         'Guests',
         'Check-in',
         'Check-out',
-        'Booked',
         'Listing',
         'Total Payout',
         'Actions',
@@ -94,7 +96,8 @@ export default {
       return guestsArr.reduce((acc, n) => acc + n, 0)
     },
     formatCreatedAt(createdAt) {
-      return new Date(createdAt).toLocaleDateString('en-US')
+      console.log(createdAt)
+      // return new Date(createdAt).toLocaleDateString('en-US')
     },
     formatTotalPrice(totalPrice) {
       return totalPrice.toLocaleString('en-US', {

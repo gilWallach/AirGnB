@@ -36,7 +36,11 @@ async function remove(orderId) {
 async function save(order) {
   var savedOrder
   if (order._id) {
-    savedOrder = await httpService.put(`order/${order._id}`, order)
+    try {
+      savedOrder = await httpService.put(`order/${order._id}`, order)
+    } catch (err) {
+      throw err
+    }
   } else {
     // Later, owner is set by the backend
     // order.buyer = userService.getLoggedinUser()

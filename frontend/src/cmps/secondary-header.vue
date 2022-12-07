@@ -157,6 +157,7 @@ export default {
             this.$store.commit({ type: 'unSelectElements' })
         },
         longDate(date) {
+            if(!date) return ''
             const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
             const dateObj = new Date(date)
             return dateObj.toLocaleString('en-US', options)

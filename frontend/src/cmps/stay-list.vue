@@ -1,5 +1,5 @@
 <template>
-  <section v-if="stays" class="main-layout-list">
+  <section class="main-layout-list flex">
     <div class="placeholder" ref="placeholder"></div>
     <div
       class="list-header-container main-layout-list"
@@ -17,7 +17,9 @@
         </button>
       </div>
     </div>
-
+    <p v-if="isSearch" class="serch-results-number">
+      {{ stays.length }} homes in {{ $route.query.name }}
+    </p>
     <ul class="stay-list">
       <stay-preview
         v-for="stay in stays"
@@ -27,8 +29,6 @@
         @addToWishlist="addToWishlist"
       />
     </ul>
-
-    <!-- <button style="width: 750px; height: 750px; background-color: blue;">Test</button> -->
   </section>
   <div class="skeleton-r9bf0qw8pwg"><div v-if="isLoaded"></div></div>
   <transition name="fade">
@@ -75,15 +75,17 @@ export default {
 
       isModalOpen: false,
       iswishList: null,
+
+      isSearch: false,
     }
   },
-
+  created() {
+    console.log('this.$route.query.name', this.$route.query.name)
+    if (this.$route.query.name) this.isSearch = true
+    // if (Object.values(this.$route.query).length) this.isSearch = true
+  },
   mounted() {
-    this.listObserver = new IntersectionObserver(this.onListObserved, {
-      // rootMargin: '200px 0px 0px',
-      // threshold: 0,
-    })
-    // this.listObserver.root.style.border = "2px solid #44aa44";
+    this.listObserver = new IntersectionObserver(this.onListObserved, {})
     this.listObserver.observe(this.$refs.placeholder)
   },
   methods: {
