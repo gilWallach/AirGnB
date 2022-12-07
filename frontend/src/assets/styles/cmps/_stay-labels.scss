@@ -80,6 +80,11 @@
       box-shadow: inset 0px -2px 0px 0px $clr5;
     }
 
+    .carousel__slide.selected {
+      color: $clr2;
+      box-shadow: inset 0px -2px 0px 0px $clr2;
+    }
+
     img {
       display: block;
       width: 1em;

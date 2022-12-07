@@ -50,6 +50,7 @@ async function addOrder(req, res) {
 async function updateOrder(req, res) {
   try {
     const order = req.body
+    console.log(order)
     const updatedOrder = await orderService.update(order)
     res.json(updatedOrder)
   } catch (err) {

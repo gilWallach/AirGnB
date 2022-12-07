@@ -1,7 +1,7 @@
 <template>
   <section v-if="orders" class="orders-list main-layout-list">
     <h1 class="fs22">Reservation</h1>
-    <div class="content-container">
+    <div class="content-container flex">
 
       <div class="list">
         <table>

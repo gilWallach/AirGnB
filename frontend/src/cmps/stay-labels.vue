@@ -1,7 +1,7 @@
 <template>
   <carousel :transition="600">
     <slide v-for="label in labels" :key="label">
-      <div class="carousel__item flex" @click="setFilterBy(label.displayName)">
+      <div class="carousel__item flex" @click="setFilterBy(label.displayName)" >
         <img :src="label.imageUrl" alt="" />
         <span class="label-name">{{ label.displayName }}</span>
       </div>
