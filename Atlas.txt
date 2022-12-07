@@ -1,0 +1,4 @@
+DB Connection String: mongodb+srv://rgnb:rgnb123@cluster0.0xuxuyn.mongodb.net/?retryWrites=true&w=majority
+DB Name: airgnb_db
+username: rgnb
+password: rgnb123

@@ -111,7 +111,7 @@ export default {
     },
     selected(el) {
       let select
-      if (el === 'who') select = 'isGuestsSelected'
+      if (el === 'check-in') select = 'isCheckInSelected'
       else if (el === 'where') select = 'isWhereSelected'
       else select = 'isDateSelected'
       this.$store.commit({ type: 'selectElement', select })
