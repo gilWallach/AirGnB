@@ -21,7 +21,7 @@
         <div @click="selected('who')">
           <input :value="guests" type="text" placeholder="Add guests" disabled />
         </div>
-        <div class="search flex align-center justify-center">
+        <div @click="selected('where')" class="search flex align-center justify-center">
           <search />
         </div>
       </div>
@@ -85,7 +85,6 @@ export default {
       const outDate = new Date(endDate)
       const inMonth = new Intl.DateTimeFormat('en', { month: 'short' }).format(inDate)
       const outMonth = new Intl.DateTimeFormat('en', { month: 'short' }).format(outDate)
-      console.log(inMonth, outMonth);
       const inDay = inDate.getDate()
       const outDay = outDate.getDate()
       const strDates = inMonth === outMonth ?

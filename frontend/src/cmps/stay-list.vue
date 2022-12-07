@@ -68,10 +68,6 @@ export default {
   methods: {
     onListObserved(entries) {
       entries.forEach((entry) => {
-
-        if (entry.isIntersecting) console.log('in intersecting')
-        if (!entry.isIntersecting) console.log('out intersecting')
-        // entry.target.style.opacity = entry.intersectionRatio
         this.scrollShadow = entry.isIntersecting ? false : true
       })
     },

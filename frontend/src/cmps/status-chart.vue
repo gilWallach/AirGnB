@@ -40,7 +40,6 @@ export default {
             order.status === status
               ? acc++
               : acc
-            // console.log(acc)
             return acc
             },
               0

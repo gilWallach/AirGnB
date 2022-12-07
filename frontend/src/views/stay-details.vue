@@ -406,7 +406,6 @@ export default {
     this.order.checkInDate = startDate
     this.order.checkOutDate = endDate
     if (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests)).length) this.order.guests = JSON.parse(guests)
-    console.log(this.order.guests)
   },
   mounted() { },
   methods: {
@@ -424,7 +423,6 @@ export default {
       })
     },
     addGuests(guests) {
-      console.log(guests)
       this.order.guests = guests
     },
     setDates(dates) {
@@ -432,6 +430,7 @@ export default {
       this.order.checkOutDate = dates[1]?.toLocaleString().split(',')[0] || null
     },
     doReserve() {
+      if (!formatNights) return
       const { guests, checkInDate, checkOutDate } = this.order
       const { id } = this.$route.params
       this.$router.push({
