@@ -1,12 +1,13 @@
 <template>
   <div class="container home">
-    <stay-list :stays="stays" :labels="labels"/>
+    <stay-list :stays="stays" :labels="labels" />
   </div>
 </template>
 
 <script>
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { stayService } from '../services/stay.service.local'
+// import { stayService } from '../services/stay.service.local'
+import { stayService } from '../services/stay.service'
 import {
   getActionRemoveStay,
   getActionUpdateStay,
@@ -28,7 +29,7 @@ export default {
     },
   },
   created() {
-    this.$store.commit({type:'setList'})
+    this.$store.commit({ type: 'setList' })
     this.$store.dispatch({ type: 'loadStays' })
     this.$store.dispatch({ type: 'loadLabels' })
   },

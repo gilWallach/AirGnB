@@ -110,15 +110,15 @@ export const userStore = {
         throw err
       }
     },
-    async increaseScore({ commit }) {
-      try {
-        const score = await userService.changeScore(100)
-        commit({ type: 'setUserScore', score })
-      } catch (err) {
-        console.log('userStore: Error in increaseScore', err)
-        throw err
-      }
-    },
+    // async increaseScore({ commit }) {
+    //   try {
+    //     const score = await userService.changeScore(100)
+    //     commit({ type: 'setUserScore', score })
+    //   } catch (err) {
+    //     console.log('userStore: Error in increaseScore', err)
+    //     throw err
+    //   }
+    // },
     // Keep this action for compatability with a common user.service ReactJS/VueJS
     setWatchedUser({ commit }, payload) {
       commit(payload)

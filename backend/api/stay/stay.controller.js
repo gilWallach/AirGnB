@@ -20,6 +20,7 @@ async function getStayById(req, res) {
   try {
     const stayId = req.params.id
     const stay = await stayService.getById(stayId)
+    logger.info('getting stay with id', stayId)
     res.json(stay)
   } catch (err) {
     logger.error('Failed to get stay', err)
