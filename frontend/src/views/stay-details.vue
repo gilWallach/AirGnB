@@ -430,6 +430,7 @@ export default {
       this.order.checkOutDate = dates[1]?.toLocaleString().split(',')[0] || null
     },
     doReserve() {
+      if (!formatNights) return
       const { guests, checkInDate, checkOutDate } = this.order
       const { id } = this.$route.params
       this.$router.push({
