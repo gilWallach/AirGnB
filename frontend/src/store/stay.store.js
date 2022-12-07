@@ -68,7 +68,6 @@ export const stayStore = {
       stay.msgs.push(msg)
     },
     setFilterBy(state, { filterBy }) {
-      console.log(filterBy)
       state.filterBy = filterBy
     },
     setSelectedStay(state, { stay }) {

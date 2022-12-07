@@ -2,10 +2,11 @@
     <div class="secondary-header-container">
         <header :class="{ selected: $store.getters.isElementSelected }"
             class="secondary-header big-search flex align-center justify-space-between">
-            <label :class="{ selected: $store.getters.isWhereSelected }" class="flex column full "
+            <label :class="{ selected: $store.getters.isWhereSelected }" class="flex column full where"
                 @click.stop.prevent="selected('where')">
                 <p>Where</p>
                 <input class="where" ref="input" v-model="filterBy.name" type="text" placeholder="Search destinations">
+                <location-modal @set-location="setLocation" v-if="$store.getters.isWhereSelected" />
             </label>
             <!-- <div class="flex header-dates align-center"> -->
             <!-- <div @click.stop="selected('check-in')" class="check-in flex column" -->
@@ -59,6 +60,7 @@ import searchBig from '../assets/svg/search-big.vue'
 import datePicker from './date-picker.vue'
 import addGuests from './add-guests.vue'
 import gradientButton from './gradient-button.vue'
+import locationModal from './location-modal.vue'
 
 export default {
     name: 'secondary-header',
@@ -80,14 +82,12 @@ export default {
         const { name, guests, startDate, endDate } = this.$route.query
         if (name) this.filterBy.name = name.charAt(0).toUpperCase() + name.substring(1).toLowerCase()
         if (guests && Object.keys(guests).length) {
-            console.log('Guests', guests);
             const guestsObject = JSON.parse(guests)
             this.filterBy.guests = guestsObject
         }
         if (startDate) {
             const inDate = new Date(startDate)
             const outDate = new Date(endDate)
-            console.log(inDate, outDate)
             this.filterBy.date.in = inDate
             this.filterBy.date.out = outDate
         }
@@ -147,7 +147,6 @@ export default {
             this.$store.commit({ type, select })
         },
         setGuests(guests) {
-            console.log(guests)
             this.filterBy.guests = guests
         },
         setDates(dates) {
@@ -162,6 +161,9 @@ export default {
             const dateObj = new Date(date)
             return dateObj.toLocaleString('en-US', options)
         },
+        setLocation(location) {
+            this.filterBy.name = location
+        }
     },
     computed: {
         guests() {
@@ -186,7 +188,8 @@ export default {
         searchBig,
         datePicker,
         addGuests,
-        gradientButton
+        gradientButton,
+        locationModal
     }
 }
 </script>

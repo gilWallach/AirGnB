@@ -13,9 +13,9 @@
                     </li>
                     <li class="flex column">
                         <h3>Guests:</h3>
-                        <span v-if="order.guests.adults">{{order.guests.adults}} adult</span>
-                        <span v-if="order.guests.children">{{order.guests.children}} children</span>
-                        <span v-if="order.guests.infants">{{order.guests.infants}} infants</span>
+                        <span v-if="order.guests.adults">{{ order.guests.adults }} adult</span>
+                        <span v-if="order.guests.children">{{ order.guests.children }} children</span>
+                        <span v-if="order.guests.infants">{{ order.guests.infants }} infants</span>
                     </li>
                     <li>
                         <h3>Price Details</h3>
@@ -81,10 +81,10 @@ export default {
             order.status = 'pending'
             order.msgs = []
             const { _id, name, price, host } = this.stay
-            order.hostId = host._id
+            const { _id: hostId, fullname, thumbnailUrl } = host
+            order.host = { _id: hostId, fullname, thumbnailUrl }
             const miniStay = { _id, name, price }
             order.stay = miniStay
-            console.log(order);
             try {
                 await this.$store.dispatch({ type: 'addOrder', order })
             } catch (err) {
