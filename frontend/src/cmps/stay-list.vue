@@ -11,12 +11,13 @@
         </button>
       </div>
     </div>
-
+    <div v-if="(isSearch)" class="serch-results-number">
+      IS SERCH
+    </div>
     <ul class="stay-list">
       <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" :date="date" @addToWishlist="addToWishlist" />
     </ul>
 
-    <!-- <button style="width: 750px; height: 750px; background-color: blue;">Test</button> -->
   </section>
   <transition name="fade">
     <list-modal v-if="isModalOpen" @closeModal="closeModal" :isWishlist="isWishlist" />
@@ -54,24 +55,23 @@ export default {
 
       isModalOpen: false,
       iswishList: null,
+
+      isSearch: false
     }
   },
-
+  created() {
+    console.log(typeof(this.$route.query))
+    // if (this.$route.query !== {} ) this.isSearch = true
+  },
   mounted() {
     this.listObserver = new IntersectionObserver(this.onListObserved, {
-      // rootMargin: '200px 0px 0px',
-      // threshold: 0,
+
     })
-    // this.listObserver.root.style.border = "2px solid #44aa44";
     this.listObserver.observe(this.$refs.placeholder)
   },
   methods: {
     onListObserved(entries) {
       entries.forEach((entry) => {
-
-        if (entry.isIntersecting) console.log('in intersecting')
-        if (!entry.isIntersecting) console.log('out intersecting')
-        // entry.target.style.opacity = entry.intersectionRatio
         this.scrollShadow = entry.isIntersecting ? false : true
       })
     },
