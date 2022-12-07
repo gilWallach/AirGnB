@@ -1,7 +1,7 @@
 <template>
     <div class="location-container flex" bis_skin_checked="1">
         <div class="popup-lt-side flex" bis_skin_checked="1">
-            <div class="lt map-header" bis_skin_checked="1">Search by region</div>
+            <div class="lt map-header header" bis_skin_checked="1">Search by region</div>
             <div class="maps-wrapper" bis_skin_checked="1">
                 <div class="map-loc" bis_skin_checked="1" @click="$emit('set-location','United States')">
                     <div class="img-con" bis_skin_checked="1"

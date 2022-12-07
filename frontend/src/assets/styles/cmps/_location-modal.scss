@@ -1,6 +1,6 @@
 .location-container {
-//   display: none;
-
+  //   display: none;
+  cursor: auto;
   max-width: fit-content;
   height: fit-content;
   background: white;
@@ -41,7 +41,7 @@
         justify-content: space-between;
         padding: 4px;
         gap: 7px;
-
+        cursor: pointer;
         .img-con {
           background-position: center;
           background-size: cover;
@@ -49,14 +49,16 @@
           height: 100%;
           border-radius: 12px;
           border: 1px solid rgb(221, 221, 221);
+          transition: border 0.3s;
+          &:hover {
+            border: 1px solid $clr2;
+          }
         }
       }
     }
   }
 }
 
-.secondary-header:has( .where.selected) .location-container {
-//   display: initial;
+.secondary-header:has(.where.selected) .location-container {
+  //   display: initial;
 }
- 
-

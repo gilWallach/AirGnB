@@ -35,6 +35,7 @@ async function addOrder(req, res) {
   logger.debug('loggedinUser', loggedinUser)
   try {
     const order = req.body
+    console.log(order);
     order.buyer = loggedinUser
     const addedOrder = await orderService.add(order)
     addedOrder.createdAt = ObjectId(addedOrder._id).getTimestamp()
