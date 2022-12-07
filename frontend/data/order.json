@@ -20,6 +20,6 @@
       "price": 595
     },
     "msgs": [],
-    "status": "pending" // pending, approved
+    "status": "pending"
   }
 ]
