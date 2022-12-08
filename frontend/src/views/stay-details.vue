@@ -429,8 +429,10 @@ export default {
       throw new Error(err)
     }
     const { startDate, endDate, guests } = this.$route.query
-    this.order.checkInDate = startDate
-    this.order.checkOutDate = endDate
+    if(startDate){
+      this.order.checkInDate = startDate
+      this.order.checkOutDate = endDate
+    }
     if (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests)).length)
       this.order.guests = JSON.parse(guests)
   },
