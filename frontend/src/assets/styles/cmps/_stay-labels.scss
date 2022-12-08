@@ -9,20 +9,14 @@
   button:not(.el-carousel__button, .el-carousel__arrow) {
     padding: 0 !important;
     margin: 0 !important;
-    // conflict
     min-width: 28px !important;
     min-height: 28px !important;
-    // border: 1px solid $clr4;
-    // border-radius: 50%;
-    background-color: $clr8;
-    color: $clr2;
-    backdrop-filter: drop-shadow(10px 10px 10px $clr8);
-    transition: box-shadow 0.2s ease;
+
+    transition: box-shadow 0.2s ease, opacity 0.2s ease;
   }
 
   button:not(.el-carousel__button, .el-carousel__arrow):hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-    // transform: scale(1.04)
   }
 
   .carousel__track {
@@ -71,6 +65,10 @@
     .selected {
       color: $clr2;
       box-shadow: inset 0px -2px 0px 0px $clr2;
+
+      img {
+        opacity: 1;
+      }
     }
 
     img {

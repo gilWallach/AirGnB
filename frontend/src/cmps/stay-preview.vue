@@ -20,7 +20,7 @@
           </div>
         </div>
         <p>{{ stay.name }}</p>
-        <p>{{ stay.capacity }} beds</p>
+        <p class="capacity">{{ stay.capacity }} beds</p>
         <p class="price">
           <span>${{ stay.price?.toLocaleString() }}</span> night
         </p>

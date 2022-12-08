@@ -1,20 +1,30 @@
-.main-container-stay-details {    
-    .sticky-header {
+.main-container-stay-details {
+    .sticky-header-container {
+        grid-column: 1 / -1;
+        height: $header-height;
         position: fixed;
-        justify-content: flex-start;
         padding: 0;
         height: $header-height;
         width: 100%;
-        background-color: $clr8;
-        // box-shadow: rgb(0 0 0 / 10%) 0px 1px 0px;
+        box-shadow: 0px 0px 5px 0px #0000001f;
+        z-index: 1;
+        background-color: $clr8 !important;
+        
+        .sticky-header {
+            height: 100%;
+            header {
+                justify-content: flex-start;
+                width: 100%;
 
-        .btn-sticky-nav {
-            margin: 0 em(24px, 15px) 0 0;
-            padding: 0;
-        }
+                .btn-sticky-nav {
+                    margin: 0 em(24px, 15px) 0 0;
+                    padding: 0;
+                }
 
-        .btn-sticky-nav:hover {
-            box-shadow: inset 0 -4px 0px 0px $clr2;
+                .btn-sticky-nav:hover {
+                    box-shadow: inset 0 -4px 0px 0px $clr2;
+                }
+            }
         }
     }
 }
