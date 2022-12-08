@@ -54,6 +54,7 @@ import {
   showErrorMsg,
   eventBus,
 } from '../services/event-bus.service'
+import { socketService, SOCKET_EVENT_ORDER_ADDED } from '../services/socket.service'
 
 export default {
   name: 'order-confirm',

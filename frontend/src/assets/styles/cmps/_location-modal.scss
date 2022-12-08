@@ -1,5 +1,4 @@
 .location-container {
-  //   display: none;
   cursor: auto;
   max-width: fit-content;
   height: fit-content;
@@ -9,11 +8,14 @@
   left: 0;
   border-radius: rem(32px);
   box-shadow: 0 0 0 1px #0000000a, 0 8px 16px #00000026;
-  padding: 16px 32px;
+  padding: 2.1333333333em 32px;
   flex-direction: row;
 
   & :nth-child(-n + 2) {
     font-weight: 400;
+  }
+  .map-header {
+    padding-inline-start: 4px;
   }
 
   .popup-lt-side.flex {
@@ -42,6 +44,9 @@
         padding: 4px;
         gap: 7px;
         cursor: pointer;
+        span{
+      color: $clr3;
+        }
         .img-con {
           background-position: center;
           background-size: cover;
@@ -57,8 +62,4 @@
       }
     }
   }
-}
-
-.secondary-header:has(.where.selected) .location-container {
-  //   display: initial;
 }

@@ -39,9 +39,7 @@
                 <button v-if="!$store.getters.isElementSelected" @click="setFilterBy"
                     :class="{ 'element-selected': $store.getters.isElementSelected }"
                     class="custom search-container flex align-center justify-center">
-                    <transition name="fade">
                         <search-big />
-                    </transition>
                 </button>
                 <transition v-else @click="setFilterBy" class="gradient-search" name="fade">
                     <!-- <span v-if="$store.getters.isElementSelected">Search</span> -->

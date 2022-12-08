@@ -1,6 +1,7 @@
 const orderService = require('./order.service.js')
 
 const logger = require('../../services/logger.service')
+const { setupSocketAPI, emitToUser } = require('../../services/socket.service.js')
 const ObjectId = require('mongodb').ObjectId
 
 async function getOrders(req, res) {
@@ -40,6 +41,9 @@ async function addOrder(req, res) {
     const addedOrder = await orderService.add(order)
     addedOrder.createdAt = ObjectId(addedOrder._id).getTimestamp()
     logger.debug('order', order)
+
+    //Socket
+    await emitToUser({ type: 'order-added', data: addedOrder, userId: addedOrder.host._id })
     res.json(addedOrder)
   } catch (err) {
     logger.error('Failed to add order', err)
