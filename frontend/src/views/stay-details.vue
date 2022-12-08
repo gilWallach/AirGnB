@@ -61,8 +61,9 @@
                 {{ getStay.roomType }} hosted by {{ getStay.host.fullname }}
               </div>
               <div class="capacity">
-                {{ getStay.capacity }} beds · {{ getStay.bedrooms }} rooms ·
-                {{ getStay.capacity + 3 }} guests
+                {{ getStay.capacity }} beds ·
+                {{ getStay.bedrooms ? getStay.bedrooms + ' rooms · ' : '' }}
+                {{ getStay.capacity + 2 }} guests
               </div>
             </div>
             <span
@@ -178,7 +179,7 @@
         <!-- RESERVE MODAL -->
         <div class="reserve-section">
           <div class="reserve-modal-full flex column" ref="reserveModal">
-            <div class="modal-header flex justify-space-between align-center">
+            <div class="modal-header flex justify-space-between">
               <div>
                 <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
                 <span class="modal-header-price">{{
@@ -191,7 +192,7 @@
                 <span class="modal-header-text"> night</span>
               </div>
               <div class="rating-reviews flex" v-if="getStay.reviews.length">
-                <star /><span>&nbsp; 4.82 </span
+                <star /><span>4.82 </span
                 ><span class="separator">&nbsp;·&nbsp;</span>
                 <span class="reviews-amount"
                   >{{ getStay.reviews.length + ' ' + formatReviews }}
@@ -279,7 +280,9 @@
             <div class="rating-reviews flex">
               <star /><span>&nbsp; 4.82 </span
               ><span class="separator">&nbsp;·&nbsp;</span>
-              <span class="reviews-amount">{{ getStay.reviews?.length }} </span>
+              <span class="reviews-amount"
+                >{{ getStay.reviews?.length }} reviews
+              </span>
             </div>
           </div>
 
@@ -343,7 +346,7 @@
         <!-- REVIEWS DETAILS -->
         <div class="reviews-details">
           <review
-            v-for="review in getStay.reviews"
+            v-for="review in getStay.reviews.slice(0, 6)"
             :review="review"
             :key="review.id"
           />
@@ -429,7 +432,7 @@ export default {
       throw new Error(err)
     }
     const { startDate, endDate, guests } = this.$route.query
-    if(startDate){
+    if (startDate) {
       this.order.checkInDate = startDate
       this.order.checkOutDate = endDate
     }
