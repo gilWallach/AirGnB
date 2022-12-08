@@ -23,6 +23,10 @@ export default {
             display: false,
           }
         }
+      },
+      options: {
+        type: Array,
+        default: () => ['approved', 'pending', 'declined']
       }
     }
   },

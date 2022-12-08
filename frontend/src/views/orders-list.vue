@@ -14,19 +14,19 @@
                 <img
                   v-if="currOrder.buyer.imgUrl"
                   :src="currOrder.buyer.imgUrl"
-                  alt=""
+                  alt="buyer profile image"
                 />
                 <user-avatar v-else />
               </div>
-              <p>{{ currOrder.buyer.fullname }}</p>
             </td>
+            <td>{{ currOrder.buyer.fullname }}</td>
             <td :class="styleStatus(currOrder.status)" class="fs18 bold">
               {{ currOrder.status }}
             </td>
             <td class="center-td">{{ formatGuests(currOrder.guests) }}</td>
             <td>{{ currOrder.startDate }}</td>
             <td>{{ currOrder.endDate }}</td>
-            <td>{{ currOrder.stay.name }}</td>
+            <td class="stay-name">{{ currOrder.stay.name }}</td>
             <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
             <td>
               <select
@@ -35,9 +35,8 @@
                 :value="currOrder.status"
                 @change="updateOrder(currOrder)"
               >
-                <option value="approved">Approved</option>
-                <option value="pending">Pending</option>
-                <option value="declined">Declined</option>
+                <option value="approved">Approve</option>
+                <option value="declined">Decline</option>
               </select>
             </td>
           </tr>
@@ -61,6 +60,7 @@ export default {
     return {
       tableHeadings: [
         '',
+        'buyer',
         'Status',
         'Guests',
         'Check-in',
