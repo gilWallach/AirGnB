@@ -26,6 +26,7 @@
             <td class="center-td">{{ formatGuests(currOrder.guests) }}</td>
             <td>{{ currOrder.startDate }}</td>
             <td>{{ currOrder.endDate }}</td>
+            <td>{{currOrder.createdAt}}</td>
             <td class="stay-name">{{ currOrder.stay.name }}</td>
             <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
             <td>
@@ -66,6 +67,7 @@ export default {
         'Guests',
         'Check-in',
         'Check-out',
+        'booked',
         'Listing',
         'Total Payout',
         'Actions',

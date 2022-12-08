@@ -5,34 +5,19 @@
 
 .carousel__viewport {
   display: flex;
-  // max-width: 900px;
 
   button:not(.el-carousel__button, .el-carousel__arrow) {
     padding: 0 !important;
     margin: 0 !important;
     min-width: 28px !important;
     min-height: 28px !important;
-    border: 1px solid $clr4;
-    border-radius: 50%;
+    // border: 1px solid $clr4;
+    // border-radius: 50%;
     background-color: $clr8;
     color: $clr2;
     backdrop-filter: drop-shadow(10px 10px 10px $clr8);
     transition: box-shadow 0.2s ease;
   }
-
-  // .carousel__track li:last-child::before {
-  //   content: "";
-  //   width: 40px;
-  //   height: 100%;
-  //   background-image: linear-gradient(
-  //     to right,
-  //     rgba(255, 255, 255, 0),
-  //     white 40px
-  //   );
-  //   z-index: 1;
-  //   position: absolute;
-  //   right: 0;
-  // }
 
   button:not(.el-carousel__button, .el-carousel__arrow):hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
@@ -74,21 +59,24 @@
       }
     }
 
-
     .carousel__slide:hover {
       color: $clr2;
       box-shadow: inset 0px -2px 0px 0px $clr5;
     }
+    .carousel__slide:hover img{
+      opacity: 1;
+    }
 
-    .carousel__slide.selected {
+    .selected {
       color: $clr2;
       box-shadow: inset 0px -2px 0px 0px $clr2;
     }
 
     img {
       display: block;
-      width: 1em;
-      height: 1em;
+      width: 1.47em;
+      height: 1.47em;
+      opacity: .75;
     }
 
     .label-name {
@@ -121,6 +109,14 @@ button.carousel__next {
 .carousel__prev, .carousel__next{
   padding: 0 !important;
   margin: 0 !important;
+
+  svg{
+    border: 1px solid $clr5;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    color: $clr2;
+  }
 }
 
 section.carousel:has(div:first-of-type):has(ol):has(li:first-child.carousel__slide--visible) button:first-of-type,
