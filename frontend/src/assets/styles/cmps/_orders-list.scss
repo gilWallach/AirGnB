@@ -1,8 +1,9 @@
 .orders-list {
     margin-top: $header-height;
-    padding-top: $header-height / 2;
+    // padding-top: $header-height / 2;
 
     .orders-list-title{
+        margin-inline-start: 16px;
         margin-bottom: 24px;
     }
     table {

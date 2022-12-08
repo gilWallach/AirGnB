@@ -1,5 +1,8 @@
 <template>
   <section v-if="orders" class="orders-list">
+    <div class="charts-container">
+        <status-chart />
+      </div>
     <h1 class="fs22 orders-list-title">Reservations</h1>
 
     <div v-for="currOrder in orders" class="orders-tables">
