@@ -17,7 +17,7 @@
         </button>
       </div>
     </div>
-    <p v-if="isSearch" class="serch-results-number">
+    <p v-if="isSearch" class="search-results-number">
       {{ stays.length }} homes in {{ $route.query.name }}
     </p>
     <ul class="stay-list">

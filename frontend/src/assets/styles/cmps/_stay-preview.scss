@@ -81,7 +81,7 @@
         }
 
         .price {
-            padding-top: 3px;
+            padding-top: 8px;
             color: $clr2;
 
             span {
@@ -89,8 +89,13 @@
             }
         }
 
+        .capacity{
+            padding-top: 3px;
+        }
+
         .title {
             padding-top: 12px;
+            padding-bottom: 6px;
 
             svg {
                 padding-inline-end: 3px;
@@ -99,7 +104,6 @@
             p {
                 font-family: airBnb-Med;
                 color: $clr2;
-                padding-bottom: 6px;
 
                 .rating {
                     margin-inline-start: 3px;
