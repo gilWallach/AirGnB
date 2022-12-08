@@ -1,13 +1,17 @@
 <template>
   <div class="main-container-stay-details">
     <section class="order-confirm">
-      <div>
+      <!-- page header -->
+      <header class="flex column">
         <h1 class="header fs22">One last step</h1>
         <p class="fs14">Dear guest,</p>
         <p class="fs14 subtitle">
           In order to complete your reservation,
           <span class="bold">please confirm your trip details</span>
         </p>
+      </header>
+      <!-- main content -->
+      <main class="main-content flex">
         <div class="content-container flex justify-space-between align-center">
           <div class="reservation-details">
             <h2 class="underline fs18">Reservation details</h2>
@@ -18,9 +22,15 @@
               </li>
               <li class="flex column list-item">
                 <h3 class="fs16">Guests</h3>
-                <span v-if="order.guests.adults">{{ order.guests.adults }} adult</span>
-                <span v-if="order.guests.children">{{ order.guests.children }} children</span>
-                <span v-if="order.guests.infants">{{ order.guests.infants }} infants</span>
+                <span v-if="order.guests.adults"
+                  >{{ order.guests.adults }} adult</span
+                >
+                <span v-if="order.guests.children"
+                  >{{ order.guests.children }} children</span
+                >
+                <span v-if="order.guests.infants"
+                  >{{ order.guests.infants }} infants</span
+                >
               </li>
               <li class="list-item">
                 <h3 class="fs16">Price Breakdown</h3>
@@ -32,17 +42,28 @@
                   <span>Service fee</span> <span>$383</span>
                 </p>
               </li>
-              <li class="flex align-center justify-space-between list-item bold fs22">
+              <li
+                class="flex align-center justify-space-between list-item bold fs22"
+              >
                 <span>Total</span><span>{{ totalPrice }}</span>
               </li>
             </ul>
           </div>
           <div class="reservation-image"></div>
         </div>
-        <div class="confirmation-btns flex column justify-center">
-          <button @click="back">Back</button>
-          <gradient-button :data="'Confirm'" @click="setOrder" />
+        <div class="stay-container">
+          <h1>Stay at: {{ currStay.name }}</h1>
+          <h3>
+            Location: {{ currStay.loc.city + ', ' + currStay.loc.country }}
+          </h3>
+          <h4>Hosted by: {{ currStay.host.fullname }}</h4>
+          <img :src="currStay.imgUrls[0]" alt="stay image" />
         </div>
+      </main>
+
+      <div class="confirmation-btns flex column justify-center">
+        <button @click="back">Back</button>
+        <gradient-button :data="'Confirm'" @click="setOrder" />
       </div>
     </section>
   </div>
@@ -54,7 +75,10 @@ import {
   showErrorMsg,
   eventBus,
 } from '../services/event-bus.service'
-import { socketService, SOCKET_EVENT_ORDER_ADDED } from '../services/socket.service'
+import {
+  socketService,
+  SOCKET_EVENT_ORDER_ADDED,
+} from '../services/socket.service'
 
 export default {
   name: 'order-confirm',
@@ -70,6 +94,7 @@ export default {
       },
       pricePerNight: '',
       totalPrice: '',
+      currStay: null,
     }
   },
   async created() {
@@ -77,6 +102,7 @@ export default {
     const { id } = this.$route.params
     try {
       await this.$store.dispatch({ type: 'loadStay', id })
+      this.currStay = this.$store.getters.selectedStay
     } catch (err) {
       throw err
     }
@@ -120,11 +146,11 @@ export default {
     back() {
       const stayId = this.$route.params.id
       //   console.log('stayid: ', stayId)
-      const {
-        guests,
-        checkInDate,
-        checkOutDate } = this.$route.query
-      this.$router.push({ path: `/stay/${stayId}`, query: { guests, startDate: checkInDate, endDate: checkOutDate } })
+      const { guests, checkInDate, checkOutDate } = this.$route.query
+      this.$router.push({
+        path: `/stay/${stayId}`,
+        query: { guests, startDate: checkInDate, endDate: checkOutDate },
+      })
     },
   },
   computed: {
