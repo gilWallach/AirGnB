@@ -18,6 +18,9 @@
                 text-justify: start;
             }
             
+            tr:last-of-type {
+                border: none;
+            }
             tr {
                 display: grid;
                 grid-template-columns: 0.75fr 0.75fr 0.5fr 1fr 1fr 2.5fr 1fr 1fr;
@@ -61,6 +64,7 @@
 
                 
                 & select{
+                    font-family: airBnb-Reg;
                     border: none;
                     padding: 12px 6px;  
                     color: $clr4;
@@ -71,14 +75,14 @@
     }
 
     .approved {
-        color: rgb(0, 166, 0);
+        color: #08613f;
     }
 
     .pending {
-        color: rgb(218, 200, 1);
+        color: #E3B505;
     }
 
     .declined {
-        color: rgb(161, 0, 0);
+        color: #DB504A;
     }
 }

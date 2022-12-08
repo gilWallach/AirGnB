@@ -103,6 +103,7 @@ export default {
             const { name, date, guests } = this.filterBy
             this.$router.push({ path: '/s', query: { name, startDate: this.longDate(date.in), endDate: this.longDate(date.out), guests: JSON.stringify(guests) } })
             this.$emit('close-search')
+            this.unSelectElements()
         },
         selected(el) {
             let select
@@ -157,7 +158,7 @@ export default {
             this.$store.commit({ type: 'unSelectElements' })
         },
         longDate(date) {
-            if(!date) return ''
+            if (!date) return ''
             const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
             const dateObj = new Date(date)
             return dateObj.toLocaleString('en-US', options)

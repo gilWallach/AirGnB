@@ -48,9 +48,9 @@ export const orderStore = {
     addOrder(state, { order }) {
       state.orders.push(order)
     },
-    updateOrder(state, { order }) {
-      const idx = state.orders.findIndex((c) => c.id === order._id)
-      state.orders.splice(idx, 1, order)
+    updateOrder(state, { updatedOrder }) {
+      const idx = state.orders.findIndex((c) => c._id === updatedOrder._id)
+      state.orders.splice(idx, 1, updatedOrder)
     },
     removeOrder(state, { orderId }) {
       state.orders = state.orders.filter((order) => order._id !== orderId)
@@ -79,9 +79,9 @@ export const orderStore = {
     },
     async updateOrder(context, { order }) {
       try {
-        order = await orderService.save(order)
-        context.commit(getActionUpdateOrder(order))
-        return order
+        const updatedOrder = await orderService.save(order)
+        context.commit({type: 'updateOrder', updatedOrder})
+        return updatedOrder
       } catch (err) {
         console.log('orderStore: Error in updateOrder', err)
         throw err

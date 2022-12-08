@@ -1,6 +1,6 @@
 <template>
   <section v-if="orders" class="orders-list main-layout-list">
-    <h1 class="fs22">Reservation</h1>
+    <h1 class="fs22">Reservations</h1>
     <div class="content-container flex">
 
       <div class="list">
@@ -26,7 +26,6 @@
             <td class="center-td">{{ formatGuests(currOrder.guests) }}</td>
             <td>{{ currOrder.startDate }}</td>
             <td>{{ currOrder.endDate }}</td>
-            <!-- <td>{{ formatCreatedAt(currOrder) }}</td> -->
             <td>{{ currOrder.stay.name }}</td>
             <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
             <td>
@@ -46,7 +45,7 @@
       </div>
   
       <div class="charts-container">
-        <status-chart :orders="orders" />
+        <status-chart />
       </div>
     </div>
   </section>
@@ -94,10 +93,6 @@ export default {
       const guestsArr = Object.values(guests)
       if (!guestsArr.length) return guests
       return guestsArr.reduce((acc, n) => acc + n, 0)
-    },
-    formatCreatedAt(createdAt) {
-      console.log(createdAt)
-      // return new Date(createdAt).toLocaleDateString('en-US')
     },
     formatTotalPrice(totalPrice) {
       return totalPrice.toLocaleString('en-US', {

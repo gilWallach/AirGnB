@@ -18,15 +18,9 @@
               </li>
               <li class="flex column list-item">
                 <h3 class="fs16">Guests</h3>
-                <span v-if="order.guests.adults"
-                  >{{ order.guests.adults }} adult</span
-                >
-                <span v-if="order.guests.children"
-                  >{{ order.guests.children }} children</span
-                >
-                <span v-if="order.guests.infants"
-                  >{{ order.guests.infants }} infants</span
-                >
+                <span v-if="order.guests.adults">{{ order.guests.adults }} adult</span>
+                <span v-if="order.guests.children">{{ order.guests.children }} children</span>
+                <span v-if="order.guests.infants">{{ order.guests.infants }} infants</span>
               </li>
               <li class="list-item">
                 <h3 class="fs16">Price Breakdown</h3>
@@ -38,9 +32,7 @@
                   <span>Service fee</span> <span>$383</span>
                 </p>
               </li>
-              <li
-                class="flex align-center justify-space-between list-item bold fs22"
-              >
+              <li class="flex align-center justify-space-between list-item bold fs22">
                 <span>Total</span><span>{{ totalPrice }}</span>
               </li>
             </ul>
@@ -127,7 +119,11 @@ export default {
     back() {
       const stayId = this.$route.params.id
       //   console.log('stayid: ', stayId)
-      this.$router.push(`/stay/${stayId}`)
+      const {
+        guests,
+        checkInDate,
+        checkOutDate } = this.$route.query
+      this.$router.push({ path: `/stay/${stayId}`, query: { guests, startDate: checkInDate, endDate: checkOutDate } })
     },
   },
   computed: {

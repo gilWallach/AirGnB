@@ -1,7 +1,7 @@
-.charts-container{
+.charts-container {
     position: sticky;
     top: 9.3333333333em;
-    width: 24.6886666667em;
+    flex-basis: 25%;
     border-radius: 12px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     border: 1px solid rgb(221, 221, 221);
@@ -12,7 +12,7 @@
     padding: 20px 24px 24px;
     height: fit-content;
 
-    #doughnut-chart{
+    #doughnut-chart {
         margin-block: 24px;
     }
 }
