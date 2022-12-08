@@ -41,6 +41,7 @@ async function addOrder(req, res) {
     const addedOrder = await orderService.add(order)
     addedOrder.createdAt = ObjectId(addedOrder._id).getTimestamp()
     logger.debug('order', order)
+    console.log(addedOrder);
 
     //Socket
     await emitToUser({ type: 'order-added', data: addedOrder, userId: addedOrder.host._id })

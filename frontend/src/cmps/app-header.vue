@@ -1,13 +1,9 @@
 <template>
-  <div
-    @click="unSelectElements"
-    class="header-container"
-    :class="{
-      'main-layout-list': isList,
-      'main-container-stay-details': !isList,
-      'search-open': isSearchOpen,
-    }"
-  >
+  <div @click="unSelectElements" class="header-container" :class="{
+    'main-layout-list': isList,
+    'main-container-stay-details': !isList,
+    'search-open': isSearchOpen,
+  }">
     <header class="main-header flex align-center justify-between">
       <div class="logo-container">
         <router-link to="/">
@@ -17,73 +13,40 @@
           </span>
         </router-link>
       </div>
-      <div
-        v-if="!isSearchOpen"
-        class="mini-search flex align-center"
-        @click.stop="isSearchOpen = !isSearchOpen"
-      >
+      <div v-if="!isSearchOpen" class="mini-search flex align-center" @click.stop="isSearchOpen = !isSearchOpen">
         <button @click="selected('where')">Start your search</button>
         <button @click="selected('where')">{{ where }}</button>
         <button @click="selected('check-in')">{{ when }}</button>
         <!-- <button>{{ guests }}</button> -->
         <div @click="selected('who')">
-          <input
-            :value="guests"
-            type="text"
-            placeholder="Add guests"
-            disabled
-          />
+          <input :value="guests" type="text" placeholder="Add guests" disabled />
         </div>
-        <div
-          @click="selected('where')"
-          class="search flex align-center justify-center"
-        >
+        <div @click="selected('where')" class="search flex align-center justify-center">
           <search />
         </div>
       </div>
-      <nav
-        class="main-nav flex align-center justify-space-between"
-        @click="onToggleUserActions"
-      >
+      <nav class="main-nav flex align-center justify-space-between" @click="onToggleUserActions">
         <hamburger />
-        <div class="profile-img flex align-center">
-          <img
-            src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3"
-            alt=""
-          />
-        </div>
-        <user-actions
-          v-if="showUserActions"
-          @closeUserActions="closeUserActions"
-        />
+        <user-avatar-white />
+        <user-actions v-if="showUserActions" @closeUserActions="closeUserActions" />
       </nav>
     </header>
     <transition name="fade">
-      <secondary-header
-        v-if="isSearchOpen"
-        @close-search="isSearchOpen = false"
-      />
+      <secondary-header v-if="isSearchOpen" @close-search="isSearchOpen = false" />
     </transition>
   </div>
   <transition name="fade">
-    <div
-      class="main-screen"
-      v-if="isSearchOpen"
-      @click="isSearchOpen = false"
-    ></div>
+    <div class="main-screen" v-if="isSearchOpen" @click="isSearchOpen = false"></div>
   </transition>
   <transition name="fade">
-    <div
-      class="main-screen-transparent"
-      v-if="isShowWhiteScreen"
-      @click="closeUserActions"
-    ></div>
+    <div class="main-screen-transparent" v-if="isShowWhiteScreen" @click="closeUserActions"></div>
   </transition>
 </template>
 <script>
 import airbnb from '../assets/svg/airbnb.vue'
 import search from '../assets/svg/search.vue'
 import hamburger from '../assets/svg/hamburger.vue'
+import userAvatarWhite from '../assets/svg/user-avatar-white.vue'
 import secondaryHeader from './secondary-header.vue'
 import userActions from './user-actions.vue'
 
@@ -175,6 +138,7 @@ export default {
     airbnb,
     search,
     hamburger,
+    userAvatarWhite,
     secondaryHeader,
     userActions,
   },
