@@ -10,6 +10,7 @@
   button:not(.el-carousel__button, .el-carousel__arrow) {
     padding: 0 !important;
     margin: 0 !important;
+    // conflict
     min-width: 28px !important;
     min-height: 28px !important;
     border: 1px solid $clr4;
