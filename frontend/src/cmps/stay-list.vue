@@ -6,7 +6,7 @@
       :class="{ 'scroll-shadow': scrollShadow }"
     >
       <div class="list-header flex align-center justify-space-between">
-        <stay-labels v-if="labels" :labels="labels" />
+        <stay-labels v-if="labels" :labels="labels" @filter-type="$emit('filter-type')" />
 
         <button
           @click="openFilterModal"
@@ -57,6 +57,7 @@ import filterIcon from '../assets/svg/filter.vue'
 
 export default {
   name: 'stay-list',
+  emits:['filter-type'],
   props: {
     stays: {
       type: Array,

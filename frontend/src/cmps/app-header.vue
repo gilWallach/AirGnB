@@ -113,6 +113,7 @@ export default {
       if (el === 'who') select = 'isGuestsSelected'
       else if (el === 'where') select = 'isWhereSelected'
       else select = 'isCheckInSelected'
+      this.unSelectElements()
       this.$store.commit({ type: 'selectElement', select })
     },
     onToggleUserActions() {

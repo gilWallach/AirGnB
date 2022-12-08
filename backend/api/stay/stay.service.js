@@ -5,10 +5,7 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(filterBy = { name: '' }) {
   try {
-    const criteria = {
-      name: { $regex: filterBy.name, $options: 'i' },
-      //name, capacity/ date (in/out)
-    }
+    const criteria = _createCriteria(filterBy)
     const collection = await dbService.getCollection('stay')
     var stays = await collection.find(criteria).toArray()
     return stays
@@ -96,6 +93,19 @@ async function removeStayMsg(stayId, msgId) {
     logger.error(`cannot add stay msg ${stayId}`, err)
     throw err
   }
+}
+
+function _createCriteria(filterBy) {
+  const criteria = {}
+  const { name, type } = filterBy
+  criteria.$or = [
+    { 'loc.city': { $regex: name, $options: 'i' } },
+    { 'loc.country': { $regex: name, $options: 'i' } },
+    { name: { $regex: name, $options: 'i' } }
+  ]
+  if (type) criteria.type = type
+  console.log(criteria);
+  return criteria
 }
 
 module.exports = {

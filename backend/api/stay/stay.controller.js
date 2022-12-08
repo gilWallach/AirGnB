@@ -7,6 +7,7 @@ async function getStays(req, res) {
     logger.debug('Getting Stays')
     const filterBy = {
       name: req.query.name || '',
+      type: req.query.type || ''
     }
     const stays = await stayService.query(filterBy) // add filtering by capacity and country/city using the "name field"
     res.json(stays)
