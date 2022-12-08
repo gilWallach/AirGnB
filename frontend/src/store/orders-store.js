@@ -46,6 +46,7 @@ export const orderStore = {
       state.orders = orders
     },
     addOrder(state, { order }) {
+      console.log('adding order', order);
       state.orders.unshift(order)
     },
     updateOrder(state, { updatedOrder }) {
