@@ -43,7 +43,7 @@ header {
     &:hover {
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
     }
-    outline: 1px solid $clr6;
+    outline: 0.1px solid $clr6;
     padding-inline: 8px;
     border-radius: 2em;
     box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
@@ -134,9 +134,9 @@ header {
       > button::after {
         content: "";
         position: absolute;
-        color: $clr6;
         height: 24px;
-        outline: 0.1px solid $clr6;
+        width: 0.9px;
+        background-color: $clr6;
         right: 0;
       }
     }
@@ -176,4 +176,3 @@ header {
 
   pointer-events: auto;
 }
-

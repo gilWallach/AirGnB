@@ -18,11 +18,14 @@
     > :first-child:after {
       content: "";
       position: absolute;
-      color: $clr6;
       height: 36px;
-      outline: 0.1px solid $clr6;
+      width: 0.9px;
+      background-color: $clr6;
       right: 0;
     }
+  }
+  > :first-child {
+    padding-inline-start: rem(43px);
   }
   &.selected {
     background-color: $clr7;
@@ -142,6 +145,7 @@
   }
 
   button:not(.custom),
+  button.search-container,
   .gradient-button {
     position: absolute;
     right: 4px;
@@ -165,6 +169,13 @@
   border-radius: 2rem;
   padding: 1rem 2rem;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
+  .counter{
+    flex-basis: 110px;
+    justify-content: space-between;
+    span{
+      color: $clr3;
+    }
+  }
   > * {
     min-width: 330px;
     padding-block: rem(24px);
@@ -175,18 +186,23 @@
     div:first-of-type {
       p {
         font-size: 1rem;
+        padding-bottom: em(6px);
       }
       span {
-        font-size: rem(14px);
+        font-size: em(14px);
       }
     }
   }
   button {
-    border: 1px solid $clr6;
+    border: 1px solid $clr5;
     max-width: 32px;
     width: 32px !important;
     height: 32px;
     color: $clr4;
+    &:disabled{
+      border: 1px solid $clr7;
+      color: $clr7;
+    }
   }
 }
 

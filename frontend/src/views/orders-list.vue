@@ -11,11 +11,7 @@
           <tr v-for="currOrder in orders">
             <td class="buyer-details-td flex align-center justify-center">
               <div class="buyer-img-container">
-                <img
-                  v-if="currOrder.buyer.imgUrl"
-                  :src="currOrder.buyer.imgUrl"
-                  alt=""
-                />
+                <img v-if="currOrder.buyer.imgUrl" :src="currOrder.buyer.imgUrl" alt="" />
                 <user-avatar v-else />
               </div>
               <p>{{ currOrder.buyer.fullname }}</p>
@@ -29,12 +25,8 @@
             <td>{{ currOrder.stay.name }}</td>
             <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
             <td>
-              <select
-                v-model="currOrder.status"
-                name="status"
-                :value="currOrder.status"
-                @change="updateOrder(currOrder)"
-              >
+              <select v-model="currOrder.status" name="status" :value="currOrder.status"
+                @change="updateOrder(currOrder)">
                 <option value="approved">Approved</option>
                 <option value="pending">Pending</option>
                 <option value="declined">Declined</option>
@@ -43,7 +35,7 @@
           </tr>
         </table>
       </div>
-  
+
       <div class="charts-container">
         <status-chart />
       </div>
@@ -53,6 +45,7 @@
 <script>
 import userAvatar from '../assets/svg/user-avatar.vue'
 import statusChart from '../cmps/status-chart.vue'
+import { socketService, SOCKET_EVENT_ORDER_ADDED } from '../services/socket.service'
 
 export default {
   name: 'orders-list',
@@ -81,9 +74,17 @@ export default {
     }
   },
   async created() {
+    socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
+      this.$store.commit('addOrder', order)
+      console.log('order added');
+      console.log(order);
+    })
+    console.log('hello');
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
       this.orders = JSON.parse(JSON.stringify(this.$store.getters.orders))
+      socketService.login('6390a4d768ad08edacc01167')
+
     } catch (err) {
       throw err
     }
