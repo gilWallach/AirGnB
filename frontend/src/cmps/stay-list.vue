@@ -1,29 +1,50 @@
 <template>
-  <section class="main-layout-list">
+  <section class="main-layout-list flex">
     <div class="placeholder" ref="placeholder"></div>
-    <div class="list-header-container main-layout-list" :class="{ 'scroll-shadow': scrollShadow }">
+    <div
+      class="list-header-container main-layout-list"
+      :class="{ 'scroll-shadow': scrollShadow }"
+    >
       <div class="list-header flex align-center justify-space-between">
         <stay-labels v-if="labels" :labels="labels" @filter-type="$emit('filter-type')" />
 
-        <button @click="openFilterModal" class="filter-btn flex align-center justify-center">
+        <button
+          @click="openFilterModal"
+          class="filter-btn flex align-center justify-center"
+        >
           <filter-icon />
           <span>Filters</span>
         </button>
       </div>
     </div>
-
+    <p v-if="isSearch" class="serch-results-number">
+      {{ stays.length }} homes in {{ $route.query.name }}
+    </p>
     <ul class="stay-list">
-      <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" :date="date" @addToWishlist="addToWishlist" />
+      <stay-preview
+        v-for="stay in stays"
+        :key="stay._id"
+        :stay="stay"
+        :date="date"
+        @addToWishlist="addToWishlist"
+      />
     </ul>
-
-    <!-- <button style="width: 750px; height: 750px; background-color: blue;">Test</button> -->
   </section>
+  <div class="skeleton-r9bf0qw8pwg"><div v-if="isLoaded"></div></div>
   <transition name="fade">
-    <list-modal v-if="isModalOpen" @closeModal="closeModal" :isWishlist="isWishlist" />
+    <list-modal
+      v-if="isModalOpen"
+      @closeModal="closeModal"
+      :isWishlist="isWishlist"
+    />
   </transition>
 
   <transition name="fade">
-    <div class="main-screen" v-if="isModalOpen" @click="isModalOpen = false"></div>
+    <div
+      class="main-screen"
+      v-if="isModalOpen"
+      @click="isModalOpen = false"
+    ></div>
   </transition>
 </template>
 
@@ -45,8 +66,8 @@ export default {
       type: Array,
     },
     date: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   data() {
     return {
@@ -55,15 +76,17 @@ export default {
 
       isModalOpen: false,
       iswishList: null,
+
+      isSearch: false,
     }
   },
-
+  created() {
+    console.log('this.$route.query.name', this.$route.query.name)
+    if (this.$route.query.name) this.isSearch = true
+    // if (Object.values(this.$route.query).length) this.isSearch = true
+  },
   mounted() {
-    this.listObserver = new IntersectionObserver(this.onListObserved, {
-      // rootMargin: '200px 0px 0px',
-      // threshold: 0,
-    })
-    // this.listObserver.root.style.border = "2px solid #44aa44";
+    this.listObserver = new IntersectionObserver(this.onListObserved, {})
     this.listObserver.observe(this.$refs.placeholder)
   },
   methods: {

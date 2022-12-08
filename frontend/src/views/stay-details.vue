@@ -19,10 +19,13 @@
       <div class="stay-details-container">
         <div class="details-ratings-container">
           <p class="rate">
-            <star /><span>&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span><span class="separator">·</span>
+            <star /><span
+              >&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span
+            ><span class="separator">·</span>
           </p>
           <p>
-            <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
+            <span class="reviews-amount"
+              >{{ getStay.reviews.length + ' ' + formatReviews }}
             </span>
             <span class="separator">·</span>
           </p>
@@ -33,19 +36,19 @@
 
         <!-- SHARE AND SAVE -->
         <div class="action-btns">
-          <div class="share action-btn">
-            <share /> <span>Share</span>
-          </div>
-          <div class="save action-btn">
-            <save /> <span>Save</span>
-          </div>
+          <div class="share action-btn"><share /> <span>Share</span></div>
+          <div class="save action-btn"><save /> <span>Save</span></div>
         </div>
       </div>
 
       <!-- IMAGE GALLERY -->
       <div class="gallery" ref="elGallery">
-        <img v-for="(img, idx) in getStay.imgUrls.slice(0, 5)" :src="img" alt="stay-image"
-          :class="'gallery-img img' + idx" />
+        <img
+          v-for="(img, idx) in getStay.imgUrls.slice(0, 5)"
+          :src="img"
+          alt="stay-image"
+          :class="'gallery-img img' + idx"
+        />
       </div>
 
       <!-- STAY SUMMARY AND DETAILS -->
@@ -62,8 +65,13 @@
                 {{ getStay.capacity + 3 }} guests
               </div>
             </div>
-            <span><img :src="getStay.host.thumbnailUrl" alt="host-image" class="host-img"
-                onerror="this.src=`https://res.cloudinary.com/raz-mister-toy/image/upload/v1670229254/wbgnvdojxyealwsczvec.png`" /></span>
+            <span
+              ><img
+                :src="getStay.host.thumbnailUrl"
+                alt="host-image"
+                class="host-img"
+                onerror="this.src=`https://res.cloudinary.com/raz-mister-toy/image/upload/v1670229254/wbgnvdojxyealwsczvec.png`"
+            /></span>
           </div>
 
           <div class="stay-highlights">
@@ -174,17 +182,19 @@
               <div>
                 <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
                 <span class="modal-header-price">{{
-                    getStay.price.toLocaleString('en-IN', {
-                      style: 'currency',
-                      currency: 'USD',
-                      maximumFractionDigits: 0,
-                    })
+                  getStay.price.toLocaleString('en-IN', {
+                    style: 'currency',
+                    currency: 'USD',
+                    maximumFractionDigits: 0,
+                  })
                 }}</span>
                 <span class="modal-header-text"> night</span>
               </div>
               <div class="rating-reviews flex" v-if="getStay.reviews.length">
-                <star /><span>&nbsp; 4.82 </span><span class="separator">&nbsp;·&nbsp;</span>
-                <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
+                <star /><span>&nbsp; 4.82 </span
+                ><span class="separator">&nbsp;·&nbsp;</span>
+                <span class="reviews-amount"
+                  >{{ getStay.reviews.length + ' ' + formatReviews }}
                 </span>
               </div>
             </div>
@@ -210,8 +220,11 @@
                   <date-picker @set-dates="setDates" />
                 </div>
               </div>
-              <div @click.stop="isGuestModalOpen = !isGuestModalOpen" :class="{ selected: isGuestModalOpen }"
-                class="pax flex justify-space-between">
+              <div
+                @click.stop="isGuestModalOpen = !isGuestModalOpen"
+                :class="{ selected: isGuestModalOpen }"
+                class="pax flex justify-space-between"
+              >
                 <div>
                   <p>GUESTS</p>
                   <p class="pax-txt">{{ order.guests.capacity }} guest</p>
@@ -221,7 +234,11 @@
                   <arrow-down v-else />
                 </div>
                 <transition name="fade">
-                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" :allGuests="order.guests" />
+                  <add-guests
+                    v-if="isGuestModalOpen"
+                    @guests-update="addGuests"
+                    :allGuests="order.guests"
+                  />
                 </transition>
               </div>
             </div>
@@ -260,7 +277,8 @@
         <div class="reviews-header">
           <div class="title">
             <div class="rating-reviews flex">
-              <star /><span>&nbsp; 4.82 </span><span class="separator">&nbsp;·&nbsp;</span>
+              <star /><span>&nbsp; 4.82 </span
+              ><span class="separator">&nbsp;·&nbsp;</span>
               <span class="reviews-amount">{{ getStay.reviews?.length }} </span>
             </div>
           </div>
@@ -324,7 +342,11 @@
         </div>
         <!-- REVIEWS DETAILS -->
         <div class="reviews-details">
-          <review v-for="review in getStay.reviews" :review="review" :key="review.id" />
+          <review
+            v-for="review in getStay.reviews"
+            :review="review"
+            :key="review.id"
+          />
           <div class="more-reviews">
             <div class="btn-show-reviews">
               Show all {{ getStay.reviews?.length }} reviews
@@ -339,6 +361,11 @@
 </template>
 
 <script>
+import {
+  showSuccessMsg,
+  showErrorMsg,
+  eventBus,
+} from '../services/event-bus.service'
 import addGuests from '../cmps/add-guests.vue'
 import datePicker from '../cmps/date-picker.vue'
 import review from '../cmps/review.vue'
@@ -376,11 +403,10 @@ export default {
         checkOutDate: this.setDay().toLocaleString().split(',')[0],
         guests: {
           capacity: 1,
-          adults:1,
-          children:0,
-          infants:0,
-        }
-        ,
+          adults: 1,
+          children: 0,
+          infants: 0,
+        },
       },
     }
   },
@@ -405,9 +431,10 @@ export default {
     const { startDate, endDate, guests } = this.$route.query
     this.order.checkInDate = startDate
     this.order.checkOutDate = endDate
-    if (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests)).length) this.order.guests = JSON.parse(guests)
+    if (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests)).length)
+      this.order.guests = JSON.parse(guests)
   },
-  mounted() { },
+  mounted() {},
   methods: {
     onGalleryObserved(entries) {
       entries.forEach((entry) => {
@@ -430,14 +457,18 @@ export default {
       this.order.checkOutDate = dates[1]?.toLocaleString().split(',')[0] || null
     },
     doReserve() {
-      if (!formatNights) return
+      if (!this.formatNights) {
+        showErrorMsg('please fill in dates and pax to continue', 5000)
+        return
+      }
+
       const { guests, checkInDate, checkOutDate } = this.order
       const { id } = this.$route.params
       this.$router.push({
         name: 'order-confirm',
         params: { id },
         query: {
-          guests:JSON.stringify(guests),
+          guests: JSON.stringify(guests),
           checkInDate,
           checkOutDate,
           totalNights: this.formatNights,

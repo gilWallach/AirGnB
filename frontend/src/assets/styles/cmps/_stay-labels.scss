@@ -20,19 +20,6 @@
     transition: box-shadow 0.2s ease;
   }
 
-  // .carousel__track li:first-child::after {
-  //   content: "";
-  //   width: 40px;
-  //   height: 100%;
-  //   background-image: linear-gradient(
-  //     to left,
-  //     rgba(255, 255, 255, 0),
-  //     white 40px
-  //   );
-  //   z-index: 1;
-  //   position: absolute;
-  //   left: 0;
-  // }
   // .carousel__track li:last-child::before {
   //   content: "";
   //   width: 40px;
@@ -62,6 +49,16 @@
     .carousel__slide {
       width: max-content !important;
 
+      &:last-child {
+        width: 40px;
+        height: 100%;
+        background-image: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0),
+          white 40px
+        );
+        z-index: 1;
+      }
       div {
         cursor: pointer;
         flex-direction: column;
@@ -83,6 +80,11 @@
       box-shadow: inset 0px -2px 0px 0px $clr5;
     }
 
+    .carousel__slide.selected {
+      color: $clr2;
+      box-shadow: inset 0px -2px 0px 0px $clr2;
+    }
+
     img {
       display: block;
       width: 1em;
@@ -96,7 +98,32 @@
   }
 }
 
-section.carousel.labels-container:has(div:first-of-type):has(ol):has(li:first-child.carousel__slide--active)>button:first-of-type,
-section.carousel.labels-container:has(div:first-of-type):has(ol):has(li:last-child.carousel__slide--active)>button:last-of-type {
+button.carousel__prev {
+  width: 40px;
+  height: 100%;
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0),
+    white 40px
+  );
+  z-index: 1;
+}
+button.carousel__next {
+  width: 40px;
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    white 40px
+  );
+  z-index: 1;
+}
+.carousel__prev, .carousel__next{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+section.carousel:has(div:first-of-type):has(ol):has(li:first-child.carousel__slide--visible) button:first-of-type,
+section.carousel:has(div:first-of-type):has(ol):has(li:last-child.carousel__slide--visible) button:last-of-type {
   display: none;
 }

@@ -61,7 +61,7 @@
 <script>
 import gradientButton from '../cmps/gradient-button.vue'
 import close from '../assets/svg/close.vue'
-import { showSuccessMsg } from '../services/event-bus.service'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 export default {
   name: 'login-signup-modal',
   props: {
@@ -109,11 +109,13 @@ export default {
           this.msg = 'Invalid user crednetials'
           return
         } else {
-          location.reload()
+          showSuccessMsg(`logged in as ${user.fullname}`)
+          this.$emit('closeModal')
         }
       } catch (err) {
-        console.log(err)
-        this.msg = 'Failed to login'
+        // console.log(err)
+        // this.msg = 'Failed to login'
+        showErrorMsg(`failed to log in`)
       }
     },
     async doSignup() {
@@ -126,6 +128,7 @@ export default {
         return
       }
       await this.$store.dispatch({ type: 'signup', userCred: this.signupCred })
+      showSuccessMsg(`Welcome to airGnB, ${this.signupCred.fullname} `, 2000)
       this.$emit('closeModal')
     },
     loadUsers() {
@@ -141,6 +144,7 @@ export default {
     },
     onUploaded(imgUrl) {
       this.signupCred.imgUrl = imgUrl
+      showSuccessMsg('image saved!')
     },
   },
   computed: {

@@ -1,48 +1,311 @@
 .placeholder {
-    height: $header-height * 2;
+  height: 147px;
+}
+
+.serch-results-number {
+  margin-top: 22px;
+  margin-bottom: 8px;
 }
 
 .list-header-container {
-    position: fixed;
-    top: $header-height;
-    padding-block: 6px;
-    height: 84px;
-    width: 100%;
-    z-index: 10;
-    background-color: $clr8;
+  position: fixed;
+  top: $header-height;
+  padding-block: 6px;
+  height: 84px;
+  width: 100%;
+  z-index: 10;
+  background-color: $clr8;
 
-    & .list-header {
-        flex: 1;
-        overflow: hidden;
-    }
+  & .list-header {
+    flex: 1;
+    overflow: hidden;
+  }
 
-    &.scroll-shadow {
-        box-shadow: 0px 0px 5px 0px #0000001f;
-    }
+  &.scroll-shadow {
+    box-shadow: 0px 0px 5px 0px #0000001f;
+  }
 
-    .filter-btn {
-        justify-self: flex-end;
-        font-size: em(12px, 15px);
-        padding-inline: 44px;
-        margin-inline-start: 24px;
-        margin-block: 12px;
-        gap: em(8px, 15px);
-        width: em(90px, 15px);
-        height: em(48px, 15px);
-        border: 1px solid $clr6;
-        border-radius: .8em;
-    }
+  .filter-btn {
+    justify-self: flex-end;
+    font-size: em(12px, 15px);
+    padding-inline: 44px;
+    margin-inline-start: 24px;
+    margin-block: 12px;
+    gap: em(8px, 15px);
+    width: em(90px, 15px);
+    height: em(48px, 15px);
+    border: 1px solid $clr6;
+    border-radius: 0.8em;
+  }
 }
 
 .stay-list {
-    width: 100%;
-    padding: 0;
-    // margin-top: ($header-height * 2) + 8px;
-    list-style: none;
-    display: grid;
-    // grid-template-columns: repeat(6, minmax(240px, 1fr));
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    grid-auto-flow: dense;
-    grid-gap: 1.4rem;
-    grid-row-gap: 2.5em;
+  width: 100%;
+  padding: 0;
+  // margin-top: ($header-height * 2) + 8px;
+  list-style: none;
+  display: grid;
+  // grid-template-columns: repeat(6, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-auto-flow: dense;
+  grid-gap: 1.4rem;
+  grid-row-gap: 2.5em;
+}
+
+.skeleton-r9bf0qw8pwg:empty {
+  position: relative;
+  height: 800px;
+  background-color: #ffffff;
+  border-radius: 0px 0px 0px 0px;
+  background-image: linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 242px, transparent 0);
+  background-repeat: repeat-y;
+  background-size: 257px 12px, 257px 12px, 257px 12px, 50px 12px, 100px 12px,
+    257px 12px;
+  background-position: 40px 420px, 40px 380px, 40px 340px, 250px 300px,
+    40px 300px, 39px 40px;
+}
+.skeleton-r9bf0qw8pwg:empty {
+  position: relative;
+  height: 200px;
+  background-color: rgba(116, 98, 98, 0.92);
+  border-radius: 0px 0px 0px 0px;
+  background-image: linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 242px, transparent 0),
+    linear-gradient(#cccccc 242px, transparent 0),
+    linear-gradient(#cccccc 242px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 20px, transparent 0),
+    linear-gradient(#cccccc 242px, transparent 0);
+  background-repeat: repeat-y;
+  background-size: 257px 3px, 257px 3px, 257px 3px, 257px 3px, 257px 3px,
+    257px 3px, 257px 3px, 257px 3px, 257px 3px, 50px 3px, 50px 3px, 50px 3px,
+    100px 3px, 100px 3px, 100px 3px, 257px 3px, 257px 3px, 257px 3px, 257px 3px,
+    257px 3px, 257px 3px, 50px 3px, 100px 3px, 257px 3px;
+  background-position: 940px 420px, 940px 380px, 940px 340px, 640px 420px,
+    640px 380px, 640px 340px, 340px 420px, 340px 380px, 340px 340px,
+    1150px 300px, 847px 300px, 550px 300px, 940px 300px, 640px 300px,
+    340px 300px, 940px 40px, 640px 40px, 340px 40px, 40px 420px, 40px 380px,
+    40px 340px, 250px 300px, 40px 300px, 40px 40px;
+}
+.skeleton-r70anilgumz:empty {
+  position: relative;
+  height: 170px;
+  background-color: #ffffff;
+  border-radius: 0px 0px 0px 0px;
+  background-image: linear-gradient(#cccccc 20px, transparent 0),
+    radial-gradient(circle 14px at 14px 14px, #cccccc 13px, transparent 14px),
+    linear-gradient(#cccccc 20px, transparent 0),
+    radial-gradient(circle 14px at 14px 14px, #cccccc 13px, transparent 14px),
+    linear-gradient(#cccccc 20px, transparent 0),
+    radial-gradient(circle 14px at 14px 14px, #cccccc 13px, transparent 14px);
+  background-repeat: repeat-y;
+  background-size: 300px 170px, 28px 170px, 300px 170px, 28px 170px, 300px 170px,
+    28px 170px;
+  background-position: 70px 125px, 20px 120px, 70px 75px, 20px 70px, 70px 25px,
+    20px 20px;
+}
+.skeleton-r9bf0qw8pwg:empty {
+  position: relative;
+  height: 900px;
+  background-color: rgba(226, 220, 220, 0);
+  border-radius: 0px 0px 0px 0px;
+  background-image: linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 242px, transparent 0),
+    linear-gradient(#726868 242px, transparent 0),
+    linear-gradient(#726868 242px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#6e6b6b 242px, transparent 0);
+  background-repeat: repeat-y;
+  background-size: 257px 449px, 257px 449px, 257px 449px, 257px 449px,
+    257px 449px, 257px 449px, 257px 449px, 257px 449px, 257px 449px, 50px 449px,
+    50px 449px, 50px 449px, 100px 449px, 100px 449px, 100px 449px, 257px 449px,
+    257px 449px, 257px 449px, 257px 449px, 257px 449px, 257px 449px, 50px 449px,
+    100px 449px, 257px 449px;
+  background-position: 940px 420px, 940px 380px, 940px 340px, 640px 420px,
+    640px 380px, 640px 340px, 340px 420px, 340px 380px, 340px 340px,
+    1150px 300px, 847px 300px, 550px 300px, 940px 300px, 640px 300px,
+    340px 300px, 940px 40px, 640px 40px, 340px 40px, 40px 420px, 40px 380px,
+    40px 340px, 250px 300px, 40px 300px, 40px 40px;
+}
+.skeleton-r9bf0qw8pwg:empty {
+  position: relative;
+  height: 900px;
+  background-color: rgba(226, 220, 220, 0);
+  border-radius: 0px 0px 0px 0px;
+  background-image: linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 242px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 242px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 242px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(#726868 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 242px, transparent 0);
+  background-repeat: repeat-y;
+  background-size: 257px 449px, 257px 449px, 257px 449px, 257px 449px,
+    257px 449px, 257px 449px, 257px 449px, 257px 449px, 257px 449px, 50px 449px,
+    50px 449px, 50px 449px, 100px 449px, 100px 449px, 100px 449px, 257px 449px,
+    257px 449px, 257px 449px, 257px 449px, 257px 449px, 257px 449px, 50px 449px,
+    100px 449px, 257px 449px;
+  background-position: 940px 420px, 940px 380px, 940px 340px, 640px 420px,
+    640px 380px, 640px 340px, 340px 420px, 340px 380px, 340px 340px,
+    1150px 300px, 847px 300px, 550px 300px, 940px 300px, 640px 300px,
+    340px 300px, 940px 40px, 640px 40px, 340px 40px, 40px 420px, 40px 380px,
+    40px 340px, 250px 300px, 40px 300px, 40px 40px;
+}
+.skeleton-r9bf0qw8pwg:empty {
+  position: relative;
+  height: 900px;
+  background-color: rgba(226, 220, 220, 0);
+  border-radius: 0px 0px 0px 0px;
+  background-image: linear-gradient(
+      rgba(107, 107, 107, 0.3) 20px,
+      transparent 0
+    ),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 242px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 242px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 242px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 20px, transparent 0),
+    linear-gradient(rgba(107, 107, 107, 0.3) 242px, transparent 0);
+  background-repeat: repeat-y;
+  background-size: 257px 449px, 257px 449px, 257px 449px, 257px 449px,
+    257px 449px, 257px 449px, 257px 449px, 257px 449px, 257px 449px, 50px 449px,
+    50px 449px, 50px 449px, 100px 449px, 100px 449px, 100px 449px, 257px 449px,
+    257px 449px, 257px 449px, 257px 449px, 257px 449px, 257px 449px, 50px 449px,
+    100px 449px, 257px 449px;
+  background-position: 940px 420px, 940px 380px, 940px 340px, 640px 420px,
+    640px 380px, 640px 340px, 340px 420px, 340px 380px, 340px 340px,
+    1150px 300px, 847px 300px, 550px 300px, 940px 300px, 640px 300px,
+    340px 300px, 940px 40px, 640px 40px, 340px 40px, 40px 420px, 40px 380px,
+    40px 340px, 250px 300px, 40px 300px, 40px 40px;
+}
+.skeleton-r9bf0qw8pwg:empty:before {
+  content: ' ';
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  height: 900px;
+  -webkit-mask-image: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  -webkit-mask-repeat: repeat-y;
+  -webkit-mask-size: 50px 900px;
+  -webkit-mask-position: -20% 0;
+  background-image: linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 242px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 242px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 242px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 20px, transparent 0),
+    linear-gradient(rgba(255, 56, 92, 1) 242px, transparent 0);
+  background-repeat: repeat-y;
+  background-size: 257px 449px, 257px 449px, 257px 449px, 257px 449px,
+    257px 449px, 257px 449px, 257px 449px, 257px 449px, 257px 449px, 50px 449px,
+    50px 449px, 50px 449px, 100px 449px, 100px 449px, 100px 449px, 257px 449px,
+    257px 449px, 257px 449px, 257px 449px, 257px 449px, 257px 449px, 50px 449px,
+    100px 449px, 257px 449px;
+  background-position: 940px 420px, 940px 380px, 940px 340px, 640px 420px,
+    640px 380px, 640px 340px, 340px 420px, 340px 380px, 340px 340px,
+    1150px 300px, 847px 300px, 550px 300px, 940px 300px, 640px 300px,
+    340px 300px, 940px 40px, 640px 40px, 340px 40px, 40px 420px, 40px 380px,
+    40px 340px, 250px 300px, 40px 300px, 40px 40px;
+  animation: shineForSkeleton-r9bf0qw8pwg 2s infinite;
+}
+@keyframes shineForSkeleton-r9bf0qw8pwg {
+  to {
+    -webkit-mask-position: 120% 0;
+  }
 }

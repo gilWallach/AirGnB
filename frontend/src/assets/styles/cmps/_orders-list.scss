@@ -3,9 +3,10 @@
     padding-top: $header-height / 2;
 
     .list {
-        max-width: 70%;
+        flex-basis: 70%;
         margin-top: $header-height / 4;
         box-shadow: $clr5 0px 6px 16px;
+        margin-bottom: 20px;
 
         table {
             width: 100%;
@@ -19,14 +20,12 @@
             
             tr {
                 display: grid;
-                grid-template-columns: 0.75fr 0.75fr 0.5fr 1fr 1fr 1fr 2.5fr 1fr 1fr;
+                grid-template-columns: 0.75fr 0.75fr 0.5fr 1fr 1fr 2.5fr 1fr 1fr;
                 align-items: center;
                 justify-content: left;
                 min-height: 76px;
                 font-size: em(14px);
                 border-bottom: .5px solid $clr7;
-                // box-shadow: $clr5 0px 1px 2px;
-
                 
                 td{
                     padding-inline-start: 8px;

@@ -1,0 +1,25 @@
+{
+  "startDate": "12/23/2022",
+  "endDate": "12/24/2022",
+  "guests": { "capacity": 2, "adults": 2, "children": 0, "infants": 0 },
+  "totalPrice": 65,
+  "totalNights": "1",
+  "status": "pending",
+  "msgs": [],
+  "host": {
+    "_id": "63909e65b2318e7d4ce4bca0",
+    "fullname": "Maria",
+    "thumbnailUrl": "https://a0.muscache.com/im/pictures/c9b876fc-b30e-4951-8f88-af9add00939e.jpg?aki_policy=profile_small"
+  },
+  "stay": {
+    "_id": "63909e6cb2318e7d4ce4cac7",
+    "name": "M&M Space MM2  Apartamento no centro da cidade",
+    "price": 65
+  },
+  "buyer": {
+    "_id": "6390a4d768ad08edacc01167",
+    "fullname": "Mister Javascript"
+  },
+  "_id": "6390bb145aba76f5d4a313a2",
+  "createdAt": "2022-12-07T16:11:00.000Z"
+}

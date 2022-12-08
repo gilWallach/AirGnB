@@ -1,0 +1,18 @@
+.charts-container{
+    position: sticky;
+    top: 9.3333333333em;
+    width: 24.6886666667em;
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    border: 1px solid rgb(221, 221, 221);
+    margin-block-start: 20px;
+    margin-inline-end: 0;
+    margin-inline-start: auto;
+    margin-block-end: 24px;
+    padding: 20px 24px 24px;
+    height: fit-content;
+
+    #doughnut-chart{
+        margin-block: 24px;
+    }
+}
