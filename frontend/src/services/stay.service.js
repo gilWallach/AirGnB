@@ -211,59 +211,59 @@ function getLabels() {
       imageUrl:
         'https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg',
     },
-    // {
-    //   name: 'a-frames',
-    //   displayName: 'A-frames',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/1d477273-96d6-4819-9bda-9085f809dad3.jpg',
-    // },
-    // {
-    //   name: 'islands',
-    //   displayName: 'Islands',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg',
-    // },
-    // {
-    //   name: 'countryside',
-    //   displayName: 'Countryside',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg',
-    // },
-    // {
-    //   name: 'boats',
-    //   displayName: 'Boats',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/687a8682-68b3-4f21-8d71-3c3aef6c1110.jpg',
-    // },
-    // {
-    //   name: 'beach',
-    //   displayName: 'Beach',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg',
-    // },
-    // {
-    //   name: 'national-parks',
-    //   displayName: 'National parks',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg',
-    // },
-    // {
-    //   name: 'lake',
-    //   displayName: 'Lake',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/a4634ca6-1407-4864-ab97-6e141967d782.jpg',
-    // },
-    // {
-    //   name: 'houseboats',
-    //   displayName: 'Houseboatds',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/c027ff1a-b89c-4331-ae04-f8dee1cdc287.jpg',
-    // },
-    // {
-    //   name: 'camping',
-    //   displayName: 'Camping',
-    //   imageUrl:
-    //     'https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg',
-    // },
+    {
+      name: 'a-frames',
+      displayName: 'A-frames',
+      imageUrl:
+        'https://a0.muscache.com/pictures/1d477273-96d6-4819-9bda-9085f809dad3.jpg',
+    },
+    {
+      name: 'islands',
+      displayName: 'Islands',
+      imageUrl:
+        'https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg',
+    },
+    {
+      name: 'countryside',
+      displayName: 'Countryside',
+      imageUrl:
+        'https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg',
+    },
+    {
+      name: 'boats',
+      displayName: 'Boats',
+      imageUrl:
+        'https://a0.muscache.com/pictures/687a8682-68b3-4f21-8d71-3c3aef6c1110.jpg',
+    },
+    {
+      name: 'beach',
+      displayName: 'Beach',
+      imageUrl:
+        'https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg',
+    },
+    {
+      name: 'national-parks',
+      displayName: 'National parks',
+      imageUrl:
+        'https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg',
+    },
+    {
+      name: 'lake',
+      displayName: 'Lake',
+      imageUrl:
+        'https://a0.muscache.com/pictures/a4634ca6-1407-4864-ab97-6e141967d782.jpg',
+    },
+    {
+      name: 'houseboats',
+      displayName: 'Houseboatds',
+      imageUrl:
+        'https://a0.muscache.com/pictures/c027ff1a-b89c-4331-ae04-f8dee1cdc287.jpg',
+    },
+    {
+      name: 'camping',
+      displayName: 'Camping',
+      imageUrl:
+        'https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg',
+    },
   ]
 }

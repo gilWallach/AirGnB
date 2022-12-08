@@ -13,14 +13,10 @@ Chart.register(...registerables);
 
 export default {
   name: 'status-chart',
-  props: {
-    orders: {
-      type: Array,
-    },
-  },
   data() {
     return {
-      statusData: ['approved', 'pending', 'declined'],
+      orders: this.$store.getters.orders,
+      labels: ['approved', 'pending', 'declined'],
       options: {
         plugins: {
           legend: {
@@ -34,7 +30,7 @@ export default {
   methods: {},
   computed: {
     getStatusData() {
-      const data = this.statusData.map(status => {
+      const data = this.labels.map(status => {
         const dataInNums = this.orders.reduce(
           (acc, order) => {
             order.status === status
@@ -47,12 +43,12 @@ export default {
         return dataInNums / this.orders.length * 100
       })
       return {
-        statusData: this.statusData,
+        labels: this.labels,
         datasets: [{
           status: 'Status Data',
           borderRadius: 6,
           data,
-          backgroundColor: ["rgb(0, 166, 0)", "rgb(218, 200, 1)", "rgb(161, 0, 0)"]
+          backgroundColor: ["#08613f", "#E3B505", "#DB504A"]
         }]
       }
     }
