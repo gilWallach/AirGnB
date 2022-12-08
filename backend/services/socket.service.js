@@ -54,7 +54,6 @@ function emitTo({ type, data, label }) {
 async function emitToUser({ type, data, userId }) {
     userId = userId.toString()
     const socket = await _getUserSocket(userId)
-
     if (socket) {
         logger.info(`Emiting event: ${type} to user: ${userId} socket [id: ${socket.id}]`)
         socket.emit(type, data)

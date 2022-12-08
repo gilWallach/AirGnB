@@ -54,6 +54,7 @@ import {
   showErrorMsg,
   eventBus,
 } from '../services/event-bus.service'
+import { socketService, SOCKET_EVENT_ORDER_ADDED } from '../services/socket.service'
 
 export default {
   name: 'order-confirm',
@@ -72,6 +73,11 @@ export default {
     }
   },
   async created() {
+    socketService.login(this.stay.host._id)
+    socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
+      this.$store.commit('addOrder', order)
+      console.log('order added');
+    })
     this.$store.commit({ type: 'setDetails' })
     const { id } = this.$route.params
     try {

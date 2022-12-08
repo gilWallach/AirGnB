@@ -104,7 +104,6 @@ function _createCriteria(filterBy) {
     { name: { $regex: name, $options: 'i' } }
   ]
   if (type) criteria.type = type
-  console.log(criteria);
   return criteria
 }
 
