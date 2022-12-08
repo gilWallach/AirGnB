@@ -50,6 +50,8 @@ export const orderStore = {
       state.orders.unshift(order)
     },
     updateOrder(state, { updatedOrder }) {
+      console.log('updatedOrder', updatedOrder)
+
       const idx = state.orders.findIndex((c) => c._id === updatedOrder._id)
       state.orders.splice(idx, 1, updatedOrder)
     },
