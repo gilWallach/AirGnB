@@ -27,7 +27,10 @@
       </div>
       <nav class="main-nav flex align-center justify-space-between" @click="onToggleUserActions">
         <hamburger />
-        <user-avatar-white />
+        <div v-if="$store.getters.loggedinUser" class="img-container">
+          <img :src="$store.getters.loggedinUser.imgUrl" alt="user-image">
+        </div>
+        <user-avatar-white v-else />
         <user-actions v-if="showUserActions" @closeUserActions="closeUserActions" />
       </nav>
     </header>
