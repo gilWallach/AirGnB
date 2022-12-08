@@ -37,8 +37,14 @@
   .review-details {
     .review-txt {
       font-size: em(16px, 15px);
-      max-width: 44ch;
+      max-width: none;
       line-height: em(23px, 15px);
+      //
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
