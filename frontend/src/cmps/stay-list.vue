@@ -81,7 +81,6 @@ export default {
     }
   },
   created() {
-    console.log('this.$route.query.name', this.$route.query.name)
     if (this.$route.query.name) this.isSearch = true
     // if (Object.values(this.$route.query).length) this.isSearch = true
   },

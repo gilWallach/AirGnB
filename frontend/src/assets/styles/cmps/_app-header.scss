@@ -85,7 +85,8 @@ header {
     padding: 5px 5px 5px 12px;
     position: relative;
     transition: box-shadow 0.2s ease;
-    .user-avatar-white {
+    .user-avatar-white,
+    .img-container {
       width: 30px;
       height: 30px;
       color: $clr4;

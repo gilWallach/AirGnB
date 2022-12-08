@@ -11,11 +11,7 @@
           <tr v-for="currOrder in orders">
             <td class="buyer-details-td flex align-center justify-center">
               <div class="buyer-img-container">
-                <img
-                  v-if="currOrder.buyer.imgUrl"
-                  :src="currOrder.buyer.imgUrl"
-                  alt="buyer profile image"
-                />
+                <img v-if="currOrder.buyer.imgUrl" :src="currOrder.buyer.imgUrl" alt="buyer profile image" />
                 <user-avatar v-else />
               </div>
             </td>
@@ -26,15 +22,12 @@
             <td class="center-td">{{ formatGuests(currOrder.guests) }}</td>
             <td>{{ currOrder.startDate }}</td>
             <td>{{ currOrder.endDate }}</td>
+            <td>{{currOrder.createdAt}}</td>
             <td class="stay-name">{{ currOrder.stay.name }}</td>
             <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
             <td>
-              <select
-                v-model="currOrder.status"
-                name="status"
-                :value="currOrder.status"
-                @change="updateOrder(currOrder)"
-              >
+              <select v-model="currOrder.status" name="status" :value="currOrder.status"
+                @change="updateOrder(currOrder)">
                 <option value="approved">Approve</option>
                 <option value="declined">Decline</option>
               </select>
@@ -66,11 +59,12 @@ export default {
         'Guests',
         'Check-in',
         'Check-out',
+        'booked',
         'Listing',
         'Total Payout',
         'Actions',
       ],
-      orders: null,
+      // orders: null,
       statusData: ['Approved', 'Pending', 'Declined'],
       options: {
         plugins: {
@@ -83,14 +77,11 @@ export default {
   },
   async created() {
     socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
-      this.$store.commit('addOrder', order)
-      console.log('order added');
-      console.log(order);
+      this.$store.commit({ type: 'addOrder', order })
     })
-    console.log('hello');
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
-      this.orders = JSON.parse(JSON.stringify(this.$store.getters.orders))
+      // this.orders = JSON.parse(JSON.stringify(this.$store.getters.orders))
       socketService.login('6390a4d768ad08edacc01167')
 
     } catch (err) {
@@ -119,6 +110,11 @@ export default {
     async updateOrder(order) {
       await this.$store.dispatch({ type: 'updateOrder', order })
     },
+  },
+  computed:{
+    orders(){
+      return this.$store.getters.orders
+    }
   },
   components: {
     userAvatar,
