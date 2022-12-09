@@ -1,7 +1,11 @@
 <template>
   <carousel :transition="600">
     <slide v-for="(label, idx) in labels" :key="idx">
-      <div class="carousel__item flex" @click="setFilterBy(label.displayName, idx)" ref="labels">
+      <div
+        class="carousel__item flex"
+        @click="setFilterBy(label.displayName, idx)"
+        ref="labels"
+      >
         <img :src="label.imageUrl" alt="label" />
         <span class="label-name">{{ label.displayName }}</span>
       </div>
@@ -33,13 +37,15 @@ export default {
   },
   methods: {
     setFilterBy(type, idx) {
-      console.log(this.$refs.labels[0].classList)
       this.$refs.labels.forEach((label) => label.classList.remove('selected'))
       this.$refs.labels[idx].classList.add('selected')
 
       this.$emit('filter-type', type)
       const { name, startDate, endDate, guests } = this.$route.query
-      this.$router.push({ path: '/s', query: { type, name, startDate, endDate, guests }})
+      this.$router.push({
+        path: '/s',
+        query: { type, name, startDate, endDate, guests },
+      })
     },
   },
 }

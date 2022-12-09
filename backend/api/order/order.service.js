@@ -12,7 +12,7 @@ async function query() {
     //   name, capacity/ date (in/out)
     // }
     const collection = await dbService.getCollection('order')
-    var orders = await collection.find(criteria).toArray()
+    var orders = await collection.find(criteria).sort({ _id: -1 }).toArray()
     return orders
   } catch (err) {
     logger.error('cannot find orders', err)

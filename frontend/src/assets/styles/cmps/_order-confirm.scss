@@ -1,9 +1,11 @@
 .order-confirm {
-  margin-top: $header-height * 1.5;
+  // margin-top: $header-height * 1.5;
+  margin-top: 20vh;
   grid-column: 2;
 
   .header {
-    margin-bottom: em(15px);
+    color: lighten($clr3, 5%);
+    margin-bottom: em(20px);
     padding-bottom: 0;
   }
   .subtitle {
@@ -15,7 +17,7 @@
   }
 
   .main-content {
-    align-items: flex-start;
+    // align-items: flex-start;
     gap: 4em;
   }
 
@@ -33,20 +35,6 @@
   }
 
   .confirmation-btns {
-    // margin-top: em(55px);
-    padding: 0;
-    > :first-child {
-      background-color: $clr4;
-      color: $clr8;
-      border-radius: em(8px);
-      margin: 0 0 15px;
-      max-height: 48px;
-    }
-    > * {
-      flex: 1;
-      width: 100%;
-      padding: 0;
-    }
     .gradient-button {
       > * {
         margin: 0;
@@ -56,9 +44,32 @@
 
   .content-container {
     flex-basis: 50%;
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    border: 1px solid rgb(221, 221, 221);
+    padding: 20px 24px 24px;
+
+    .reservation-details {
+      position: relative;
+
+      > h2 {
+        margin: 1.5em 0;
+      }
+
+      .btn-back {
+        color: $clr4;
+        position: absolute;
+        top: 0;
+        text-decoration: underline;
+        font-size: 12px;
+      }
+      .btn-back:hover {
+        cursor: pointer;
+      }
+    }
 
     .list-item {
-      margin-bottom: em(15px);
+      margin-bottom: 1em;
 
       .last-item {
         margin-bottom: 3em;
@@ -68,5 +79,11 @@
 
   .stay-container {
     flex-basis: 50%;
+    justify-content: space-between;
+
+    .stay-img {
+      border-radius: 0.75em;
+      object-fit: contain;
+    }
   }
 }

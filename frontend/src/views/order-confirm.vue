@@ -3,18 +3,31 @@
     <section class="order-confirm">
       <!-- page header -->
       <header class="flex column">
-        <h1 class="header fs22">One last step</h1>
-        <p class="fs14">Dear guest,</p>
+        <h1 class="header fs22">Order Confirmation</h1>
+        <!-- <p class="fs14">Dear guest,</p>
         <p class="fs14 subtitle">
           In order to complete your reservation,
           <span class="bold">please confirm your trip details</span>
-        </p>
+        </p> -->
       </header>
       <!-- main content -->
       <main class="main-content flex">
+        <!-- stay summary -->
+        <div class="stay-container flex column">
+          <div class="stay-txt">
+            <h1 class="fs18">{{ currStay.name }}</h1>
+            <h3 class="fs14 l-grey">
+              {{ currStay.loc.city + ', ' + currStay.loc.country }}
+            </h3>
+          </div>
+          <img :src="currStay.imgUrls[0]" alt="stay image" class="stay-img" />
+        </div>
+
+        <!-- order summary -->
         <div class="content-container flex justify-space-between align-center">
           <div class="reservation-details">
-            <h2 class="underline fs18">Reservation details</h2>
+            <h3 @click="back" class="btn-back">Back</h3>
+            <h2 class="fs18">Order details</h2>
             <ul class="clean-list">
               <li class="flex column list-item">
                 <h3 class="fs16">Dates</h3>
@@ -48,27 +61,18 @@
                 <span>Total</span><span>{{ totalPrice }}</span>
               </li>
             </ul>
+            <div class="confirmation-btns flex column justify-center">
+              <gradient-button :data="'Confirm'" @click="setOrder" />
+            </div>
           </div>
           <div class="reservation-image"></div>
         </div>
-        <div class="stay-container">
-          <h1>Stay at: {{ currStay.name }}</h1>
-          <h3>
-            Location: {{ currStay.loc.city + ', ' + currStay.loc.country }}
-          </h3>
-          <h4>Hosted by: {{ currStay.host.fullname }}</h4>
-          <img :src="currStay.imgUrls[0]" alt="stay image" />
-        </div>
       </main>
-
-      <div class="confirmation-btns flex column justify-center">
-        <button @click="back">Back</button>
-        <gradient-button :data="'Confirm'" @click="setOrder" />
-      </div>
     </section>
   </div>
 </template>
 <script>
+import arrowBack from '../assets/svg/arrow-back.vue'
 import gradientButton from '../cmps/gradient-button.vue'
 import {
   showSuccessMsg,
@@ -159,6 +163,7 @@ export default {
     },
   },
   components: {
+    arrowBack,
     gradientButton,
   },
 }
