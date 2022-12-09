@@ -60,7 +60,7 @@
           </td>
           <td>
           <th class="no-padding-inline">booked: </th>
-          <!-- <p>{{ formatCreatedAt(currOrder) }}</p> -->
+          <p>{{ currOrder.createdAt }}</p>
           </td>
         </tr>
         <tr>
@@ -164,7 +164,7 @@ export default {
         return orderMonth === cuurMonth
 
       })
-      console.log(monthlyOrders)
+      // console.log(monthlyOrders)
 
     }
   },
