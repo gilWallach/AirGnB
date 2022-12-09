@@ -13,6 +13,7 @@ async function query() {
     // }
     const collection = await dbService.getCollection('order')
     var orders = await collection.find(criteria).toArray()
+
     return orders
   } catch (err) {
     logger.error('cannot find orders', err)
