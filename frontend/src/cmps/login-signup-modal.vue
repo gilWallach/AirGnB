@@ -1,7 +1,7 @@
 <template>
   <section @click.stop class="login-signup-modal">
     <div>
-      <div class="header flex align-center">
+      <div class="header flex justify-center align-center">
         <button
           @click.stop="$emit('closeModal')"
           class="close-btn flex align-center custom"
@@ -19,7 +19,7 @@
 
         <section v-if="isLogin" className="login-form">
           <form @submit.prevent="doLogin" class="login-signup-form">
-            <legend>Login</legend>
+            <!-- <legend>Login</legend> -->
             <input
               v-model="loginCred.username"
               type="text"
@@ -35,7 +35,7 @@
         </section>
         <section v-else className="signup-form">
           <form @submit.prevent="doSignup" class="login-signup-form">
-            <legend>Sign-Up</legend>
+            <!-- <legend>Sign-Up</legend> -->
             <input
               v-model="signupCred.fullname"
               type="text"
@@ -45,6 +45,7 @@
               v-model="signupCred.username"
               type="text"
               placeholder="Username"
+              class="last-input"
             />
             <input
               v-model="signupCred.password"

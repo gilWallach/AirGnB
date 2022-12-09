@@ -20,9 +20,10 @@
   border-radius: 10px;
 
   .header {
+    position: relative;
     gap: 9em;
     padding-top: 1.4em;
-    padding-bottom: 1.33em;
+    padding-bottom: 1em;
     margin-bottom: 0;
     border-bottom: 1px solid rgb(235, 235, 235);
 
@@ -30,10 +31,16 @@
       padding-left: 9px;
     }
     .close-btn {
+      position: absolute;
+      left: 20px;
       padding: 0;
       margin: 0;
+
       //   padding-top: 8px;
       //   padding-left: 8px;
+      > * {
+        padding: 0;
+      }
     }
     .center-heading {
       align-self: center;
@@ -51,9 +58,23 @@
 
   .login-signup-form {
     padding: 0;
+    > * {
+      margin: 0;
+    }
 
-    legend {
-      padding: 0;
+    input:first-of-type {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    input:not(input:first-of-type) {
+      border-top: none;
+    }
+
+    input:last-of-type {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      margin-bottom: em(50px);
     }
   }
 
@@ -62,11 +83,11 @@
     padding: 0;
     input {
       width: 100%;
-      height: em(40px);
-      border-radius: 8px;
-      border: none;
-      box-shadow: 0 0 0 1px black;
+      height: 3.2em;
+      border: 1px solid $clr6;
+      font-size: em(16px);
     }
+
     button,
     .gradient-button {
       margin: 0;
