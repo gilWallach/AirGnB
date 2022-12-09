@@ -1,0 +1,130 @@
+.orders-list {
+    margin-top: $header-height;
+    padding-top: $header-height / 2;
+
+    .list {
+        flex-basis: 70%;
+        margin-top: $header-height / 4;
+        box-shadow: $clr7 0px 2px 16px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+
+        table {
+            width: 100%;
+            padding: 16px;
+
+            th {
+                height: 95px;
+                padding: 42px 0 0 8px;
+                text-align: start;
+                text-justify: start;
+            }
+
+            th:last-of-type {
+                text-align: end;
+            }
+            tr:last-of-type {
+                border: none;
+            }
+
+            tr {
+                display: grid;
+                grid-template-columns: 0.75fr 1fr 0.75fr 0.5fr 0.75fr 1fr 1fr 2.5fr 1fr 1fr;
+                align-items: center;
+                justify-content: left;
+                min-height: 76px;
+                font-size: em(14px);
+                border-bottom: .5px solid $clr7;
+
+                td {
+                    padding-inline: 8px;
+                }
+
+                td:last-of-type {
+                    text-align: end;
+                    padding: 0;
+                }
+
+                .stay-name {
+                    padding-inline-end: 8px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .center-td {
+                    text-align: center;
+                }
+
+                .buyer-details-td {
+                    padding: 8px;
+                    flex-direction: column;
+                }
+
+                & .buyer-img-container {
+                    height: 58px;
+                    width: 58px;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    img {
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+                & p {
+                    padding-top: 8px;
+                    margin: 0;
+                    text-align: center;
+                }
+
+
+                & select {
+                    font-family: airBnb-Reg;
+                    border: none;
+                    padding: 12px 6px;
+                    color: $clr4;
+                    border: .5px solid $clr7;
+                    border-radius: 12px;
+                }
+                
+                .el-input__wrapper{
+                    display: inherit;
+                }
+
+                .el-select-dropdown__item.selected{
+                    color: $clr2 !important;
+                }
+
+            }
+        }
+    }
+
+    .status-btn {
+        border-radius: 12px;
+        color: $clr8;
+    }
+
+    .approved {
+        color: #08613f;
+    }
+
+    .approve-btn {
+        background-color: #08613f;
+    }
+
+    .pending {
+        color: #E3B505;
+    }
+
+    .declined {
+        color: #DB504A;
+    }
+
+    .decline-btn {
+        background-color: #DB504A;
+    }
+}
