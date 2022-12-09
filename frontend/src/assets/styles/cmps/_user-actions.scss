@@ -3,25 +3,32 @@
   z-index: 10;
   top: em(51px);
   right: 0;
-  //   padding: em(16px);
+  font-family: airBnB-Reg;
 
   background-color: white;
 
   width: em(240px);
-
-  font-family: airBnB-Med;
 
   border-radius: 8px;
   box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px;
 
   .list-items {
     list-style: none;
-    padding: 1em;
+    padding: 1em 1em 0;
 
     > li {
-      padding: em(5.5px) em(4px) em(19px);
+      position: relative;
+      padding: em(5.5px) em(4px) em(20px);
       //   padding-top: 5px;
       //   padding-bottom: 15px;
     }
+
+    > li:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .bottom-group {
+    border-top: 1px solid $clr6;
   }
 }
