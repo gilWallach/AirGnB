@@ -56,7 +56,7 @@ async function add(order) {
 
 async function update(order) {
   try {
-    console.log(order)
+    // console.log(order)
     // const orderToSave = {
     //   name: order.name,
     //   price: order.price,
@@ -69,7 +69,6 @@ async function update(order) {
       // { $set: orderToSave }
       { $set: orderCopy }
     )
-    console.log(order)
     return order
   } catch (err) {
     logger.error(`cannot update order ${order._id}`, err)

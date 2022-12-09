@@ -41,7 +41,6 @@ async function addOrder(req, res) {
   logger.debug('loggedinUser', loggedinUser)
   try {
     const order = req.body
-    console.log(order)
     order.buyer = loggedinUser
     let addedOrder = await orderService.add(order)
     addedOrder.createdAt = ObjectId(addedOrder._id).getTimestamp()
@@ -62,7 +61,6 @@ async function addOrder(req, res) {
 async function updateOrder(req, res) {
   try {
     const order = req.body
-    console.log(order)
     const updatedOrder = await orderService.update(order)
     res.json(updatedOrder)
   } catch (err) {
