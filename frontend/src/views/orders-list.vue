@@ -1,5 +1,5 @@
 <template>
-  <section v-if="orders" class="orders-summary">
+  <section v-if="orders.length && selectedStay" class="orders-summary">
     <h1 class="orders-list-title">Host summary</h1>
     <div class="host-summary">
       <div class="stats-header">
@@ -8,16 +8,16 @@
       </div>
       <div class="stats">
         <p>Monthly earning:</p>
-        <span>{{monthlyEarning}}</span>
-        <p>Average rating</p>
-        <span>4.92</span>
-        <p>Amount of reviews</p>
-        <span>258</span>
+        <span>${{ monthlyEarning }}</span>
+        <p>Average rating:</p>
+        <span>{{averageRating()}}</span>
+        <p>Amount of reviews:</p>
+        <span>{{selectedStay.reviews.length}}</span>
       </div>
 
       <div class="charts-container">
-          <status-chart v-if="orders"/>
-        </div>
+        <status-chart />
+      </div>
       <h1 class="fs22 orders-list-title">Reservations</h1>
     </div>
 
@@ -45,31 +45,31 @@
           </el-select>
         </tr>
         <tr>
-          <th>Guests</th>
-          <td>{{ formatGuests(currOrder.guests) }}</td>
-        </tr>
-        <tr>
-          <td>
-          <th>Check-in: </th>
-          <!-- <p>{{ formatDate(currOrder.startDate) }}</p> -->
-          <p>{{ currOrder.startDate }}</p>
-          </td>
-          <td>
-          <th class="no-padding-inline">Check-out: </th>
-          <p>{{ currOrder.endDate }}</p>
-          </td>
-          <td>
-          <th class="no-padding-inline">booked: </th>
-          <!-- <p>{{ formatCreatedAt(currOrder) }}</p> -->
-          </td>
-        </tr>
-        <tr>
           <th>Listing</th>
           <td class="stay-name">{{ currOrder.stay.name }}</td>
         </tr>
         <tr>
+          <th>Guests</th>
+          <td class="last-column">{{ formatGuests(currOrder.guests) }}</td>
+        </tr>
+        <tr>
+          <td>
+          <th>Check-in: </th>
+          <p>{{ formatDate(currOrder.startDate) }}</p>
+          <!-- <p>{{ currOrder.startDate }}</p> -->
+          </td>
+          <td class="center-td">
+          <th class="no-padding-inline">Check-out: </th>
+          <p>{{ currOrder.endDate }}</p>
+          </td>
+          <td class="end-td">
+              <th class="no-padding-inline">booked: </th>
+              <p>{{ formatDate(currOrder.createdAt) }}</p>
+          </td>
+        </tr>
+        <tr>
           <th>Total Payout</th>
-          <td class="total-payout">{{ formatTotalPrice(currOrder.totalPrice) }}</td>
+          <td class="last-column">{{ formatTotalPrice(currOrder.totalPrice) }}</td>
         </tr>
       </table>
     </div>
@@ -78,7 +78,6 @@
 
 <script>
 import userAvatar from '../assets/svg/user-avatar.vue'
-import DatePicker from '../cmps/date-picker.vue'
 import statusChart from '../cmps/status-chart.vue'
 import { socketService, SOCKET_EVENT_ORDER_ADDED } from '../services/socket.service'
 
@@ -87,7 +86,6 @@ export default {
   props: {},
   data() {
     return {
-      // orders: null,
       statusData: ['Approved', 'Pending', 'Declined'],
       options: {
         plugins: {
@@ -114,6 +112,7 @@ export default {
     })
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
+      await this.$store.dispatch({ type: 'loadStay', id: this.orders[0].stay._id })
       socketService.login('6390a4d768ad08edacc01167')
 
     } catch (err) {
@@ -132,8 +131,8 @@ export default {
         currency: 'USD',
       })
     },
-    formatDate(date){
-
+    formatDate(date) {
+      return new Date(date).toLocaleDateString('en-US')
     },
     styleStatus(status) {
       return {
@@ -152,21 +151,39 @@ export default {
     async updateOrder(order) {
       await this.$store.dispatch({ type: 'updateOrder', order })
     },
+    averageRating(){
+      const reviews = this.selectedStay.reviews
+      let average =
+      reviews.reduce((sum, review) => {
+        return sum + +review.rate
+      }, 0) / reviews.length
+      
+      console.log(average.toFixed(2))
+      return average.toFixed(2)
+    }
   },
   computed: {
     orders() {
       return JSON.parse(JSON.stringify(this.$store.getters.orders))
     },
-    monthlyEarning(){
+    selectedStay(){
+      return this.$store.getters.selectedStay
+    },
+    monthlyEarning() {
       const cuurMonth = new Date(Date.now()).getMonth()
       const monthlyOrders = this.orders.filter(order => {
         const orderMonth = new Date(Date.parse(this.orders[0].startDate)).getMonth()
         return orderMonth === cuurMonth
-
       })
-      console.log(monthlyOrders)
 
-    }
+      const sum = monthlyOrders.reduce(
+        (acc, { totalPrice } = order) => {
+          return acc + totalPrice
+        },
+        0
+      )
+      return sum.toLocaleString()
+    },
   },
   components: {
     userAvatar,
