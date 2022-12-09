@@ -1,9 +1,25 @@
 <template>
-  <section v-if="orders" class="orders-list">
-    <div class="charts-container">
-        <status-chart />
+  <section v-if="orders" class="orders-summary">
+    <h1 class="orders-list-title">Host summary</h1>
+    <div class="host-summary">
+      <div class="stats-header">
+        <h3>Good job!</h3>
+        <p>Guests love what you're doing, Keep up the good work and review your stats!</p>
       </div>
-    <h1 class="fs22 orders-list-title">Reservations</h1>
+      <div class="stats">
+        <p>Monthly earning:</p>
+        <span>{{monthlyEarning}}</span>
+        <p>Average rating</p>
+        <span>4.92</span>
+        <p>Amount of reviews</p>
+        <span>258</span>
+      </div>
+
+      <div class="charts-container">
+          <status-chart v-if="orders"/>
+        </div>
+      <h1 class="fs22 orders-list-title">Reservations</h1>
+    </div>
 
     <div v-for="currOrder in orders" class="orders-tables">
       <table>
@@ -35,6 +51,7 @@
         <tr>
           <td>
           <th>Check-in: </th>
+          <!-- <p>{{ formatDate(currOrder.startDate) }}</p> -->
           <p>{{ currOrder.startDate }}</p>
           </td>
           <td>
@@ -43,7 +60,7 @@
           </td>
           <td>
           <th class="no-padding-inline">booked: </th>
-          <p>{{ currOrder.createdAt }}</p>
+          <!-- <p>{{ formatCreatedAt(currOrder) }}</p> -->
           </td>
         </tr>
         <tr>
@@ -61,6 +78,7 @@
 
 <script>
 import userAvatar from '../assets/svg/user-avatar.vue'
+import DatePicker from '../cmps/date-picker.vue'
 import statusChart from '../cmps/status-chart.vue'
 import { socketService, SOCKET_EVENT_ORDER_ADDED } from '../services/socket.service'
 
@@ -69,7 +87,7 @@ export default {
   props: {},
   data() {
     return {
-      orders: null,
+      // orders: null,
       statusData: ['Approved', 'Pending', 'Declined'],
       options: {
         plugins: {
@@ -96,7 +114,6 @@ export default {
     })
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
-      // this.orders = JSON.parse(JSON.stringify(this.$store.getters.orders))
       socketService.login('6390a4d768ad08edacc01167')
 
     } catch (err) {
@@ -115,6 +132,9 @@ export default {
         currency: 'USD',
       })
     },
+    formatDate(date){
+
+    },
     styleStatus(status) {
       return {
         approved: status === 'approved',
@@ -123,7 +143,6 @@ export default {
       }
     },
     bgStyleByStatus(status) {
-      console.log(status)
       return {
         'bg-approved': status === 'approved',
         'bg-pending': status === 'pending',
@@ -137,6 +156,16 @@ export default {
   computed: {
     orders() {
       return JSON.parse(JSON.stringify(this.$store.getters.orders))
+    },
+    monthlyEarning(){
+      const cuurMonth = new Date(Date.now()).getMonth()
+      const monthlyOrders = this.orders.filter(order => {
+        const orderMonth = new Date(Date.parse(this.orders[0].startDate)).getMonth()
+        return orderMonth === cuurMonth
+
+      })
+      console.log(monthlyOrders)
+
     }
   },
   components: {

@@ -1,22 +1,40 @@
-.orders-list {
+.orders-summary {
     margin-top: $header-height;
-    // padding-top: $header-height / 2;
 
-    .orders-list-title{
+    // padding-top: $header-height / 2;
+    .host-summary {
+        padding: 16px;
+        .stats-header {
+            border-bottom: .5px solid $clr7;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr .25fr;
+        }
+
+        & span{
+            color: #0b7f52;
+        }
+    }
+
+    .orders-list-title {
         margin-inline-start: 16px;
         margin-bottom: 24px;
     }
+
     table {
         width: 100%;
-        
-        tr:first-of-type{
+
+        tr:first-of-type {
             background-color: $clr7;
         }
+
         th {
             text-align: start;
             padding-inline-start: 16px;
         }
-        
+
         & .buyer-img-container {
             height: 48px;
             width: 48px;
@@ -42,7 +60,8 @@
             font-size: em(14px);
             border-bottom: .5px solid $clr7;
 
-            .stay-name, .buyer {
+            .stay-name,
+            .buyer {
                 grid-column: 2 / -1;
                 padding-inline-end: 8px;
                 display: -webkit-box;
@@ -99,6 +118,7 @@
     .approved {
         color: #08613f;
     }
+
     // .bg-approved {
     //     background-color: rgba(#08613f, 25%);
     // }
@@ -107,6 +127,7 @@
     .pending {
         color: #E3B505;
     }
+
     // .bg-pending {
     //     background-color: rgba(#E3B505, 25%);
     // }
@@ -114,11 +135,12 @@
     .declined {
         color: #DB504A;
     }
+
     // .bg-declined {
     //     background-color: rgba(#DB504A, 25%);
     // }
 
-    .no-padding-inline{
+    .no-padding-inline {
         padding-inline: 0;
     }
 }
