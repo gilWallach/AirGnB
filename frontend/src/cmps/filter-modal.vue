@@ -1,12 +1,12 @@
 <template>
-    <section class="list-modal">
-        <div class="header flex justify-center align-center">
-            <button class="close-btn custom">
-                <close @click="$emit('closeModal')" />
-            </button>
-            <h2 class="center-heading">Filters</h2>
-        </div>
-        <!-- <div class="filters-container">
+  <section class="list-modal">
+    <div class="header flex justify-center align-center">
+      <button class="close-btn custom">
+        <close @click="$emit('closeModal')" />
+      </button>
+      <h2 class="center-heading">Filters</h2>
+    </div>
+    <!-- <div class="filters-container">
             <form @submit.prevent="setFilterBy">
                 <div>
                     <legend>Type of place</legend>
@@ -21,7 +21,7 @@
                 </div>
             </form>
         </div> -->
-    </section>
+  </section>
 </template>
 
 <script>
@@ -35,38 +35,38 @@ import close from '../assets/svg/close.vue'
 // Vue.component(HistogramSlider.name, HistogramSlider)
 
 export default {
-    name: 'filter-modal',
-    props: {},
-    data() {
-        return {
-            filterBy: {
-                minPrice: 0,
-                maxPrice: 1500,
-                roomType: [],
-            },
-        }
-    },
-    created() { },
-    methods: {
-        setFilterBy() {
-            var filter = this.filterBy
-            console.log(filter)
-            // this.$store.commit({
-            //     type: 'setFilterBy',
-            //     filterBy: JSON.parse(JSON.stringify(filter))
-            // })
-            // this.$store.dispatch('loadStays')
-            this.filterBy = {
-                minPrice: 0,
-                maxPrice: 1500,
-                roomType: [],
-            }
-        },
-    },
-    computed: {},
-    components: {
-        close,
-        // HistogramSlider,
+  name: 'filter-modal',
+  props: {},
+  data() {
+    return {
+      filterBy: {
+        minPrice: 0,
+        maxPrice: 1500,
+        roomType: [],
+      },
     }
+  },
+  created() {},
+  methods: {
+    setFilterBy() {
+      var filter = this.filterBy
+      // console.log(filter)
+      // this.$store.commit({
+      //     type: 'setFilterBy',
+      //     filterBy: JSON.parse(JSON.stringify(filter))
+      // })
+      // this.$store.dispatch('loadStays')
+      this.filterBy = {
+        minPrice: 0,
+        maxPrice: 1500,
+        roomType: [],
+      }
+    },
+  },
+  computed: {},
+  components: {
+    close,
+    // HistogramSlider,
+  },
 }
 </script>

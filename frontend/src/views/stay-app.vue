@@ -32,6 +32,7 @@ export default {
     this.$store.commit({ type: 'setList' })
     this.$store.dispatch({ type: 'loadStays' })
     this.$store.dispatch({ type: 'loadLabels' })
+    this.$store.dispatch({ type: 'loadOrders' })
   },
   methods: {
     async addStay() {

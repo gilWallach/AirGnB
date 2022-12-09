@@ -12,47 +12,46 @@ window.onRemoveCar = onRemoveCar
 window.onAddCarMsg = onAddCarMsg
 
 async function onLoadCars() {
-    const cars = await carService.query()
-    render('Cars', cars)
+  const cars = await carService.query()
+  render('Cars', cars)
 }
 async function onLoadUsers() {
-    const users = await userService.query()
-    render('Users', users)
+  const users = await userService.query()
+  render('Users', users)
 }
 
 async function onGetCarById() {
-    const id = prompt('Car id?')
-    if (!id) return
-    const car = await carService.getById(id)
-    render('Car', car)
+  const id = prompt('Car id?')
+  if (!id) return
+  const car = await carService.getById(id)
+  render('Car', car)
 }
 
 async function onRemoveCar() {
-    const id = prompt('Car id?')
-    if (!id) return
-    await carService.remove(id)
-    render('Removed Car')
+  const id = prompt('Car id?')
+  if (!id) return
+  await carService.remove(id)
+  render('Removed Car')
 }
 
 async function onAddCar() {
-    await userService.login({ username: 'muki', password: '123' })
-    const savedCar = await carService.save(carService.getEmptyCar())
-    render('Saved Car', savedCar)
+  await userService.login({ username: 'muki', password: '123' })
+  const savedCar = await carService.save(carService.getEmptyCar())
+  render('Saved Car', savedCar)
 }
 
 async function onAddCarMsg() {
-    await userService.login({ username: 'muki', password: '123' })
-    const id = prompt('Car id?')
-    if (!id) return
+  await userService.login({ username: 'muki', password: '123' })
+  const id = prompt('Car id?')
+  if (!id) return
 
-    const savedMsg = await carService.addCarMsg(id, 'some msg')
-    render('Saved Msg', savedMsg)
+  const savedMsg = await carService.addCarMsg(id, 'some msg')
+  render('Saved Msg', savedMsg)
 }
 
-function render(title, mix = '') {
-    console.log(title, mix)
-    const output = utilService.prettyJSON(mix)
-    document.querySelector('h2').innerText = title
-    document.querySelector('pre').innerHTML = output
-}
-
+// function render(title, mix = '') {
+// console.log(title, mix)
+//   const output = utilService.prettyJSON(mix)
+//   document.querySelector('h2').innerText = title
+//   document.querySelector('pre').innerHTML = output
+// }

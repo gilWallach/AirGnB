@@ -1,7 +1,10 @@
 const orderService = require('./order.service.js')
 
 const logger = require('../../services/logger.service')
-const { setupSocketAPI, emitToUser } = require('../../services/socket.service.js')
+const {
+  setupSocketAPI,
+  emitToUser,
+} = require('../../services/socket.service.js')
 const ObjectId = require('mongodb').ObjectId
 
 async function getOrders(req, res) {
@@ -12,6 +15,9 @@ async function getOrders(req, res) {
     // }
     // const orders = await orderService.query(filterBy)
     const orders = await orderService.query()
+    orders.forEach((order) => {
+      order.createdAt = ObjectId(order._id).getTimestamp()
+    })
     res.json(orders)
   } catch (err) {
     logger.error('Failed to get orders', err)
@@ -31,20 +37,20 @@ async function getOrderById(req, res) {
 }
 
 async function addOrder(req, res) {
-  console.log('req: ', req)
   const { loggedinUser } = req
   logger.debug('loggedinUser', loggedinUser)
   try {
     const order = req.body
-    console.log(order);
     order.buyer = loggedinUser
-    const addedOrder = await orderService.add(order)
+    let addedOrder = await orderService.add(order)
     addedOrder.createdAt = ObjectId(addedOrder._id).getTimestamp()
-    logger.debug('order', order)
-    console.log(addedOrder);
 
     //Socket
-    await emitToUser({ type: 'order-added', data: addedOrder, userId: addedOrder.host._id })
+    await emitToUser({
+      type: 'order-added',
+      data: addedOrder,
+      userId: addedOrder.host._id,
+    })
     res.json(addedOrder)
   } catch (err) {
     logger.error('Failed to add order', err)
@@ -55,7 +61,6 @@ async function addOrder(req, res) {
 async function updateOrder(req, res) {
   try {
     const order = req.body
-    console.log(order)
     const updatedOrder = await orderService.update(order)
     res.json(updatedOrder)
   } catch (err) {
