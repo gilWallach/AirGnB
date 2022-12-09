@@ -83,7 +83,9 @@
 
     .stay-img {
       border-radius: 0.75em;
-      object-fit: contain;
+      object-fit: cover;
+      aspect-ratio: 528/355;
+      height: 355px;
     }
   }
 }
