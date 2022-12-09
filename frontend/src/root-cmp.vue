@@ -1,8 +1,11 @@
 <template>
-  <div class="main-app" >
+  <div class="main-app">
     <user-msg />
     <app-header />
-    <router-view @setDetailsLayout="(isList = false)" @setListLayout="(isList = true)"/>
+    <router-view
+      @setDetailsLayout="isList = false"
+      @setListLayout="isList = true"
+    />
   </div>
 </template>
 
@@ -11,6 +14,8 @@ import { store } from './store/store'
 import appHeader from './cmps/app-header.vue'
 import userMsg from './cmps/user-msg.vue'
 import { userService } from './services/user.service'
+import { showSuccessMsg } from './services/event-bus.service'
+import { socketService } from './services/socket.service'
 
 export default {
   created() {

@@ -12,8 +12,13 @@
       </header>
       <!-- main content -->
       <main class="main-content flex">
+        <!-- buyer summary -->
+        <div v-if="isHostMode">
+          <h2>rendering buyer details for host</h2>
+        </div>
+
         <!-- stay summary -->
-        <div class="stay-container flex column">
+        <div v-else class="stay-container flex column">
           <div class="stay-txt">
             <h1 class="fs18">{{ currStay.name }}</h1>
             <h3 class="fs14 l-grey">
@@ -99,33 +104,50 @@ export default {
       pricePerNight: '',
       totalPrice: '',
       currStay: null,
+      isHostMode: false,
     }
   },
   async created() {
-    this.$store.commit({ type: 'setDetails' })
-    const { id } = this.$route.params
-    try {
-      await this.$store.dispatch({ type: 'loadStay', id })
-      this.currStay = this.$store.getters.selectedStay
-    } catch (err) {
-      throw err
+    if (!this.$route.params.id) {
+      this.$store.commit({ type: 'setDetails' })
+      this.isHostMode = true
+      console.log('this.isHostMode: ', this.isHostMode)
+      await this.$store.dispatch({ type: 'loadOrders' })
+      this.order = JSON.parse(JSON.stringify(this.$store.getters.orders[0]))
+
+      const guestsArr = Object.values(this.order.guests)
+      this.order.guests = guestsArr.reduce((acc, n) => acc + n, 0)
+
+      this.currStay = this.order.stay
+
+      console.log('this.order: ', this.order)
+    } else {
+      this.isHostMode = false
+      this.$store.commit({ type: 'setDetails' })
+      const { id } = this.$route.params
+      try {
+        await this.$store.dispatch({ type: 'loadStay', id })
+        this.currStay = this.$store.getters.selectedStay
+      } catch (err) {
+        throw err
+      }
+      const {
+        guests,
+        checkInDate,
+        checkOutDate,
+        totalNights,
+        price,
+        pricePerNight,
+        priceWithService,
+      } = this.$route.query
+      this.order.startDate = checkInDate
+      this.order.endDate = checkOutDate
+      this.order.guests = JSON.parse(guests)
+      this.order.netPrice = price
+      this.order.totalNights = totalNights
+      this.pricePerNight = pricePerNight
+      this.totalPrice = priceWithService
     }
-    const {
-      guests,
-      checkInDate,
-      checkOutDate,
-      totalNights,
-      price,
-      pricePerNight,
-      priceWithService,
-    } = this.$route.query
-    this.order.startDate = checkInDate
-    this.order.endDate = checkOutDate
-    this.order.guests = JSON.parse(guests)
-    this.order.netPrice = price
-    this.order.totalNights = totalNights
-    this.pricePerNight = pricePerNight
-    this.totalPrice = priceWithService
   },
   methods: {
     async setOrder() {
@@ -160,6 +182,9 @@ export default {
   computed: {
     stay() {
       return this.$store.getters.selectedStay
+    },
+    selectedOrder() {
+      return this.$store.getters.selectedOrder
     },
   },
   components: {
