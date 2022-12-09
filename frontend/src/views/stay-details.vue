@@ -291,13 +291,16 @@
               <div class="kpi-title">Cleanliness</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="cleanliness"></div>
+                  <div
+                    class="cleanliness"
+                    :style="getWidth((this.reviewsAvg * 1.1).toFixed(2))"
+                  ></div>
                 </div>
                 <!-- <div class="rate-value">4.6</div> -->
                 <div class="rate-value">
                   {{
                     this.reviewsAvg * 1.1 > 5
-                      ? this.reviewsAvg
+                      ? Number(5).toFixed(2)
                       : (this.reviewsAvg * 1.1).toFixed(2)
                   }}
                 </div>
@@ -307,7 +310,10 @@
               <div class="kpi-title">Communication</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="communication"></div>
+                  <div
+                    class="communication"
+                    :style="getWidth((this.reviewsAvg * 0.9).toFixed(2))"
+                  ></div>
                 </div>
                 <div class="rate-value">
                   {{ (this.reviewsAvg * 0.9).toFixed(2) }}
@@ -317,13 +323,16 @@
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Check-in</div>
               <div class="rate-container flex align-center">
-                <div class="kpis">
+                <div
+                  class="kpis"
+                  :style="getWidth((this.reviewsAvg * 1.2).toFixed(2))"
+                >
                   <div class="check-in"></div>
                 </div>
                 <div class="rate-value">
                   {{
                     this.reviewsAvg * 1.2 > 5
-                      ? this.reviewsAvg
+                      ? Number(5).toFixed(2)
                       : (this.reviewsAvg * 1.2).toFixed(2)
                   }}
                 </div>
@@ -333,7 +342,10 @@
               <div class="kpi-title">Accuracy</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="accuracy"></div>
+                  <div
+                    class="accuracy"
+                    :style="getWidth((this.reviewsAvg * 0.8).toFixed(2))"
+                  ></div>
                 </div>
                 <div class="rate-value">
                   {{ (this.reviewsAvg * 0.8).toFixed(2) }}
@@ -344,12 +356,15 @@
               <div class="kpi-title">Location</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="location"></div>
+                  <div
+                    class="location"
+                    :style="getWidth((this.reviewsAvg * 1.25).toFixed(2))"
+                  ></div>
                 </div>
                 <div class="rate-value">
                   {{
                     this.reviewsAvg * 1.25 > 5
-                      ? this.reviewsAvg
+                      ? Number(5).toFixed(2)
                       : (this.reviewsAvg * 1.25).toFixed(2)
                   }}
                 </div>
@@ -359,7 +374,10 @@
               <div class="kpi-title">Value</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="location"></div>
+                  <div
+                    class="value"
+                    :style="getWidth((this.reviewsAvg * 0.75).toFixed(2))"
+                  ></div>
                 </div>
                 <div class="rate-value">
                   {{ (this.reviewsAvg * 0.75).toFixed(2) }}
@@ -514,6 +532,10 @@ export default {
       const day = date.getDate()
       date.setDate(day + 3)
       return date
+    },
+    getWidth(rate) {
+      const barWidth = (rate / 5) * 121.5 > 121.5 ? 121.5 : (rate / 5) * 121.5
+      return { width: barWidth + 'px' }
     },
   },
   computed: {
