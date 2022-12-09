@@ -73,7 +73,7 @@
                 :src="getStay.host.thumbnailUrl"
                 alt="host-image"
                 class="host-img"
-                onerror="this.src=`https://res.cloudinary.com/raz-mister-toy/image/upload/v1670229254/wbgnvdojxyealwsczvec.png`"
+                onerror="this.src=`https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png`"
             /></span>
           </div>
 

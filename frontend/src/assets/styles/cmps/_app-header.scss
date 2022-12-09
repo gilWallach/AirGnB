@@ -60,7 +60,7 @@ header {
       max-width: 93px;
       text-align: center;
       font-size: 14px;
-      font-family: "airBnb-Med";
+      font-family: 'airBnb-Med';
       &::placeholder {
         font-family: airBnb-Reg;
         color: $clr4;
@@ -90,6 +90,12 @@ header {
       width: 30px;
       height: 30px;
       color: $clr4;
+      border-radius: 50%;
+      img {
+        border-radius: 50%;
+        object-fit: cover;
+        height: 30px;
+      }
     }
     &:hover {
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
@@ -133,7 +139,7 @@ header {
         position: relative;
       }
       > button::after {
-        content: "";
+        content: '';
         position: absolute;
         height: 24px;
         width: 0.9px;
