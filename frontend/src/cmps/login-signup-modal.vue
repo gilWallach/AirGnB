@@ -109,7 +109,7 @@ export default {
           return
         } else {
           // showSuccessMsg(`logged in as ${user.fullname}`)
-          // this.$emit('closeModal')
+          this.$emit('closeModal')
         }
       } catch (err) {
         // showErrorMsg(`failed to log in`, 4000)
@@ -126,7 +126,7 @@ export default {
       }
       await this.$store.dispatch({ type: 'signup', userCred: this.signupCred })
       // showSuccessMsg(`Welcome to airGnB, ${this.signupCred.fullname} `, 2000)
-      // this.$emit('closeModal')
+      this.$emit('closeModal')
     },
     loadUsers() {
       this.$store.dispatch({ type: 'loadUsers' })
