@@ -52,7 +52,7 @@
         auto,
         16px
       );
-    background-color: red;
+    // background-color: red;
   }
 
   @include for-wide-level2-layout {
@@ -60,11 +60,11 @@
         rem(40px),
         auto
       );
-    background-color: black;
+    // background-color: black;
   }
 
   grid-template-columns: 16px 1fr 16px;
-  background-color: green;
+  // background-color: green;
 
   > * {
     grid-column: 2;
