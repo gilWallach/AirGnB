@@ -39,7 +39,7 @@
           <td :class="styleStatus(currOrder.status)" class="fs14 bold">
             {{ currOrder.status }}
           </td>
-          <el-select @change="updateOrder(currOrder)" v-model="currOrder.status" class="m-2"
+          <el-select @change="updateOrder(currOrder)" v-model="currOrder.status" class="m-2 "
             :placeholder="currOrder.status" size="small">
             <el-option v-for="status in options" :key="status.value" :label="status.label" :value="status.value" />
           </el-select>
@@ -63,7 +63,7 @@
           <p>{{ currOrder.endDate }}</p>
           </td>
           <td class="end-td">
-              <th class="no-padding-inline">booked: </th>
+              <th class="no-padding-inline">Booked: </th>
               <p>{{ formatDate(currOrder.createdAt) }}</p>
           </td>
         </tr>
@@ -159,7 +159,6 @@ export default {
         return sum + +review.rate
       }, 0) / reviews.length
       
-      console.log(average.toFixed(2))
       return average.toFixed(2)
     }
   },
@@ -173,7 +172,7 @@ export default {
     monthlyEarning() {
       const cuurMonth = new Date(Date.now()).getMonth()
       const monthlyOrders = this.orders.filter(order => {
-        const orderMonth = new Date(Date.parse(this.orders[0].startDate)).getMonth()
+        const orderMonth = new Date(Date.parse(order.createdAt)).getMonth()
         return orderMonth === cuurMonth
       })
 

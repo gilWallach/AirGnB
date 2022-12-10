@@ -90,9 +90,9 @@
 
   .gallery {
     @include for-wide-layout {
-      grid-template-columns: minmax(326px, 512px) repeat(
+      grid-template-columns: minmax(333px, 498px) repeat(
           2,
-          minmax(155px, 238px)
+          minmax(158.5px, 277px)
         );
       grid-template-rows: repeat(2, minmax(164px, 243px));
     }
