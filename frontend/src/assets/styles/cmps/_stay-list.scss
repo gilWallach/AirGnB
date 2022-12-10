@@ -36,6 +36,10 @@
     height: em(48px, 15px);
     border: 1px solid $clr6;
     border-radius: 0.8em;
+
+    @include for-mobile-layout {
+      display: none;
+    }
   }
 }
 

@@ -161,7 +161,7 @@ export default {
       pricePerNight: '',
       totalPrice: '',
       currStay: null,
-      currUser: null,
+      // currUser: null,
       isHostMode: false,
     }
   },
