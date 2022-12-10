@@ -1,11 +1,21 @@
 <template>
   <section v-if="stays" class="main-layout-list flex">
     <div class="placeholder" ref="placeholder"></div>
-    <div class="list-header-container main-layout-list" :class="{ 'scroll-shadow': scrollShadow }">
+    <div
+      class="list-header-container main-layout-list"
+      :class="{ 'scroll-shadow': scrollShadow }"
+    >
       <div class="list-header flex align-center justify-space-between">
-        <stay-labels v-if="labels" :labels="labels" @filter-type="$emit('filter-type')" />
+        <stay-labels
+          v-if="labels"
+          :labels="labels"
+          @filter-type="$emit('filter-type')"
+        />
 
-        <button @click="openFilterModal" class="filter-btn flex align-center justify-center">
+        <button
+          @click="openFilterModal"
+          class="filter-btn flex align-center justify-center"
+        >
           <filter-icon />
           <span>Filters</span>
         </button>
@@ -15,17 +25,30 @@
       {{ stays.length }} homes in {{ $route.query.name }}
     </p>
     <ul class="stay-list">
-      <stay-preview v-for="stay in stays" :key="stay._id" :stay="stay" :date="date" @addToWishlist="addToWishlist" />
+      <stay-preview
+        v-for="stay in stays"
+        :key="stay._id"
+        :stay="stay"
+        :date="date"
+        @addToWishlist="addToWishlist"
+      />
     </ul>
   </section>
-    <div v-else class="spinner"></div>
-  <!-- <div class="skeleton-r9bf0qw8pwg"><div v-if="isLoaded"></div></div> -->
   <transition name="fade">
-    <list-modal v-if="isModalOpen" @closeModal="closeModal" :isWishlist="isWishlist" @filter="filter" />
+    <list-modal
+      v-if="isModalOpen"
+      @closeModal="closeModal"
+      :isWishlist="isWishlist"
+      @filter="filter"
+    />
   </transition>
 
   <transition name="fade">
-    <div class="main-screen" v-if="isModalOpen" @click="isModalOpen = false"></div>
+    <div
+      class="main-screen"
+      v-if="isModalOpen"
+      @click="isModalOpen = false"
+    ></div>
   </transition>
 </template>
 
@@ -89,7 +112,7 @@ export default {
     },
     filter(filterBy) {
       this.$emit('filter', filterBy)
-    }
+    },
   },
   computed: {},
   components: {
