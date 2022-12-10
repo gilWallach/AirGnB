@@ -82,6 +82,12 @@
       40px,
       1fr
     );
+  @include for-mobile-layout {
+    grid-template-columns: minmax(24px, 1fr) minmax(auto, 1750px) minmax(
+        24px,
+        1fr
+      );
+  }
 
   > * {
     grid-column: 2;

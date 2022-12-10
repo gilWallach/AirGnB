@@ -6,6 +6,11 @@ header {
   display: flex;
   justify-content: space-between;
   &.main-header {
+    .logo-container {
+      @include for-mobile-layout {
+        display: none;
+      }
+    }
     .logo {
       color: $clr1;
       span {
@@ -37,7 +42,66 @@ header {
     }
   }
 
+  .mini-search-mobile {
+    @include for-mobile-layout {
+      display: flex;
+    }
+    .search-btn {
+      // padding-block: 0.3em;
+      padding: 0;
+      position: relative;
+      background-color: $clr8;
+      outline: 0.1px solid $clr6;
+      border-radius: 2em;
+      box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+      .text-container{
+        h2{
+          margin-bottom: 0.2em;
+          font-size: em(14px);
+          font-family: 'airBnB-Reg';
+          color: $clr3;
+        }
+        p{
+          margin: 0;
+          font-size: em(12px);
+          color: $clr4;
+        }
+        align-items: flex-start;
+        width: max-content;
+      }
+      .filter-btn {
+        margin: 0;
+        padding: 0;
+        width: rem(56px);
+        height: rem(54.67px);
+        .filter-icon {
+          border-radius: 50%;
+          border: 1px solid $clr6;
+          width: rem(36px);
+          height: rem(36px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          svg {
+            width: 1rem !important;
+            height: 1rem !important;
+          }
+        }
+      }
+      .search {
+        padding-inline: 20px 16px;
+        svg {
+          width: 1rem !important;
+          height: 1rem !important;
+        }
+      }
+    }
+  }
+
   .mini-search {
+    @include for-mobile-layout {
+      display: none;
+    }
     cursor: pointer;
     transition: box-shadow 0.2s ease;
     &:hover {
@@ -60,7 +124,7 @@ header {
       max-width: 93px;
       text-align: center;
       font-size: 14px;
-      font-family: 'airBnb-Med';
+      font-family: "airBnb-Med";
       &::placeholder {
         font-family: airBnb-Reg;
         color: $clr4;
@@ -77,6 +141,12 @@ header {
     }
   }
   nav {
+    @include for-mobile-layout{
+      gap: 5px;
+      padding: 15px;
+      height: 54.66px;
+      border-radius: 2em;
+    }
     cursor: pointer;
     background-color: $clr8;
     border-radius: rem(21px);
@@ -139,7 +209,7 @@ header {
         position: relative;
       }
       > button::after {
-        content: '';
+        content: "";
         position: absolute;
         height: 24px;
         width: 0.9px;
