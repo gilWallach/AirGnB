@@ -92,6 +92,7 @@ export default {
   },
   async created() {
     socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
+      console.log('order-added');
       this.$store.commit({ type: 'addOrder', order })
     })
     try {
