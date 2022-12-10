@@ -507,7 +507,7 @@ export default {
     },
     doReserve() {
       if (!this.formatNights) {
-        showErrorMsg('please fill in dates and pax to continue', 5000)
+        // showErrorMsg('please fill in dates and pax to continue', 5000)
         return
       }
 

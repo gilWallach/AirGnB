@@ -7,7 +7,11 @@
     width: 586px;
     border-radius: 12px;
     z-index: 20;
-    
+    .filter-btn{
+        @include for-mobile-layout{
+            display: none;
+        }
+    }
     .initial{
         
     }

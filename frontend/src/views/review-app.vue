@@ -61,10 +61,10 @@ export default {
     async addReview() {
       try {
         await this.$store.dispatch({type: 'addReview', review: this.reviewToEdit})
-        showSuccessMsg('Review added')
+        // showSuccessMsg('Review added')
         this.reviewToEdit = {txt: '', aboutUserId: null}
       } catch(err) {
-        showErrorMsg('Cannot add review')
+        // showErrorMsg('Cannot add review')
       }
     }
   }
