@@ -108,11 +108,11 @@ export default {
           this.msg = 'Invalid user crednetials'
           return
         } else {
-          showSuccessMsg(`logged in as ${user.fullname}`)
-          this.$emit('closeModal')
+          // showSuccessMsg(`logged in as ${user.fullname}`)
+          // this.$emit('closeModal')
         }
       } catch (err) {
-        showErrorMsg(`failed to log in`, 4000)
+        // showErrorMsg(`failed to log in`, 4000)
       }
     },
     async doSignup() {
@@ -125,8 +125,8 @@ export default {
         return
       }
       await this.$store.dispatch({ type: 'signup', userCred: this.signupCred })
-      showSuccessMsg(`Welcome to airGnB, ${this.signupCred.fullname} `, 2000)
-      this.$emit('closeModal')
+      // showSuccessMsg(`Welcome to airGnB, ${this.signupCred.fullname} `, 2000)
+      // this.$emit('closeModal')
     },
     loadUsers() {
       this.$store.dispatch({ type: 'loadUsers' })
@@ -141,7 +141,7 @@ export default {
     },
     onUploaded(imgUrl) {
       this.signupCred.imgUrl = imgUrl
-      showSuccessMsg('image saved!')
+      // showSuccessMsg('image saved!')
     },
   },
   computed: {

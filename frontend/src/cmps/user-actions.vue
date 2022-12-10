@@ -76,10 +76,10 @@ export default {
     async doLogout() {
       try {
         await this.$store.dispatch({ type: 'logout' })
-        showSuccessMsg('logged out!')
+        // showSuccessMsg('logged out!')
         // location.reload()
       } catch (err) {
-        showErrorMsg("can't log out... please try again later")
+        // showErrorMsg("can't log out... please try again later")
         throw err
       }
     },
