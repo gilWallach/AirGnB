@@ -18,6 +18,12 @@
   }
 }
 
+@mixin for-normal-level2-layout {
+  @media (min-width: calc($narrow-breakpoint + 60px)) {
+    @content;
+  }
+}
+
 @mixin for-wide-layout {
   @media (min-width: calc($normal-breakpoint + 40px)) {
     @content;

@@ -47,12 +47,16 @@
 .main-container-stay-details {
   display: grid;
 
+  @include for-normal-level2-layout {
+    // background-color: yellow;
+  }
+
   @include for-wide-layout {
-    grid-template-columns: minmax(auto, 16px) minmax(auto, 960) minmax(
+    grid-template-columns: minmax(auto, 16px) minmax(auto, 960px) minmax(
         auto,
         16px
       );
-    // background-color: red;
+    // background-color: white;
   }
 
   @include for-wide-level2-layout {
@@ -60,7 +64,6 @@
         rem(40px),
         auto
       );
-    // background-color: black;
   }
 
   grid-template-columns: 16px 1fr 16px;
