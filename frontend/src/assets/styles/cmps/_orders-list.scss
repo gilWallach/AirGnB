@@ -35,210 +35,211 @@
       color: #0b925f;
       text-align: end;
     }
-  }
-
-        tr:first-of-type {
-            background-color: $clr7;
-        }
-
-        tr:first-of-type th {
-            padding-inline: 16px;
-        }
-
-  table {
-    width: 100%;
-
-        th {
-            text-align: start;
-        }
-
-        // & .buyer-img-container {
-        //     height: 48px;
-        //     width: 48px;
-        //     border-radius: 50%;
-        //     overflow: hidden;
-
-        //     img {
-        //         object-fit: cover;
-        //         object-position: center;
-        //     }
-        }
-
-        tr:last-of-type {
-            border: none;
-        }
-
-        tr {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            align-items: center;
-            justify-content: left;
-            min-height: 76px;
-            font-size: em(14px);
-            border-bottom: .5px solid $clr7;
-
-            .stay-name,
-            .buyer {
-                grid-column: 2 / -1;
-                padding-inline-end: 8px;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            .last-column {
-                grid-column: -1;
-            }
-
-            .center-td {
-                justify-self: center;
-            }
-
-            .end-td {
-                justify-self: end;
-            }
-
-            .buyer-details-td {
-                padding: 8px;
-                flex-direction: column;
-            }
-
-            p {
-                width: fit-content;
-                margin: 0;
-                padding-top: 8px;
-            }
-
-
-            & select {
-                font-family: airBnb-Reg;
-                border: none;
-                padding: 12px 6px;
-                color: $clr4;
-                border: .5px solid $clr7;
-                border-radius: 12px;
-            }
-
-            .el-input__wrapper {
-                display: inherit;
-            }
-        }
-
-    tr:not(tr:first-of-type) {
-      padding-inline: 16px;
+    tr:first-of-type {
+        background-color: $clr7;
     }
-
-    th {
-      text-align: start;
+  
+    tr:first-of-type th {
+        padding-inline: 16px;
     }
-
-    // & .buyer-img-container {
-    //   height: 48px;
-    //   width: 48px;
-    //   border-radius: 50%;
-    //   overflow: hidden;
-
-    //   img {
-    //     object-fit: cover;
-    //     object-position: center;
-    //   }
-    // }
-
-    tr:last-of-type {
-      border: none;
-    }
-
-    tr {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: center;
-      justify-content: left;
-      min-height: 76px;
-      font-size: em(14px);
-      border-bottom: 0.5px solid $clr7;
-
-      .stay-name,
-      .buyer {
-        grid-column: 2 / -1;
-        padding-inline-end: 8px;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
+    table {
+      width: 100%;
+  
+          th {
+              text-align: start;
+          }
+  
+          & .buyer-img-container {
+              height: 48px;
+              width: 48px;
+              border-radius: 50%;
+              overflow: hidden;
+  
+              img {
+                  object-fit: cover;
+                  object-position: center;
+              }
+          }
+  
+          tr:last-of-type {
+              border: none;
+          }
+  
+          tr {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              align-items: center;
+              justify-content: left;
+              min-height: 76px;
+              font-size: em(14px);
+              border-bottom: .5px solid $clr7;
+  
+              .stay-name,
+              .buyer {
+                  grid-column: 2 / -1;
+                  padding-inline-end: 8px;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 1;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+              }
+  
+              .last-column {
+                  grid-column: -1;
+              }
+  
+              .center-td {
+                  justify-self: center;
+              }
+  
+              .end-td {
+                  justify-self: end;
+              }
+  
+              .buyer-details-td {
+                  padding: 8px;
+                  flex-direction: column;
+              }
+  
+              p {
+                  width: fit-content;
+                  margin: 0;
+                  padding-top: 8px;
+              }
+  
+  
+              & select {
+                  font-family: airBnb-Reg;
+                  border: none;
+                  padding: 12px 6px;
+                  color: $clr4;
+                  border: .5px solid $clr7;
+                  border-radius: 12px;
+              }
+  
+              .el-input__wrapper {
+                  display: inherit;
+              }
+          }
+  
+      tr:not(tr:first-of-type) {
+        padding-inline: 16px;
+      }
+  
+      th {
+        text-align: start;
+      }
+  
+      & .buyer-img-container {
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
         overflow: hidden;
-        text-overflow: ellipsis;
+  
+        img {
+          object-fit: cover;
+          object-position: center;
+        }
       }
-
-      .last-column {
-        grid-column: -1;
-      }
-
-      .center-td {
-        justify-self: center;
-      }
-      .end-td {
-        justify-self: end;
-      }
-
-      .buyer-details-td {
-        padding: 8px;
-        flex-direction: column;
-      }
-
-      p {
-        width: fit-content;
-        margin: 0;
-        padding-top: 8px;
-      }
-
-      & select {
-        font-family: airBnb-Reg;
+  
+      tr:last-of-type {
         border: none;
-        padding: 12px 6px;
-        color: $clr4;
-        border: 0.5px solid $clr7;
-        border-radius: 12px;
       }
-
-      .el-input__wrapper {
-        display: inherit;
+  
+      tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        justify-content: left;
+        min-height: 76px;
+        font-size: em(14px);
+        border-bottom: 0.5px solid $clr7;
+  
+        .stay-name,
+        .buyer {
+          grid-column: 2 / -1;
+          padding-inline-end: 8px;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+  
+        .last-column {
+          grid-column: -1;
+        }
+  
+        .center-td {
+          justify-self: center;
+        }
+        .end-td {
+          justify-self: end;
+        }
+  
+        .buyer-details-td {
+          padding: 8px;
+          flex-direction: column;
+        }
+  
+        p {
+          width: fit-content;
+          margin: 0;
+          padding-top: 8px;
+        }
+  
+        & select {
+          font-family: airBnb-Reg;
+          border: none;
+          padding: 12px 6px;
+          color: $clr4;
+          border: 0.5px solid $clr7;
+          border-radius: 12px;
+        }
+  
+        .el-input__wrapper {
+          display: inherit;
+        }
+  
+        .el-select-dropdown__item.selected {
+          color: $clr2 !important;
+        }
       }
-
-      .el-select-dropdown__item.selected {
-        color: $clr2 !important;
+  
+    .status-btn {
+      border-radius: 12px;
+      color: $clr8;
+    }
+  
+      .pending {
+          color: #E3B505;
+      }
+  
+      .declined {
+          color: #DB504A;
+      }
+  
+      .no-padding-inline {
+          padding-inline: 0;
       }
     }
-
-  .status-btn {
-    border-radius: 12px;
-    color: $clr8;
   }
 
-    .pending {
-        color: #E3B505;
-    }
 
-    .declined {
-        color: #DB504A;
-    }
 
-    .no-padding-inline {
-        padding-inline: 0;
-    }
+// .el-select-dropdown__item.selected {
+//     color: $clr2 !important;
+// }
 
-.el-select-dropdown__item.selected {
-    color: $clr2 !important;
-}
+// .el-input .el-input--small .el-input--suffix{
+//     border: none !important;
+// }
 
-.el-input .el-input--small .el-input--suffix{
-    border: none !important;
-}
-
-.el-select .el-input.is-focus .el-input__wrapper {
-    box-shadow: 0 0 0 1px $clr5 inset ;
-    border: none !important;
-}
+// .el-select .el-input.is-focus .el-input__wrapper {
+//     box-shadow: 0 0 0 1px $clr5 inset ;
+//     border: none !important;
+// }
 
 // .--el-select-input-focus-border-color {
 //     box-shadow: 0 0 0 2px $clr5 !important;
