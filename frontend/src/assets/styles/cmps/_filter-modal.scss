@@ -1,3 +1,59 @@
 .filters-container {
     text-align: center;
 }
+
+.container.home{
+    .main-screen{
+        z-index: 20;
+    }
+}
+
+.list-modal.filter{
+    >*{
+        padding-inline: 24px;
+    }
+    .vue-histogram-slider-wrapper{
+        margin: auto;
+        .irs-grid{
+            display: none;
+        }
+        .irs-handle{
+            border: 1px solid $clr5;
+            box-shadow: 0;
+            &::before{
+                content: "|||";
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: translate(77%,20%);
+                color: $clr5;
+            }
+        }
+    }
+    z-index: 30;
+    transform: translate(-47%, -61%);
+    max-height: 80vh;
+    top: 55vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 780px;
+    main{
+        overflow-y: scroll;
+        .price{
+            input{
+                &::before{
+                    content: "$";
+                }
+            }
+        }
+        h2{
+            font-size: em(22px);
+        }
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
