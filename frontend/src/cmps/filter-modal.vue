@@ -6,6 +6,8 @@
       </button>
       <h2 class="center-heading">Filters</h2>
     </div>
+    <HistogramSlider style="margin: 200px auto" :width="300" :bar-height="100" :data="prices" :drag-interval="true"
+      :force-edges="false" :colors="['#4facfe', '#00f2fe']" :min="0" :max="maxPrice" @finish="setMinMax" />
     <!-- <div class="filters-container">
             <form @submit.prevent="setFilterBy">
                 <div>
@@ -21,6 +23,10 @@
                 </div>
             </form>
         </div> -->
+    <footer class="filter-modal footer flex justify-space-between align-center">
+      <button>Clear all</button>
+      <button @click="$emit('do-filter', this.filterBy)">Show Homes</button>
+    </footer>
   </section>
 </template>
 
@@ -46,11 +52,12 @@ export default {
       },
     }
   },
-  created() {},
+  created() {
+    console.log(Math.max(...this.prices))
+  },
   methods: {
     setFilterBy() {
-      var filter = this.filterBy
-      // console.log(filter)
+      console.log(filter)
       // this.$store.commit({
       //     type: 'setFilterBy',
       //     filterBy: JSON.parse(JSON.stringify(filter))
@@ -62,11 +69,22 @@ export default {
         roomType: [],
       }
     },
+    setMinMax(slider) {
+      this.filterBy.minPrice = slider.from
+      this.filterBy.maxPrice = slider.to
+      console.log(this.filterBy);
+    }
   },
-  computed: {},
+  computed: {
+    prices() {
+      return this.$store.getters.stays.map(stay => stay.price)
+    },
+    maxPrice() {
+      return Math.max(...this.prices)
+    }
+  },
   components: {
     close,
-    // HistogramSlider,
-  },
+  }
 }
 </script>
