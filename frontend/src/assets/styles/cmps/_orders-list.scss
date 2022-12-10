@@ -52,16 +52,16 @@
             text-align: start;
         }
 
-        & .buyer-img-container {
-            height: 48px;
-            width: 48px;
-            border-radius: 50%;
-            overflow: hidden;
+        // & .buyer-img-container {
+        //     height: 48px;
+        //     width: 48px;
+        //     border-radius: 50%;
+        //     overflow: hidden;
 
-            img {
-                object-fit: cover;
-                object-position: center;
-            }
+        //     img {
+        //         object-fit: cover;
+        //         object-position: center;
+        //     }
         }
 
         tr:last-of-type {
@@ -125,7 +125,6 @@
                 display: inherit;
             }
         }
-    }
 
     tr:not(tr:first-of-type) {
       padding-inline: 16px;
@@ -135,17 +134,17 @@
       text-align: start;
     }
 
-    & .buyer-img-container {
-      height: 48px;
-      width: 48px;
-      border-radius: 50%;
-      overflow: hidden;
+    // & .buyer-img-container {
+    //   height: 48px;
+    //   width: 48px;
+    //   border-radius: 50%;
+    //   overflow: hidden;
 
-      img {
-        object-fit: cover;
-        object-position: center;
-      }
-    }
+    //   img {
+    //     object-fit: cover;
+    //     object-position: center;
+    //   }
+    // }
 
     tr:last-of-type {
       border: none;

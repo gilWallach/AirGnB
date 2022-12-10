@@ -22,6 +22,6 @@ const app = createApp(rootCmp)
 app.use(ElementPlus)
 app.use(router)
 app.use(store)
-app.component(HistogramSlider.name, HistogramSlider);
+// app.component(HistogramSlider.name, HistogramSlider);
 
 app.mount('#app')
