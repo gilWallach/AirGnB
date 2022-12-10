@@ -4,6 +4,7 @@
     // padding-top: $header-height / 2;
     .host-summary {
         padding: 16px;
+
         .stats-header {
             border-bottom: .5px solid $clr7;
 
@@ -18,7 +19,7 @@
             grid-template-columns: 1fr .25fr;
         }
 
-        & span{
+        & span {
             color: #0b925f;
             text-align: end;
         }
@@ -36,8 +37,9 @@
         tr:first-of-type {
             background-color: $clr7;
         }
-        tr:first-of-type th{
-                padding-inline: 16px;
+
+        tr:first-of-type th {
+            padding-inline: 16px;
         }
 
         tr:not(tr:first-of-type) {
@@ -91,6 +93,7 @@
             .center-td {
                 justify-self: center;
             }
+
             .end-td {
                 justify-self: end;
             }
@@ -100,7 +103,7 @@
                 flex-direction: column;
             }
 
-             p {
+            p {
                 width: fit-content;
                 margin: 0;
                 padding-top: 8px;
@@ -119,11 +122,6 @@
             .el-input__wrapper {
                 display: inherit;
             }
-
-            .el-select-dropdown__item.selected {
-                color: $clr2 !important;
-            }
-
         }
     }
 
@@ -136,28 +134,39 @@
         color: #0b925f;
     }
 
-    // .bg-approved {
-    //     background-color: rgba(#08613f, 25%);
-    // }
-
-
     .pending {
         color: #E3B505;
     }
-
-    // .bg-pending {
-    //     background-color: rgba(#E3B505, 25%);
-    // }
 
     .declined {
         color: #DB504A;
     }
 
-    // .bg-declined {
-    //     background-color: rgba(#DB504A, 25%);
-    // }
-
     .no-padding-inline {
         padding-inline: 0;
     }
 }
+
+.el-select-dropdown__item.selected {
+    color: $clr2 !important;
+}
+
+.el-input .el-input--small .el-input--suffix{
+    border: none !important;
+}
+
+.el-select .el-input.is-focus .el-input__wrapper {
+    box-shadow: 0 0 0 1px $clr5 inset ;
+    border: none !important;
+}
+
+// .--el-select-input-focus-border-color {
+//     box-shadow: 0 0 0 2px $clr5 !important;
+//     border: none !important;
+
+// }
+
+// .el-input__wrapper .is-focus {
+//     box-shadow: 0 0 0 2px $clr5 !important;
+//     border: none !important;
+// }
