@@ -13,10 +13,14 @@ export const userStore = {
     loggedinUser: null,
     users: [],
     watchedUser: null,
+    selectedUser: null
   },
   getters: {
     users({ users }) {
       return users
+    },
+    user({ selectedUser }){
+      return selectedUser
     },
     loggedinUser({ loggedinUser }) {
       return loggedinUser
@@ -39,8 +43,8 @@ export const userStore = {
     removeUser(state, { userId }) {
       state.users = state.users.filter((user) => user._id !== userId)
     },
-    setUserScore(state, { score }) {
-      state.loggedinUser.score = score
+    setUser(state, { user }) {
+      state.selectedUser = user
     },
   },
   actions: {
@@ -107,6 +111,14 @@ export const userStore = {
         commit({ type: 'setUser', user })
       } catch (err) {
         console.log('userStore: Error in updateUser', err)
+        throw err
+      }
+    },
+    async loadUser({ commit }, { userId }) {
+      try{
+        const user = await userService.getById(userId)
+        commit({ type: 'setUser', user })
+      } catch(err){
         throw err
       }
     },

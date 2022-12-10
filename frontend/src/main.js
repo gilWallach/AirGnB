@@ -10,8 +10,8 @@ import { Chart, DoughnutController, ArcElement, Tooltip } from 'chart.js'
 Chart.register(DoughnutController, ArcElement, Tooltip)
 import { CaretBottom } from '@element-plus/icons-vue'
 
-// import HistogramSlider from "vue3-histogram-slider";
-// import "vue3-histogram-slider/dist/histogram-slider.css";
+import HistogramSlider from "vue3-histogram-slider";
+import "vue3-histogram-slider/dist/histogram-slider.css";
 
 import './assets/styles/main.scss'
 import './assets/styles/setup/_typography.scss'
@@ -22,6 +22,6 @@ const app = createApp(rootCmp)
 app.use(ElementPlus)
 app.use(router)
 app.use(store)
-// app.component(HistogramSlider.name, HistogramSlider);
+app.component(HistogramSlider.name, HistogramSlider);
 
 app.mount('#app')
