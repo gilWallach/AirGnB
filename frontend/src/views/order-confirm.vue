@@ -24,7 +24,8 @@
         </div>
 
         <!-- order summary -->
-        <div v-if="order.buyer"
+        <div
+          v-if="order.startDate"
           class="content-container justify-space-between align-center"
           :class="{ flex: !isHostMode }"
         >
@@ -33,14 +34,14 @@
             <h3 v-else @click="back" class="btn-back">Back</h3>
             <!-- <div v-if="isHostMode && currUser" class="buyer-details flex align-center justify-space-between"> -->
             <div
-              v-if="isHostMode"
+              v-if="isHostMode && currUser"
               class="buyer-details flex align-center justify-space-between"
             >
               <h3 :class="{ 'clean-margin': isHostMode }">
                 New order from {{ order.buyer.fullname }}
               </h3>
               <div class="buyer-img-container">
-                <!-- <img :src="currUser.imgUrl" alt="buyer image"> -->
+                <img :src="currUser.imgUrl" alt="buyer image" />
               </div>
             </div>
             <h2 class="fs18">Order details</h2>
@@ -161,7 +162,7 @@ export default {
       pricePerNight: '',
       totalPrice: '',
       currStay: null,
-      // currUser: null,
+      currUser: null,
       isHostMode: false,
     }
   },
@@ -169,13 +170,14 @@ export default {
     if (!this.$route.params.id) {
       this.isHostMode = true
       this.$store.commit({ type: 'setDetails' })
-      await this.$store.dispatch({ type: 'loadOrders'})
-      // this.order = JSON.parse(JSON.stringify(this.$store.getters.o))
-      // await this.$store.dispatch({ type: 'loadOrders' })
+      await this.$store.dispatch({ type: 'loadOrders' })
       this.order = JSON.parse(JSON.stringify(this.$store.getters.orders[0]))
-      // await this.$store.dispatch({ type: '<loadUse></loadUse>r', userId: this.order.buyer._id })
+      await this.$store.dispatch({
+        type: 'loadUser',
+        userId: this.order.buyer._id,
+      })
 
-      // this.currUser = this.$store.getters.user
+      this.currUser = this.$store.getters.user
 
       const guestsArr = Object.values(this.order.guests)
       this.order.guests = guestsArr.reduce((acc, n) => acc + n, 0)
