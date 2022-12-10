@@ -45,6 +45,10 @@
             </div>
             <h2 class="fs18">Order details</h2>
             <ul class="clean-list">
+              <li v-if="isHostMode" class="flex column list-item">
+                <h3 class="fs16">Listing</h3>
+                <span>{{ order.stay.name }}</span>
+              </li>
               <li class="flex column list-item">
                 <h3 class="fs16">Dates</h3>
                 <span>{{ order.startDate }} - {{ order.endDate }}</span>

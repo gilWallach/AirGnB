@@ -1,5 +1,5 @@
 <template>
-  <section class="main-layout-list flex">
+  <section v-if="stays" class="main-layout-list flex">
     <div class="placeholder" ref="placeholder"></div>
     <div
       class="list-header-container main-layout-list"
@@ -34,7 +34,6 @@
       />
     </ul>
   </section>
-  <!-- <div class="skeleton-dagpjcbwchk"><div v-if="isLoaded"></div></div> -->
   <transition name="fade">
     <list-modal
       v-if="isModalOpen"

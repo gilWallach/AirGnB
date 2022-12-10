@@ -1,6 +1,5 @@
 <template>
   <section v-if="orders.length && selectedStay" class="orders-summary">
-    <h1 class="orders-list-title">Host summary</h1>
     <div class="host-summary">
       <div class="stats-header">
         <h3>Good job!</h3>
