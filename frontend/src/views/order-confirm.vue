@@ -11,8 +11,7 @@
         </p> -->
       </header>
       <!-- main content -->
-      <main class="main-content" :class="{'flex': !isHostMode}">        
-
+      <main class="main-content" :class="{ flex: !isHostMode }">
         <!-- stay summary -->
         <div v-if="!isHostMode" class="stay-container flex column">
           <div class="stay-txt">
@@ -25,55 +24,111 @@
         </div>
 
         <!-- order summary -->
-        <div class="content-container justify-space-between align-center" :class="{'flex': !isHostMode}">
+        <div
+          class="content-container justify-space-between align-center"
+          :class="{ flex: !isHostMode }"
+        >
           <div class="reservation-details">
             <h3 v-if="isHostMode" @click="backToList" class="btn-back">Back</h3>
             <h3 v-else @click="back" class="btn-back">Back</h3>
-            <div v-if="isHostMode && currUser" class="buyer-details flex align-center justify-space-between">
-          <h3 :class="{'clean-margin': isHostMode}">New order from {{order.buyer.fullname}}</h3>
-          <div class="buyer-img-container">
-            <img :src="currUser.imgUrl" alt="buyer image">
-          </div>
-        </div>
+            <!-- <div v-if="isHostMode && currUser" class="buyer-details flex align-center justify-space-between"> -->
+            <div
+              v-if="isHostMode"
+              class="buyer-details flex align-center justify-space-between"
+            >
+              <h3 :class="{ 'clean-margin': isHostMode }">
+                New order from {{ order.buyer.fullname }}
+              </h3>
+              <div class="buyer-img-container">
+                <!-- <img :src="currUser.imgUrl" alt="buyer image"> -->
+              </div>
+            </div>
             <h2 class="fs18">Order details</h2>
             <ul class="clean-list">
+              <li v-if="isHostMode" class="flex column list-item">
+                <h3 class="fs16">Listing</h3>
+                <span>{{ order.stay.name }}</span>
+              </li>
               <li class="flex column list-item">
                 <h3 class="fs16">Dates</h3>
                 <span>{{ order.startDate }} - {{ order.endDate }}</span>
               </li>
-              <li class="flex list-item" :class="{'column': !isHostMode, 'justify-space-between': isHostMode}">
-                <h3 class="fs16" :class="{'clean-margin': isHostMode}">Total nights</h3>
+              <li
+                class="flex list-item"
+                :class="{
+                  column: !isHostMode,
+                  'justify-space-between': isHostMode,
+                }"
+              >
+                <h3 class="fs16" :class="{ 'clean-margin': isHostMode }">
+                  Total nights
+                </h3>
                 <span>{{ order.totalNights }}</span>
               </li>
-              <li class="flex list-item" :class="{'column': !isHostMode, 'justify-space-between': isHostMode}">
-                <h3 class="fs16" :class="{'clean-margin': isHostMode}">Guests</h3>
+              <li
+                class="flex list-item"
+                :class="{
+                  column: !isHostMode,
+                  'justify-space-between': isHostMode,
+                }"
+              >
+                <h3 class="fs16" :class="{ 'clean-margin': isHostMode }">
+                  Guests
+                </h3>
                 <span v-if="isHostMode">{{ order.guests }}</span>
-                <span v-if="order.guests.adults">{{ order.guests.adults }} adult</span>
-                <span v-if="order.guests.children">{{ order.guests.children }} children</span>
-                <span v-if="order.guests.infants">{{ order.guests.infants }} infants</span>
+                <span v-if="order.guests.adults"
+                  >{{ order.guests.adults }} adult</span
+                >
+                <span v-if="order.guests.children"
+                  >{{ order.guests.children }} children</span
+                >
+                <span v-if="order.guests.infants"
+                  >{{ order.guests.infants }} infants</span
+                >
               </li>
               <li class="list-item">
-
                 <h3 v-if="!isHostMode" class="fs16">Price Breakdown</h3>
-                <p v-if="!isHostMode" class="flex align-center justify-space-between">
+                <p
+                  v-if="!isHostMode"
+                  class="flex align-center justify-space-between"
+                >
                   <span>{{ pricePerNight }}</span>
                   <span>{{ this.order.netPrice }}</span>
                 </p>
-                <p v-if="!isHostMode" class="flex align-center justify-space-between last-item">
+                <p
+                  v-if="!isHostMode"
+                  class="flex align-center justify-space-between last-item"
+                >
                   <span>Service fee</span> <span>$383</span>
                 </p>
               </li>
-              <li  v-if="isHostMode" class="flex align-center justify-space-between list-item bold fs22">
+              <li
+                v-if="isHostMode"
+                class="flex align-center justify-space-between list-item bold fs22"
+              >
                 <span>Total</span><span>${{ order.totalPrice }}</span>
               </li>
-              <li  v-else class="flex align-center justify-space-between list-item bold fs18">
+              <li
+                v-else
+                class="flex align-center justify-space-between list-item bold fs18"
+              >
                 <span>Total</span><span>{{ totalPrice }}</span>
               </li>
             </ul>
             <div class="confirmation-btns flex column justify-center">
-              <gradient-button v-if="isHostMode" :data="'Approve'" @click="updateOrderStatus('approved')" />
+              <gradient-button
+                v-if="isHostMode"
+                :data="'Approve'"
+                @click="updateOrderStatus('approved')"
+              />
               <gradient-button v-else :data="'Confirm'" @click="setOrder" />
-              <button v-if="isHostMode" class="decline-btn" @click="updateOrderStatus('declined')">Decline</button>
+              <button
+                v-if="isHostMode"
+                class="decline-btn"
+                @click="updateOrderStatus('declined')"
+              >
+                Decline
+              </button>
             </div>
           </div>
           <div class="reservation-image"></div>
@@ -118,17 +173,17 @@ export default {
     if (!this.$route.params.id) {
       this.$store.commit({ type: 'setDetails' })
       this.isHostMode = true
-      await this.$store.dispatch({ type: 'loadOrders' })
-      this.order = JSON.parse(JSON.stringify(this.$store.getters.orders[0]))
-      await this.$store.dispatch({ type: 'loadUser', userId: this.order.buyer._id })
+      this.order = JSON.parse(JSON.stringify(this.$store.getters.selectedOrder))
+      // await this.$store.dispatch({ type: 'loadOrders' })
+      // this.order = JSON.parse(JSON.stringify(this.$store.getters.orders[0]))
+      // await this.$store.dispatch({ type: '<loadUse></loadUse>r', userId: this.order.buyer._id })
 
-      this.currUser = this.$store.getters.user
+      // this.currUser = this.$store.getters.user
 
       const guestsArr = Object.values(this.order.guests)
       this.order.guests = guestsArr.reduce((acc, n) => acc + n, 0)
 
       this.currStay = this.order.stay
-
     } else {
       this.isHostMode = false
       this.$store.commit({ type: 'setDetails' })
@@ -168,23 +223,23 @@ export default {
       order.host = { _id: hostId, fullname, thumbnailUrl }
       const miniStay = { _id, name, price }
       order.stay = miniStay
-        try {
-          await this.$store.dispatch({ type: 'addOrder', order })
-          showSuccessMsg('order created!')
-          this.$router.push('/')
-        } catch (err) {
-          showErrorMsg('could not create order, please try again later')
-        }
+      try {
+        await this.$store.dispatch({ type: 'addOrder', order })
+        showSuccessMsg('order created!')
+        this.$router.push('/')
+      } catch (err) {
+        showErrorMsg('could not create order, please try again later')
+      }
     },
-    async updateOrderStatus(status){
+    async updateOrderStatus(status) {
       this.order.status = status
       try {
-          await this.$store.dispatch({ type: 'updateOrder', order: this.order })
-          showSuccessMsg('order created!')
-          this.$router.push('/user/orders')
-        } catch (err) {
-          showErrorMsg('could not create order, please try again later')
-        }
+        await this.$store.dispatch({ type: 'updateOrder', order: this.order })
+        showSuccessMsg('order created!')
+        this.$router.push('/user/orders')
+      } catch (err) {
+        showErrorMsg('could not create order, please try again later')
+      }
     },
     back() {
       const stayId = this.$route.params.id
@@ -194,17 +249,17 @@ export default {
         query: { guests, startDate: checkInDate, endDate: checkOutDate },
       })
     },
-    backToList(){
-      this.$router.push({path: `/`})
-    }
+    backToList() {
+      this.$router.push({ path: `/` })
+    },
   },
   computed: {
     stay() {
       return this.$store.getters.selectedStay
     },
-    selectedOrder() {
-      return this.$store.getters.selectedOrder
-    },
+    // selectedOrder() {
+    //   return this.$store.getters.selectedOrder
+    // },
   },
   components: {
     arrowBack,
