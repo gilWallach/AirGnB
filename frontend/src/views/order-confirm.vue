@@ -24,7 +24,7 @@
         </div>
 
         <!-- order summary -->
-        <div
+        <div v-if="order.buyer"
           class="content-container justify-space-between align-center"
           :class="{ flex: !isHostMode }"
         >
@@ -171,11 +171,12 @@ export default {
   },
   async created() {
     if (!this.$route.params.id) {
-      this.$store.commit({ type: 'setDetails' })
       this.isHostMode = true
-      this.order = JSON.parse(JSON.stringify(this.$store.getters.selectedOrder))
+      this.$store.commit({ type: 'setDetails' })
+      await this.$store.dispatch({ type: 'loadOrders'})
+      // this.order = JSON.parse(JSON.stringify(this.$store.getters.o))
       // await this.$store.dispatch({ type: 'loadOrders' })
-      // this.order = JSON.parse(JSON.stringify(this.$store.getters.orders[0]))
+      this.order = JSON.parse(JSON.stringify(this.$store.getters.orders[0]))
       // await this.$store.dispatch({ type: '<loadUse></loadUse>r', userId: this.order.buyer._id })
 
       // this.currUser = this.$store.getters.user
