@@ -1,16 +1,87 @@
 <template>
-  <section class="list-modal">
+  <section class="list-modal filter">
     <div class="header flex justify-center align-center">
       <button class="close-btn custom">
         <close @click="$emit('closeModal')" />
       </button>
       <h2 class="center-heading">Filters</h2>
     </div>
-    <HistogramSlider style="margin: 200px auto" :width="300" :bar-height="100" :data="prices" :drag-interval="true"
-      :force-edges="false" :colors="['#4facfe', '#00f2fe']" :min="0" :max="maxPrice" @finish="setMinMax" />
+    <main>
+      <div class="price">
+        <h2 class="fs22">Price range</h2>
+        <p>The average monthly price is 734$</p>
+        <HistogramSlider :width="629" :barWidth="11.58" :bar-height="64" :data="prices"
+          :force-edges="false" :primaryColor="'#b0b0b0'" :holderColor="'#dddddd'" :handleSize="32" :histSliderGap="0"
+          :barGap="0" :barRadius="1" :lineHeight="0" :label="false" :hideFromTo="true"
+           :min="minPrice" :max="maxPrice" @finish="setMinMax" />
+        <div class="prices-display flex justify-center align-center">
+          <label class="flex column">
+            <small>min price</small>
+            <input v-model="filterBy.minPrice" type="number" min="0" />
+          </label>
+          -
+          <label class="flex column">
+            <small>max price</small>
+            <input v-model="filterBy.maxPrice" type="number" />
+          </label>
+        </div>
+      </div>
+      <div class="type">
+        <h2>Type of place</h2>
+        <el-radio-group v-model="filterBy.roomType">
+          <el-radio-button :key="0" label="Any" />
+          <el-radio-button v-for="option in roomOptions" :key="option" :label="option" />
+        </el-radio-group>
+      </div>
+      <div class="rooms">
+        <h2>Rooms and beds</h2>
+        <h3>Bedrooms</h3>
+        <el-radio-group v-model="filterBy.bedrooms" size="medium">
+          <el-radio-button :key="0" label="Any" />
+          <el-radio-button v-for="num in 8" :key="num" :label="num" />
+        </el-radio-group>
+        <h3>Beds</h3>
+        <el-radio-group v-model="filterBy.capacity" size="medium">
+          <el-radio-button :key="0" label="Any" />
+          <el-radio-button v-for="num in 8" :key="num" :label="num" />
+        </el-radio-group>
+        <h3>Bathrooms</h3>
+        <el-radio-group v-model="filterBy.bathrooms" size="medium">
+          <el-radio-button :key="0" label="Any" />
+          <el-radio-button v-for="num in 8" :key="num" :label="num" />
+        </el-radio-group>
+      </div>
+      <div class="amenities">
+        <h2>Amenities</h2>
+        <el-checkbox-group v-model="filterBy.amenities">
+          <el-checkbox v-if="isFullAmenities" v-for="amenity in amenities" :key="amenity" :label="amenity">{{
+              amenity
+          }}</el-checkbox>
+          <div v-else class="small-amenity-container flex column">
+            <div class="small-amenities">
+              <el-checkbox v-for="smallAmenity in smallAmenities" :key="smallAmenity" :label="smallAmenity">{{
+                  smallAmenity
+              }}</el-checkbox>
+            </div>
+            <button @click="isFullAmenities = true">Show More</button>
+          </div>
+        </el-checkbox-group>
+      </div>
+      <div class="super-host">
+        <h2>Top tier stays</h2>
+        <div class="container flex justify-space-between align-center">
+          <div class="description flex column">
+            <p>Superhost</p>
+            <small>Stay with recognized Hosts</small>
+            <button class="bold">Learn more</button>
+          </div>
+          <el-switch v-model="filterBy.isSuperhost" size="large" />
+        </div>
+      </div>
+    </main>
     <!-- <div class="filters-container">
-            <form @submit.prevent="setFilterBy">
-                <div>
+        <form @submit.prevent="setFilterBy">
+          <div>
                     <legend>Type of place</legend>
                     <input v-model="filterBy.roomType" type="checkbox" name="roomType" value="Entire place">Entire place<br>
                     <p>A place all to yourself</p>
@@ -24,21 +95,14 @@
             </form>
         </div> -->
     <footer class="filter-modal footer flex justify-space-between align-center">
-      <button>Clear all</button>
-      <button @click="$emit('do-filter', this.filterBy)">Show Homes</button>
+      <button @click="clearFilter">Clear all</button>
+      <button @click="search">Show Homes</button>
     </footer>
   </section>
 </template>
 
 <script>
-// import { ref } from 'vue'
-
 import close from '../assets/svg/close.vue'
-
-// import Vue from 'vue'
-// import HistogramSlider from 'vue-histogram-slider'
-// import 'vue-histogram-slider/dist/histogram-slider.css'
-// Vue.component(HistogramSlider.name, HistogramSlider)
 
 export default {
   name: 'filter-modal',
@@ -47,40 +111,74 @@ export default {
     return {
       filterBy: {
         minPrice: 0,
-        maxPrice: 1500,
-        roomType: [],
+        maxPrice: this.maxPrice,
+        roomType: '',
+        bedrooms: 'Any',
+        capacity: 'Any',
+        bathrooms: 'Any',
+        amenities: [],
+        isSuperhost: false
       },
+      roomOptions: ['Entire place', 'Private room'],
+      isFullAmenities: false
     }
   },
   created() {
-    console.log(Math.max(...this.prices))
+    this.filterBy.minPrice = this.minPrice
+    this.filterBy.maxPrice = this.maxPrice
+
+    const { filter } = this.$route.query
+    if (!filter) return
+    const { minPrice, maxPrice, roomType, bedrooms, capacity, bathrooms, amenities, isSuperhost } = JSON.parse(filter)
+    this.filterBy.minPrice = minPrice
+    this.filterBy.maxPrice = maxPrice
+    this.filterBy.roomType = roomType
+    this.filterBy.bedrooms = bedrooms
+    this.filterBy.capacity = capacity
+    this.filterBy.bathrooms = bathrooms
+    this.filterBy.amenities = amenities
+    this.filterBy.isSuperhost = isSuperhost
   },
   methods: {
-    setFilterBy() {
-      console.log(filter)
-      // this.$store.commit({
-      //     type: 'setFilterBy',
-      //     filterBy: JSON.parse(JSON.stringify(filter))
-      // })
-      // this.$store.dispatch('loadStays')
-      this.filterBy = {
-        minPrice: 0,
-        maxPrice: 1500,
-        roomType: [],
-      }
-    },
     setMinMax(slider) {
       this.filterBy.minPrice = slider.from
       this.filterBy.maxPrice = slider.to
       console.log(this.filterBy);
-    }
+    },
+    search() {
+      this.$emit('closeModal')
+      this.$route.path === '/' ? this.$router.push({ path: '/s', query: { filter: JSON.stringify({ ...this.filterBy }) } })
+        : this.$emit('filter', { ...this.filterBy })
+    },
+    clearFilter() {
+      this.filterBy = {
+        minPrice: this.minPrice,
+        maxPrice: this.maxPrice,
+        roomType: '',
+        bedrooms: 'Any',
+        capacity: 'Any',
+        bathrooms: 'Any',
+        amenities: [],
+        isSuperhost: false,
+      }
+    },
   },
   computed: {
     prices() {
       return this.$store.getters.stays.map(stay => stay.price)
     },
+    minPrice() {
+      return Math.min(...this.prices)
+    },
     maxPrice() {
       return Math.max(...this.prices)
+    },
+    amenities() {
+      const amenities = this.$store.getters.stays.reduce((acc, { amenities },) => acc.concat(amenities), [])
+      return [...new Set([...amenities])]
+    },
+    smallAmenities() {
+      return this.amenities.slice(0, 6)
     }
   },
   components: {

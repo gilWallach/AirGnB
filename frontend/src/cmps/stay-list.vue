@@ -36,6 +36,7 @@
       v-if="isModalOpen"
       @closeModal="closeModal"
       :isWishlist="isWishlist"
+      @filter="filter"
     />
   </transition>
 
@@ -106,6 +107,9 @@ export default {
       this.isModalOpen = false
       this.isWishlist = null
     },
+    filter(filterBy){
+      this.$emit('filter',filterBy)
+    }
   },
   computed: {},
   components: {
