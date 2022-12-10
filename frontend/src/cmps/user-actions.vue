@@ -6,6 +6,7 @@
         <li @click.stop="openModal(true)">Log in</li>
       </ul>
       <ul v-else class="list-items clean-list fs14 bold">
+        <li><router-link to="/order-confirm">Pending Orders</router-link></li>
         <li @click="myDashboard">My Dashboard</li>
       </ul>
       <ul class="list-items clean-list bottom-group fs14">

@@ -1,5 +1,5 @@
 .orders-summary {
-    margin-top: $header-height;
+  margin-top: $header-height;
 
     // padding-top: $header-height / 2;
     .host-summary {
@@ -25,14 +25,17 @@
         }
     }
 
-    .orders-list-title {
-        margin-inline-start: 16px;
-        margin-block: 0;
-        padding-top: 16px;
+    .stats {
+      padding-top: 1em;
+      display: grid;
+      grid-template-columns: 1fr 0.25fr;
     }
 
-    table {
-        width: 100%;
+    & span {
+      color: #0b925f;
+      text-align: end;
+    }
+  }
 
         tr:first-of-type {
             background-color: $clr7;
@@ -42,9 +45,8 @@
             padding-inline: 16px;
         }
 
-        tr:not(tr:first-of-type) {
-            padding-inline: 16px;
-        }
+  table {
+    width: 100%;
 
         th {
             text-align: start;
@@ -125,14 +127,94 @@
         }
     }
 
-    .status-btn {
-        border-radius: 12px;
-        color: $clr8;
+    tr:not(tr:first-of-type) {
+      padding-inline: 16px;
     }
 
-    .approved {
-        color: #0b925f;
+    th {
+      text-align: start;
     }
+
+    & .buyer-img-container {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    tr:last-of-type {
+      border: none;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      justify-content: left;
+      min-height: 76px;
+      font-size: em(14px);
+      border-bottom: 0.5px solid $clr7;
+
+      .stay-name,
+      .buyer {
+        grid-column: 2 / -1;
+        padding-inline-end: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .last-column {
+        grid-column: -1;
+      }
+
+      .center-td {
+        justify-self: center;
+      }
+      .end-td {
+        justify-self: end;
+      }
+
+      .buyer-details-td {
+        padding: 8px;
+        flex-direction: column;
+      }
+
+      p {
+        width: fit-content;
+        margin: 0;
+        padding-top: 8px;
+      }
+
+      & select {
+        font-family: airBnb-Reg;
+        border: none;
+        padding: 12px 6px;
+        color: $clr4;
+        border: 0.5px solid $clr7;
+        border-radius: 12px;
+      }
+
+      .el-input__wrapper {
+        display: inherit;
+      }
+
+      .el-select-dropdown__item.selected {
+        color: $clr2 !important;
+      }
+    }
+
+  .status-btn {
+    border-radius: 12px;
+    color: $clr8;
+  }
 
     .pending {
         color: #E3B505;
@@ -145,7 +227,6 @@
     .no-padding-inline {
         padding-inline: 0;
     }
-}
 
 .el-select-dropdown__item.selected {
     color: $clr2 !important;

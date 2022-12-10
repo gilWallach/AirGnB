@@ -15,59 +15,57 @@ const routes = [
   {
     path: '/',
     name: 'stay-app',
-    component: stayApp
+    component: stayApp,
   },
   {
     path: '/s',
     name: 'stay-search',
-    component: staySearch
+    component: staySearch,
   },
   {
     path: '/stay/:id',
     name: 'stay-details',
-    component: stayDetails
+    component: stayDetails,
   },
   {
     path: '/stay/edit/:id?',
     name: 'stay-edit',
-    component: stayEdit
+    component: stayEdit,
   },
   {
-    path: '/order-confirm/:id',
+    path: '/order-confirm/:id?',
     name: 'order-confirm',
-    component: orderConfirm
+    component: orderConfirm,
   },
   {
     path: '/review',
     name: 'review',
-    component: reviewApp
+    component: reviewApp,
   },
   {
     path: '/chat',
     name: 'chat',
-    component: chat
+    component: chat,
   },
   {
     path: '/login',
     name: 'loginSignup',
-    component: loginSignup
+    component: loginSignup,
   },
   {
     path: '/user/:id',
     name: 'user-details',
-    component: userDetails
+    component: userDetails,
   },
   {
     path: '/user/orders',
     name: 'orders-list',
-    component: ordersList
-  }
+    component: ordersList,
+  },
 ]
-
 
 export const router = createRouter({
   routes,
-  history: createWebHashHistory()
+  history: createWebHashHistory(),
   // base: process.env.BASE_URL,
 })
-
