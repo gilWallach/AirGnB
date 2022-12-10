@@ -13,7 +13,7 @@
       <!-- main content -->
       <main class="main-content" :class="{ flex: !isHostMode }">
         <!-- stay summary -->
-        <div v-if="!isHostMode" class="stay-container flex column">
+        <div v-if="!isHostMode &&currStay" class="stay-container flex column">
           <div class="stay-txt">
             <h1 class="fs18">{{ currStay.name }}</h1>
             <h3 class="fs14 l-grey">
