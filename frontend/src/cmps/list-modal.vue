@@ -1,7 +1,7 @@
 <template>
     <section>
         <wishlist-modal v-if="isWishlist" @closeModal="$emit('closeModal')"/>
-        <filter-modal v-else @closeModal="$emit('closeModal')"/>
+        <filter-modal v-else @closeModal="$emit('closeModal')" @filter="filter"/>
     </section>
 </template>
 
@@ -23,6 +23,9 @@ export default {
     created() {
     },
     methods: {
+        filter(filterBy){
+            this.$emit('filter',filterBy)
+        }
     },
     computed: {},
     components: {

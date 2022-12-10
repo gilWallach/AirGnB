@@ -1,6 +1,6 @@
 <template>
     <section class='stay-search main'>
-        <stay-list :stays="stays" :labels="labels" :date="date" @filter-type="filterByType" />
+        <stay-list :stays="stays" :labels="labels" :date="date" @filter-type="filterByType" @filter="filter" />
     </section>
 </template>
 
@@ -24,13 +24,27 @@ export default {
     },
     methods: {
         async loadStays(typeFilter) {
-            const { name, type: queryType, guests } = this.$route.query
+            const { name, type: queryType, guests, filter } = this.$route.query
+            console.log(this.$route.query);
             const type = typeFilter || queryType
             const capacity = (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests))) ? JSON.parse(guests).capacity : 0
             const filterBy = {
                 name,
                 type,
                 capacity
+            }
+            if (filter) {
+                const parsedFilter = JSON.parse(filter)
+                console.log(parsedFilter);
+                const { minPrice, maxPrice, roomType, bedrooms, capacity, bathrooms , amenities, isSuperhost } = parsedFilter
+                filterBy.minPrice = minPrice
+                filterBy.maxPrice = maxPrice
+                filterBy.roomType = roomType === 'Any' ? '' : roomType
+                filterBy.bedrooms = bedrooms === 'Any' ? 0 : bedrooms
+                filterBy.capacity = capacity === 'Any' ? 0 : capacity
+                filterBy.bathrooms = bathrooms === 'Any' ? 0 : bathrooms
+                filterBy.amenities = amenities
+                filterBy.isSuperhost = isSuperhost
             }
             //Go to params and filter your stays
             // Talk to the store
@@ -50,7 +64,12 @@ export default {
         },
         filterByType(type) {
             this.loadStays(type)
-        }
+        },
+        filter(filterBy) {
+            const filter = JSON.stringify(filterBy)
+            const oldQuery = this.$route.query
+            this.$router.push({ path: '/s', query: { ...oldQuery, filter } })
+        },
     },
     computed: {
         stays() {

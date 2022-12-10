@@ -97,13 +97,20 @@ async function removeStayMsg(stayId, msgId) {
 
 function _createCriteria(filterBy) {
   const criteria = {}
-  const { name, type } = filterBy
+  const { name, type, minPrice, maxPrice, roomType, bedrooms, capacity, bathrooms, amenities, isSuperhost } = filterBy
   criteria.$or = [
     { 'loc.city': { $regex: name, $options: 'i' } },
     { 'loc.country': { $regex: name, $options: 'i' } },
     { name: { $regex: name, $options: 'i' } }
   ]
   if (type) criteria.type = type
+  if (minPrice) criteria.price = { $gte: minPrice, $lt: maxPrice }
+  if (roomType) criteria.roomType = roomType
+  if (bedrooms) criteria.bedrooms = bedrooms
+  if (capacity) criteria.capacity = capacity
+  if (bathrooms) criteria.bathrooms = bathrooms
+  if (amenities.length) criteria.amenities = { $all: amenities }
+  if (isSuperhost) criteria['host.isSuperhost'] = true
   return criteria
 }
 

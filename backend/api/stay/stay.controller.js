@@ -5,9 +5,19 @@ const logger = require('../../services/logger.service')
 async function getStays(req, res) {
   try {
     logger.debug('Getting Stays')
+    console.log(req.query)
+    const isSuperhost = req.query.isSuperhost ? JSON.parse(req.query.isSuperhost) : false
     const filterBy = {
       name: req.query.name || '',
-      type: req.query.type || ''
+      type: req.query.type || '',
+      minPrice: +req.query.minPrice || 0,
+      maxPrice: +req.query.maxPrice || Infinity,
+      roomType: req.query.roomType || '',
+      bedrooms: +req.query.bedrooms || 0,
+      capacity: +req.query.capacity || 0,
+      bathrooms: +req.query.bathrooms || 0,
+      amenities: req.query.amenities || [],
+      isSuperhost
     }
     const stays = await stayService.query(filterBy) // add filtering by capacity and country/city using the "name field"
     res.json(stays)
