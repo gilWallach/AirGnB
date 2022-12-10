@@ -89,6 +89,22 @@
   }
 
   .gallery {
+    @include for-wide-layout {
+      grid-template-columns: minmax(326px, 512px) repeat(
+          2,
+          minmax(155px, 238px)
+        );
+      grid-template-rows: repeat(2, minmax(164px, 243px));
+    }
+
+    @include for-wide-level2-layout {
+      grid-template-columns: minmax(326px, 560px) repeat(
+          2,
+          minmax(155px, 272px)
+        );
+      grid-template-rows: repeat(2, minmax(164px, 243px));
+    }
+
     display: grid;
     grid-template-columns: minmax(326px, 560px) repeat(2, minmax(155px, 272px));
     grid-template-rows: repeat(2, minmax(164px, 243px));
