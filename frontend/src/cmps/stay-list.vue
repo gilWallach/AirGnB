@@ -6,7 +6,11 @@
       :class="{ 'scroll-shadow': scrollShadow }"
     >
       <div class="list-header flex align-center justify-space-between">
-        <stay-labels v-if="labels" :labels="labels" @filter-type="$emit('filter-type')" />
+        <stay-labels
+          v-if="labels"
+          :labels="labels"
+          @filter-type="$emit('filter-type')"
+        />
 
         <button
           @click="openFilterModal"
@@ -30,7 +34,7 @@
       />
     </ul>
   </section>
-  <div class="skeleton-r9bf0qw8pwg"><div v-if="isLoaded"></div></div>
+  <!-- <div class="skeleton-dagpjcbwchk"><div v-if="isLoaded"></div></div> -->
   <transition name="fade">
     <list-modal
       v-if="isModalOpen"
@@ -58,7 +62,7 @@ import filterIcon from '../assets/svg/filter.vue'
 
 export default {
   name: 'stay-list',
-  emits:['filter-type'],
+  emits: ['filter-type'],
   props: {
     stays: {
       type: Array,
@@ -107,9 +111,9 @@ export default {
       this.isModalOpen = false
       this.isWishlist = null
     },
-    filter(filterBy){
-      this.$emit('filter',filterBy)
-    }
+    filter(filterBy) {
+      this.$emit('filter', filterBy)
+    },
   },
   computed: {},
   components: {
