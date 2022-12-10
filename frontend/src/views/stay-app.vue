@@ -38,20 +38,20 @@ export default {
     async addStay() {
       try {
         await this.$store.dispatch({ type: 'addStay', stay: this.stayToAdd })
-        showSuccessMsg('Stay added')
+        // showSuccessMsg('Stay added')
         this.stayToAdd = stayService.getEmptyStay()
       } catch (err) {
         console.log(err)
-        showErrorMsg('Cannot add stay')
+        // showErrorMsg('Cannot add stay')
       }
     },
     async removeStay(stayId) {
       try {
         await this.$store.dispatch(getActionRemoveStay(stayId))
-        showSuccessMsg('Stay removed')
+        // showSuccessMsg('Stay removed')
       } catch (err) {
         console.log(err)
-        showErrorMsg('Cannot remove stay')
+        // showErrorMsg('Cannot remove stay')
       }
     },
     async updateStay(stay) {
@@ -59,19 +59,19 @@ export default {
         stay = { ...stay }
         stay.price = +prompt('New price?', stay.price)
         await this.$store.dispatch(getActionUpdateStay(stay))
-        showSuccessMsg('Stay updated')
+        // showSuccessMsg('Stay updated')
       } catch (err) {
         console.log(err)
-        showErrorMsg('Cannot update stay')
+        // showErrorMsg('Cannot update stay')
       }
     },
     async addStayMsg(stayId) {
       try {
         await this.$store.dispatch(getActionAddStayMsg(stayId))
-        showSuccessMsg('Stay msg added')
+        // showSuccessMsg('Stay msg added')
       } catch (err) {
         console.log(err)
-        showErrorMsg('Cannot add stay msg')
+        // showErrorMsg('Cannot add stay msg')
       }
     },
     printStayToConsole(stay) {

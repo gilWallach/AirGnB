@@ -30,7 +30,7 @@ function getUsers() {
 }
 
 function onUserUpdate(user) {
-  showSuccessMsg(`This user ${user.fullname} just got updated from socket`)
+  // showSuccessMsg(`This user ${user.fullname} just got updated from socket`)
   store.dispatch({ type: 'setWatchedUser', user })
 }
 
