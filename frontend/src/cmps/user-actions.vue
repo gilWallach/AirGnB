@@ -2,22 +2,21 @@
   <section class="user-actions" ref="userActions">
     <div>
       <ul v-if="!loggedinUser" class="list-items clean-list fs14">
-        <li @click.stop="openModal(false)">Sign up</li>
+        <li @click.stop="openModal(false)" class="bold">Sign up</li>
         <li @click.stop="openModal(true)">Log in</li>
       </ul>
-      <ul v-else class="list-items clean-list fs14">
+      <ul v-else class="list-items clean-list fs14 bold">
+        <li><router-link to="/order-confirm">Pending Orders</router-link></li>
         <li @click="myDashboard">My Dashboard</li>
-        <li @click="doLogout">Log out</li>
+      </ul>
+      <ul class="list-items clean-list bottom-group fs14">
+        <li>Airgnb your home</li>
+        <li>Host an experience</li>
+        <li>Help</li>
+        <li v-if="loggedinUser" @click="doLogout">Log out</li>
       </ul>
     </div>
   </section>
-  <!-- <section class="user-actions" ref="userActions">
-    <ul class="list-items clean-list fs14">
-      <li v-if="!loggedinUser" @click.stop="openModal(false)">Sign up</li>
-      <li v-if="!loggedinUser" @click.stop="openModal(true)">Log in</li>
-      <li v-else @click="myDashboard">My Dashboard</li>
-    </ul>
-  </section> -->
 
   <transition name="fade">
     <loginSignupModal

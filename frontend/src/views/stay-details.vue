@@ -22,7 +22,7 @@
         <div class="details-ratings-container">
           <p class="rate">
             <star /><span
-              >&nbsp; {{ getStay.reviews.length ? '4.82' : 'New' }} </span
+              >&nbsp; {{ getStay.reviews.length ? reviewsAvg : 'New' }} </span
             ><span class="separator">·</span>
           </p>
           <p>
@@ -55,7 +55,6 @@
 
       <!-- STAY SUMMARY AND DETAILS -->
       <div class="details-reserve-container">
-        <!-- START: summary and details should split 50-50 to contain reserve element AND more details -->
         <div class="summary-and-details">
           <div class="summary-container">
             <div class="summary-text-container">
@@ -73,7 +72,7 @@
                 :src="getStay.host.thumbnailUrl"
                 alt="host-image"
                 class="host-img"
-                onerror="this.src=`https://res.cloudinary.com/raz-mister-toy/image/upload/v1670229254/wbgnvdojxyealwsczvec.png`"
+                onerror="this.src=`https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png`"
             /></span>
           </div>
 
@@ -245,7 +244,6 @@
                 </transition>
               </div>
             </div>
-            <!-- <button class="btn btn-reserve">Reserve</button> -->
             <gradient-button :data="'Reserve'" @click="doReserve" />
             <p class="reg-text">You won't be charged yet</p>
             <!-- modal rates -->
@@ -280,7 +278,7 @@
         <div class="reviews-header">
           <div class="title">
             <div class="rating-reviews flex">
-              <star /><span>&nbsp; 4.82 </span
+              <star /><span>&nbsp; {{ reviewsAvg }} </span
               ><span class="separator">&nbsp;·&nbsp;</span>
               <span class="reviews-amount"
                 >{{ getStay.reviews?.length }} reviews
@@ -293,54 +291,97 @@
               <div class="kpi-title">Cleanliness</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="cleanliness"></div>
+                  <div
+                    class="cleanliness"
+                    :style="getWidth((this.reviewsAvg * 1.1).toFixed(2))"
+                  ></div>
                 </div>
-                <div class="rate-value">4.6</div>
+                <!-- <div class="rate-value">4.6</div> -->
+                <div class="rate-value">
+                  {{
+                    this.reviewsAvg * 1.1 > 5
+                      ? Number(5).toFixed(2)
+                      : (this.reviewsAvg * 1.1).toFixed(2)
+                  }}
+                </div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Communication</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="communication"></div>
+                  <div
+                    class="communication"
+                    :style="getWidth((this.reviewsAvg * 0.9).toFixed(2))"
+                  ></div>
                 </div>
-                <div class="rate-value">5.0</div>
+                <div class="rate-value">
+                  {{ (this.reviewsAvg * 0.9).toFixed(2) }}
+                </div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Check-in</div>
               <div class="rate-container flex align-center">
-                <div class="kpis">
+                <div
+                  class="kpis"
+                  :style="getWidth((this.reviewsAvg * 1.2).toFixed(2))"
+                >
                   <div class="check-in"></div>
                 </div>
-                <div class="rate-value">4.8</div>
+                <div class="rate-value">
+                  {{
+                    this.reviewsAvg * 1.2 > 5
+                      ? Number(5).toFixed(2)
+                      : (this.reviewsAvg * 1.2).toFixed(2)
+                  }}
+                </div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Accuracy</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="accuracy"></div>
+                  <div
+                    class="accuracy"
+                    :style="getWidth((this.reviewsAvg * 0.8).toFixed(2))"
+                  ></div>
                 </div>
-                <div class="rate-value">4.9</div>
+                <div class="rate-value">
+                  {{ (this.reviewsAvg * 0.8).toFixed(2) }}
+                </div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Location</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="location"></div>
+                  <div
+                    class="location"
+                    :style="getWidth((this.reviewsAvg * 1.25).toFixed(2))"
+                  ></div>
                 </div>
-                <div class="rate-value">4.8</div>
+                <div class="rate-value">
+                  {{
+                    this.reviewsAvg * 1.25 > 5
+                      ? Number(5).toFixed(2)
+                      : (this.reviewsAvg * 1.25).toFixed(2)
+                  }}
+                </div>
               </div>
             </div>
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Value</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="location"></div>
+                  <div
+                    class="value"
+                    :style="getWidth((this.reviewsAvg * 0.75).toFixed(2))"
+                  ></div>
                 </div>
-                <div class="rate-value">4.8</div>
+                <div class="rate-value">
+                  {{ (this.reviewsAvg * 0.75).toFixed(2) }}
+                </div>
               </div>
             </div>
           </div>
@@ -366,6 +407,7 @@
 </template>
 
 <script>
+import { utilService } from '../services/util.service'
 import {
   showSuccessMsg,
   showErrorMsg,
@@ -491,10 +533,23 @@ export default {
       date.setDate(day + 3)
       return date
     },
+    getWidth(rate) {
+      const barWidth = (rate / 5) * 121.5 > 121.5 ? 121.5 : (rate / 5) * 121.5
+      return { width: barWidth + 'px' }
+    },
   },
   computed: {
     getStay() {
       return this.$store.getters.selectedStay
+    },
+    reviewsAvg() {
+      const reviews = this.getStay.reviews
+      let average =
+        reviews.reduce((sum, review) => {
+          return sum + +review.rate
+        }, 0) / reviews.length
+
+      return average.toFixed(2)
     },
     formatReviews() {
       return this.getStay.reviews.length > 1 ? 'reviews' : 'review'

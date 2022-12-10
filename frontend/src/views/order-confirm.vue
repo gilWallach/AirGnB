@@ -1,16 +1,38 @@
 <template>
   <div class="main-container-stay-details">
     <section class="order-confirm">
-      <div>
-        <h1 class="header fs22">One last step</h1>
-        <p class="fs14">Dear guest,</p>
+      <!-- page header -->
+      <header class="flex column">
+        <h1 class="header fs22">Order Confirmation</h1>
+        <!-- <p class="fs14">Dear guest,</p>
         <p class="fs14 subtitle">
           In order to complete your reservation,
           <span class="bold">please confirm your trip details</span>
-        </p>
+        </p> -->
+      </header>
+      <!-- main content -->
+      <main class="main-content flex">
+        <!-- buyer summary -->
+        <div v-if="isHostMode">
+          <h2>rendering buyer details for host</h2>
+        </div>
+
+        <!-- stay summary -->
+        <div v-else class="stay-container flex column">
+          <div class="stay-txt">
+            <h1 class="fs18">{{ currStay.name }}</h1>
+            <h3 class="fs14 l-grey">
+              {{ currStay.loc.city + ', ' + currStay.loc.country }}
+            </h3>
+          </div>
+          <img :src="currStay.imgUrls[0]" alt="stay image" class="stay-img" />
+        </div>
+
+        <!-- order summary -->
         <div class="content-container flex justify-space-between align-center">
           <div class="reservation-details">
-            <h2 class="underline fs18">Reservation details</h2>
+            <h3 @click="back" class="btn-back">Back</h3>
+            <h2 class="fs18">Order details</h2>
             <ul class="clean-list">
               <li class="flex column list-item">
                 <h3 class="fs16">Dates</h3>
@@ -18,9 +40,15 @@
               </li>
               <li class="flex column list-item">
                 <h3 class="fs16">Guests</h3>
-                <span v-if="order.guests.adults">{{ order.guests.adults }} adult</span>
-                <span v-if="order.guests.children">{{ order.guests.children }} children</span>
-                <span v-if="order.guests.infants">{{ order.guests.infants }} infants</span>
+                <span v-if="order.guests.adults"
+                  >{{ order.guests.adults }} adult</span
+                >
+                <span v-if="order.guests.children"
+                  >{{ order.guests.children }} children</span
+                >
+                <span v-if="order.guests.infants"
+                  >{{ order.guests.infants }} infants</span
+                >
               </li>
               <li class="list-item">
                 <h3 class="fs16">Price Breakdown</h3>
@@ -32,29 +60,34 @@
                   <span>Service fee</span> <span>$383</span>
                 </p>
               </li>
-              <li class="flex align-center justify-space-between list-item bold fs22">
+              <li
+                class="flex align-center justify-space-between list-item bold fs22"
+              >
                 <span>Total</span><span>{{ totalPrice }}</span>
               </li>
             </ul>
+            <div class="confirmation-btns flex column justify-center">
+              <gradient-button :data="'Confirm'" @click="setOrder" />
+            </div>
           </div>
           <div class="reservation-image"></div>
         </div>
-        <div class="confirmation-btns flex column justify-center">
-          <button @click="back">Back</button>
-          <gradient-button :data="'Confirm'" @click="setOrder" />
-        </div>
-      </div>
+      </main>
     </section>
   </div>
 </template>
 <script>
+import arrowBack from '../assets/svg/arrow-back.vue'
 import gradientButton from '../cmps/gradient-button.vue'
 import {
   showSuccessMsg,
   showErrorMsg,
   eventBus,
 } from '../services/event-bus.service'
-import { socketService, SOCKET_EVENT_ORDER_ADDED } from '../services/socket.service'
+import {
+  socketService,
+  SOCKET_EVENT_ORDER_ADDED,
+} from '../services/socket.service'
 
 export default {
   name: 'order-confirm',
@@ -70,32 +103,51 @@ export default {
       },
       pricePerNight: '',
       totalPrice: '',
+      currStay: null,
+      isHostMode: false,
     }
   },
   async created() {
-    this.$store.commit({ type: 'setDetails' })
-    const { id } = this.$route.params
-    try {
-      await this.$store.dispatch({ type: 'loadStay', id })
-    } catch (err) {
-      throw err
+    if (!this.$route.params.id) {
+      this.$store.commit({ type: 'setDetails' })
+      this.isHostMode = true
+      console.log('this.isHostMode: ', this.isHostMode)
+      await this.$store.dispatch({ type: 'loadOrders' })
+      this.order = JSON.parse(JSON.stringify(this.$store.getters.orders[0]))
+
+      const guestsArr = Object.values(this.order.guests)
+      this.order.guests = guestsArr.reduce((acc, n) => acc + n, 0)
+
+      this.currStay = this.order.stay
+
+      console.log('this.order: ', this.order)
+    } else {
+      this.isHostMode = false
+      this.$store.commit({ type: 'setDetails' })
+      const { id } = this.$route.params
+      try {
+        await this.$store.dispatch({ type: 'loadStay', id })
+        this.currStay = this.$store.getters.selectedStay
+      } catch (err) {
+        throw err
+      }
+      const {
+        guests,
+        checkInDate,
+        checkOutDate,
+        totalNights,
+        price,
+        pricePerNight,
+        priceWithService,
+      } = this.$route.query
+      this.order.startDate = checkInDate
+      this.order.endDate = checkOutDate
+      this.order.guests = JSON.parse(guests)
+      this.order.netPrice = price
+      this.order.totalNights = totalNights
+      this.pricePerNight = pricePerNight
+      this.totalPrice = priceWithService
     }
-    const {
-      guests,
-      checkInDate,
-      checkOutDate,
-      totalNights,
-      price,
-      pricePerNight,
-      priceWithService,
-    } = this.$route.query
-    this.order.startDate = checkInDate
-    this.order.endDate = checkOutDate
-    this.order.guests = JSON.parse(guests)
-    this.order.netPrice = price
-    this.order.totalNights = totalNights
-    this.pricePerNight = pricePerNight
-    this.totalPrice = priceWithService
   },
   methods: {
     async setOrder() {
@@ -120,19 +172,23 @@ export default {
     back() {
       const stayId = this.$route.params.id
       //   console.log('stayid: ', stayId)
-      const {
-        guests,
-        checkInDate,
-        checkOutDate } = this.$route.query
-      this.$router.push({ path: `/stay/${stayId}`, query: { guests, startDate: checkInDate, endDate: checkOutDate } })
+      const { guests, checkInDate, checkOutDate } = this.$route.query
+      this.$router.push({
+        path: `/stay/${stayId}`,
+        query: { guests, startDate: checkInDate, endDate: checkOutDate },
+      })
     },
   },
   computed: {
     stay() {
       return this.$store.getters.selectedStay
     },
+    selectedOrder() {
+      return this.$store.getters.selectedOrder
+    },
   },
   components: {
+    arrowBack,
     gradientButton,
   },
 }

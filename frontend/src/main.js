@@ -8,6 +8,7 @@ import 'element-plus/dist/index.css'
 
 import { Chart, DoughnutController, ArcElement, Tooltip } from 'chart.js'
 Chart.register(DoughnutController, ArcElement, Tooltip)
+import { CaretBottom } from '@element-plus/icons-vue'
 
 import HistogramSlider from "vue3-histogram-slider";
 import "vue3-histogram-slider/dist/histogram-slider.css";

@@ -46,12 +46,9 @@ export const orderStore = {
       state.orders = orders
     },
     addOrder(state, { order }) {
-      console.log('adding order', order);
       state.orders.unshift(order)
     },
     updateOrder(state, { updatedOrder }) {
-      console.log('updatedOrder', updatedOrder)
-
       const idx = state.orders.findIndex((c) => c._id === updatedOrder._id)
       state.orders.splice(idx, 1, updatedOrder)
     },
@@ -83,7 +80,7 @@ export const orderStore = {
     async updateOrder(context, { order }) {
       try {
         const updatedOrder = await orderService.save(order)
-        context.commit({type: 'updateOrder', updatedOrder})
+        context.commit({ type: 'updateOrder', updatedOrder })
         return updatedOrder
       } catch (err) {
         console.log('orderStore: Error in updateOrder', err)

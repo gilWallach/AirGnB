@@ -38,6 +38,9 @@ export const stayStore = {
     stays({ stays }) {
       return stays
     },
+    selectedStay({ selectedStay }){
+      return selectedStay
+    },
     labels({ labels }) {
       return labels
     },
