@@ -9,9 +9,9 @@
         <p>Monthly earning:</p>
         <span>${{ monthlyEarning }}</span>
         <p>Average rating:</p>
-        <span>{{averageRating()}}</span>
+        <span>{{ averageRating() }}</span>
         <p>Amount of reviews:</p>
-        <span>{{selectedStay.reviews.length}}</span>
+        <span>{{ selectedStay.reviews.length }}</span>
       </div>
 
       <div class="charts-container">
@@ -21,21 +21,22 @@
     </div>
 
     <div v-for="currOrder in orders" class="orders-tables">
-      <table>
+      <table> 
         <tr :class="bgStyleByStatus(currOrder.status)">
           <th>Buyer</th>
           <td class="buyer no-padding-inline">{{ currOrder.buyer.fullname }}</td>
 
           <th class="buyer-details-td flex align-center justify-center">
             <div class="buyer-img-container">
-              <img v-if="currOrder.buyer.imgUrl" :src="currOrder.buyer.imgUrl" alt="buyer profile image" />
-              <user-avatar v-else />
+              <img :src="currOrder.buyer.imgUrl" alt="buyer profile image" />
+              <!-- <img v-if="order.buyer.imgUrl" :src="currBuyer.imgUrl" alt="buyer profile image" />
+              <user-avatar v-else /> -->
             </div>
           </th>
         </tr>
         <tr>
           <th>Status</th>
-          <td :class="styleStatus(currOrder.status)" class="fs14 bold">
+          <td :class="styleStatus(currOrder.status)" class="fs18 bold">
             {{ currOrder.status }}
           </td>
           <el-select @change="updateOrder(currOrder)" v-model="currOrder.status" class="m-2 "
@@ -62,8 +63,8 @@
           <p>{{ currOrder.endDate }}</p>
           </td>
           <td class="end-td">
-              <th class="no-padding-inline">Booked: </th>
-              <p>{{ formatDate(currOrder.createdAt) }}</p>
+          <th class="no-padding-inline">Booked: </th>
+          <p>{{ formatDate(currOrder.createdAt) }}</p>
           </td>
         </tr>
         <tr>
@@ -113,6 +114,7 @@ export default {
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
       await this.$store.dispatch({ type: 'loadStay', id: this.orders[0].stay._id })
+
       socketService.login('6390a4d768ad08edacc01167')
 
     } catch (err) {
@@ -151,13 +153,13 @@ export default {
     async updateOrder(order) {
       await this.$store.dispatch({ type: 'updateOrder', order })
     },
-    averageRating(){
+    averageRating() {
       const reviews = this.selectedStay.reviews
       let average =
-      reviews.reduce((sum, review) => {
-        return sum + +review.rate
-      }, 0) / reviews.length
-      
+        reviews.reduce((sum, review) => {
+          return sum + +review.rate
+        }, 0) / reviews.length
+
       return average.toFixed(2)
     }
   },
@@ -165,7 +167,7 @@ export default {
     orders() {
       return JSON.parse(JSON.stringify(this.$store.getters.orders))
     },
-    selectedStay(){
+    selectedStay() {
       return this.$store.getters.selectedStay
     },
     monthlyEarning() {

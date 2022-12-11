@@ -212,6 +212,9 @@
       color: $clr8;
     }
   
+      .approved {
+          color: #0b925f;
+      }
       .pending {
           color: #E3B505;
       }
@@ -228,9 +231,9 @@
 
 
 
-// .el-select-dropdown__item.selected {
-//     color: $clr2 !important;
-// }
+.el-select-dropdown__item.selected {
+    color: $clr2 !important;
+}
 
 // .el-input .el-input--small .el-input--suffix{
 //     border: none !important;
