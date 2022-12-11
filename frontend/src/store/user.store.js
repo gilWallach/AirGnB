@@ -118,6 +118,7 @@ export const userStore = {
       try{
         const user = await userService.getById(userId)
         commit({ type: 'setUser', user })
+        return user
       } catch(err){
         throw err
       }

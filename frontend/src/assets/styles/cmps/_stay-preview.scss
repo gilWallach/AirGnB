@@ -105,9 +105,10 @@
                 font-family: airBnb-Med;
                 color: $clr2;
 
-                .rating {
-                    margin-inline-start: 3px;
-                }
+            }
+            & .rating {
+                margin-inline-start: 3px;
+                min-width: max-content;
             }
         }
 
