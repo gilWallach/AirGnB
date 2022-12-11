@@ -1,14 +1,34 @@
 .alert {
+  display: flex;
+  align-items: center;
   background-color: lightgray;
   position: absolute;
-  top: 0;
+  bottom: 0.5em;
   right: 0.5em;
   padding: 1em;
   z-index: 500;
   &.alert-success {
-    background-color: lightgreen;
+    font-family: airBnB-Med;
+    background-color: $clr6;
+    color: $clr1;
+    border: 1px solid $clr6;
+    border-radius: 15px;
   }
   &.alert-error {
     background-color: lightcoral;
   }
 }
+
+// Bottom-black
+// font-family: airBnB-Med;
+//     background-color: $clr3;
+//     color: $clr1;
+//     border: 1px solid $clr6;
+//     border-radius: 15px;
+
+// bottom-grey
+// font-family: airBnB-Med;
+// background-color: $clr6;
+// color: $clr1;
+// border: 1px solid $clr6;
+// border-radius: 15px;

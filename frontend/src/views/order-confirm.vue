@@ -224,7 +224,7 @@ export default {
       order.stay = miniStay
       try {
         await this.$store.dispatch({ type: 'addOrder', order })
-        // showSuccessMsg('order created!')
+        showSuccessMsg('order created!')
         this.$router.push('/')
       } catch (err) {
         // showErrorMsg('could not create order, please try again later')

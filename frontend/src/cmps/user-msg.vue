@@ -31,5 +31,6 @@ export default {
       return `alert-${this.msg.type}`
     },
   },
+  components: {},
 }
 </script>
