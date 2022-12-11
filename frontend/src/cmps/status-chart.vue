@@ -16,12 +16,13 @@ export default {
   data() {
     return {
       orders: this.$store.getters.orders,
-      labels: ['approved', 'pending', 'declined'],
+      labels: ['Approved', 'Pending', 'Declined'],
       options: {
         responsive: true,
         plugins: {
           legend: {
             display: true,
+            boxWidth:1,
             position: 'right',
             labels: {
               font: {
@@ -46,7 +47,7 @@ export default {
       const data = this.labels.map(status => {
         const dataInNums = this.orders.reduce(
           (acc, order) => {
-            order.status === status
+            order.status === status.toLowerCase()
               ? acc++
               : acc
             return acc

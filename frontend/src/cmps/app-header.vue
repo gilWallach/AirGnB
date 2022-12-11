@@ -45,10 +45,10 @@
         class="mini-search-mobile hidden flex align-center justify-space-between"
       >
         <button @click="selected('where')" class="flex align-center search-btn">
-          <search />
+          <!-- <search /> -->
           <div class="text-container flex column">
             <h2>Where to?</h2>
-            <p>Anywhere . Any week . Add guests</p>
+            <p><span>Anywhere</span><span>Any week</span><span>Add guests</span></p>
           </div>
           <button
             @click.stop="isModalOpen = true"

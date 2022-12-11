@@ -3,7 +3,7 @@
 
     // padding-top: $header-height / 2;
     .host-summary {
-        padding: 16px;
+        padding: 10px;
 
         .stats-header {
             border-bottom: .5px solid $clr7;
@@ -40,7 +40,7 @@
     }
   
     tr:first-of-type th {
-        padding-inline: 16px;
+        padding-inline: 10px;
     }
     table {
       width: 100%;
@@ -124,7 +124,7 @@
           }
   
       tr:not(tr:first-of-type) {
-        padding-inline: 16px;
+        padding-inline: 10px;
       }
   
       th {
