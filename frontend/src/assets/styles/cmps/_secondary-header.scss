@@ -5,6 +5,9 @@
   height: 66px;
   max-width: 848px;
   margin: auto;
+  & > *:hover:not(.selected){
+    background-color: $clr6;
+  }
   & > label:has(+ *.selected) p::after,
   & > label.selected p::after,
   & > label:has(+ *:hover) p::after,

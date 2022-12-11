@@ -9,11 +9,12 @@
     <main>
       <div class="price">
         <h2 class="fs22">Price range</h2>
-        <p>The average monthly price is 734$</p>
-        <HistogramSlider :width="629" :barWidth="11.58" :bar-height="64" :data="prices"
-          :force-edges="false" :primaryColor="'#b0b0b0'" :holderColor="'#dddddd'" :handleSize="32" :histSliderGap="0"
-          :barGap="0" :barRadius="1" :lineHeight="0" :label="false" :hideFromTo="true"
-           :min="minPrice" :max="maxPrice" @finish="setMinMax" />
+        <p>The average monthly price is ${{ priceAvg }}</p>
+        <HistogramSlider :width="629" :barWidth="11.58" :bar-height="64" :data="prices" :force-edges="false"
+          :primaryColor="'#b0b0b0'" @change="setMinMax"
+          :holderColor="'#dddddd'" :handleSize="32" :histSliderGap="0" :barGap="0"
+          :barRadius="1" :lineHeight="0" :label="false" :hideFromTo="true" :min="minPrice" :max="maxPrice"
+           />
         <div class="prices-display flex justify-center align-center">
           <label class="flex column">
             <small>min price</small>
@@ -172,6 +173,10 @@ export default {
     },
     maxPrice() {
       return Math.max(...this.prices)
+    },
+    priceAvg() {
+      const priceSum = this.prices.reduce((acc, price) => acc + price, 0)
+      return Math.ceil(priceSum / this.prices.length)
     },
     amenities() {
       const amenities = this.$store.getters.stays.reduce((acc, { amenities },) => acc.concat(amenities), [])
