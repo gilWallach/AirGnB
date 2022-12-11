@@ -200,6 +200,12 @@ function getLabels() {
         'https://a0.muscache.com/pictures/9a2ca4df-ee90-4063-b15d-0de7e4ce210a.jpg',
     },
     {
+      name: 'skiing',
+      displayName: 'Skiing',
+      imageUrl:
+        'https://a0.muscache.com/pictures/c8bba3ed-34c0-464a-8e6e-27574d20e4d2.jpg',
+    },
+    {
       name: 'amazing-pools',
       displayName: 'Amazing pools',
       imageUrl:
