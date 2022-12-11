@@ -26,12 +26,12 @@
           <th>Buyer</th>
           <td class="buyer no-padding-inline">{{ currOrder.buyer.fullname }}</td>
 
-          <!-- <th class="buyer-details-td flex align-center justify-center">
+          <th class="buyer-details-td flex align-center justify-center">
             <div class="buyer-img-container">
               <img v-if="currOrder.buyer.imgUrl" :src="currOrder.buyer.imgUrl" alt="buyer profile image" />
               <user-avatar v-else />
             </div>
-          </th> -->
+          </th>
         </tr>
         <tr>
           <th>Status</th>
