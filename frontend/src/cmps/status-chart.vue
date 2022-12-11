@@ -2,7 +2,7 @@
   <section v-if="orders" class='status-chart'>
     <div class="chart-container">
       <h3>Orders status average</h3>
-      <DoughnutChart :chartData="getStatusData" :options="options"/>
+      <DoughnutChart :chartData="getStatusData" :options="options" />
     </div>
   </section>
 </template>
@@ -18,19 +18,28 @@ export default {
       orders: this.$store.getters.orders,
       labels: ['approved', 'pending', 'declined'],
       options: {
+        responsive: true,
         plugins: {
           legend: {
-            display: false,
-          }
+            display: true,
+            position: 'right',
+            labels: {
+              font: {
+                family: 'airBnb-Reg',
+                size: '12px ',
+              },
+            }
+          },
+          // title: {
+          // display: true,
+          // text: 'Chart.js Doughnut Chart',
+          // position: 'top',
+          // },
         }
       },
-      options: {
-        type: Array,
-        default: () => ['approved', 'pending', 'declined']
-      }
     }
   },
-  created() {},
+  created() { },
   methods: {},
   computed: {
     getStatusData() {
@@ -41,8 +50,8 @@ export default {
               ? acc++
               : acc
             return acc
-            },
-              0
+          },
+          0
         )
         return dataInNums / this.orders.length * 100
       })
