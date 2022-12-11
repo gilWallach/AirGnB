@@ -1,8 +1,8 @@
 <template>
   <section v-if="orders" class='status-chart'>
     <div class="chart-container">
-      <h3>Orders status average</h3>
-      <DoughnutChart :chartData="getStatusData" :options="options" />
+      <h3 class="status-chart-h3">Orders status average</h3>
+      <DoughnutChart :chartData="getStatusData" :options="options" style="max-height: 238px"/>
     </div>
   </section>
 </template>

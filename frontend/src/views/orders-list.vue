@@ -6,11 +6,11 @@
         <p>Guests love what you're doing, Keep up the good work and review your stats!</p>
       </div>
       <div class="stats">
-        <p>Monthly earning:</p>
+        <p class="fs16">Monthly earning:</p>
         <span>${{ monthlyEarning }}</span>
-        <p>Average rating:</p>
+        <p class="fs16">Average rating:</p>
         <span>{{ averageRating() }}</span>
-        <p>Amount of reviews:</p>
+        <p class="fs16">Amount of reviews:</p>
         <span>{{ selectedStay.reviews.length }}</span>
       </div>
 
@@ -171,6 +171,8 @@ export default {
       return this.$store.getters.selectedStay
     },
     monthlyEarning() {
+      console.log(this.ord)
+
       const cuurMonth = new Date(Date.now()).getMonth()
       const monthlyOrders = this.orders.filter(order => {
         const orderMonth = new Date(Date.parse(order.createdAt)).getMonth()
