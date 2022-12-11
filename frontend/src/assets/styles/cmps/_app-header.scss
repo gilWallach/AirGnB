@@ -1,3 +1,13 @@
+@include for-mobile-layout{
+  .header-container { 
+    display: flex !important;
+    justify-content: space-between;
+    padding: 10px;
+    header{
+      width: 100%;
+    }
+  }
+}
 header {
   &.menu-open {
   }
@@ -48,23 +58,35 @@ header {
     }
     .search-btn {
       // padding-block: 0.3em;
-      padding: 0;
+      margin: 0;
+      padding-inline-start: 20px;
       position: relative;
       background-color: $clr8;
       outline: 0.1px solid $clr6;
       border-radius: 2em;
       box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
-      .text-container{
-        h2{
+      .text-container {
+        h2 {
           margin-bottom: 0.2em;
           font-size: em(14px);
-          font-family: 'airBnB-Reg';
+          font-family: "airBnB-Reg";
           color: $clr3;
         }
-        p{
+        p {
           margin: 0;
           font-size: em(12px);
           color: $clr4;
+          span {
+            padding-inline-end: 5px;
+            position: relative;
+            &:not(:first-of-type)::before {
+              content: ".";
+              position: absolute;
+              top: 0;
+              left: 0;
+              transform: translate(-111%, -25%);
+            }
+          }
         }
         align-items: flex-start;
         width: max-content;
@@ -141,7 +163,7 @@ header {
     }
   }
   nav {
-    @include for-mobile-layout{
+    @include for-mobile-layout {
       gap: 5px;
       padding: 15px;
       height: 54.66px;
