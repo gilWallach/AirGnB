@@ -31,4 +31,9 @@
   .bottom-group {
     border-top: 1px solid $clr6;
   }
+
+  .el-badge__content.is-fixed{
+    top: 50%;
+    right: -89px;
+  }
 }

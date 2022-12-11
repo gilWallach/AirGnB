@@ -6,8 +6,14 @@
         <li @click.stop="openModal(true)">Log in</li>
       </ul>
       <ul v-else class="list-items clean-list fs14 bold">
-        <li><router-link to="/order-confirm">Pending Orders</router-link></li>
+        <li>
+          <el-badge v-if="isShowNotification" :value="1" class="item" style="margin-top: '10px'; margin-right: '10px';">
+            <div @click="newOrders">New Orders</div>
+          </el-badge>
+        </li>
+
         <li @click="myDashboard">My Dashboard</li>
+
       </ul>
       <ul class="list-items clean-list bottom-group fs14">
         <li>Airgnb your home</li>
@@ -19,19 +25,11 @@
   </section>
 
   <transition name="fade">
-    <loginSignupModal
-      v-if="isModalOpen"
-      @closeModal="closeModal"
-      :isLogin="isLogin"
-    />
+    <loginSignupModal v-if="isModalOpen" @closeModal="closeModal" :isLogin="isLogin" />
   </transition>
 
   <transition name="fade">
-    <div
-      class="main-screen"
-      v-if="isModalOpen"
-      @click="isModalOpen = false"
-    ></div>
+    <div class="main-screen" v-if="isModalOpen" @click="isModalOpen = false"></div>
   </transition>
 </template>
 
@@ -45,15 +43,19 @@ import {
 } from '../services/event-bus.service'
 export default {
   name: 'user-actions',
-  props: {},
-  emits: ['closeUserActions'],
+  props: {
+    isShowNotification: {
+      type: Boolean,
+    },
+  },
+  emits: ['closeUserActions', 'hideNotification'],
   data() {
     return {
       isModalOpen: false,
       isLogin: true,
     }
   },
-  created() {},
+  created() { },
   methods: {
     openModal(isLogin) {
       this.isLogin = isLogin
@@ -64,6 +66,11 @@ export default {
       this.isModalOpen = false
       this.$emit('closeUserActions')
       this.$refs.userActions.style.opacity = '1'
+    },
+    newOrders(){
+      this.$router.push({ path: `/order-confirm` })
+      // this.isShowNotification = false
+      this.$emit('hideNotification')
     },
     myDashboard() {
       //   const user = this.loggedinUser

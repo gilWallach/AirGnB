@@ -90,6 +90,8 @@
         <user-actions
           v-if="showUserActions"
           @closeUserActions="closeUserActions"
+          :isShowNotification="isShowNotification"
+          @hideNotification="hideNotification"
         />
       </nav>
     </header>
@@ -213,6 +215,10 @@ export default {
     onToggleUserActions() {
       this.isShowUserActions = !this.isShowUserActions
       this.isShowWhiteScreen = !this.isShowWhiteScreen
+    },
+    hideNotification(){
+      console.log('lll')
+      this.isShowNotification = false
     },
     // onCloseUserActions() {
     //   this.isShowUserActions = false
