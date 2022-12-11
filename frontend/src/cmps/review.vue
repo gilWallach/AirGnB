@@ -4,13 +4,13 @@
       <img :src="review.by.imgUrl" alt="reviewer image" class="avatar" />
       <div class="details flex column">
         <h3 class="review-title">{{ review.by.fullname }}</h3>
+        <!-- <p class="review-subtitle">August 2022</p> -->
         <p class="review-subtitle">August 2022</p>
       </div>
     </div>
     <div class="review-details">
       <p class="review-txt">{{ review.txt }}</p>
     </div>
-    <!-- <pre>{{ review }}</pre> -->
   </section>
 </template>
 <script>
