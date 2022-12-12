@@ -51,6 +51,9 @@ async function addOrder(req, res) {
       data: addedOrder,
       userId: addedOrder.host._id,
     })
+    logger.debug(
+      `emitting order-added event to user ${addedOrder.host.fullname}`
+    )
     res.json(addedOrder)
   } catch (err) {
     logger.error('Failed to add order', err)
