@@ -131,6 +131,12 @@
     flex-basis: 50%;
     justify-content: space-between;
 
+    .stay-txt {
+      > * {
+        margin: 0.6em 0;
+      }
+    }
+
     .stay-img {
       border-radius: 0.75em;
       object-fit: cover;
