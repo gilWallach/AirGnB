@@ -48,10 +48,11 @@
 
   .reservation-details {
     width: 100%;
-    padding-top: em(22px);
+    // padding-top: em(22px);
 
     h3 > p {
       margin-bottom: em(10px);
+      color: lighten($clr3, 5%);
     }
   }
 
@@ -74,7 +75,7 @@
       position: relative;
 
       > h2 {
-        margin: 1.5em 0;
+        margin-bottom: 1.5em;
       }
 
       .btn-back {
@@ -89,9 +90,11 @@
       }
 
       .buyer-details {
+        padding-bottom: 20px;
         .clean-margin {
           .arrow-back {
             display: inline;
+
             svg {
               display: inline !important;
             }
