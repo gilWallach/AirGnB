@@ -11,17 +11,16 @@
             <button class="fs14 bold btn-sticky-nav">Location</button>
           </div>
           <div v-if="modalInSubHeader" class="reserve-container flex">
-            <div class="mini-details flex column justify-space-between">
-              <span><span class="price">{{ formatPriceNight }}</span> night</span>
+            <div class="mini-details flex column justify-center">
+              <span class="full-price"><span class="price">{{ formatPriceNight }}</span> night</span>
               <div class="rate-reviews-container flex">
-                <p class="rate flex">
+                <p class="rate flex align-center">
                   <star /><span>{{ getStay.reviews.length ? reviewsAvg : 'New' }} </span><span
                     class="separator">·</span>
                 </p>
                 <p>
                   <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
                   </span>
-                  <span class="separator">·</span>
                 </p>
               </div>
             </div>

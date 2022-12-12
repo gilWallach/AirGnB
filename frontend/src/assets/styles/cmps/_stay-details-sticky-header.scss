@@ -23,14 +23,46 @@
         .btn-sticky-nav:hover {
           box-shadow: inset 0 -4px 0px 0px $clr2;
         }
+
+        .mini-details{
+            gap: 4px;
+            .full-price{
+                font-size: 14px;
+            }
+        }
         .reserve-container {
-            .price{
-                font-family: 'airBnB-Med';
-                font-size: 1rem;
+
+          .rate-reviews-container {
+            margin-inline-end: 1rem;
+            font-size: em(12px);
+            font-family: "airBnb-Med";
+
+            .reviews-amount{
+                color: rgb(113, 113, 113);
+                text-decoration: underline;
             }
-            p{
-                margin: 0;
+
+            .rate{
+                color: $clr3;
+                >*{
+                    padding-inline-end: 4px;
+                }
+                .star-svg{
+                  padding-bottom: 2px;
+                  svg{
+                    width: 10px !important;
+                    height: 10px !important;
+                  }
+                }
             }
+          }
+          .price {
+            font-family: "airBnB-Med";
+            font-size: 1rem;
+          }
+          p {
+            margin: 0;
+          }
 
           .gradient-button {
             width: 108px;
@@ -38,9 +70,10 @@
               margin: 0;
             }
             button {
-              font-family: "airBnb-Reg";
+              span{
+                font-family: "airBnb-Reg";
+              }
             }
-
           }
         }
       }
