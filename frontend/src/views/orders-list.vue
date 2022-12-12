@@ -2,7 +2,7 @@
   <section v-if="orders.length && selectedStay" class="orders-summary">
     <div class="host-summary">
       <div class="stats-header">
-        <h3>Good job!</h3>
+        <h3 class="flex"><arrowBack @click="goBack"/>  Good job!</h3>
         <p>Guests love what you're doing, Keep up the good work and review your stats!</p>
       </div>
       <div class="stats">
@@ -28,7 +28,7 @@
 
           <th class="buyer-details-td flex align-center justify-center">
             <div class="buyer-img-container">
-              <img :src="currOrder.buyer.imgUrl" alt="buyer profile image" />
+              <img :src="currOrder.buyer.imgUrl" alt="buyer profile image" onerror="this.src=`https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png`"/>
               <!-- <img v-if="order.buyer.imgUrl" :src="currBuyer.imgUrl" alt="buyer profile image" />
               <user-avatar v-else /> -->
             </div>
@@ -58,7 +58,7 @@
           <p>{{ formatDate(currOrder.startDate) }}</p>
           <!-- <p>{{ currOrder.startDate }}</p> -->
           </td>
-          <td class="center-td">
+          <td class="center-td"> 
           <th class="no-padding-inline">Check-out: </th>
           <p>{{ currOrder.endDate }}</p>
           </td>
@@ -79,6 +79,7 @@
 <script>
 import userAvatar from '../assets/svg/user-avatar.vue'
 import statusChart from '../cmps/status-chart.vue'
+import arrowBack from '../assets/svg/arrow-back.vue'
 import { socketService, SOCKET_EVENT_ORDER_ADDED } from '../services/socket.service'
 
 export default {
@@ -123,6 +124,7 @@ export default {
   },
   methods: {
     formatGuests(guests) {
+      delete guests.capacity
       const guestsArr = Object.values(guests)
       if (!guestsArr.length) return guests
       return guestsArr.reduce((acc, n) => acc + n, 0)
@@ -161,7 +163,10 @@ export default {
         }, 0) / reviews.length
 
       return average.toFixed(2)
-    }
+    },
+    goBack(){
+      this.$router.push('/')
+    },
   },
   computed: {
     orders() {
@@ -189,6 +194,7 @@ export default {
   components: {
     userAvatar,
     statusChart,
+    arrowBack,
   },
 }
 </script>

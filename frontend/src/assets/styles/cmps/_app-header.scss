@@ -1,9 +1,9 @@
-@include for-mobile-layout{
-  .header-container { 
+@include for-mobile-layout {
+  .header-container {
     display: flex !important;
     justify-content: space-between;
     padding: 10px;
-    header{
+    header {
       width: 100%;
     }
   }
@@ -49,6 +49,8 @@ header {
       width: 2em;
       height: 2em;
       border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
     }
   }
 
@@ -69,7 +71,7 @@ header {
         h2 {
           margin-bottom: 0.2em;
           font-size: em(14px);
-          font-family: "airBnB-Reg";
+          font-family: 'airBnB-Reg';
           color: $clr3;
         }
         p {
@@ -80,7 +82,7 @@ header {
             padding-inline-end: 5px;
             position: relative;
             &:not(:first-of-type)::before {
-              content: ".";
+              content: '.';
               position: absolute;
               top: 0;
               left: 0;
@@ -146,7 +148,7 @@ header {
       max-width: 93px;
       text-align: center;
       font-size: 14px;
-      font-family: "airBnb-Med";
+      font-family: 'airBnb-Med';
       &::placeholder {
         font-family: airBnb-Reg;
         color: $clr4;
@@ -231,7 +233,7 @@ header {
         position: relative;
       }
       > button::after {
-        content: "";
+        content: '';
         position: absolute;
         height: 24px;
         width: 0.6px;

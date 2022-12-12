@@ -57,7 +57,11 @@
                 {{ order.buyer.fullname }}
               </h3>
               <div class="buyer-img-container">
-                <img :src="currUser.imgUrl" alt="buyer image" />
+                <img
+                  :src="currUser.imgUrl"
+                  alt="buyer image"
+                  onerror="this.src=`https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png`"
+                />
               </div>
             </div>
             <h2 class="fs22">Order details</h2>
@@ -195,6 +199,7 @@ export default {
       this.$store.commit({ type: 'setDetails' })
       await this.$store.dispatch({ type: 'loadOrders' })
       this.order = JSON.parse(JSON.stringify(this.$store.getters.orders[0]))
+      console.log('this.order: ', this.order)
       await this.$store.dispatch({
         type: 'loadUser',
         userId: this.order.buyer._id,
@@ -202,7 +207,9 @@ export default {
 
       this.currUser = this.$store.getters.user
 
+      delete this.order.guests.capacity
       const guestsArr = Object.values(this.order.guests)
+      console.log('guestsArr: ', guestsArr)
       this.order.guests = guestsArr.reduce((acc, n) => acc + n, 0)
 
       this.currStay = this.order.stay
