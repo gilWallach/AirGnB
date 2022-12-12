@@ -73,7 +73,7 @@
                 <h3 class="fs16" :class="{ 'clean-margin': isHostMode }">
                   Guests
                 </h3>
-                <span v-if="isHostMode && order.guests">{{ order.guests }}</span>
+                <span class="last-item" v-if="isHostMode && order.guests">{{ order.guests }}</span>
                 <span v-if="order.guests.adults">{{ order.guests.adults }} adult</span>
                 <span v-if="order.guests.children">{{ order.guests.children }} children</span>
                 <span v-if="order.guests.infants">{{ order.guests.infants }} infants</span>
