@@ -7,6 +7,17 @@
     color: lighten($clr3, 5%);
     margin-bottom: em(20px);
     padding-bottom: 0;
+    .arrow-back {
+      display: inline;
+
+      svg {
+        display: inline !important;
+      }
+    }
+    .arrow-back:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
   .subtitle {
     margin-bottom: em(22px);
@@ -21,13 +32,13 @@
     gap: 4em;
   }
 
-  & .buyer-img-container{
+  & .buyer-img-container {
     width: 48px;
     height: 48px;
     border-radius: 50%;
     overflow: hidden;
 
-    img{
+    img {
       object-fit: cover;
     }
   }
@@ -75,6 +86,20 @@
       }
       .btn-back:hover {
         cursor: pointer;
+      }
+
+      .buyer-details {
+        .clean-margin {
+          .arrow-back {
+            display: inline;
+            svg {
+              display: inline !important;
+            }
+          }
+          .arrow-back:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
 
