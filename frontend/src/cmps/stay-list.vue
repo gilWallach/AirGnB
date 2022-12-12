@@ -5,7 +5,7 @@
       class="list-header-container main-layout-list"
       :class="{ 'scroll-shadow': scrollShadow }"
     >
-      <div class="list-header flex align-center justify-space-between">
+      <div  v-if="$store.getters.stays.length" class="list-header flex align-center justify-space-between">
         <stay-labels
           v-if="labels"
           :labels="labels"
