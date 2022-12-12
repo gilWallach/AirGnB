@@ -47,13 +47,11 @@ async function addOrder(req, res) {
 
     //Socket
     await emitToUser({
-      type: 'order-added',
+      type: 'new-order',
       data: addedOrder,
       userId: addedOrder.host._id,
     })
-    logger.debug(
-      `emitting order-added event to user ${addedOrder.host.fullname}`
-    )
+    logger.debug(`emitting new-order event to user ${addedOrder.host.fullname}`)
     res.json(addedOrder)
   } catch (err) {
     logger.error('Failed to add order', err)

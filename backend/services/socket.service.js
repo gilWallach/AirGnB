@@ -49,6 +49,9 @@ function setupSocketAPI(http) {
       logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
       delete socket.userId
     })
+    socket.on('new-order', () => {
+      logger.info(`listening to new order created event`)
+    })
   })
 }
 

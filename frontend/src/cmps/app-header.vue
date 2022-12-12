@@ -144,7 +144,7 @@ export default {
   created() {
     window.addEventListener('scroll', this.handleScroll)
 
-    socketService.on('order-added', (order) => {
+    socketService.on('new-order', (order) => {
       this.isShowNotification = true
       this.$store.commit({ type: 'addOrder', order })
       // this.$store.commit({ type: 'setSelectedOrder', order })
