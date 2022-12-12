@@ -233,9 +233,8 @@ export default {
       order.stay = miniStay
       try {
         await this.$store.dispatch({ type: 'addOrder', order })
-        // showSuccessMsg('order created!')
         ElNotification({
-          title: 'Order Created',
+          title: 'Good news!',
           message: 'Your order has been sent to the host successfully',
           type: 'success',
         })

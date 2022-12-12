@@ -4,12 +4,11 @@ const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
 
 // async function query(filterBy = { _id: '' }) {
-async function query() {
+async function query(filterBy = { _id: '' }) {
   const criteria = {}
   try {
     // const criteria = {
-    //   name: { $regex: filterBy.name, $options: 'i' },
-    //   name, capacity/ date (in/out)
+    //   "host._id": ObjectId(filterBy._id),
     // }
     const collection = await dbService.getCollection('order')
     var orders = await collection.find(criteria).sort({ _id: -1 }).toArray()

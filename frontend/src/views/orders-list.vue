@@ -112,7 +112,9 @@ export default {
       this.$store.commit({ type: 'addOrder', order })
     })
     try {
-      await this.$store.dispatch({ type: 'loadOrders' })
+      // Add loggedin user id to filter 
+      await this.$store.dispatch({ type: 'loadOrders' , filterBy:{_id:this.$store.getters.loggedinUser._id}} )
+
       await this.$store.dispatch({ type: 'loadStay', id: this.orders[0].stay._id })
 
       socketService.login('6390a4d768ad08edacc01167')
@@ -171,7 +173,6 @@ export default {
       return this.$store.getters.selectedStay
     },
     monthlyEarning() {
-      console.log(this.ord)
 
       const cuurMonth = new Date(Date.now()).getMonth()
       const monthlyOrders = this.orders.filter(order => {
