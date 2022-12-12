@@ -3,7 +3,9 @@
     <section class="order-confirm">
       <!-- page header -->
       <header class="flex column">
-        <h1 v-if="!isHostMode" class="header fs22">Order Confirmation</h1>
+        <h1 v-if="!isHostMode" class="header fs22">
+          <arrowBack @click="back" /> Order Confirmation
+        </h1>
         <!-- <p class="fs14">Dear guest,</p>
         <p class="fs14 subtitle">
           In order to complete your reservation,
@@ -24,15 +26,27 @@
         </div>
 
         <!-- order summary -->
-        <div v-if="order.startDate" class="content-container justify-space-between align-center"
-          :class="{ flex: !isHostMode }">
+        <div
+          v-if="order.startDate"
+          class="content-container justify-space-between align-center"
+          :class="{ flex: !isHostMode }"
+        >
           <div class="reservation-details">
-            <h3 v-if="isHostMode" @click="backToList" class="btn-back">Back</h3>
-            <h3 v-else @click="back" class="btn-back">Back</h3>
+            <!-- <h3 v-if="isHostMode" @click="backToList" class="btn-back">
+              <arrowBack />
+            </h3>
+            <h3 v-else @click="back" class="btn-back"><arrowBack /></h3> -->
             <!-- <div v-if="isHostMode && currUser" class="buyer-details flex align-center justify-space-between"> -->
-            <div v-if="isHostMode && currUser" class="buyer-details flex align-center justify-space-between">
-              <h3 :class="{ 'clean-margin': isHostMode }">
-                New order from {{ order.buyer.fullname }}
+            <div
+              v-if="isHostMode && currUser"
+              class="buyer-details flex align-center justify-space-between"
+            >
+              <h3
+                :class="{ 'clean-margin': isHostMode }"
+                class="flex align-center"
+              >
+                <arrowBack @click="backToList" /> New order from
+                {{ order.buyer.fullname }}
               </h3>
               <div class="buyer-img-container">
                 <img :src="currUser.imgUrl" alt="buyer image" />
@@ -44,48 +58,80 @@
                 <h3 class="fs16">Dates</h3>
                 <span>{{ order.startDate }} - {{ order.endDate }}</span>
               </li>
-              <li class="flex list-item" :class="{
-                column: !isHostMode,
-                'justify-space-between': isHostMode,
-              }">
+              <li
+                class="flex list-item"
+                :class="{
+                  column: !isHostMode,
+                  'justify-space-between': isHostMode,
+                }"
+              >
                 <h3 class="fs16" :class="{ 'clean-margin': isHostMode }">
                   Total nights
                 </h3>
                 <span>{{ order.totalNights }}</span>
               </li>
-              <li class="flex list-item" :class="{
-                column: !isHostMode,
-                'justify-space-between': isHostMode,
-              }">
+              <li
+                class="flex list-item"
+                :class="{
+                  column: !isHostMode,
+                  'justify-space-between': isHostMode,
+                }"
+              >
                 <h3 class="fs16" :class="{ 'clean-margin': isHostMode }">
                   Guests
                 </h3>
                 <span v-if="isHostMode">{{ order.guests }}</span>
-                <span v-if="order.guests.adults">{{ order.guests.adults }} adult</span>
-                <span v-if="order.guests.children">{{ order.guests.children }} children</span>
-                <span v-if="order.guests.infants">{{ order.guests.infants }} infants</span>
+                <span v-if="order.guests.adults"
+                  >{{ order.guests.adults }} adult</span
+                >
+                <span v-if="order.guests.children"
+                  >{{ order.guests.children }} children</span
+                >
+                <span v-if="order.guests.infants"
+                  >{{ order.guests.infants }} infants</span
+                >
               </li>
               <li class="list-item">
                 <h3 v-if="!isHostMode" class="fs16">Price Breakdown</h3>
-                <p v-if="!isHostMode" class="flex align-center justify-space-between">
+                <p
+                  v-if="!isHostMode"
+                  class="flex align-center justify-space-between"
+                >
                   <span>{{ pricePerNight }}</span>
                   <span>{{ this.order.netPrice }}</span>
                 </p>
-                <p v-if="!isHostMode" class="flex align-center justify-space-between last-item">
+                <p
+                  v-if="!isHostMode"
+                  class="flex align-center justify-space-between last-item"
+                >
                   <span>Service fee</span> <span>$383</span>
                 </p>
               </li>
-              <li v-if="isHostMode" class="flex align-center justify-space-between list-item bold fs22">
+              <li
+                v-if="isHostMode"
+                class="flex align-center justify-space-between list-item bold fs22"
+              >
                 <span>Total</span><span>${{ order.totalPrice }}</span>
               </li>
-              <li v-else class="flex align-center justify-space-between list-item bold fs18">
+              <li
+                v-else
+                class="flex align-center justify-space-between list-item bold fs18"
+              >
                 <span>Total</span><span>{{ totalPrice }}</span>
               </li>
             </ul>
             <div class="confirmation-btns flex column justify-center">
-              <gradient-button v-if="isHostMode" :data="'Approve'" @click="updateOrderStatus('approved')" />
+              <gradient-button
+                v-if="isHostMode"
+                :data="'Approve'"
+                @click="updateOrderStatus('approved')"
+              />
               <gradient-button v-else :data="'Confirm'" @click="setOrder" />
-              <button v-if="isHostMode" class="decline-btn" @click="updateOrderStatus('declined')">
+              <button
+                v-if="isHostMode"
+                class="decline-btn"
+                @click="updateOrderStatus('declined')"
+              >
                 Decline
               </button>
             </div>
