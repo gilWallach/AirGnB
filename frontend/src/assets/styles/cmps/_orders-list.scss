@@ -125,18 +125,6 @@
         text-align: start;
       }
   
-      & .buyer-img-container {
-        height: 48px;
-        width: 48px;
-        border-radius: 50%;
-        overflow: hidden;
-  
-        img {
-          object-fit: cover;
-          object-position: center;
-        }
-      }
-  
       tr:last-of-type {
         border: none;
       }

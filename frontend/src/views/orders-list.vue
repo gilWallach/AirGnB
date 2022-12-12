@@ -171,8 +171,6 @@ export default {
       return this.$store.getters.selectedStay
     },
     monthlyEarning() {
-      console.log(this.ord)
-
       const cuurMonth = new Date(Date.now()).getMonth()
       const monthlyOrders = this.orders.filter(order => {
         const orderMonth = new Date(Date.parse(order.createdAt)).getMonth()
