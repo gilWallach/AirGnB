@@ -175,12 +175,12 @@ function getLabels() {
       imageUrl:
         'https://a0.muscache.com/pictures/677a041d-7264-4c45-bb72-52bff21eb6e8.jpg',
     },
-    {
-      name: 'ski-in-out',
-      displayName: 'Ski in/out',
-      imageUrl:
-        'https://a0.muscache.com/pictures/757deeaa-c78f-488f-992b-d3b1ecc06fc9.jpg',
-    },
+    // {
+    //   name: 'ski-in-out',
+    //   displayName: 'Ski in/out',
+    //   imageUrl:
+    //     'https://a0.muscache.com/pictures/757deeaa-c78f-488f-992b-d3b1ecc06fc9.jpg',
+    // },
     {
       name: 'tiny-homes',
       displayName: 'Tiny homes',
@@ -270,6 +270,24 @@ function getLabels() {
       displayName: 'Camping',
       imageUrl:
         'https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg',
+    },
+    {
+      name: 'vineyards',
+      displayName: 'Vineyards',
+      imageUrl:
+        'https://a0.muscache.com/pictures/60ff02ae-d4a2-4d18-a120-0dd274a95925.jpg',
+    },
+    {
+      name: 'desert',
+      displayName: 'Desert',
+      imageUrl:
+        'https://a0.muscache.com/pictures/a6dd2bae-5fd0-4b28-b123-206783b5de1d.jpg',
+    },
+    {
+      name: 'windmills',
+      displayName: 'Windmills',
+      imageUrl:
+        'https://a0.muscache.com/pictures/5cdb8451-8f75-4c5f-a17d-33ee228e3db8.jpg',
     },
   ]
 }
