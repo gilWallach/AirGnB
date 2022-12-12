@@ -1,6 +1,7 @@
+import { emitToUser } from '..services/socketService.js'
+
 async function addOrder(req, res) {
   const { loggedinUser } = req
-  logger.debug('loggedinUser', loggedinUser)
   try {
     const order = req.body
     order.buyer = loggedinUser
@@ -15,7 +16,6 @@ async function addOrder(req, res) {
     })
     res.json(addedOrder)
   } catch (err) {
-    logger.error('Failed to add order', err)
     res.status(500).send({ err: 'Failed to add order' })
   }
 }

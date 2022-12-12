@@ -49,10 +49,6 @@ function setupSocketAPI(http) {
       logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
       delete socket.userId
     })
-    socket.on('order-added', (order) => {
-      emitToUser({ type: 'order-added', data: order, userId: order.host._id })
-      console.log('order.host._id: ', order.host._id)
-    })
   })
 }
 
