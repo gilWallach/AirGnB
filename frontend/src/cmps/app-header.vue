@@ -48,7 +48,9 @@
           <!-- <search /> -->
           <div class="text-container flex column">
             <h2>Where to?</h2>
-            <p><span>Anywhere</span><span>Any week</span><span>Add guests</span></p>
+            <p>
+              <span>Anywhere</span><span>Any week</span><span>Add guests</span>
+            </p>
           </div>
           <button
             @click.stop="isModalOpen = true"
@@ -145,7 +147,7 @@ export default {
     socketService.on('order-added', (order) => {
       this.isShowNotification = true
       this.$store.commit({ type: 'addOrder', order })
-      this.$store.commit({ type: 'setSelectedOrder', order })
+      // this.$store.commit({ type: 'setSelectedOrder', order })
     })
   },
   destroyed() {
@@ -216,7 +218,7 @@ export default {
       this.isShowUserActions = !this.isShowUserActions
       this.isShowWhiteScreen = !this.isShowWhiteScreen
     },
-    hideNotification(){
+    hideNotification() {
       console.log('lll')
       this.isShowNotification = false
     },

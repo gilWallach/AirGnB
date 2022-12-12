@@ -10,11 +10,11 @@ const ObjectId = require('mongodb').ObjectId
 async function getOrders(req, res) {
   try {
     logger.debug('Getting Orders')
-    // const filterBy = {
-    //   _id: req.query._id || '',
-    // }
-    // const orders = await orderService.query(filterBy)
-    const orders = await orderService.query()
+    const filterBy = {
+      _id: req.query._id || '',
+    }
+    const orders = await orderService.query(filterBy)
+    // const orders = await orderService.query()
     orders.forEach((order) => {
       order.createdAt = ObjectId(order._id).getTimestamp()
     })

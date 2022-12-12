@@ -112,7 +112,9 @@ export default {
       this.$store.commit({ type: 'addOrder', order })
     })
     try {
-      await this.$store.dispatch({ type: 'loadOrders' })
+      // Add loggedin user id to filter 
+      await this.$store.dispatch({ type: 'loadOrders' , filterBy:{_id:this.$store.getters.loggedinUser._id}} )
+
       await this.$store.dispatch({ type: 'loadStay', id: this.orders[0].stay._id })
 
       socketService.login('6390a4d768ad08edacc01167')
