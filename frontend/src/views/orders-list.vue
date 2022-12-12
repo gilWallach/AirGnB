@@ -108,7 +108,6 @@ export default {
   },
   async created() {
     socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
-      console.log('order-added');
       this.$store.commit({ type: 'addOrder', order })
     })
     try {
@@ -117,7 +116,7 @@ export default {
 
       await this.$store.dispatch({ type: 'loadStay', id: this.orders[0].stay._id })
 
-      socketService.login('6390a4d768ad08edacc01167')
+      // socketService.login('6390a4d768ad08edacc01167')
 
     } catch (err) {
       throw err

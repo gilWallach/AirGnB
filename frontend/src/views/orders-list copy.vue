@@ -2,7 +2,6 @@
   <section v-if="orders" class="orders-list main-layout-list">
     <h1 class="fs22">Reservations</h1>
     <div class="content-container flex">
-
       <div class="list">
         <table>
           <tr>
@@ -11,7 +10,11 @@
           <tr v-for="currOrder in orders">
             <td class="buyer-details-td flex align-center justify-center">
               <div class="buyer-img-container">
-                <img v-if="currOrder.buyer.imgUrl" :src="currOrder.buyer.imgUrl" alt="buyer profile image" />
+                <img
+                  v-if="currOrder.buyer.imgUrl"
+                  :src="currOrder.buyer.imgUrl"
+                  alt="buyer profile image"
+                />
                 <user-avatar v-else />
               </div>
             </td>
@@ -26,9 +29,19 @@
             <td class="stay-name">{{ currOrder.stay.name }}</td>
             <td>{{ formatTotalPrice(currOrder.totalPrice) }}</td>
             <td>
-
-              <el-select @change="updateOrder(currOrder)" v-model="currOrder.status" class="m-2" :placeholder="currOrder.status" size="small">
-                <el-option v-for="status in options" :key="status.value" :label="status.label" :value="status.value" />
+              <el-select
+                @change="updateOrder(currOrder)"
+                v-model="currOrder.status"
+                class="m-2"
+                :placeholder="currOrder.status"
+                size="small"
+              >
+                <el-option
+                  v-for="status in options"
+                  :key="status.value"
+                  :label="status.label"
+                  :value="status.value"
+                />
               </el-select>
               <!-- <select v-model="currOrder.status" name="status" :value="currOrder.status"
                 @change="updateOrder(currOrder)">
@@ -49,7 +62,10 @@
 <script>
 import userAvatar from '../assets/svg/user-avatar.vue'
 import statusChart from '../cmps/status-chart.vue'
-import { socketService, SOCKET_EVENT_ORDER_ADDED } from '../services/socket.service'
+import {
+  socketService,
+  SOCKET_EVENT_ORDER_ADDED,
+} from '../services/socket.service'
 
 export default {
   name: 'orders-list',
@@ -90,14 +106,13 @@ export default {
     }
   },
   async created() {
-    socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
+    socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
       this.$store.commit({ type: 'addOrder', order })
     })
     try {
       await this.$store.dispatch({ type: 'loadOrders' })
       // this.orders = JSON.parse(JSON.stringify(this.$store.getters.orders))
-      socketService.login('6390a4d768ad08edacc01167')
-
+      // socketService.login('6390a4d768ad08edacc01167')
     } catch (err) {
       throw err
     }
@@ -128,7 +143,7 @@ export default {
   computed: {
     orders() {
       return JSON.parse(JSON.stringify(this.$store.getters.orders))
-    }
+    },
   },
   components: {
     userAvatar,
