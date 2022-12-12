@@ -71,7 +71,7 @@
                 <span>{{ order.totalNights }}</span>
               </li>
               <li
-                class="flex list-item"
+                class="flex list-item guests"
                 :class="{
                   column: !isHostMode,
                   'justify-space-between': isHostMode,
@@ -80,7 +80,7 @@
                 <h3 class="fs16" :class="{ 'clean-margin': isHostMode }">
                   Guests
                 </h3>
-                <span v-if="isHostMode && order.guests">{{ order.guests }}</span>
+                <span class v-if="isHostMode && order.guests">{{ order.guests }}</span>
                 <span v-if="order.guests.adults"
                   >{{ order.guests.adults }} adult</span
                 >
