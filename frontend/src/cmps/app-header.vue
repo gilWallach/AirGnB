@@ -219,12 +219,8 @@ export default {
       this.isShowWhiteScreen = !this.isShowWhiteScreen
     },
     hideNotification() {
-      console.log('lll')
       this.isShowNotification = false
     },
-    // onCloseUserActions() {
-    //   this.isShowUserActions = false
-    // },
     closeUserActions() {
       this.isShowUserActions = false
       this.isShowWhiteScreen = false

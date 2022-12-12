@@ -56,7 +56,7 @@
             <ul class="clean-list">
               <li class="flex column list-item">
                 <h3 class="fs16">Dates</h3>
-                <span>{{ order.startDate }} - {{ order.endDate }}</span>
+                <span v-if="order.startDate && order.endDate">{{ order.startDate }} - {{ order.endDate }}</span>
               </li>
               <li
                 class="flex list-item"
@@ -80,7 +80,7 @@
                 <h3 class="fs16" :class="{ 'clean-margin': isHostMode }">
                   Guests
                 </h3>
-                <span v-if="isHostMode">{{ order.guests }}</span>
+                <span v-if="isHostMode && order.guests">{{ order.guests }}</span>
                 <span v-if="order.guests.adults"
                   >{{ order.guests.adults }} adult</span
                 >
