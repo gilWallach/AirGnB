@@ -3,11 +3,30 @@
     <!-- SUB-HEADER floating element, appears when scrolling below gallery -->
     <div v-if="isShowSubHeader" class="sticky-header-container">
       <div class="main-container-stay-details sticky-header">
-        <header>
-          <button class="fs14 bold btn-sticky-nav">Photos</button>
-          <button class="fs14 bold btn-sticky-nav">Amenities</button>
-          <button class="fs14 bold btn-sticky-nav">Reviews</button>
-          <button class="fs14 bold btn-sticky-nav">Location</button>
+        <header class="flex align-center justify-space-between">
+          <div class="nav-btns">
+            <button class="fs14 bold btn-sticky-nav">Photos</button>
+            <button class="fs14 bold btn-sticky-nav">Amenities</button>
+            <button class="fs14 bold btn-sticky-nav">Reviews</button>
+            <button class="fs14 bold btn-sticky-nav">Location</button>
+          </div>
+          <div v-if="modalInSubHeader" class="reserve-container flex">
+            <div class="mini-details flex column justify-space-between">
+              <span><span class="price">{{ formatPriceNight }}</span> night</span>
+              <div class="rate-reviews-container flex">
+                <p class="rate flex">
+                  <star /><span>{{ getStay.reviews.length ? reviewsAvg : 'New' }} </span><span
+                    class="separator">·</span>
+                </p>
+                <p>
+                  <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
+                  </span>
+                  <span class="separator">·</span>
+                </p>
+              </div>
+            </div>
+            <gradient-button :data="'Reserve'" @click="doReserve" />
+          </div>
         </header>
       </div>
     </div>
@@ -21,13 +40,11 @@
       <div class="stay-details-container">
         <div class="details-ratings-container">
           <p class="rate">
-            <star /><span
-              >&nbsp; {{ getStay.reviews.length ? reviewsAvg : 'New' }} </span
-            ><span class="separator">·</span>
+            <star /><span>&nbsp; {{ getStay.reviews.length ? reviewsAvg : 'New' }} </span><span
+              class="separator">·</span>
           </p>
           <p>
-            <span class="reviews-amount"
-              >{{ getStay.reviews.length + ' ' + formatReviews }}
+            <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
             </span>
             <span class="separator">·</span>
           </p>
@@ -38,19 +55,19 @@
 
         <!-- SHARE AND SAVE -->
         <div class="action-btns">
-          <div class="share action-btn"><share /> <span>Share</span></div>
-          <div class="save action-btn"><save /> <span>Save</span></div>
+          <div class="share action-btn">
+            <share /> <span>Share</span>
+          </div>
+          <div class="save action-btn">
+            <save /> <span>Save</span>
+          </div>
         </div>
       </div>
 
       <!-- IMAGE GALLERY -->
       <div class="gallery" ref="elGallery">
-        <img
-          v-for="(img, idx) in getStay.imgUrls.slice(0, 5)"
-          :src="img"
-          alt="stay-image"
-          :class="'gallery-img img' + idx"
-        />
+        <img v-for="(img, idx) in getStay.imgUrls.slice(0, 5)" :src="img" alt="stay-image"
+          :class="'gallery-img img' + idx" />
       </div>
 
       <!-- STAY SUMMARY AND DETAILS -->
@@ -67,13 +84,8 @@
                 {{ getStay.capacity + 2 }} guests
               </div>
             </div>
-            <span
-              ><img
-                :src="getStay.host.thumbnailUrl"
-                alt="host-image"
-                class="host-img"
-                onerror="this.src=`https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png`"
-            /></span>
+            <span><img :src="getStay.host.thumbnailUrl" alt="host-image" class="host-img"
+                onerror="this.src=`https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png`" /></span>
           </div>
 
           <div class="stay-highlights">
@@ -179,24 +191,22 @@
 
         <!-- RESERVE MODAL -->
         <div class="reserve-section">
-          <div class="reserve-modal-full flex column" ref="reserveModal">
+          <div class="reserve-modal-full flex column">
             <div class="modal-header flex justify-space-between">
               <div>
                 <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
                 <span class="modal-header-price">{{
-                  getStay.price.toLocaleString('en-IN', {
-                    style: 'currency',
-                    currency: 'USD',
-                    maximumFractionDigits: 0,
-                  })
+                    getStay.price.toLocaleString('en-IN', {
+                      style: 'currency',
+                      currency: 'USD',
+                      maximumFractionDigits: 0,
+                    })
                 }}</span>
                 <span class="modal-header-text"> night</span>
               </div>
               <div class="rating-reviews flex" v-if="getStay.reviews.length">
-                <star /><span>4.82 </span
-                ><span class="separator">&nbsp;·&nbsp;</span>
-                <span class="reviews-amount"
-                  >{{ getStay.reviews.length + ' ' + formatReviews }}
+                <star /><span>4.82 </span><span class="separator">&nbsp;·&nbsp;</span>
+                <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
                 </span>
               </div>
             </div>
@@ -222,11 +232,8 @@
                   <date-picker @set-dates="setDates" />
                 </div>
               </div>
-              <div
-                @click.stop="isGuestModalOpen = !isGuestModalOpen"
-                :class="{ selected: isGuestModalOpen }"
-                class="pax flex justify-space-between"
-              >
+              <div @click.stop="isGuestModalOpen = !isGuestModalOpen" :class="{ selected: isGuestModalOpen }"
+                class="pax flex justify-space-between">
                 <div>
                   <p>GUESTS</p>
                   <p class="pax-txt">{{ order.guests.capacity }} guest</p>
@@ -236,15 +243,13 @@
                   <arrow-down v-else />
                 </div>
                 <transition name="fade">
-                  <add-guests
-                    v-if="isGuestModalOpen"
-                    @guests-update="addGuests"
-                    :allGuests="order.guests"
-                  />
+                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" :allGuests="order.guests" />
                 </transition>
               </div>
             </div>
-            <gradient-button :data="'Reserve'" @click="doReserve" />
+            <div class="gradient-container" ref="reserveModal">
+              <gradient-button :data="'Reserve'" @click="doReserve" />
+            </div>
             <p class="reg-text">You won't be charged yet</p>
             <!-- modal rates -->
             <div class="modal-rates flex column align-center">
@@ -278,10 +283,8 @@
         <div class="reviews-header">
           <div class="title">
             <div class="rating-reviews flex">
-              <star /><span>&nbsp; {{ reviewsAvg }} </span
-              ><span class="separator">&nbsp;·&nbsp;</span>
-              <span class="reviews-amount"
-                >{{ getStay.reviews?.length }} reviews
+              <star /><span>&nbsp; {{ reviewsAvg }} </span><span class="separator">&nbsp;·&nbsp;</span>
+              <span class="reviews-amount">{{ getStay.reviews?.length }} reviews
               </span>
             </div>
           </div>
@@ -291,17 +294,14 @@
               <div class="kpi-title">Cleanliness</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div
-                    class="cleanliness"
-                    :style="getWidth((this.reviewsAvg * 1.1).toFixed(2))"
-                  ></div>
+                  <div class="cleanliness" :style="getWidth((this.reviewsAvg * 1.1).toFixed(2))"></div>
                 </div>
                 <!-- <div class="rate-value">4.6</div> -->
                 <div class="rate-value">
                   {{
-                    this.reviewsAvg * 1.1 > 5
-                      ? Number(5).toFixed(2)
-                      : (this.reviewsAvg * 1.1).toFixed(2)
+                      this.reviewsAvg * 1.1 > 5
+                        ? Number(5).toFixed(2)
+                        : (this.reviewsAvg * 1.1).toFixed(2)
                   }}
                 </div>
               </div>
@@ -310,10 +310,7 @@
               <div class="kpi-title">Communication</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div
-                    class="communication"
-                    :style="getWidth((this.reviewsAvg * 0.9).toFixed(2))"
-                  ></div>
+                  <div class="communication" :style="getWidth((this.reviewsAvg * 0.9).toFixed(2))"></div>
                 </div>
                 <div class="rate-value">
                   {{ (this.reviewsAvg * 0.9).toFixed(2) }}
@@ -323,17 +320,14 @@
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Check-in</div>
               <div class="rate-container flex align-center">
-                <div
-                  class="kpis"
-                  :style="getWidth((this.reviewsAvg * 1.2).toFixed(2))"
-                >
+                <div class="kpis" :style="getWidth((this.reviewsAvg * 1.2).toFixed(2))">
                   <div class="check-in"></div>
                 </div>
                 <div class="rate-value">
                   {{
-                    this.reviewsAvg * 1.2 > 5
-                      ? Number(5).toFixed(2)
-                      : (this.reviewsAvg * 1.2).toFixed(2)
+                      this.reviewsAvg * 1.2 > 5
+                        ? Number(5).toFixed(2)
+                        : (this.reviewsAvg * 1.2).toFixed(2)
                   }}
                 </div>
               </div>
@@ -342,10 +336,7 @@
               <div class="kpi-title">Accuracy</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div
-                    class="accuracy"
-                    :style="getWidth((this.reviewsAvg * 0.8).toFixed(2))"
-                  ></div>
+                  <div class="accuracy" :style="getWidth((this.reviewsAvg * 0.8).toFixed(2))"></div>
                 </div>
                 <div class="rate-value">
                   {{ (this.reviewsAvg * 0.8).toFixed(2) }}
@@ -356,16 +347,13 @@
               <div class="kpi-title">Location</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div
-                    class="location"
-                    :style="getWidth((this.reviewsAvg * 1.25).toFixed(2))"
-                  ></div>
+                  <div class="location" :style="getWidth((this.reviewsAvg * 1.25).toFixed(2))"></div>
                 </div>
                 <div class="rate-value">
                   {{
-                    this.reviewsAvg * 1.25 > 5
-                      ? Number(5).toFixed(2)
-                      : (this.reviewsAvg * 1.25).toFixed(2)
+                      this.reviewsAvg * 1.25 > 5
+                        ? Number(5).toFixed(2)
+                        : (this.reviewsAvg * 1.25).toFixed(2)
                   }}
                 </div>
               </div>
@@ -374,10 +362,7 @@
               <div class="kpi-title">Value</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div
-                    class="value"
-                    :style="getWidth((this.reviewsAvg * 0.75).toFixed(2))"
-                  ></div>
+                  <div class="value" :style="getWidth((this.reviewsAvg * 0.75).toFixed(2))"></div>
                 </div>
                 <div class="rate-value">
                   {{ (this.reviewsAvg * 0.75).toFixed(2) }}
@@ -388,11 +373,7 @@
         </div>
         <!-- REVIEWS DETAILS -->
         <div class="reviews-details">
-          <review
-            v-for="review in getStay.reviews.slice(0, 6)"
-            :review="review"
-            :key="review.id"
-          />
+          <review v-for="review in getStay.reviews.slice(0, 6)" :review="review" :key="review.id" />
           <div class="more-reviews">
             <div class="btn-show-reviews">
               Show all {{ getStay.reviews?.length }} reviews
@@ -443,8 +424,10 @@ export default {
   data() {
     return {
       galleryObserver: null,
+      modalObserver: null,
       isShowSubHeader: false,
       isGuestModalOpen: false,
+      modalInSubHeader: false,
       order: {
         checkInDate: new Date().toLocaleString().split(',')[0],
         checkOutDate: this.setDay().toLocaleString().split(',')[0],
@@ -468,10 +451,10 @@ export default {
       })
       this.galleryObserver.observe(this.$refs.elGallery)
 
-      const modalObserver = new IntersectionObserver(this.onModalObserved, {
-        rootMargin: '-100px 0px 0px 0px',
+      this.modalObserver = new IntersectionObserver(this.onModalObserved, {
+        rootMargin: '-97px 0px 0px 0px',
       })
-      modalObserver.observe(this.$refs.reserveModal)
+      this.modalObserver.observe(this.$refs.reserveModal)
     } catch (err) {
       throw new Error(err)
     }
@@ -483,7 +466,7 @@ export default {
     if (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests)).length)
       this.order.guests = JSON.parse(guests)
   },
-  mounted() {},
+  mounted() { },
   methods: {
     onGalleryObserved(entries) {
       entries.forEach((entry) => {
@@ -492,10 +475,7 @@ export default {
     },
     onModalObserved(entries) {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          // this.modalInSubHeader = true
-          //   this.$refs.reviewTest.style.transform = 'rotate(180deg)'
-        }
+        this.modalInSubHeader = entry.isIntersecting ? false : true
       })
     },
     addGuests(guests) {
@@ -554,6 +534,14 @@ export default {
     formatReviews() {
       return this.getStay.reviews.length > 1 ? 'reviews' : 'review'
     },
+    formatPriceNight() {
+      return (
+        this.getStay.price.toLocaleString('en-IN', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 0,
+        }))
+    },
     nextMonth() {
       const date = new Date()
       const month = date.getMonth()
@@ -570,11 +558,7 @@ export default {
     formatPricePerNight() {
       const night = this.formatNights > 1 ? 'nights' : 'night'
       return (
-        this.getStay.price.toLocaleString('en-IN', {
-          style: 'currency',
-          currency: 'USD',
-          maximumFractionDigits: 0,
-        }) +
+        this.formatPriceNight +
         ' x ' +
         this.formatNights +
         ' ' +
