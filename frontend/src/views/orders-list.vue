@@ -107,9 +107,9 @@ export default {
     }
   },
   async created() {
-    socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
-      this.$store.commit({ type: 'addOrder', order })
-    })
+    // socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
+    //   this.$store.commit({ type: 'addOrder', order })
+    // })
     try {
       // Add loggedin user id to filter 
       await this.$store.dispatch({ type: 'loadOrders' , filterBy:{_id:this.$store.getters.loggedinUser._id}} )
@@ -117,7 +117,6 @@ export default {
       await this.$store.dispatch({ type: 'loadStay', id: this.orders[0].stay._id })
 
       // socketService.login('6390a4d768ad08edacc01167')
-
     } catch (err) {
       throw err
     }
