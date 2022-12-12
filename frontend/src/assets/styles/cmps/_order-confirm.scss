@@ -30,6 +30,14 @@
   .main-content {
     // align-items: flex-start;
     gap: 4em;
+    .patch {
+      border: 1px solid rgb(221, 221, 221);
+      border-radius: 12px;
+      padding: 24px;
+      .diamond {
+        align-self: flex-start;
+      }
+    }
   }
 
   & .buyer-img-container {
@@ -112,6 +120,10 @@
       .last-item {
         margin-bottom: 3em;
       }
+    }
+
+    .guests {
+      margin-bottom: 1.5em;
     }
   }
 

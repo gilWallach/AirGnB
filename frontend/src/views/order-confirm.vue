@@ -6,6 +6,7 @@
         <h1 v-if="!isHostMode" class="header fs22">
           <arrowBack @click="back" /> Order Confirmation
         </h1>
+
         <!-- <p class="fs14">Dear guest,</p>
         <p class="fs14 subtitle">
           In order to complete your reservation,
@@ -16,6 +17,13 @@
       <main class="main-content" :class="{ flex: !isHostMode }">
         <!-- stay summary -->
         <div v-if="!isHostMode && currStay" class="stay-container flex column">
+          <div class="patch flex align-center justify-space-between">
+            <div class="container">
+              <h3>This is a rare find.</h3>
+              <span>{{ stay.host.fullname }}'s place is usually booked.</span>
+            </div>
+            <diamond />
+          </div>
           <div class="stay-txt">
             <h1 class="fs18">{{ currStay.name }}</h1>
             <h3 class="fs14 l-grey">
@@ -149,6 +157,8 @@
 <script>
 import arrowBack from '../assets/svg/arrow-back.vue'
 import gradientButton from '../cmps/gradient-button.vue'
+import diamond from '../assets/svg/diamond.vue'
+
 import {
   showSuccessMsg,
   showErrorMsg,
@@ -280,6 +290,7 @@ export default {
   components: {
     arrowBack,
     gradientButton,
+    diamond,
   },
 }
 </script>

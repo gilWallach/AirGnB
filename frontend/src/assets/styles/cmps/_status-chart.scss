@@ -9,13 +9,16 @@
     margin-inline-start: auto;
     margin-block-end: 16px;
     // margin-block-end: 24px;
-    padding: 20px 24px 24px;
+    padding: 12px 24px;
     height: fit-content;
 
+    .chart-container div:first-of-type{
+        margin-block: 16px;
+    }
     .status-chart-h3{
-        margin: -24px;
+        margin-inline-start: -24px;
     }
     #doughnut-chart {
-        margin-block: 24px;
+        margin-block: 16px;
     }
 }
