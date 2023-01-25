@@ -12,14 +12,18 @@
           </div>
           <div v-if="modalInSubHeader" class="reserve-container flex">
             <div class="mini-details flex column justify-center">
-              <span class="full-price"><span class="price">{{ formatPriceNight }}</span> night</span>
+              <span class="full-price"
+                ><span class="price">{{ formatPriceNight }}</span> night</span
+              >
               <div class="rate-reviews-container flex">
                 <p class="rate flex align-center">
-                  <star /><span>{{ getStay.reviews.length ? reviewsAvg : 'New' }} </span><span
-                    class="separator">·</span>
+                  <star /><span
+                    >{{ getStay.reviews.length ? reviewsAvg : 'New' }} </span
+                  ><span class="separator">·</span>
                 </p>
                 <p>
-                  <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
+                  <span class="reviews-amount"
+                    >{{ getStay.reviews.length + ' ' + formatReviews }}
                   </span>
                 </p>
               </div>
@@ -39,11 +43,13 @@
       <div class="stay-details-container">
         <div class="details-ratings-container">
           <p class="rate">
-            <star /><span>&nbsp; {{ getStay.reviews.length ? reviewsAvg : 'New' }} </span><span
-              class="separator">·</span>
+            <star /><span
+              >&nbsp; {{ getStay.reviews.length ? reviewsAvg : 'New' }} </span
+            ><span class="separator">·</span>
           </p>
           <p>
-            <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
+            <span class="reviews-amount"
+              >{{ getStay.reviews.length + ' ' + formatReviews }}
             </span>
             <span class="separator">·</span>
           </p>
@@ -54,80 +60,39 @@
 
         <!-- SHARE AND SAVE -->
         <div class="action-btns">
-          <div class="share action-btn">
-            <share /> <span>Share</span>
-          </div>
-          <div class="save action-btn">
-            <save /> <span>Save</span>
-          </div>
+          <div class="share action-btn"><share /> <span>Share</span></div>
+          <div class="save action-btn"><save /> <span>Save</span></div>
         </div>
       </div>
 
       <!-- IMAGE GALLERY -->
       <div class="gallery" ref="elGallery">
-        <img v-for="(img, idx) in getStay.imgUrls.slice(0, 5)" :src="img" alt="stay-image"
-          :class="'gallery-img img' + idx" />
+        <img
+          v-for="(img, idx) in getStay.imgUrls.slice(0, 5)"
+          :src="img"
+          alt="stay-image"
+          :class="'gallery-img img' + idx"
+        />
       </div>
 
       <!-- STAY SUMMARY AND DETAILS -->
       <div class="details-reserve-container">
         <div class="summary-and-details">
-          <div class="summary-container">
-            <div class="summary-text-container">
-              <div class="stay-summary-text">
-                {{ getStay.roomType }} hosted by {{ getStay.host.fullname }}
-              </div>
-              <div class="capacity">
-                {{ getStay.capacity }} beds ·
-                {{ getStay.bedrooms ? getStay.bedrooms + ' rooms · ' : '' }}
-                {{ getStay.capacity + 2 }} guests
-              </div>
-            </div>
-            <span><img :src="getStay.host.thumbnailUrl" alt="host-image" class="host-img"
-                onerror="this.src=`https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png`" /></span>
-          </div>
+          <stayHeaderHighlights :stay="getStay" />
+          <stayTopAmenities :stay="getStay" />
+          <staySummaryText :summary="getStay.summary" />
 
-          <div class="stay-highlights">
-            <div class="highlight-element">
-              <div class="highlight-icon"><dedicated-workspace /></div>
-              <div class="highlight-feature">
-                <div class="highlight-header">Dedicated workspace</div>
-                <div class="highlight-txt">
-                  A private room with wifi that's well-suited for working.
-                </div>
-              </div>
-            </div>
-            <div class="highlight-element">
-              <div class="highlight-icon"><self-checkin /></div>
-              <div class="highlight-feature">
-                <div class="highlight-header">Self check-in</div>
-                <div class="highlight-txt">
-                  Check yourself in with the lockbox.
-                </div>
-              </div>
-            </div>
-            <div class="highlight-element">
-              <div class="highlight-icon"><free-cxl /></div>
-              <div class="highlight-feature">
-                <div class="highlight-header">
-                  Free cancellation before {{ this.nextMonth }} 28.
-                </div>
-                <div class="highlight-txt"></div>
-              </div>
-            </div>
-          </div>
-          <div class="stay-summary-long">
-            <p>{{ getStay.summary }}</p>
-            <p>...</p>
-            <button class="show-more">Show more ></button>
-          </div>
-
+          <!-- ! -->
+          <stayAmenitiesList :stay="getStay" />
           <!-- AMENITIES (WHAT THIS PALCE OFFERS) -->
-          <div class="amenities-container">
+          <!-- <div class="amenities-container">
             <h1 class="amenities-header">What this place offers</h1>
-            <div class="amenities-list">
-              <!-- STATIC AMENITIES LIST -->
-              <div class="amenity-item">
+            <div class="amenities-list"> -->
+          <!--  -->
+          <!--  -->
+          <!--  -->
+          <!-- STATIC AMENITIES LIST -->
+          <!-- <div class="amenity-item">
                 <div class="amenity-logo">
                   <kitchen />
                 </div>
@@ -185,8 +150,9 @@
                 Show all {{ getStay.amenities?.length }} amenities
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
+        <!-- ! -->
 
         <!-- RESERVE MODAL -->
         <div class="reserve-section">
@@ -195,17 +161,19 @@
               <div>
                 <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
                 <span class="modal-header-price">{{
-                    getStay.price.toLocaleString('en-IN', {
-                      style: 'currency',
-                      currency: 'USD',
-                      maximumFractionDigits: 0,
-                    })
+                  getStay.price.toLocaleString('en-IN', {
+                    style: 'currency',
+                    currency: 'USD',
+                    maximumFractionDigits: 0,
+                  })
                 }}</span>
                 <span class="modal-header-text"> night</span>
               </div>
               <div class="rating-reviews flex" v-if="getStay.reviews.length">
-                <star /><span>4.82 </span><span class="separator">&nbsp;·&nbsp;</span>
-                <span class="reviews-amount">{{ getStay.reviews.length + ' ' + formatReviews }}
+                <star /><span>4.82 </span
+                ><span class="separator">&nbsp;·&nbsp;</span>
+                <span class="reviews-amount"
+                  >{{ getStay.reviews.length + ' ' + formatReviews }}
                 </span>
               </div>
             </div>
@@ -231,8 +199,11 @@
                   <date-picker @set-dates="setDates" />
                 </div>
               </div>
-              <div @click.stop="isGuestModalOpen = !isGuestModalOpen" :class="{ selected: isGuestModalOpen }"
-                class="pax flex justify-space-between">
+              <div
+                @click.stop="isGuestModalOpen = !isGuestModalOpen"
+                :class="{ selected: isGuestModalOpen }"
+                class="pax flex justify-space-between"
+              >
                 <div>
                   <p>GUESTS</p>
                   <p class="pax-txt">{{ order.guests.capacity }} guest</p>
@@ -242,7 +213,11 @@
                   <arrow-down v-else />
                 </div>
                 <transition name="fade">
-                  <add-guests v-if="isGuestModalOpen" @guests-update="addGuests" :allGuests="order.guests" />
+                  <add-guests
+                    v-if="isGuestModalOpen"
+                    @guests-update="addGuests"
+                    :allGuests="order.guests"
+                  />
                 </transition>
               </div>
             </div>
@@ -282,8 +257,10 @@
         <div class="reviews-header">
           <div class="title">
             <div class="rating-reviews flex">
-              <star /><span>&nbsp; {{ reviewsAvg }} </span><span class="separator">&nbsp;·&nbsp;</span>
-              <span class="reviews-amount">{{ getStay.reviews?.length }} reviews
+              <star /><span>&nbsp; {{ reviewsAvg }} </span
+              ><span class="separator">&nbsp;·&nbsp;</span>
+              <span class="reviews-amount"
+                >{{ getStay.reviews?.length }} reviews
               </span>
             </div>
           </div>
@@ -293,14 +270,17 @@
               <div class="kpi-title">Cleanliness</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="cleanliness" :style="getWidth((this.reviewsAvg * 1.1).toFixed(2))"></div>
+                  <div
+                    class="cleanliness"
+                    :style="getWidth((this.reviewsAvg * 1.1).toFixed(2))"
+                  ></div>
                 </div>
                 <!-- <div class="rate-value">4.6</div> -->
                 <div class="rate-value">
                   {{
-                      this.reviewsAvg * 1.1 > 5
-                        ? Number(5).toFixed(2)
-                        : (this.reviewsAvg * 1.1).toFixed(2)
+                    this.reviewsAvg * 1.1 > 5
+                      ? Number(5).toFixed(2)
+                      : (this.reviewsAvg * 1.1).toFixed(2)
                   }}
                 </div>
               </div>
@@ -309,7 +289,10 @@
               <div class="kpi-title">Communication</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="communication" :style="getWidth((this.reviewsAvg * 0.9).toFixed(2))"></div>
+                  <div
+                    class="communication"
+                    :style="getWidth((this.reviewsAvg * 0.9).toFixed(2))"
+                  ></div>
                 </div>
                 <div class="rate-value">
                   {{ (this.reviewsAvg * 0.9).toFixed(2) }}
@@ -319,14 +302,17 @@
             <div class="review-item flex justify-space-between">
               <div class="kpi-title">Check-in</div>
               <div class="rate-container flex align-center">
-                <div class="kpis" :style="getWidth((this.reviewsAvg * 1.2).toFixed(2))">
+                <div
+                  class="kpis"
+                  :style="getWidth((this.reviewsAvg * 1.2).toFixed(2))"
+                >
                   <div class="check-in"></div>
                 </div>
                 <div class="rate-value">
                   {{
-                      this.reviewsAvg * 1.2 > 5
-                        ? Number(5).toFixed(2)
-                        : (this.reviewsAvg * 1.2).toFixed(2)
+                    this.reviewsAvg * 1.2 > 5
+                      ? Number(5).toFixed(2)
+                      : (this.reviewsAvg * 1.2).toFixed(2)
                   }}
                 </div>
               </div>
@@ -335,7 +321,10 @@
               <div class="kpi-title">Accuracy</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="accuracy" :style="getWidth((this.reviewsAvg * 0.8).toFixed(2))"></div>
+                  <div
+                    class="accuracy"
+                    :style="getWidth((this.reviewsAvg * 0.8).toFixed(2))"
+                  ></div>
                 </div>
                 <div class="rate-value">
                   {{ (this.reviewsAvg * 0.8).toFixed(2) }}
@@ -346,13 +335,16 @@
               <div class="kpi-title">Location</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="location" :style="getWidth((this.reviewsAvg * 1.25).toFixed(2))"></div>
+                  <div
+                    class="location"
+                    :style="getWidth((this.reviewsAvg * 1.25).toFixed(2))"
+                  ></div>
                 </div>
                 <div class="rate-value">
                   {{
-                      this.reviewsAvg * 1.25 > 5
-                        ? Number(5).toFixed(2)
-                        : (this.reviewsAvg * 1.25).toFixed(2)
+                    this.reviewsAvg * 1.25 > 5
+                      ? Number(5).toFixed(2)
+                      : (this.reviewsAvg * 1.25).toFixed(2)
                   }}
                 </div>
               </div>
@@ -361,7 +353,10 @@
               <div class="kpi-title">Value</div>
               <div class="rate-container flex align-center">
                 <div class="kpis">
-                  <div class="value" :style="getWidth((this.reviewsAvg * 0.75).toFixed(2))"></div>
+                  <div
+                    class="value"
+                    :style="getWidth((this.reviewsAvg * 0.75).toFixed(2))"
+                  ></div>
                 </div>
                 <div class="rate-value">
                   {{ (this.reviewsAvg * 0.75).toFixed(2) }}
@@ -372,7 +367,11 @@
         </div>
         <!-- REVIEWS DETAILS -->
         <div class="reviews-details">
-          <review v-for="review in getStay.reviews.slice(0, 6)" :review="review" :key="review.id" />
+          <review
+            v-for="review in getStay.reviews.slice(0, 6)"
+            :review="review"
+            :key="review.id"
+          />
           <div class="more-reviews">
             <div class="btn-show-reviews">
               Show all {{ getStay.reviews?.length }} reviews
@@ -396,27 +395,17 @@ import {
 import addGuests from '../cmps/add-guests.vue'
 import datePicker from '../cmps/date-picker.vue'
 import review from '../cmps/review.vue'
+import stayHeaderHighlights from '../cmps/stay-header-highlights.vue'
+import stayTopAmenities from '../cmps/stay-top-amenities.vue'
+import staySummaryText from '../cmps/stay-summary-text.vue'
+import stayAmenitiesList from '../cmps/stay-amenities-list.vue'
 import gradientButton from '../cmps/gradient-button.vue'
 import longText from '../cmps/long-text.vue'
 import star from '../assets/svg/star.vue'
 import share from '../assets/svg/share.vue'
 import save from '../assets/svg/save.vue'
-import dedicatedWorkspace from '../assets/svg/dedicated-workspace.vue'
-import selfCheckin from '../assets/svg/self-checkin.vue'
-import freeCxl from '../assets/svg/free-cxl.vue'
 import arrowDown from '../assets/svg/arrow-down.vue'
 import arrowUp from '../assets/svg/arrow-up.vue'
-import wifi from '../assets/svg/wifi.vue'
-import tv from '../assets/svg/tv.vue'
-import kitchen from '../assets/svg/kitchen.vue'
-import petsAllowed from '../assets/svg/pets-allowed.vue'
-import cookingBasics from '../assets/svg/cooking-basics.vue'
-import smokingAllowed from '../assets/svg/smoking-allowed.vue'
-import privateEntrance from '../assets/svg/private-entrance.vue'
-import pool from '../assets/svg/pool.vue'
-import stove from '../assets/svg/stove.vue'
-import heating from '../assets/svg/heating.vue'
-import freeParking from '../assets/svg/free-parking.vue'
 export default {
   name: 'stay-details',
   props: {},
@@ -465,7 +454,7 @@ export default {
     if (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests)).length)
       this.order.guests = JSON.parse(guests)
   },
-  mounted() { },
+  mounted() {},
   methods: {
     onGalleryObserved(entries) {
       entries.forEach((entry) => {
@@ -534,12 +523,11 @@ export default {
       return this.getStay.reviews.length > 1 ? 'reviews' : 'review'
     },
     formatPriceNight() {
-      return (
-        this.getStay.price.toLocaleString('en-IN', {
-          style: 'currency',
-          currency: 'USD',
-          maximumFractionDigits: 0,
-        }))
+      return this.getStay.price.toLocaleString('en-IN', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0,
+      })
     },
     nextMonth() {
       const date = new Date()
@@ -556,13 +544,7 @@ export default {
     },
     formatPricePerNight() {
       const night = this.formatNights > 1 ? 'nights' : 'night'
-      return (
-        this.formatPriceNight +
-        ' x ' +
-        this.formatNights +
-        ' ' +
-        night
-      )
+      return this.formatPriceNight + ' x ' + this.formatNights + ' ' + night
     },
     formatTotalPrice() {
       return (this.getStay.price * this.formatNights).toLocaleString('en-IN', {
@@ -586,25 +568,15 @@ export default {
     addGuests,
     datePicker,
     review,
+    stayHeaderHighlights,
+    stayTopAmenities,
+    staySummaryText,
+    stayAmenitiesList,
     star,
     share,
     save,
-    dedicatedWorkspace,
-    selfCheckin,
-    freeCxl,
     arrowDown,
     arrowUp,
-    wifi,
-    tv,
-    kitchen,
-    petsAllowed,
-    cookingBasics,
-    smokingAllowed,
-    privateEntrance,
-    pool,
-    stove,
-    heating,
-    freeParking,
     gradientButton,
     longText,
   },

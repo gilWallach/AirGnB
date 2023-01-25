@@ -1,14 +1,11 @@
 import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
-import {userService} from './user.service'
+import { userService } from './user.service'
 
 import { store } from '../store/store'
-import { socketService, SOCKET_EVENT_REVIEW_ADDED, SOCKET_EVENT_REVIEW_ABOUT_YOU } from './socket.service'
-
-
+import { socketService, SOCKET_EVENT_REVIEW_ADDED } from './socket.service'
 ;(() => {
-
-  setTimeout(()=>{
+  setTimeout(() => {
     // socketService.on(SOCKET_EVENT_REVIEW_ADDED, (review) => {
     //   console.log('GOT from socket', review)
     //   store.commit({type: 'addReview', review})
@@ -17,18 +14,13 @@ import { socketService, SOCKET_EVENT_REVIEW_ADDED, SOCKET_EVENT_REVIEW_ABOUT_YOU
     //   showSuccessMsg(`New review about me ${review.txt}`)
     // })
   }, 0)
-
 })()
-
-
 
 export const reviewService = {
   add,
   query,
-  remove
+  remove,
 }
-
-
 
 function query(filterBy) {
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
@@ -39,7 +31,6 @@ function query(filterBy) {
 async function remove(reviewId) {
   // await httpService.delete(`review/${reviewId}`)
   await storageService.delete('review', reviewId)
-
 }
 async function add(review) {
   // const addedReview = await httpService.post(`review`, review)
@@ -50,4 +41,3 @@ async function add(review) {
 
   return addedReview
 }
-

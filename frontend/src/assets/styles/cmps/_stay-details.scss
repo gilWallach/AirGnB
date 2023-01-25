@@ -167,31 +167,6 @@
       flex-basis: 58%;
       // width: 58%;
       font-family: airBnb-Med;
-      .summary-container {
-        display: flex;
-        justify-content: space-between;
-
-        padding-top: 48px;
-        // padding-bottom: 18.5px;
-        padding-bottom: em(18.5px, 15px);
-
-        border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
-        .summary-text-container {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-        .stay-summary-text {
-          color: lighten($clr3, 5%);
-          font-size: em(22px, 15px);
-          margin-bottom: 8px;
-        }
-        .capacity {
-          font-family: airBnb-Reg;
-          font-size: em(16px, 15px);
-          font-weight: 400;
-        }
-      }
 
       .host-img {
         border-radius: 50%;
@@ -200,96 +175,6 @@
         box-shadow: 0 0 0 1px #ede8e8;
         object-fit: cover;
         aspect-ratio: 1/1;
-      }
-
-      .stay-highlights {
-        font-family: airBnB-Reg;
-        padding: 22px 0 6px;
-
-        border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
-        .highlight-element {
-          display: flex;
-          align-items: flex-start;
-          gap: 16px;
-          margin-bottom: 26px;
-        }
-        .highlight-header {
-          color: lighten($clr2, 5%);
-          font-size: em(16px, 15px);
-          font-weight: 600;
-          margin-bottom: 4px;
-        }
-        .highlight-txt {
-          font-size: em(14px, 15px);
-          color: rgba($clr2, 0.7);
-        }
-      }
-
-      .stay-summary-long {
-        font-family: airBnB-Reg;
-        font-size: em(16px, 15px);
-        padding: 32px 0 48px;
-
-        border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
-        .show-more {
-          text-decoration: underline;
-          font-size: em(16px, 15px);
-          font-weight: 600;
-        }
-        p,
-        button {
-          margin: 0;
-          padding: 0;
-        }
-        p {
-          max-width: 100%;
-          line-height: 1.5em;
-        }
-      }
-
-      .amenities-container {
-        font-family: airBnB-Reg;
-        font-size: 1em;
-
-        padding-top: em(49px, 15px);
-
-        .amenities-header {
-          color: lighten($clr2, 20%);
-          margin-bottom: em(18px, 15px);
-        }
-        .amenities-list {
-          columns: 2;
-          margin-bottom: em(28px, 15px);
-
-          .amenity-item {
-            .cancelled {
-              text-decoration: line-through;
-            }
-
-            display: flex;
-            align-items: center;
-            gap: 1.2em;
-            margin-bottom: 1em;
-          }
-        }
-
-        .more-amenities {
-          margin-bottom: em(52px, 15px);
-          .btn-show-amenities {
-            width: fit-content;
-            padding: 13px 20px;
-            border: 1px solid black;
-            font-family: airBnB-Med;
-            font-size: em(16px, 15px);
-            letter-spacing: 0.01em;
-
-            border: 1px solid black;
-            border-radius: 8px;
-          }
-          .btn-show-amenities:hover {
-            cursor: pointer;
-          }
-        }
       }
     }
 
