@@ -1,0 +1,22 @@
+.stay-top-amenities {
+  font-family: airBnB-Reg;
+  padding: 22px 0 6px;
+
+  border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+  .highlight-element {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 26px;
+  }
+  .highlight-header {
+    color: lighten($clr2, 5%);
+    font-size: em(16px, 15px);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .highlight-txt {
+    font-size: em(14px, 15px);
+    color: rgba($clr2, 0.7);
+  }
+}

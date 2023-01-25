@@ -1,0 +1,23 @@
+.stay-summary-text {
+  .long-text {
+    font-family: airBnB-Reg;
+    font-size: em(16px, 15px);
+    padding: 32px 0 48px;
+
+    border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+    .show-more {
+      text-decoration: underline;
+      font-size: em(16px, 15px);
+      font-weight: 600;
+    }
+    p,
+    button {
+      margin: 0;
+      padding: 0;
+    }
+    p {
+      max-width: 100%;
+      line-height: 1.5em;
+    }
+  }
+}

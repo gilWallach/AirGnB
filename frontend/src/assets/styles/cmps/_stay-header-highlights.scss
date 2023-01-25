@@ -1,0 +1,27 @@
+.stay-header-highlights {
+  .stay-summary-container {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 48px;
+    // padding-bottom: 18.5px;
+    padding-bottom: em(18.5px, 15px);
+
+    border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
+    .stay-summary-text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stay-summary-text {
+      color: lighten($clr3, 5%);
+      font-size: em(22px, 15px);
+      margin-bottom: 8px;
+    }
+    .capacity {
+      font-family: airBnb-Reg;
+      font-size: em(16px, 15px);
+      font-weight: 400;
+    }
+  }
+}

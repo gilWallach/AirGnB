@@ -1,0 +1,46 @@
+.stay-amenities-list {
+  .amenities-container {
+    font-family: airBnB-Reg;
+    font-size: 1em;
+
+    padding-top: em(49px, 15px);
+
+    .amenities-header {
+      color: lighten($clr2, 20%);
+      margin-bottom: em(18px, 15px);
+    }
+    .amenities-list {
+      columns: 2;
+      margin-bottom: em(28px, 15px);
+
+      .amenity-item {
+        .cancelled {
+          text-decoration: line-through;
+        }
+
+        display: flex;
+        align-items: center;
+        gap: 1.2em;
+        margin-bottom: 1em;
+      }
+    }
+
+    .more-amenities {
+      margin-bottom: em(52px, 15px);
+      .btn-show-amenities {
+        width: fit-content;
+        padding: 13px 20px;
+        border: 1px solid black;
+        font-family: airBnB-Med;
+        font-size: em(16px, 15px);
+        letter-spacing: 0.01em;
+
+        border: 1px solid black;
+        border-radius: 8px;
+      }
+      .btn-show-amenities:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
