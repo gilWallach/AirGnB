@@ -34,7 +34,7 @@
       </div>
     </div>
     <!-- HEADER -->
-    <section v-if="getStay" class="stay-details">
+    <section class="stay-details">
       <div class="details-header">
         <h1>{{ getStay.name }}</h1>
       </div>
@@ -81,78 +81,8 @@
           <stayHeaderHighlights :stay="getStay" />
           <stayTopAmenities :stay="getStay" />
           <staySummaryText :summary="getStay.summary" />
-
-          <!-- ! -->
           <stayAmenitiesList :stay="getStay" />
-          <!-- AMENITIES (WHAT THIS PALCE OFFERS) -->
-          <!-- <div class="amenities-container">
-            <h1 class="amenities-header">What this place offers</h1>
-            <div class="amenities-list"> -->
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <!-- STATIC AMENITIES LIST -->
-          <!-- <div class="amenity-item">
-                <div class="amenity-logo">
-                  <kitchen />
-                </div>
-                <div class="amenity-txt">Kitchen</div>
-              </div>
-              <div class="amenity-item">
-                <div class="amenity-logo">
-                  <wifi />
-                </div>
-                <div class="amenity-txt">Wifi</div>
-              </div>
-              <div class="amenity-item">
-                <div class="amenity-logo">
-                  <tv />
-                </div>
-                <div class="amenity-txt">TV</div>
-              </div>
-              <div class="amenity-item">
-                <div class="amenity-logo"><smoking-allowed /></div>
-                <div class="amenity-txt">Smoking alllowed</div>
-              </div>
-              <div class="amenity-item">
-                <div class="amenity-logo"><cooking-basics /></div>
-                <div class="amenity-txt cancelled">Cooking basics</div>
-              </div>
-              <div class="amenity-item">
-                <div class="amenity-logo"><private-entrance /></div>
-                <div class="amenity-txt">Private entrance</div>
-              </div>
-              <div class="amenity-item">
-                <div class="amenity-logo">
-                  <pool />
-                </div>
-                <div class="amenity-txt">Pool</div>
-              </div>
-              <div class="amenity-item">
-                <div class="amenity-logo">
-                  <stove />
-                </div>
-                <div class="amenity-txt">Stove</div>
-              </div>
-              <div class="amenity-item">
-                <div class="amenity-logo">
-                  <heating />
-                </div>
-                <div class="amenity-txt">Heating</div>
-              </div>
-              <div class="amenity-item">
-                <div class="amenity-logo"><free-parking /></div>
-                <div class="amenity-txt cancelled">Free parking</div>
-              </div>
-            </div>
-            <div class="more-amenities">
-              <div class="btn-show-amenities">
-                Show all {{ getStay.amenities?.length }} amenities
-              </div>
-            </div>
-          </div> -->
         </div>
-        <!-- ! -->
 
         <!-- RESERVE MODAL -->
         <div class="reserve-section">
@@ -250,155 +180,19 @@
 
         <!--END: summary and details should split 50-50 to contain reserve element AND more details  -->
       </div>
-
-      <!-- REVIEWS -->
-      <div class="reviews-container">
-        <!-- REVIEWS HEADER - KPIS SUMMARY -->
-        <div class="reviews-header">
-          <div class="title">
-            <div class="rating-reviews flex">
-              <star /><span>&nbsp; {{ reviewsAvg }} </span
-              ><span class="separator">&nbsp;·&nbsp;</span>
-              <span class="reviews-amount"
-                >{{ getStay.reviews?.length }} reviews
-              </span>
-            </div>
-          </div>
-
-          <div class="reviews-kpis-list">
-            <div class="review-item flex justify-space-between">
-              <div class="kpi-title">Cleanliness</div>
-              <div class="rate-container flex align-center">
-                <div class="kpis">
-                  <div
-                    class="cleanliness"
-                    :style="getWidth((this.reviewsAvg * 1.1).toFixed(2))"
-                  ></div>
-                </div>
-                <!-- <div class="rate-value">4.6</div> -->
-                <div class="rate-value">
-                  {{
-                    this.reviewsAvg * 1.1 > 5
-                      ? Number(5).toFixed(2)
-                      : (this.reviewsAvg * 1.1).toFixed(2)
-                  }}
-                </div>
-              </div>
-            </div>
-            <div class="review-item flex justify-space-between">
-              <div class="kpi-title">Communication</div>
-              <div class="rate-container flex align-center">
-                <div class="kpis">
-                  <div
-                    class="communication"
-                    :style="getWidth((this.reviewsAvg * 0.9).toFixed(2))"
-                  ></div>
-                </div>
-                <div class="rate-value">
-                  {{ (this.reviewsAvg * 0.9).toFixed(2) }}
-                </div>
-              </div>
-            </div>
-            <div class="review-item flex justify-space-between">
-              <div class="kpi-title">Check-in</div>
-              <div class="rate-container flex align-center">
-                <div
-                  class="kpis"
-                  :style="getWidth((this.reviewsAvg * 1.2).toFixed(2))"
-                >
-                  <div class="check-in"></div>
-                </div>
-                <div class="rate-value">
-                  {{
-                    this.reviewsAvg * 1.2 > 5
-                      ? Number(5).toFixed(2)
-                      : (this.reviewsAvg * 1.2).toFixed(2)
-                  }}
-                </div>
-              </div>
-            </div>
-            <div class="review-item flex justify-space-between">
-              <div class="kpi-title">Accuracy</div>
-              <div class="rate-container flex align-center">
-                <div class="kpis">
-                  <div
-                    class="accuracy"
-                    :style="getWidth((this.reviewsAvg * 0.8).toFixed(2))"
-                  ></div>
-                </div>
-                <div class="rate-value">
-                  {{ (this.reviewsAvg * 0.8).toFixed(2) }}
-                </div>
-              </div>
-            </div>
-            <div class="review-item flex justify-space-between">
-              <div class="kpi-title">Location</div>
-              <div class="rate-container flex align-center">
-                <div class="kpis">
-                  <div
-                    class="location"
-                    :style="getWidth((this.reviewsAvg * 1.25).toFixed(2))"
-                  ></div>
-                </div>
-                <div class="rate-value">
-                  {{
-                    this.reviewsAvg * 1.25 > 5
-                      ? Number(5).toFixed(2)
-                      : (this.reviewsAvg * 1.25).toFixed(2)
-                  }}
-                </div>
-              </div>
-            </div>
-            <div class="review-item flex justify-space-between">
-              <div class="kpi-title">Value</div>
-              <div class="rate-container flex align-center">
-                <div class="kpis">
-                  <div
-                    class="value"
-                    :style="getWidth((this.reviewsAvg * 0.75).toFixed(2))"
-                  ></div>
-                </div>
-                <div class="rate-value">
-                  {{ (this.reviewsAvg * 0.75).toFixed(2) }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- REVIEWS DETAILS -->
-        <div class="reviews-details">
-          <review
-            v-for="review in getStay.reviews.slice(0, 6)"
-            :review="review"
-            :key="review.id"
-          />
-          <div class="more-reviews">
-            <div class="btn-show-reviews">
-              Show all {{ getStay.reviews?.length }} reviews
-            </div>
-          </div>
-        </div>
-      </div>
+      <stay-reviews :reviews="this.getStay.reviews" />
     </section>
-
-    <section v-else class="loading">Loading....</section>
   </div>
 </template>
 
 <script>
-import { utilService } from '../services/util.service'
-import {
-  showSuccessMsg,
-  showErrorMsg,
-  eventBus,
-} from '../services/event-bus.service'
 import addGuests from '../cmps/add-guests.vue'
 import datePicker from '../cmps/date-picker.vue'
-import review from '../cmps/review.vue'
 import stayHeaderHighlights from '../cmps/stay-header-highlights.vue'
 import stayTopAmenities from '../cmps/stay-top-amenities.vue'
 import staySummaryText from '../cmps/stay-summary-text.vue'
 import stayAmenitiesList from '../cmps/stay-amenities-list.vue'
+import stayReviews from '../cmps/stay-reviews.vue'
 import gradientButton from '../cmps/gradient-button.vue'
 import longText from '../cmps/long-text.vue'
 import star from '../assets/svg/star.vue'
@@ -567,11 +361,11 @@ export default {
   components: {
     addGuests,
     datePicker,
-    review,
     stayHeaderHighlights,
     stayTopAmenities,
     staySummaryText,
     stayAmenitiesList,
+    stayReviews,
     star,
     share,
     save,

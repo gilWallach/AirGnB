@@ -1,0 +1,30 @@
+.stay-reviews-summary {
+  .reviews-details {
+    display: grid;
+    grid-template-columns: repeat(2, em(457.33px, 15px));
+    grid-auto-flow: row dense;
+    column-gap: em(108px, 15px);
+
+    > *:not(:nth-child(odd), .more-reviews) {
+      padding-left: em(5px, 15px);
+    }
+
+    .more-reviews {
+      margin-bottom: em(52px, 15px);
+      .btn-show-reviews {
+        width: fit-content;
+        padding: 13px 20px;
+        border: 1px solid black;
+        font-family: airBnB-Med;
+        font-size: em(16px, 15px);
+        letter-spacing: 0.01em;
+
+        border: 1px solid black;
+        border-radius: 8px;
+      }
+      .btn-show-reviews:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

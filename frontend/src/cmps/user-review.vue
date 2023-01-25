@@ -1,5 +1,5 @@
 <template>
-  <section class="review">
+  <section class="user-review">
     <div class="review-header flex align-center">
       <img :src="review.by.imgUrl" alt="reviewer image" class="avatar" />
       <div class="details flex column">
