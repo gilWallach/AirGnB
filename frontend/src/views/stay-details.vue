@@ -35,9 +35,11 @@
     </div>
     <section v-if="getStay" class="stay-details">
       <stay-header :stay="getStay" />
-      <div ref="elGallery">
-        <stay-header-gallery :stayImgs="this.getStay.imgUrls" :maxImgs="5" />
-      </div>
+      <stay-header-gallery
+        :stayImgs="this.getStay.imgUrls"
+        :maxImgs="5"
+        @onSetIsShowSubHeader="onGalleryObserved"
+      />
       <div class="details-reserve-container flex justify-space-between">
         <div class="summary-and-details">
           <stay-header-highlights :stay="getStay" />
@@ -50,6 +52,7 @@
             :stay="getStay"
             :order="this.order"
             @toggleModalInSubHeader="onModalObserved"
+            @setIsGuestModalOpen="setIsGuestModalOpen"
           />
         </div>
       </div>
@@ -98,10 +101,6 @@ export default {
     const { id } = this.$route.params
     try {
       await this.$store.dispatch({ type: 'loadStay', id })
-      this.galleryObserver = new IntersectionObserver(this.onGalleryObserved, {
-        rootMargin: '0px 0px 0px 0px',
-      })
-      this.galleryObserver.observe(this.$refs.elGallery)
     } catch (err) {
       throw new Error(err)
     }
@@ -114,10 +113,8 @@ export default {
       this.order.guests = JSON.parse(guests)
   },
   methods: {
-    onGalleryObserved(entries) {
-      entries.forEach((entry) => {
-        this.isShowSubHeader = entry.isIntersecting ? false : true
-      })
+    onGalleryObserved(isShowSubHeader) {
+      this.isShowSubHeader = isShowSubHeader
     },
     onModalObserved(isShowModalInSubHeader) {
       this.modalInSubHeader = isShowModalInSubHeader
@@ -147,6 +144,9 @@ export default {
       const day = date.getDate()
       date.setDate(day + 3)
       return date
+    },
+    setIsGuestModalOpen(isGuestModalOpen) {
+      this.isGuestModalOpen = isGuestModalOpen
     },
   },
   computed: {

@@ -45,7 +45,7 @@
           </div>
           <!-- !!! HANDLE CHANGES IN isGuestModalOpen, probably emit events to stay-details cmp-->
           <div
-            @click.stop="isGuestModalOpen = !isGuestModalOpen"
+            @click.stop="toggleIsGuestModalOpen"
             :class="{ selected: isGuestModalOpen }"
             class="pax flex justify-space-between"
           >
@@ -164,6 +164,10 @@ export default {
         this.modalInSubHeader = entry.isIntersecting ? false : true
         this.$emit('toggleModalInSubHeader', this.modalInSubHeader)
       })
+    },
+    toggleIsGuestModalOpen() {
+      this.isGuestModalOpen = !this.isGuestModalOpen
+      this.$emit('setIsGuestModalOpen', this.isGuestModalOpen)
     },
   },
   computed: {

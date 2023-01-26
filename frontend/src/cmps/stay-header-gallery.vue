@@ -1,6 +1,6 @@
 <template>
   <section class="stay-header-gallery">
-    <div class="gallery">
+    <div class="gallery" ref="elGallery">
       <img
         v-for="(img, idx) in imgs"
         :src="img"
@@ -26,6 +26,8 @@ export default {
   data() {
     return {
       imgs: null,
+      galleryObserver: null,
+      isShowSubHeader: false,
     }
   },
   created() {
@@ -35,7 +37,20 @@ export default {
         ? this.stayImgs.slice(0, imgsToShow)
         : this.stayImgs
   },
-  methods: {},
+  mounted() {
+    this.galleryObserver = new IntersectionObserver(this.onGalleryObserved, {
+      rootMargin: '0px 0px 0px 0px',
+    })
+    this.galleryObserver.observe(this.$refs.elGallery)
+  },
+  methods: {
+    onGalleryObserved(entries) {
+      entries.forEach((entry) => {
+        this.isShowSubHeader = entry.isIntersecting ? false : true
+        this.$emit('onSetIsShowSubHeader', this.isShowSubHeader)
+      })
+    },
+  },
   computed: {},
   components: {},
 }
