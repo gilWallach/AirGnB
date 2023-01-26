@@ -33,63 +33,25 @@
         </header>
       </div>
     </div>
-    <!-- HEADER -->
-    <section class="stay-details">
-      <div class="details-header">
-        <h1>{{ getStay.name }}</h1>
+    <section v-if="getStay" class="stay-details">
+      <stay-header :stay="getStay" />
+      <div ref="elGallery">
+        <stay-header-gallery :stayImgs="this.getStay.imgUrls" :maxImgs="5" />
       </div>
-
-      <!-- STAY DETAILS AND RATINGS -->
-      <div class="stay-details-container">
-        <div class="details-ratings-container">
-          <p class="rate">
-            <star /><span
-              >&nbsp; {{ getStay.reviews.length ? reviewsAvg : 'New' }} </span
-            ><span class="separator">·</span>
-          </p>
-          <p>
-            <span class="reviews-amount"
-              >{{ getStay.reviews.length + ' ' + formatReviews }}
-            </span>
-            <span class="separator">·</span>
-          </p>
-          <p class="address">
-            {{ getStay.loc.city }}, {{ getStay.loc.country }}
-          </p>
-        </div>
-
-        <!-- SHARE AND SAVE -->
-        <div class="action-btns">
-          <div class="share action-btn"><share /> <span>Share</span></div>
-          <div class="save action-btn"><save /> <span>Save</span></div>
-        </div>
-      </div>
-
-      <!-- IMAGE GALLERY -->
-      <div class="gallery" ref="elGallery">
-        <img
-          v-for="(img, idx) in getStay.imgUrls.slice(0, 5)"
-          :src="img"
-          alt="stay-image"
-          :class="'gallery-img img' + idx"
-        />
-      </div>
-
-      <!-- STAY SUMMARY AND DETAILS -->
-      <div class="details-reserve-container">
+      <div class="details-reserve-container flex justify-space-between">
         <div class="summary-and-details">
           <stayHeaderHighlights :stay="getStay" />
           <stayTopAmenities :stay="getStay" />
           <staySummaryText :summary="getStay.summary" />
           <stayAmenitiesList :stay="getStay" />
         </div>
-
-        <!-- RESERVE MODAL -->
-        <div class="reserve-section">
+        <div>
+          <reserve-modal :stay="getStay" :order="this.order" />
+        </div>
+        <!-- <div class="reserve-section">
           <div class="reserve-modal-full flex column">
             <div class="modal-header flex justify-space-between">
               <div>
-                <!-- <span class="modal-header-price">${{ getStay.price }}</span> -->
                 <span class="modal-header-price">{{
                   getStay.price.toLocaleString('en-IN', {
                     style: 'currency',
@@ -155,7 +117,6 @@
               <gradient-button :data="'Reserve'" @click="doReserve" />
             </div>
             <p class="reg-text">You won't be charged yet</p>
-            <!-- modal rates -->
             <div class="modal-rates flex column align-center">
               <div class="nights-and-rate flex justify-space-between">
                 <div class="underline">{{ formatPricePerNight }}</div>
@@ -170,15 +131,12 @@
                 <div>$228</div>
               </div>
             </div>
-            <!-- modal total -->
             <div class="modal-total flex justify-space-between">
               <div>Total</div>
               <div>{{ formatTotalPriceWithService }}</div>
             </div>
           </div>
-        </div>
-
-        <!--END: summary and details should split 50-50 to contain reserve element AND more details  -->
+        </div> -->
       </div>
       <stay-reviews :reviews="this.getStay.reviews" />
     </section>
@@ -188,16 +146,16 @@
 <script>
 import addGuests from '../cmps/add-guests.vue'
 import datePicker from '../cmps/date-picker.vue'
+import stayHeader from '../cmps/stay-header.vue'
+import stayHeaderGallery from '../cmps/stay-header-gallery.vue'
 import stayHeaderHighlights from '../cmps/stay-header-highlights.vue'
 import stayTopAmenities from '../cmps/stay-top-amenities.vue'
 import staySummaryText from '../cmps/stay-summary-text.vue'
 import stayAmenitiesList from '../cmps/stay-amenities-list.vue'
 import stayReviews from '../cmps/stay-reviews.vue'
+import reserveModal from '../cmps/reserve-modal.vue'
 import gradientButton from '../cmps/gradient-button.vue'
-import longText from '../cmps/long-text.vue'
 import star from '../assets/svg/star.vue'
-import share from '../assets/svg/share.vue'
-import save from '../assets/svg/save.vue'
 import arrowDown from '../assets/svg/arrow-down.vue'
 import arrowUp from '../assets/svg/arrow-up.vue'
 export default {
@@ -229,7 +187,6 @@ export default {
       await this.$store.dispatch({ type: 'loadStay', id })
       this.galleryObserver = new IntersectionObserver(this.onGalleryObserved, {
         rootMargin: '0px 0px 0px 0px',
-        // threshold: 0.5,
       })
       this.galleryObserver.observe(this.$refs.elGallery)
 
@@ -323,12 +280,6 @@ export default {
         maximumFractionDigits: 0,
       })
     },
-    nextMonth() {
-      const date = new Date()
-      const month = date.getMonth()
-      date.setMonth(month + 1)
-      return date.toLocaleString('en-US', { month: 'short' })
-    },
     formatNights() {
       const inDate = new Date(this.order.checkInDate)
       const outDate = new Date(this.order.checkOutDate)
@@ -361,18 +312,18 @@ export default {
   components: {
     addGuests,
     datePicker,
+    stayHeader,
+    stayHeaderGallery,
     stayHeaderHighlights,
     stayTopAmenities,
     staySummaryText,
     stayAmenitiesList,
     stayReviews,
+    reserveModal,
     star,
-    share,
-    save,
     arrowDown,
     arrowUp,
     gradientButton,
-    longText,
   },
 }
 </script>

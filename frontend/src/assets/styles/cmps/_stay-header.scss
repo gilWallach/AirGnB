@@ -1,0 +1,42 @@
+.stay-header {
+  .details-header > * {
+    font-family: airBnb-Med !important;
+    font-weight: 500 !important;
+    font-size: em(26px, 15px) !important;
+    line-height: 1.5em !important; //(in the context of 18px of h1, this should be 30px)
+
+    margin-block-start: 30px !important;
+    margin-block-end: 0;
+  }
+
+  .stay-details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .action-btns {
+      display: flex;
+      gap: 0.3em;
+
+      font-size: em(14px, 15px);
+      text-decoration: underline;
+    }
+    .action-btn {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 8px;
+
+      &.save {
+        padding-right: 0;
+      }
+    }
+    .action-btn:hover {
+      cursor: pointer;
+    }
+    .reviews-rates-container {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+}

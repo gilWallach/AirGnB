@@ -45,7 +45,14 @@ export default {
   },
   created() {},
   methods: {},
-  computed: {},
+  computed: {
+    nextMonth() {
+      const date = new Date()
+      const month = date.getMonth()
+      date.setMonth(month + 1)
+      return date.toLocaleString('en-US', { month: 'short' })
+    },
+  },
   components: {
     dedicatedWorkspace,
     selfCheckin,

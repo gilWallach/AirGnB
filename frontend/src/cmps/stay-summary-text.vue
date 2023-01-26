@@ -1,6 +1,6 @@
 <template>
   <section class="stay-summary-text">
-    <longText :txt="summary" :maxLength="500" />
+    <longText :txt="summary" :maxLength="300" />
   </section>
 </template>
 <script>
