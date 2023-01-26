@@ -40,103 +40,18 @@
       </div>
       <div class="details-reserve-container flex justify-space-between">
         <div class="summary-and-details">
-          <stayHeaderHighlights :stay="getStay" />
-          <stayTopAmenities :stay="getStay" />
-          <staySummaryText :summary="getStay.summary" />
-          <stayAmenitiesList :stay="getStay" />
+          <stay-header-highlights :stay="getStay" />
+          <stay-top-amenities :stay="getStay" />
+          <stay-summary-text :summary="getStay.summary" />
+          <stay-amenities-list :stay="getStay" />
         </div>
         <div>
-          <reserve-modal :stay="getStay" :order="this.order" />
+          <reserve-modal
+            :stay="getStay"
+            :order="this.order"
+            @toggleModalInSubHeader="onModalObserved"
+          />
         </div>
-        <!-- <div class="reserve-section">
-          <div class="reserve-modal-full flex column">
-            <div class="modal-header flex justify-space-between">
-              <div>
-                <span class="modal-header-price">{{
-                  getStay.price.toLocaleString('en-IN', {
-                    style: 'currency',
-                    currency: 'USD',
-                    maximumFractionDigits: 0,
-                  })
-                }}</span>
-                <span class="modal-header-text"> night</span>
-              </div>
-              <div class="rating-reviews flex" v-if="getStay.reviews.length">
-                <star /><span>4.82 </span
-                ><span class="separator">&nbsp;·&nbsp;</span>
-                <span class="reviews-amount"
-                  >{{ getStay.reviews.length + ' ' + formatReviews }}
-                </span>
-              </div>
-            </div>
-            <div class="pax-dates-container">
-              <div class="dates">
-                <div class="check-in flex column">
-                  <label for="i">
-                    <p>CHECK-IN</p>
-                    <p class="dates-txt">
-                      {{ order.checkInDate || 'Add date' }}
-                    </p>
-                  </label>
-                </div>
-                <div class="checkout flex column">
-                  <label for="o">
-                    <p>CHECKOUT</p>
-                    <p class="dates-txt">
-                      {{ order.checkOutDate || 'Add date' }}
-                    </p>
-                  </label>
-                </div>
-                <div class="dates-modal flex column">
-                  <date-picker @set-dates="setDates" />
-                </div>
-              </div>
-              <div
-                @click.stop="isGuestModalOpen = !isGuestModalOpen"
-                :class="{ selected: isGuestModalOpen }"
-                class="pax flex justify-space-between"
-              >
-                <div>
-                  <p>GUESTS</p>
-                  <p class="pax-txt">{{ order.guests.capacity }} guest</p>
-                </div>
-                <div class="reserve-arrow">
-                  <arrow-up v-if="isGuestModalOpen" />
-                  <arrow-down v-else />
-                </div>
-                <transition name="fade">
-                  <add-guests
-                    v-if="isGuestModalOpen"
-                    @guests-update="addGuests"
-                    :allGuests="order.guests"
-                  />
-                </transition>
-              </div>
-            </div>
-            <div class="gradient-container" ref="reserveModal">
-              <gradient-button :data="'Reserve'" @click="doReserve" />
-            </div>
-            <p class="reg-text">You won't be charged yet</p>
-            <div class="modal-rates flex column align-center">
-              <div class="nights-and-rate flex justify-space-between">
-                <div class="underline">{{ formatPricePerNight }}</div>
-                <div>{{ formatTotalPrice }}</div>
-              </div>
-              <div class="fee-container flex justify-space-between">
-                <div class="underline">Cleaning fee</div>
-                <div>$155</div>
-              </div>
-              <div class="fee-container flex justify-space-between">
-                <div class="underline">Service fee</div>
-                <div>$228</div>
-              </div>
-            </div>
-            <div class="modal-total flex justify-space-between">
-              <div>Total</div>
-              <div>{{ formatTotalPriceWithService }}</div>
-            </div>
-          </div>
-        </div> -->
       </div>
       <stay-reviews :reviews="this.getStay.reviews" />
     </section>
@@ -154,10 +69,8 @@ import staySummaryText from '../cmps/stay-summary-text.vue'
 import stayAmenitiesList from '../cmps/stay-amenities-list.vue'
 import stayReviews from '../cmps/stay-reviews.vue'
 import reserveModal from '../cmps/reserve-modal.vue'
-import gradientButton from '../cmps/gradient-button.vue'
 import star from '../assets/svg/star.vue'
-import arrowDown from '../assets/svg/arrow-down.vue'
-import arrowUp from '../assets/svg/arrow-up.vue'
+import gradientButton from '../cmps/gradient-button.vue'
 export default {
   name: 'stay-details',
   props: {},
@@ -189,11 +102,6 @@ export default {
         rootMargin: '0px 0px 0px 0px',
       })
       this.galleryObserver.observe(this.$refs.elGallery)
-
-      this.modalObserver = new IntersectionObserver(this.onModalObserved, {
-        rootMargin: '-97px 0px 0px 0px',
-      })
-      this.modalObserver.observe(this.$refs.reserveModal)
     } catch (err) {
       throw new Error(err)
     }
@@ -205,31 +113,19 @@ export default {
     if (guests && JSON.parse(guests) && Object.keys(JSON.parse(guests)).length)
       this.order.guests = JSON.parse(guests)
   },
-  mounted() {},
   methods: {
     onGalleryObserved(entries) {
       entries.forEach((entry) => {
         this.isShowSubHeader = entry.isIntersecting ? false : true
       })
     },
-    onModalObserved(entries) {
-      entries.forEach((entry) => {
-        this.modalInSubHeader = entry.isIntersecting ? false : true
-      })
-    },
-    addGuests(guests) {
-      this.order.guests = guests
-    },
-    setDates(dates) {
-      this.order.checkInDate = dates[0].toLocaleString().split(',')[0]
-      this.order.checkOutDate = dates[1]?.toLocaleString().split(',')[0] || null
+    onModalObserved(isShowModalInSubHeader) {
+      this.modalInSubHeader = isShowModalInSubHeader
     },
     doReserve() {
       if (!this.formatNights) {
-        // showErrorMsg('please fill in dates and pax to continue', 5000)
         return
       }
-
       const { guests, checkInDate, checkOutDate } = this.order
       const { id } = this.$route.params
       this.$router.push({
@@ -251,10 +147,6 @@ export default {
       const day = date.getDate()
       date.setDate(day + 3)
       return date
-    },
-    getWidth(rate) {
-      const barWidth = (rate / 5) * 121.5 > 121.5 ? 121.5 : (rate / 5) * 121.5
-      return { width: barWidth + 'px' }
     },
   },
   computed: {
@@ -321,8 +213,6 @@ export default {
     stayReviews,
     reserveModal,
     star,
-    arrowDown,
-    arrowUp,
     gradientButton,
   },
 }

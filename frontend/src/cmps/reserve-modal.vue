@@ -69,7 +69,7 @@
             <!-- !!! -->
           </div>
         </div>
-        <div class="gradient-container" ref="reserveModal">
+        <div class="gradient-container" ref="elReserveModal">
           <gradient-button :data="'Reserve'" @click="doReserve" />
         </div>
         <p class="reg-text">You won't be charged yet</p>
@@ -98,6 +98,7 @@
   </section>
 </template>
 <script>
+import addGuests from '../cmps/add-guests.vue'
 import datePicker from '../cmps/date-picker.vue'
 import arrowDown from '../assets/svg/arrow-down.vue'
 import arrowUp from '../assets/svg/arrow-up.vue'
@@ -116,9 +117,19 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      isGuestModalOpen: false,
+      modalObserver: null,
+      modalInSubHeader: false,
+    }
   },
   created() {},
+  mounted() {
+    this.modalObserver = new IntersectionObserver(this.onModalObserved, {
+      rootMargin: '-97px 0px 0px 0px',
+    })
+    this.modalObserver.observe(this.$refs.elReserveModal)
+  },
   methods: {
     setDates(dates) {
       this.order.checkInDate = dates[0].toLocaleString().split(',')[0]
@@ -143,6 +154,15 @@ export default {
           pricePerNight: this.formatPricePerNight,
           priceWithService: this.formatTotalPriceWithService,
         },
+      })
+    },
+    addGuests(guests) {
+      this.order.guests = guests
+    },
+    onModalObserved(entries) {
+      entries.forEach((entry) => {
+        this.modalInSubHeader = entry.isIntersecting ? false : true
+        this.$emit('toggleModalInSubHeader', this.modalInSubHeader)
       })
     },
   },
@@ -188,6 +208,7 @@ export default {
     },
   },
   components: {
+    addGuests,
     datePicker,
     arrowDown,
     arrowUp,
