@@ -55,6 +55,10 @@
       // width: 58%;
       font-family: airBnb-Med;
 
+      @include for-mobile-layout {
+        flex-basis: 100%;
+      }
+
       .host-img {
         border-radius: 50%;
         width: 56px;
@@ -64,214 +68,21 @@
         aspect-ratio: 1/1;
       }
     }
-
-    // .reserve-section {
-    //   flex-basis: 42%;
-    //   text-align: center;
-    //   padding-top: 48px;
-
-    //   .reserve-modal-full {
-    //     position: sticky;
-    //     top: em(140px, 15px);
-    //     width: em(370.33px, 15px);
-    //     // height: em(532px, 15px);
-    //     border-radius: 12px;
-    //     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-    //     border: 1px solid rgb(221, 221, 221);
-    //     margin-inline-end: 0;
-    //     margin-inline-start: auto;
-    //     margin-block-end: em(52px, 15px);
-    //     padding: 20px 24px 24px;
-
-    //     .modal-header {
-    //       font-family: airBnb-Reg;
-    //       margin-bottom: em(18px, 15px);
-    //       align-items: flex-end;
-    //       .modal-header-price {
-    //         font-family: airBnb-Med;
-    //         font-size: em(22px, 15px);
-    //         // font-weight: 600;
-    //         line-height: em(26px, 15px);
-    //       }
-    //       .modal-header-text {
-    //         font-size: em(16px, 15px);
-    //       }
-
-    //       .rating-reviews {
-    //         font-size: em(14px, 15px);
-    //         padding-bottom: 4px;
-    //       }
-
-    //       .reviews-amount {
-    //         font-family: 'airBnb-Med';
-    //         color: rgb(113, 113, 113);
-    //         text-decoration: underline;
-    //       }
-    //     }
-    //     .pax-dates-container {
-    //       border-radius: 8px;
-    //       // box-shadow: 0 0 0 1px $clr5;
-    //       outline: 1px solid $clr6;
-    //       margin-bottom: 1em;
-
-    //       .dates {
-    //         > div {
-    //           outline: none !important;
-    //         }
-    //         display: flex;
-    //         border: 0;
-    //         border-block-end: 1px solid $clr6;
-    //         p {
-    //           margin: 0;
-    //         }
-    //         &:hover {
-    //           // outline: 1px solid $clr2;
-    //           border-radius: rem(8px);
-    //           // border: 0;
-    //           // outline: 0;
-    //           box-shadow: rgb(34 34 34) 0px 0px 0px 2px inset !important;
-    //         }
-    //         .check-in {
-    //           flex-basis: 50%;
-
-    //           text-align: left;
-    //           font-family: airBnB-Reg;
-    //           font-size: em(10px, 15px);
-    //           font-weight: 600;
-    //           padding: 8px 0;
-    //           padding-left: $box-padding;
-
-    //           border-bottom-left-radius: 0;
-    //           border-inline-end: 1px solid $clr6;
-
-    //           .dates-txt {
-    //             font-size: em(13px, 10px);
-    //             font-family: airBnb-Reg;
-    //             font-weight: 400;
-    //             letter-spacing: 0.04em;
-    //           }
-    //         }
-    //         .checkout {
-    //           flex-basis: 50%;
-
-    //           text-align: left;
-    //           padding: 8px 0;
-    //           padding-left: $box-padding;
-    //           font-family: airBnB-Reg;
-    //           font-size: em(10px, 15px);
-    //           font-weight: 600;
-
-    //           border-bottom-right-radius: 0;
-
-    //           .dates-txt {
-    //             font-size: em(13px, 10px);
-    //             font-family: airBnb-Reg;
-    //             font-weight: 400;
-    //             letter-spacing: 0.04em;
-    //           }
-    //         }
-    //       }
-
-    //       .pax {
-    //         position: relative;
-    //         text-align: left;
-    //         padding: 8px 0 10px;
-    //         padding-left: $box-padding;
-    //         font-family: airBnB-Reg;
-    //         font-size: em(10px, 15px);
-    //         font-weight: 600;
-    //         &:hover,
-    //         &.selected {
-    //           border-radius: rem(8px);
-    //           box-shadow: rgb(34 34 34) 0px 0px 0px 2px inset;
-    //         }
-    //         p {
-    //           margin: 0;
-    //         }
-
-    //         .pax-txt {
-    //           font-size: em(13px, 10px);
-    //           font-family: airBnb-Reg;
-    //           font-weight: 400;
-    //           letter-spacing: 0.04em;
-    //         }
-
-    //         .reserve-arrow {
-    //           padding: 10px 18px 0 0;
-    //         }
-    //         .add-guests {
-    //           position: absolute;
-    //           z-index: 10;
-    //           bottom: 0;
-    //           transform: translateY(-20px);
-    //           right: 0;
-    //           width: 100%;
-    //           // border-radius: rem(4px) !important;
-    //           .add-guests-modal {
-    //             box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px,
-    //               rgba(0, 0, 0, 0.07) 0px 0px 0px 1px !important;
-    //             border-radius: rem(4px) !important;
-    //             padding: 16px;
-    //             width: 100%;
-    //             > * {
-    //               min-height: 56px !important;
-    //               min-width: auto;
-    //               width: 100%;
-    //               padding-block: 0;
-    //               margin-bottom: -4px;
-    //               margin-top: 16px;
-    //               border: none;
-    //             }
-    //             > * div:first-of-type span {
-    //               font-size: 1.433333em;
-    //               font-weight: 400;
-    //             }
-
-    //             .counter span {
-    //               font-size: 14px;
-    //               font-weight: 400;
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-
-    //     .btn-reserve {
-    //       width: 100%;
-    //       align-self: center;
-
-    //       border-radius: 8px;
-
-    //       background-color: rgb(220, 15, 99);
-    //       color: white;
-    //       font-size: 1em;
-    //       font-family: airBnB-Reg;
-    //       font-weight: 700;
-    //       letter-spacing: 0.08em;
-
-    //       margin-bottom: em(16px, 15px);
-    //     }
-
-    //     .modal-rates {
-    //       border-block-end: 0.2px solid rgba(0, 0, 0, 0.15);
-    //       margin-top: em(10.5px, 15px);
-    //       padding-bottom: em(10px);
-
-    //       .underline {
-    //         text-decoration: underline;
-    //       }
-    //     }
-    //     .modal-rates > * {
-    //       width: 100%;
-    //       font-family: airBnb-Reg;
-    //       font-size: em(16px, 15px);
-    //       margin-bottom: 1em;
-    //     }
-
-    //     .modal-total {
-    //       margin-top: em(22px, 15px);
-    //     }
-    //   }
-    // }
   }
+
+  // @include for-mobile-layout {
+  //   background-color: pink;
+  // }
+
+  // @include for-narrow-layout {
+  //   background-color: lightgreen;
+  // }
+
+  // @include for-normal-layout {
+  //   background-color: green;
+  // }
+
+  // @include for-wide-layout {
+  //   background-color: black;
+  // }
 }

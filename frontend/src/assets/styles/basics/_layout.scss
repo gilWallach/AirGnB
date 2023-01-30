@@ -16,26 +16,26 @@
     }
   }
 
-  @include for-narrow-layout {
-    grid-template-columns: minmax(20px, 1fr) minmax(auto, $mobile-breakpoint) minmax(
-        20px,
-        1fr
-      );
-  }
+  // @include for-narrow-layout {
+  //   grid-template-columns: minmax(20px, 1fr) minmax(auto, $mobile-breakpoint) minmax(
+  //       20px,
+  //       1fr
+  //     );
+  // }
 
-  @include for-normal-layout {
-    grid-template-columns: minmax(20px, 1fr) minmax(auto, $narrow-breakpoint) minmax(
-        20px,
-        1fr
-      );
-  }
+  // @include for-normal-layout {
+  //   grid-template-columns: minmax(20px, 1fr) minmax(auto, $narrow-breakpoint) minmax(
+  //       20px,
+  //       1fr
+  //     );
+  // }
 
-  @include for-wide-layout {
-    grid-template-columns: minmax(20px, 1fr) minmax(auto, $normal-breakpoint) minmax(
-        20px,
-        1fr
-      );
-  }
+  // @include for-wide-layout {
+  //   grid-template-columns: minmax(20px, 1fr) minmax(auto, $normal-breakpoint) minmax(
+  //       20px,
+  //       1fr
+  //     );
+  // }
 }
 
 .card-grid {
@@ -47,27 +47,10 @@
 .main-container-stay-details {
   display: grid;
 
-  @include for-normal-level2-layout {
-    // background-color: yellow;
-  }
-
-  @include for-wide-layout {
-    grid-template-columns: minmax(auto, 16px) minmax(auto, 960px) minmax(
-        auto,
-        16px
-      );
-    // background-color: white;
-  }
-
-  @include for-wide-level2-layout {
-    grid-template-columns: minmax(rem(40px), auto) minmax(auto, 1120px) minmax(
-        rem(40px),
-        auto
-      );
-  }
-
-  grid-template-columns: 16px 1fr 16px;
-  // background-color: green;
+  grid-template-columns: minmax(16px, 1fr) minmax(375px, 1120px) minmax(
+      16px,
+      1fr
+    );
 
   > * {
     grid-column: 2;

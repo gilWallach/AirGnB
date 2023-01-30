@@ -9,12 +9,20 @@ $clr7: #ebebeb;
 $clr8: #ffffff;
 
 // sizes
-
 $header-height: 80px;
 
+//Layout
+$layout-padding: 16px;
+
 $box-padding: 10px;
+
 // Breakpoints
 $mobile-breakpoint: 460px;
-$narrow-breakpoint: 720px;
+$narrow-breakpoint: 600px;
 $normal-breakpoint: 960px;
-$wide-breakpoint: 1040px;
+$wide-breakpoint: 1200px;
+
+$padded-mobile-breakpoint: $mobile-breakpoint + $layout-padding;
+$padded-narrow-breakpoint: $narrow-breakpoint + $layout-padding * 2;
+$padded-normal-breakpoint: $normal-breakpoint + $layout-padding * 2;
+$padded-wide-breakpoint: $wide-breakpoint + $layout-padding * 2;

@@ -13,15 +13,15 @@ export const store = Vuex.createStore({
     stayStore,
     reviewStore,
     mainSearchStore,
-    orderStore
+    orderStore,
   },
   state: {
-    isList: true
+    isList: true,
   },
   getters: {
     isList({ isList }) {
       return isList
-    }
+    },
   },
   mutations: {
     setDetails(state) {
@@ -29,8 +29,7 @@ export const store = Vuex.createStore({
     },
     setList(state) {
       state.isList = true
-    }
+    },
   },
-  actions: {
-  },
+  actions: {},
 })

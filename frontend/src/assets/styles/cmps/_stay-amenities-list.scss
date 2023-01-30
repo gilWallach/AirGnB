@@ -13,6 +13,14 @@
       columns: 2;
       margin-bottom: em(28px, 15px);
 
+      @include for-mobile-layout {
+        columns: 1;
+      }
+
+      @include for-narrow-layout {
+        columns: 2;
+      }
+
       .amenity-item {
         .cancelled {
           text-decoration: line-through;

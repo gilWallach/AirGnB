@@ -14,8 +14,6 @@ import { store } from './store/store'
 import appHeader from './cmps/app-header.vue'
 import userMsg from './cmps/user-msg.vue'
 import { userService } from './services/user.service'
-import { showSuccessMsg } from './services/event-bus.service'
-import { socketService } from './services/socket.service'
 
 export default {
   created() {

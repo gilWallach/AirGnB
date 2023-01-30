@@ -1,23 +1,25 @@
 .stay-header-gallery {
   .gallery {
-    @include for-wide-layout {
-      grid-template-columns: minmax(333px, 498px) repeat(
-          2,
-          minmax(158.5px, 277px)
-        );
-      grid-template-rows: repeat(2, minmax(164px, 243px));
-    }
+    @include for-mobile-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 593px);
+      grid-template-rows: minmax(164px, 220px);
+      gap: 0;
 
-    @include for-wide-level2-layout {
-      grid-template-columns: minmax(326px, 560px) repeat(
-          2,
-          minmax(155px, 272px)
-        );
-      grid-template-rows: repeat(2, minmax(164px, 243px));
+      .img1,
+      .img2,
+      .img3,
+      .img4,
+      .img5 {
+        display: none;
+      }
+      .img0 {
+        border-radius: 0.75em;
+      }
     }
 
     display: grid;
-    grid-template-columns: minmax(326px, 560px) repeat(2, minmax(155px, 272px));
+    grid-template-columns: minmax(290px, 560px) repeat(2, minmax(155px, 272px));
     grid-template-rows: repeat(2, minmax(164px, 243px));
     grid-template-areas:
       'img0 img1 img2'

@@ -10,11 +10,25 @@
       <div class="price">
         <h2 class="fs22">Price range</h2>
         <p>The average monthly price is ${{ priceAvg }}</p>
-        <HistogramSlider :width="629" :barWidth="11.58" :bar-height="64" :data="prices" :force-edges="false"
-          :primaryColor="'#b0b0b0'" @change="setMinMax"
-          :holderColor="'#dddddd'" :handleSize="32" :histSliderGap="0" :barGap="0"
-          :barRadius="1" :lineHeight="0" :label="false" :hideFromTo="true" :min="minPrice" :max="maxPrice"
-           />
+        <HistogramSlider
+          :width="629"
+          :barWidth="11.58"
+          :bar-height="64"
+          :data="prices"
+          :force-edges="false"
+          :primaryColor="'#b0b0b0'"
+          @change="setMinMax"
+          :holderColor="'#dddddd'"
+          :handleSize="32"
+          :histSliderGap="0"
+          :barGap="0"
+          :barRadius="1"
+          :lineHeight="0"
+          :label="false"
+          :hideFromTo="true"
+          :min="minPrice"
+          :max="maxPrice"
+        />
         <div class="prices-display flex justify-center align-center">
           <label class="flex column">
             <small>min price</small>
@@ -31,7 +45,11 @@
         <h2>Type of place</h2>
         <el-radio-group v-model="filterBy.roomType">
           <el-radio-button :key="0" label="Any" />
-          <el-radio-button v-for="option in roomOptions" :key="option" :label="option" />
+          <el-radio-button
+            v-for="option in roomOptions"
+            :key="option"
+            :label="option"
+          />
         </el-radio-group>
       </div>
       <div class="rooms">
@@ -55,14 +73,21 @@
       <div class="amenities">
         <h2>Amenities</h2>
         <el-checkbox-group v-model="filterBy.amenities">
-          <el-checkbox v-if="isFullAmenities" v-for="amenity in amenities" :key="amenity" :label="amenity">{{
-              amenity
-          }}</el-checkbox>
+          <el-checkbox
+            v-if="isFullAmenities"
+            v-for="amenity in amenities"
+            :key="amenity"
+            :label="amenity"
+            >{{ amenity }}</el-checkbox
+          >
           <div v-else class="small-amenity-container flex column">
             <div class="small-amenities">
-              <el-checkbox v-for="smallAmenity in smallAmenities" :key="smallAmenity" :label="smallAmenity">{{
-                  smallAmenity
-              }}</el-checkbox>
+              <el-checkbox
+                v-for="smallAmenity in smallAmenities"
+                :key="smallAmenity"
+                :label="smallAmenity"
+                >{{ smallAmenity }}</el-checkbox
+              >
             </div>
             <button @click="isFullAmenities = true">Show More</button>
           </div>
@@ -118,10 +143,10 @@ export default {
         capacity: 'Any',
         bathrooms: 'Any',
         amenities: [],
-        isSuperhost: false
+        isSuperhost: false,
       },
       roomOptions: ['Entire place', 'Private room'],
-      isFullAmenities: false
+      isFullAmenities: false,
     }
   },
   created() {
@@ -130,7 +155,16 @@ export default {
 
     const { filter } = this.$route.query
     if (!filter) return
-    const { minPrice, maxPrice, roomType, bedrooms, capacity, bathrooms, amenities, isSuperhost } = JSON.parse(filter)
+    const {
+      minPrice,
+      maxPrice,
+      roomType,
+      bedrooms,
+      capacity,
+      bathrooms,
+      amenities,
+      isSuperhost,
+    } = JSON.parse(filter)
     this.filterBy.minPrice = minPrice
     this.filterBy.maxPrice = maxPrice
     this.filterBy.roomType = roomType
@@ -144,11 +178,14 @@ export default {
     setMinMax(slider) {
       this.filterBy.minPrice = slider.from
       this.filterBy.maxPrice = slider.to
-      console.log(this.filterBy);
     },
     search() {
       this.$emit('closeModal')
-      this.$route.path === '/' ? this.$router.push({ path: '/s', query: { filter: JSON.stringify({ ...this.filterBy }) } })
+      this.$route.path === '/'
+        ? this.$router.push({
+            path: '/s',
+            query: { filter: JSON.stringify({ ...this.filterBy }) },
+          })
         : this.$emit('filter', { ...this.filterBy })
     },
     clearFilter() {
@@ -166,7 +203,7 @@ export default {
   },
   computed: {
     prices() {
-      return this.$store.getters.stays.map(stay => stay.price)
+      return this.$store.getters.stays.map((stay) => stay.price)
     },
     minPrice() {
       return Math.min(...this.prices)
@@ -179,15 +216,18 @@ export default {
       return Math.ceil(priceSum / this.prices.length)
     },
     amenities() {
-      const amenities = this.$store.getters.stays.reduce((acc, { amenities },) => acc.concat(amenities), [])
+      const amenities = this.$store.getters.stays.reduce(
+        (acc, { amenities }) => acc.concat(amenities),
+        []
+      )
       return [...new Set([...amenities])]
     },
     smallAmenities() {
       return this.amenities.slice(0, 6)
-    }
+    },
   },
   components: {
     close,
-  }
+  },
 }
 </script>

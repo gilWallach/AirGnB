@@ -7,6 +7,10 @@
 
     margin-block-start: 30px !important;
     margin-block-end: 0;
+
+    @include for-mobile-layout {
+      font-size: em(19px, 15px) !important;
+    }
   }
 
   .stay-details-container {
@@ -14,12 +18,20 @@
     justify-content: space-between;
     align-items: flex-end;
 
+    @include for-mobile-layout {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     .action-btns {
       display: flex;
       gap: 0.3em;
 
       font-size: em(14px, 15px);
       text-decoration: underline;
+      @include for-mobile-layout {
+        visibility: hidden;
+      }
     }
     .action-btn {
       display: flex;
@@ -38,5 +50,11 @@
       display: flex;
       justify-content: flex-start;
     }
+  }
+
+  @include for-mobile-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

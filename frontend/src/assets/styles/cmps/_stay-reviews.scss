@@ -26,6 +26,15 @@
       .reviews-kpis-list {
         width: 100%;
         columns: 2;
+        gap: em(120px, 15px);
+
+        @include for-mobile-layout {
+          columns: 1;
+        }
+
+        @include for-narrow-layout {
+          columns: 2;
+        }
 
         .review-item {
           margin-bottom: 18px;
@@ -34,8 +43,19 @@
           }
           .rate-container {
             font-size: em(12px, 15px);
-            padding-right: em(120px, 15px);
             gap: em(12px, 15px);
+
+            @include for-mobile-layout {
+              padding-right: 0;
+            }
+
+            @include for-narrow-layout {
+              padding-right: 0;
+            }
+
+            @include for-normal-layout {
+              padding-right: 8em;
+            }
           }
           .kpis {
             height: 4px;
@@ -79,9 +99,17 @@
 
     .reviews-details {
       display: grid;
-      grid-template-columns: repeat(2, em(457.33px, 15px));
+      grid-template-columns: repeat(2, minmax(auto, em(457.33px, 15px)));
       grid-auto-flow: row dense;
       column-gap: em(108px, 15px);
+
+      @include for-mobile-layout {
+        grid-template-columns: minmax(auto, em(457.33px, 15px));
+      }
+
+      @include for-narrow-layout {
+        grid-template-columns: repeat(2, minmax(auto, em(457.33px, 15px)));
+      }
 
       > *:not(:nth-child(odd), .more-reviews) {
         padding-left: em(5px, 15px);

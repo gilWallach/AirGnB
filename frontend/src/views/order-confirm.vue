@@ -94,10 +94,18 @@
                 <h3 class="fs16" :class="{ 'clean-margin': isHostMode }">
                   Guests
                 </h3>
-                <span class="last-item" v-if="isHostMode && order.guests">{{ order.guests }}</span>
-                <span v-if="order.guests.adults">{{ order.guests.adults }} adult</span>
-                <span v-if="order.guests.children">{{ order.guests.children }} children</span>
-                <span v-if="order.guests.infants">{{ order.guests.infants }} infants</span>
+                <span class="last-item" v-if="isHostMode && order.guests">{{
+                  order.guests
+                }}</span>
+                <span v-if="order.guests.adults"
+                  >{{ order.guests.adults }} adult</span
+                >
+                <span v-if="order.guests.children"
+                  >{{ order.guests.children }} children</span
+                >
+                <span v-if="order.guests.infants"
+                  >{{ order.guests.infants }} infants</span
+                >
               </li>
               <li class="list-item">
                 <h3 v-if="!isHostMode" class="fs16">Price Breakdown</h3>
@@ -191,7 +199,6 @@ export default {
       this.$store.commit({ type: 'setDetails' })
       await this.$store.dispatch({ type: 'loadOrders' })
       this.order = JSON.parse(JSON.stringify(this.$store.getters.orders[0]))
-      console.log('this.order: ', this.order)
       await this.$store.dispatch({
         type: 'loadUser',
         userId: this.order.buyer._id,
@@ -201,7 +208,6 @@ export default {
 
       delete this.order.guests.capacity
       const guestsArr = Object.values(this.order.guests)
-      console.log('guestsArr: ', guestsArr)
       this.order.guests = guestsArr.reduce((acc, n) => acc + n, 0)
 
       this.currStay = this.order.stay

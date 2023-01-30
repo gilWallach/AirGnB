@@ -2,6 +2,15 @@
   position: sticky;
   top: em(140px, 15px);
   margin-block-end: em(52px, 15px);
+
+  @include for-mobile-layout {
+    display: none;
+  }
+
+  @include for-normal-layout {
+    display: block;
+  }
+
   .reserve-section {
     flex-basis: 42%;
     text-align: center;
@@ -16,6 +25,13 @@
       margin-inline-end: 0;
       margin-inline-start: auto;
       padding: 20px 24px 24px;
+
+      @include for-narrow-layout {
+        width: auto;
+      }
+      @include for-normal-layout {
+        width: em(370.33px, 15px);
+      }
 
       .modal-header {
         font-family: airBnb-Reg;

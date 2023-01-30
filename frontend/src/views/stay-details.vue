@@ -56,7 +56,9 @@
           />
         </div>
       </div>
+      <!-- !REVIEWS CMP -->
       <stay-reviews :reviews="this.getStay.reviews" />
+      <!-- !REVIEWS CMP -->
     </section>
   </div>
 </template>
