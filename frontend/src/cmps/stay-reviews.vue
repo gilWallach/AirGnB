@@ -2,7 +2,7 @@
   <section class="stay-reviews" @click="onCloseReviewsModal">
     <transition name="fade">
       <reviews-modal
-        v-if="isShowReviewsModal"
+        v-if="isShowReviewsModal && isModalOpen"
         :reviews="this.reviews"
         @closeModal="onCloseReviewsModal"
       />
@@ -41,6 +41,10 @@ export default {
     reviews: {
       type: Array,
       required: true,
+    },
+    isModalOpen: {
+      type: Boolean,
+      required: false,
     },
   },
   data() {

@@ -58,6 +58,7 @@
       </div>
       <stay-reviews
         :reviews="this.getStay.reviews"
+        :isModalOpen="this.isModalOpen"
         @showModal="isModalOpen = true"
         @closeModal="isModalOpen = false"
       />
