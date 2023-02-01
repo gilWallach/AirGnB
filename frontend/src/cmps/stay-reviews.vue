@@ -1,5 +1,12 @@
 <template>
-  <section class="stay-reviews">
+  <section class="stay-reviews" @click="onCloseReviewsModal">
+    <transition name="fade">
+      <reviews-modal
+        v-if="isShowReviewsModal"
+        :reviews="this.reviews"
+        @closeModal="onCloseReviewsModal"
+      />
+    </transition>
     <div class="reviews-container">
       <!-- REVIEWS HEADER - KPIS SUMMARY -->
       <stay-reviews-summary :reviews="this.reviews" />
@@ -12,7 +19,11 @@
           :key="review.id"
         />
         <div class="more-reviews">
-          <div class="btn-show-reviews">
+          <div
+            v-if="this.reviews.length > 6"
+            @click.stop="onShowReviewsModal"
+            class="btn-show-reviews"
+          >
             Show all {{ this.reviews?.length }} reviews
           </div>
         </div>
@@ -23,6 +34,7 @@
 <script>
 import stayReviewsSummary from '../cmps/stay-reviews-summary.vue'
 import userReview from '../cmps/user-review.vue'
+import reviewsModal from '../cmps/reviews-modal.vue'
 export default {
   name: 'reviews-summary',
   props: {
@@ -32,14 +44,27 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      isShowReviewsModal: false,
+    }
   },
   created() {},
-  methods: {},
+  methods: {
+    onShowReviewsModal() {
+      this.isShowReviewsModal = true
+      this.$emit('showModal')
+      console.log('this.$refs: ', this.$refs)
+    },
+    onCloseReviewsModal() {
+      this.isShowReviewsModal = false
+      this.$emit('closeModal')
+    },
+  },
   computed: {},
   components: {
     stayReviewsSummary,
     userReview,
+    reviewsModal,
   },
 }
 </script>

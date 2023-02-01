@@ -48,11 +48,11 @@
         <div class="review-item flex justify-space-between">
           <div class="kpi-title">Check-in</div>
           <div class="rate-container flex align-center">
-            <div
-              class="kpis"
-              :style="getWidth((this.reviewsAvg * 1.2).toFixed(2))"
-            >
-              <div class="check-in"></div>
+            <div class="kpis">
+              <div
+                class="check-in"
+                :style="getWidth((this.reviewsAvg * 1.2).toFixed(2))"
+              ></div>
             </div>
             <div class="rate-value">
               {{

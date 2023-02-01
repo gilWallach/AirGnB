@@ -56,10 +56,19 @@
           />
         </div>
       </div>
-      <!-- !REVIEWS CMP -->
-      <stay-reviews :reviews="this.getStay.reviews" />
-      <!-- !REVIEWS CMP -->
+      <stay-reviews
+        :reviews="this.getStay.reviews"
+        @showModal="isModalOpen = true"
+        @closeModal="isModalOpen = false"
+      />
     </section>
+    <transition name="fade">
+      <div
+        class="main-screen"
+        v-if="isModalOpen"
+        @click="isModalOpen = false"
+      ></div>
+    </transition>
   </div>
 </template>
 
@@ -86,6 +95,7 @@ export default {
       isShowSubHeader: false,
       isGuestModalOpen: false,
       modalInSubHeader: false,
+      isModalOpen: false,
       order: {
         checkInDate: new Date().toLocaleString().split(',')[0],
         checkOutDate: this.setDay().toLocaleString().split(',')[0],
