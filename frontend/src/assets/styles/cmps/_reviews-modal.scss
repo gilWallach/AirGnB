@@ -1,0 +1,131 @@
+.reviews-modal {
+  position: fixed;
+  top: 17%;
+  left: 50.5%;
+  margin-top: -118.25px;
+  margin-left: -520px;
+  padding: 0 rem(26px);
+  z-index: 100;
+
+  width: 1032px;
+  height: 850px;
+
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px;
+  font-family: airBnB-Med;
+  font-size: em(16px);
+
+  border-radius: 10px;
+
+  .header {
+    position: relative;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    margin-bottom: 30px;
+
+    .close-btn {
+      position: absolute;
+      left: 0px;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .modal-reviews-container {
+    justify-content: space-between;
+    gap: 5.5em;
+
+    .title {
+      margin-bottom: em(34px, 15px);
+
+      .rating-reviews {
+        font-family: airBnB-Med;
+        font-weight: 800;
+        font-size: em(27.5px, 15px);
+        color: lighten($clr3, 5%);
+        margin-bottom: rem(45px);
+
+        align-items: center;
+
+        :first-child {
+          svg {
+            width: rem(25px) !important;
+            height: rem(25px) !important;
+          }
+        }
+      }
+    }
+
+    .reviews-kpis-list {
+      width: 100%;
+      columns: 1;
+
+      .review-item {
+        font-family: airBnB-Reg;
+        margin-bottom: 13px;
+        gap: rem(40px);
+        .kpi-title {
+          letter-spacing: 0.02em;
+          font-size: em(14px);
+        }
+        .rate-container {
+          font-size: em(12px, 15px);
+          gap: em(12px, 15px);
+        }
+        .kpis {
+          height: 4px;
+          width: em(142px);
+          background-color: $clr6;
+          border-radius: 2em;
+
+          .cleanliness,
+          .communication,
+          .check-in,
+          .accuracy,
+          .location,
+          .value {
+            height: 4px;
+            width: em(4.6/5 * 152px);
+            background-color: $clr2;
+            border-radius: 2em;
+          }
+          .cleanliness {
+            width: em(4.6/5 * 152px);
+          }
+          .communication {
+            width: em(5/5 * 152px);
+          }
+          .check-in {
+            width: em(4.8/5 * 152px);
+          }
+          .accuracy {
+            width: em(4.9/5 * 152px);
+          }
+          .location {
+            width: em(4.8/5 * 152px);
+          }
+          .value {
+            width: em(4.8/5 * 152px);
+          }
+        }
+      }
+    }
+
+    .modal-user-reviews-container {
+      padding: 0 0.5em;
+      margin-top: 70px;
+      max-height: 700px;
+      overflow-y: scroll;
+
+      .user-review {
+        .review-details {
+          .review-txt {
+            font-size: 0.8em;
+            line-height: 1.733333em;
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+}
