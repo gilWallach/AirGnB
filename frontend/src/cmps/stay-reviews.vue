@@ -57,7 +57,6 @@ export default {
     onShowReviewsModal() {
       this.isShowReviewsModal = true
       this.$emit('showModal')
-      console.log('this.$refs: ', this.$refs)
     },
     onCloseReviewsModal() {
       this.isShowReviewsModal = false
