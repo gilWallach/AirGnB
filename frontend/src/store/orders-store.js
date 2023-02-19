@@ -114,9 +114,10 @@ export const orderStore = {
         throw err
       }
     },
-    async loadOrder({ commit }, { id }) {
+    async loadOrder({ commit }, { filterBy }) {
       try {
-        const order = await orderService.getById(id)
+        const {_id} = filterBy
+        const order = await orderService.getById(_id)
         commit({ type: 'setSelectedOrder', order })
       } catch (err) {
         throw new Error(err)

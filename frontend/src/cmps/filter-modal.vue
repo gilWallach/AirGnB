@@ -7,7 +7,7 @@
       <h2 class="center-heading">Filters</h2>
     </div>
     <main>
-      <div class="price">
+      <div class="price sec-padding">
         <h2 class="fs22">Price range</h2>
         <p>The average monthly price is ${{ priceAvg }}</p>
         <HistogramSlider
@@ -41,36 +41,36 @@
           </label>
         </div>
       </div>
-      <div class="type">
+      <div class="type sec-padding">
         <h2>Type of place</h2>
-        <el-radio-group v-model="filterBy.roomType">
-          <el-radio-button :key="0" label="Any" />
-          <el-radio-button
+        <el-checkbox-group v-model="filterBy.roomType">
+          <el-checkbox class="fs18" :key="0" label="Any" />
+          <el-checkbox class="fs18"
             v-for="option in roomOptions"
             :key="option"
             :label="option"
           />
-        </el-radio-group>
+        </el-checkbox-group>
       </div>
-      <div class="rooms">
+      <div class="rooms sec-padding">
         <h2>Rooms and beds</h2>
-        <h3>Bedrooms</h3>
+        <h3 class="fs16">Bedrooms</h3>
         <el-radio-group v-model="filterBy.bedrooms" size="medium">
           <el-radio-button :key="0" label="Any" />
           <el-radio-button v-for="num in 8" :key="num" :label="num" />
         </el-radio-group>
-        <h3>Beds</h3>
+        <h3 class="fs16">Beds</h3>
         <el-radio-group v-model="filterBy.capacity" size="medium">
           <el-radio-button :key="0" label="Any" />
           <el-radio-button v-for="num in 8" :key="num" :label="num" />
         </el-radio-group>
-        <h3>Bathrooms</h3>
+        <h3 class="fs16">Bathrooms</h3>
         <el-radio-group v-model="filterBy.bathrooms" size="medium">
           <el-radio-button :key="0" label="Any" />
           <el-radio-button v-for="num in 8" :key="num" :label="num" />
         </el-radio-group>
       </div>
-      <div class="amenities">
+      <div class="amenities sec-padding">
         <h2>Amenities</h2>
         <el-checkbox-group v-model="filterBy.amenities">
           <el-checkbox
@@ -81,7 +81,7 @@
             >{{ amenity }}</el-checkbox
           >
           <div v-else class="small-amenity-container flex column">
-            <div class="small-amenities">
+            <div class="small-amenities grid">
               <el-checkbox
                 v-for="smallAmenity in smallAmenities"
                 :key="smallAmenity"
@@ -89,11 +89,11 @@
                 >{{ smallAmenity }}</el-checkbox
               >
             </div>
-            <button @click="isFullAmenities = true">Show More</button>
+            <button class="fs16" @click="isFullAmenities = true">Show More</button>
           </div>
         </el-checkbox-group>
       </div>
-      <div class="super-host">
+      <div class="super-host sec-padding">
         <h2>Top tier stays</h2>
         <div class="container flex justify-space-between align-center">
           <div class="description flex column">

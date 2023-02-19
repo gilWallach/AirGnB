@@ -2,7 +2,9 @@
   <section v-if="orders.length && selectedStay" class="orders-summary">
     <div class="host-summary">
       <div class="stats-header">
-        <h3 class="flex"><arrowBack @click="goBack"/>  Good job!</h3>
+        <h3 class="flex">
+          <arrowBack @click="goBack" /> Good job!
+        </h3>
         <p>Guests love what you're doing, Keep up the good work and review your stats!</p>
       </div>
       <div class="stats">
@@ -21,14 +23,15 @@
     </div>
 
     <div v-for="currOrder in orders" class="orders-tables">
-      <table> 
+      <table>
         <tr :class="bgStyleByStatus(currOrder.status)">
           <th>Buyer</th>
           <td class="buyer no-padding-inline">{{ currOrder.buyer.fullname }}</td>
 
           <th class="buyer-details-td flex align-center justify-center">
             <div class="buyer-img-container">
-              <img :src="currOrder.buyer.imgUrl" alt="buyer profile image" onerror="this.src=`https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png`"/>
+              <img :src="currOrder.buyer.imgUrl" alt="buyer profile image"
+                onerror="this.src=`https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png`" />
               <!-- <img v-if="order.buyer.imgUrl" :src="currBuyer.imgUrl" alt="buyer profile image" />
               <user-avatar v-else /> -->
             </div>
@@ -58,7 +61,7 @@
           <p>{{ formatDate(currOrder.startDate) }}</p>
           <!-- <p>{{ currOrder.startDate }}</p> -->
           </td>
-          <td class="center-td"> 
+          <td class="center-td">
           <th class="no-padding-inline">Check-out: </th>
           <p>{{ currOrder.endDate }}</p>
           </td>
@@ -113,8 +116,7 @@ export default {
     // })
     try {
       // Add loggedin user id to filter 
-      await this.$store.dispatch({ type: 'loadOrders' , filterBy:{_id:this.$store.getters.loggedinUser._id}} )
-
+      await this.$store.dispatch({ type: 'loadOrders', filterBy: { host: {_id: "639502aedd6d8d616420a89a"} } })
       await this.$store.dispatch({ type: 'loadStay', id: this.orders[0].stay._id })
 
       // socketService.login('6390a4d768ad08edacc01167')
@@ -164,7 +166,7 @@ export default {
 
       return average.toFixed(2)
     },
-    goBack(){
+    goBack() {
       this.$router.push('/')
     },
   },

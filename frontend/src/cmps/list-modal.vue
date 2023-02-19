@@ -1,6 +1,6 @@
 <template>
     <section>
-        <wishlist-modal v-if="isWishlist" @closeModal="$emit('closeModal')"/>
+        <wishlist-modal v-if="isWishlist" @closeModal="$emit('closeModal')" :stayId="stayId"/>
         <filter-modal v-else @closeModal="$emit('closeModal')" @filter="filter"/>
     </section>
 </template>
@@ -16,12 +16,16 @@ export default {
         isWishlist: {
             type: Boolean,
         },
+        stayId: {
+            type: String,
+        },
     },
     data() {
         return {}
     },
     created() {
     },
+
     methods: {
         filter(filterBy){
             this.$emit('filter',filterBy)

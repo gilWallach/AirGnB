@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-// ::selection {
-//     background-color: $clr1;
-//     color: $clr6;
-// }
-
 html {
   font-family: airBnb-Reg;
   line-height: rem(19px);
@@ -14,7 +9,6 @@ html {
 }
 
 body {
-  // font-family: Airbnb-Lt;
   font-size: rem(15px);
   letter-spacing: 0.01rem;
   margin: 0;
@@ -26,14 +20,9 @@ h3,
 h4,
 h5,
 h6 {
-  // font-family: caveat;
   margin: 0 0 0.6em;
   line-height: 1;
 }
-
-// section, main, footer {
-//     padding: 5px;
-// }
 
 img {
   width: 100%;
@@ -47,9 +36,6 @@ p {
 a {
   text-decoration: none;
   color: $clr2;
-  // &:hover {
-  //     text-decoration: underline;
-  // }
 }
 
 // Transition

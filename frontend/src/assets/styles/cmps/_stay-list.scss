@@ -12,7 +12,7 @@
   position: fixed;
   top: 80px;
   width: 100%;
-  z-index: 10;
+  z-index: 20;
   background-color: $clr8;
 
   & .list-header {
@@ -37,7 +37,9 @@
     height: em(48px, 15px);
     border: 1px solid $clr6;
     border-radius: 0.8em;
-
+    span{
+      font-family: airBnb-Med;
+    }
     @include for-mobile-layout {
       display: none;
     }

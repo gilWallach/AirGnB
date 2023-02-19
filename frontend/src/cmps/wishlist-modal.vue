@@ -31,10 +31,17 @@ import close from '../assets/svg/close.vue'
 
  export default {
 name: 'wishlist-modal',
-  props: {},
+  props: {
+    stayId: {
+            type: String,
+        },
+  },
   data() {
  return{}},
   created(){},
+  mounted(){
+    console.log(this.stayId);
+  },
  methods: {},
  computed: {},
  components: {

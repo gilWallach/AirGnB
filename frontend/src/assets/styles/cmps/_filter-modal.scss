@@ -1,55 +1,164 @@
 .filters-container {
-    text-align: center;
+  text-align: center;
 }
 
-.container.home{
-    .main-screen{
-        z-index: 20;
-    }
+.container.home {
+  .main-screen {
+    z-index: 20;
+  }
 }
 
-.list-modal.filter{
-    >*{
-        padding-inline: 24px;
+.list-modal.filter {
+  z-index: 30;
+  transform: translate(-47%, -61%);
+  max-height: 80vh;
+  top: 55vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 780px;
+  > * {
+    padding-inline: 24px;
+  }
+  h2 {
+    margin-block-end: rem(24px);
+  }
+  h3 {
+    font-family: airBnb-Reg;
+    font-weight: normal;
+    padding-block: em(20px);
+  }
+  .sec-padding {
+    padding: em(32px);
+    border-bottom: 1px solid $clr6;
+  }
+  .vue-histogram-slider-wrapper {
+    margin: em(24px) auto em(8px);
+    g {
+      cursor: pointer !important;
+      .overlay {
+        cursor: auto;
+      }
     }
-    .vue-histogram-slider-wrapper{
-        margin: auto;
-        .irs-grid{
-            display: none;
+    .irs-grid {
+      display: none;
+    }
+    .irs-handle {
+      border: 1px solid $clr5;
+      box-shadow: 0;
+      &::before {
+        content: "|||";
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(77%, 20%);
+        color: $clr5;
+      }
+    }
+  }
+  .prices-display {
+    margin-top: em(32px);
+    label {
+      border: 1px solid $clr5;
+      border-radius: em(8px);
+      padding: em(6px) em(12px);
+      margin-inline: em(8px);
+      flex-basis: 40%;
+      small {
+        color: $clr4;
+      }
+      input {
+        border: none;
+        margin-top: em(2px);
+      }
+    }
+  }
+  .type {
+    // .el-checkbox__label{
+    //     font-size: em(16px);
+    // }
+    // .el-checkbox__inner{
+    //     width: em(24px) !important;
+    //     height: em(24px) !important;
+    //     border: 2px solid black;
+    // }
+  }
+  .rooms {
+    // .el-radio-button.el-radio-button--medium{
+    //     border-radius: 2em !important;
+    // }
+  }
+  .amenities {
+    // .small-amenity-container {
+        .el-checkbox-group:not(.el-checkbox-group:has(.small-amenities)), .small-amenities {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .el-checkbox__label {
+          padding-inline-start: rem(16px);
+          font-size: em(16px) !important;
         }
-        .irs-handle{
-            border: 1px solid $clr5;
-            box-shadow: 0;
-            &::before{
-                content: "|||";
-                position: absolute;
-                top: 0;
-                left: 0;
-                transform: translate(77%,20%);
-                color: $clr5;
-            }
+      }
+    // }
+    button {
+      font-family: airBnb-Med;
+      text-align: start;
+      text-decoration: underline;
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+  }
+  .el-checkbox {
+    padding-block: em(12px);
+    .el-checkbox__inner {
+      height: rem(24px) !important;
+      width: rem(24px) !important;
+      border-color: $clr5 !important;
+      border-radius: rem(4px);
+    }
+    // .el-checkbox__label {
+    // padding-inline-start: rem(16px);
+    //   font-size: em(16px) !important;
+    // }
+  }
+  main {
+    overflow-y: scroll;
+    .price {
+      .vue-histogram-view {
+        stroke: $clr8;
+        border-bottom: em(3px) solid $clr5;
+      }
+      input {
+        &::before {
+          content: "$";
+        }
+      }
+    }
+    h2 {
+      font-size: em(22px);
+    }
+    p {
+      margin: em(8px) 0 em(40px);
+      color: $clr4;
+    }
+  }
+  .footer{
+    border-top: 1px solid $clr6;
+    padding: em(16px) em(24px);
+    button{
+        font-size: em(16px);
+        font-family: airBnb-Med;
+
+        &:first-of-type{
+            text-decoration: underline;
+        }
+
+        &:last-of-type{
+            background-color: $clr3;
+            color: $clr8;
+            border-radius: rem(8px);
+            padding: em(14px) em(24px);
         }
     }
-    z-index: 30;
-    transform: translate(-47%, -61%);
-    max-height: 80vh;
-    top: 55vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    width: 780px;
-    main{
-        overflow-y: scroll;
-        .price{
-            input{
-                &::before{
-                    content: "$";
-                }
-            }
-        }
-        h2{
-            font-size: em(22px);
-        }
-    }
+  }
 }
 
 input::-webkit-outer-spin-button,

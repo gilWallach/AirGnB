@@ -14,6 +14,7 @@ const STORAGE_KEY = 'order'
 export const orderService = {
   query,
   getById,
+  getByHostId,
   save,
   remove,
   getEmptyOrder,
@@ -21,12 +22,17 @@ export const orderService = {
 }
 window.cs = orderService
 
-async function query(filterBy = { _id: '' }) {
+async function query(filterBy = { _id: '', host: {_id: ""} }) {
   return await httpService.get(STORAGE_KEY, filterBy)
 }
 
 async function getById(orderId) {
   return await httpService.get(STORAGE_KEY, `order/${orderId}`)
+}
+
+async function getByHostId(filterBy) {
+  console.log(filterBy);
+  return await httpService.get(STORAGE_KEY, filterBy)
 }
 
 async function remove(orderId) {

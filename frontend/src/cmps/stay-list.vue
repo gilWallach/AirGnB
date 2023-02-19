@@ -39,6 +39,7 @@
       v-if="isModalOpen"
       @closeModal="closeModal"
       :isWishlist="isWishlist"
+      :stayId="newWishlistStayId"
       @filter="filter"
     />
   </transition>
@@ -75,6 +76,7 @@ export default {
   },
   data() {
     return {
+      newWishlistStayId: null,
       listObserver: null,
       scrollShadow: false,
 
@@ -99,6 +101,7 @@ export default {
       })
     },
     addToWishlist(stayId) {
+      this.newWishlistStayId = stayId
       this.isWishlist = true
       this.isModalOpen = true
     },
