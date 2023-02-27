@@ -64,7 +64,8 @@
                     width: em(38px, 15px) !important;
                     background-color: rgba(255, 255, 255, 0.9);
                     color: $clr2;
-                    transition: transform 0.25s ease
+                    z-index: 5;
+                    transition: transform 0.25s ease;
                 }
             }
         }

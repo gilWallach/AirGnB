@@ -179,6 +179,9 @@ export default {
       this.filterBy.minPrice = slider.from
       this.filterBy.maxPrice = slider.to
     },
+    formatPrice(price){
+      return price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+    },
     search() {
       this.$emit('closeModal')
       this.$route.path === '/'

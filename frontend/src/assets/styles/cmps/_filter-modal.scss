@@ -1,3 +1,15 @@
+@include for-narrow-layout {
+  .list-modal.filter, .vue-histogram-slider-wrapper, .vue-histogram-view {
+    width: 100%;
+  }
+  .sec-padding{
+    padding-inline: 0;
+  }
+  .prices-display label{
+    width: 45%;
+  }
+}
+
 .filters-container {
   text-align: center;
 }
@@ -9,13 +21,15 @@
 }
 
 .list-modal.filter {
-  z-index: 30;
-  transform: translate(-47%, -61%);
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-height: 80vh;
-  top: 55vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   width: 780px;
+  z-index: 30;
   > * {
     padding-inline: 24px;
   }
@@ -88,7 +102,6 @@
     // }
   }
   .amenities {
-    // .small-amenity-container {
         .el-checkbox-group:not(.el-checkbox-group:has(.small-amenities)), .small-amenities {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -97,7 +110,6 @@
           font-size: em(16px) !important;
         }
       }
-    // }
     button {
       font-family: airBnb-Med;
       text-align: start;
@@ -108,16 +120,41 @@
   }
   .el-checkbox {
     padding-block: em(12px);
+    &.is-checked{
+      .el-checkbox__label{
+        color: $clr3;
+      }
+      .el-checkbox__inner {
+        background-color: $clr3;
+        &::after{
+          transform: rotate(45deg) scale(1.5, 1.5) translate(100%) !important;
+        }
+      }
+    }
     .el-checkbox__inner {
       height: rem(24px) !important;
       width: rem(24px) !important;
       border-color: $clr5 !important;
       border-radius: rem(4px);
     }
-    // .el-checkbox__label {
-    // padding-inline-start: rem(16px);
-    //   font-size: em(16px) !important;
-    // }
+  }
+  .el-radio-button__inner{
+    border-radius: 2em;
+    padding: 12px 24px;
+    font-size: 16px;
+    margin-inline-end: 10px;
+    &:hover{
+      color: $clr3;
+      border-color: $clr3;
+    }
+  }
+
+  .el-radio-button__original-radio:checked+.el-radio-button__inner{
+    background-color: $clr3;
+    border: none;
+    &:hover{
+      color: $clr8;
+    }
   }
   main {
     overflow-y: scroll;
