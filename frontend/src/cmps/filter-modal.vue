@@ -43,8 +43,7 @@
       </div>
       <div class="type sec-padding">
         <h2>Type of place</h2>
-        <el-checkbox-group v-model="filterBy.roomType">
-          <el-checkbox class="fs18" :key="0" label="Any" />
+        <el-checkbox-group v-model="filterBy.roomType">          
           <el-checkbox class="fs18"
             v-for="option in roomOptions"
             :key="option"
@@ -55,17 +54,17 @@
       <div class="rooms sec-padding">
         <h2>Rooms and beds</h2>
         <h3 class="fs16">Bedrooms</h3>
-        <el-radio-group v-model="filterBy.bedrooms" size="medium">
+        <el-radio-group v-model="filterBy.bedrooms" >
           <el-radio-button :key="0" label="Any" />
           <el-radio-button v-for="num in 8" :key="num" :label="num" />
         </el-radio-group>
         <h3 class="fs16">Beds</h3>
-        <el-radio-group v-model="filterBy.capacity" size="medium">
+        <el-radio-group v-model="filterBy.capacity" >
           <el-radio-button :key="0" label="Any" />
           <el-radio-button v-for="num in 8" :key="num" :label="num" />
         </el-radio-group>
         <h3 class="fs16">Bathrooms</h3>
-        <el-radio-group v-model="filterBy.bathrooms" size="medium">
+        <el-radio-group v-model="filterBy.bathrooms" >
           <el-radio-button :key="0" label="Any" />
           <el-radio-button v-for="num in 8" :key="num" :label="num" />
         </el-radio-group>
@@ -133,19 +132,20 @@ import close from '../assets/svg/close.vue'
 export default {
   name: 'filter-modal',
   props: {},
+  emits: ['closeModal', 'filter'], 
   data() {
     return {
       filterBy: {
         minPrice: 0,
         maxPrice: this.maxPrice,
-        roomType: '',
+        roomType: [],
         bedrooms: 'Any',
         capacity: 'Any',
         bathrooms: 'Any',
         amenities: [],
         isSuperhost: false,
       },
-      roomOptions: ['Entire place', 'Private room'],
+      roomOptions: [ 'Any', 'Entire place', 'Private room'],
       isFullAmenities: false,
     }
   },

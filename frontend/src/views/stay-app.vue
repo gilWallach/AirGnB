@@ -1,6 +1,6 @@
 <template>
   <div class="container home">
-    <stay-list :stays="stays" :labels="labels" />
+    <stay-list :stays="stays" :labels="labels"/>
   </div>
 </template>
 

@@ -20,12 +20,7 @@ export default {
             type: String,
         },
     },
-    data() {
-        return {}
-    },
-    created() {
-    },
-
+    emits: ['closeModal', 'filter'],
     methods: {
         filter(filterBy){
             this.$emit('filter',filterBy)

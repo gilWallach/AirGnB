@@ -62,7 +62,7 @@ import filterIcon from '../assets/svg/filter.vue'
 
 export default {
   name: 'stay-list',
-  emits: ['filter-type'],
+  emits: ['filter-type', 'filter' ],
   props: {
     stays: {
       type: Array,

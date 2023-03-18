@@ -1,12 +1,6 @@
 <template>
   <section class="stay-search main">
-    <stay-list
-      :stays="stays"
-      :labels="labels"
-      :date="date"
-      @filter-type="filterByType"
-      @filter="filter"
-    />
+    <stay-list :stays="stays" :labels="labels" :date="date" @filter-type="filterByType" @filter="filter" />
   </section>
 </template>
 
@@ -30,8 +24,7 @@ export default {
   },
   methods: {
     async loadStays(typeFilter) {
-      const { name, type: queryType, guests, filter } = this.$route.query
-      const type = typeFilter || queryType
+      const { name, type, guests, startDate, endDate, filter } = this.$route.query
       const capacity =
         guests && JSON.parse(guests) && Object.keys(JSON.parse(guests))
           ? JSON.parse(guests).capacity
@@ -40,8 +33,10 @@ export default {
         name,
         type,
         capacity,
+        startDate,
+        endDate,
       }
-      if (filter) {
+      if (filter && Object.keys(filter).length) {
         const parsedFilter = JSON.parse(filter)
         const {
           minPrice,
@@ -53,13 +48,13 @@ export default {
           amenities,
           isSuperhost,
         } = parsedFilter
-        filterBy.minPrice = minPrice
-        filterBy.maxPrice = maxPrice
+        if(minPrice) filterBy.minPrice = minPrice
+        if(maxPrice) filterBy.maxPrice = maxPrice
         filterBy.roomType = roomType === 'Any' ? '' : roomType
         filterBy.bedrooms = bedrooms === 'Any' ? 0 : bedrooms
         filterBy.capacity = capacity === 'Any' ? 0 : capacity
         filterBy.bathrooms = bathrooms === 'Any' ? 0 : bathrooms
-        filterBy.amenities = amenities
+        if(amenities) filterBy.amenities = amenities
         filterBy.isSuperhost = isSuperhost
       }
       //Go to params and filter your stays
